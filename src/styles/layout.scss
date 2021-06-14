@@ -1,0 +1,24 @@
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: white;
+  background-color: #cc9932;
+}
+
+.nav-link {
+  color: #cc9932;
+
+  /* visited link */
+  &:visited {
+    color: #dfc799;
+  }
+
+  /* mouse over link */
+  &:hover {
+    color: #ffa600;
+  }
+
+  /* selected link */
+  &:active {
+    color: #3b2e13;
+  }
+}
