@@ -27,7 +27,6 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
-    'gatsby-plugin-root-import',
     'gatsby-plugin-sass',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',

@@ -4,8 +4,8 @@ import Header from './header';
 
 import '../styles/layout.scss';
 
-interface LayoutProps {
-  children: JSX.Element[];
+export declare interface LayoutProps {
+  children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => (
