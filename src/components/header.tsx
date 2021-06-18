@@ -1,42 +1,56 @@
 import * as React from 'react';
 
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { StaticImage } from 'gatsby-plugin-image';
+
+import {
+  Nav,
+  Navbar,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from 'react-bootstrap';
+
+// import { Link } from 'gatsby';
 
 const Header = () => {
-  const handleSelect = (eventKey: string | null) =>
-    alert(`selected ${eventKey}`);
   return (
-    <Nav
-      variant="pills"
-      activeKey="1"
-      onSelect={handleSelect}
-      justify
-      style={{ marginTop: '25px' }}
-    >
-      <Nav.Item>
-        <Nav.Link eventKey="1" href="#/home">
-          NavLink 1 content
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="2" title="Item">
-          NavLink 2 content
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="3" disabled>
-          NavLink 3 content
-        </Nav.Link>
-      </Nav.Item>
-      <NavDropdown title="Dropdown" id="nav-dropdown">
-        <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
+    <Navbar expand="lg">
+      <Navbar.Brand href="/">
+        <StaticImage
+          src="../images/afroadiaspheretest.png"
+          alt="A dinosaur"
+          width={50}
+        />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto my-2 my-lg-0 w-100 nav-fill">
+          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/admin">Admin</Nav.Link>
+          <NavDropdown title="Link" id="collapsible-nav-dropdown">
+            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+            <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action5">
+              Something else here
+            </NavDropdown.Item>
+          </NavDropdown>
+          <Nav.Link href="#" disabled>
+            Link
+          </Nav.Link>
+        </Nav>
+        <Form className="d-flex">
+          <FormControl
+            type="search"
+            placeholder="Search"
+            className="mx-2"
+            aria-label="Search"
+          />
+          <Button variant="dark">Search</Button>
+        </Form>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

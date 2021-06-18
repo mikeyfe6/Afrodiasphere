@@ -70,7 +70,7 @@ const Pagina = () => {
           <Card.Img variant="top" src={post.img?.fields.file.url} />
           <Card.Body className="d-flex flex-column">
             <div className="mt-auto">
-              <Card.Title>Naam: {post.fields.bedrijfsnaam}</Card.Title>
+              <Card.Title>{post.fields.bedrijfsnaam}</Card.Title>
               <Card.Text>{post.fields.omschrijving}</Card.Text>
               <Card.Text>Tel: {post.fields.telefoon}</Card.Text>
             </div>

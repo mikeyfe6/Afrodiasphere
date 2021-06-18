@@ -24,8 +24,6 @@ const IndexPage = () => {
       <br />
       <Pagina />
       <br />
-
-      <div>asdasds</div>
     </Layout>
   );
 };
