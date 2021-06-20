@@ -7,36 +7,14 @@ import IdentityContext from '../context/identity-context';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+import Dashboard from '../components/dashboard';
+
 // import Homepage from './index';
 // import ErrorPage from './404';
 
 // styles
 
 // data
-const Dash = () => {
-  const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
-
-  return (
-    <div>
-      <span>
-        Hallo {gebruiker && gebruiker.user_metadata.full_name}, welkom!
-      </span>
-
-      {gebruiker && (
-        <Button
-          variant="outline-danger"
-          type="button"
-          className="px-4 mx-4"
-          onClick={() => {
-            netlifyIdentity.logout();
-          }}
-        >
-          Log out {gebruiker.user_metadata.full_name}
-        </Button>
-      )}
-    </div>
-  );
-};
 
 const SeoApp = ({ seoTitle }: string) => {
   return (
@@ -88,7 +66,7 @@ const App = () => {
     <Layout>
       <SeoApp seoTitle="Ingelogd" />
       <Router>
-        <Dash path="/app" />
+        <Dashboard path="/app" />
       </Router>
     </Layout>
   );
