@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable import/no-extraneous-dependencies */
+// eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -27,20 +26,14 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/app/*`] },
+    },
     'gatsby-plugin-sass',
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        icon: 'src/images/afroadiaspheretest.png',
-      },
-    },
     'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -50,5 +43,15 @@ module.exports = {
       __key: 'images',
     },
     'gatsby-plugin-eslint',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-catch-links`,
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        icon: 'src/images/afroadiaspheretest.png',
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 };

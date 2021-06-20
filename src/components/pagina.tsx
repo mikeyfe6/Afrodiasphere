@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import 'moment/locale/nl';
 
-// interface Props {}
-
 import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 
@@ -30,7 +28,7 @@ const Pagina = () => {
     try {
       const fetchData = async () => {
         const res = await axios.get(
-          `${siteurl}/spaces/0ktrqgmkb077/environments/master/entries?access_token=oka2GP-0UuAUx1HA1SCxVVl8ZGeuwz1xqF1ZQQbhaMg&content_type=bedrijf`,
+          `${siteurl}/spaces/${process.env.GATSBY_CTF_SPACEID}/environments/master/entries?access_token=${process.env.GATSBY_CTF_ACCTOKEN}&content_type=bedrijf`,
         );
         setPosts(res.data.items);
         setImages(res.data.includes.Asset);

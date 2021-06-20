@@ -34,6 +34,7 @@
     "import/extensions": 0,
     "import/no-unresolved": 0,
     "import/prefer-default-export": 0,
+
     "no-shadow": 0,
     "no-use-before-define": 0,
     "react/prop-types": 0,
@@ -41,9 +42,14 @@
     "react/require-default-props": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": ["ts", ".tsx", ".js", ".jsx"] }
+    ],
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-shadow": ["error"]
+    "@typescript-eslint/no-shadow": ["warn"],
+    "@typescript-eslint/no-var-requires": 0
   },
   "overrides": [
     {

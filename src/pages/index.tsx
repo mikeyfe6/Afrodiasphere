@@ -20,7 +20,6 @@ const IndexPage = () => {
       />
       <h1>Homepagina</h1>
       <p>Hier komt dan de voorpagina met info over bedrijven</p>
-
       <br />
       <Pagina />
       <br />
