@@ -16,7 +16,7 @@ const typeDefs = gql`
 `;
 
 const todos = {};
-const todoIndex = 0;
+let todoIndex = 0;
 
 const resolvers = {
   Query: {
@@ -26,7 +26,7 @@ const resolvers = {
   },
   Mutation: {
     addTodo: (_, { text }) => {
-      todoIndex++;
+      todoIndex += 1;
       const id = `key-${todoIndex}`;
       todos[id] = { id, text, done: false };
       return todos[id];
