@@ -1,9 +1,38 @@
 import React, { useContext, useRef, useReducer } from 'react';
 
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button, Form, ListGroup, InputGroup } from 'react-bootstrap';
+
 import IdentityContext from '../context/identity-context';
 
 // interface Props {}
+
+const ADD_TODO = gql`
+  mutation AddTodo($type: String!) {
+    addTodo(text: "one todo") {
+      id
+    }
+  }
+`;
+
+const GET_TODOS = gql`
+  query GetTodos($type: String!) {
+    todos {
+      id
+      text
+      done
+    }
+  }
+`;
+
+const UPDATE_TODO_DONE = gql`
+  mutation UpdateTodoDone($id: ID!) {
+    updateTodoDone(id: $id) {
+      text
+      done
+    }
+  }
+`;
 
 const todosReducer = (state, action) => {
   const newState = [...state];
@@ -28,6 +57,10 @@ const Dashboard = () => {
   const inputRef = useRef();
   const [todos, dispatch] = useReducer(todosReducer, []);
 
+  const [addTodo] = useMutation(ADD_TODO);
+  const [updateTodoDone] = useMutation(UPDATE_TODO_DONE);
+  const { loading, error, data } = useQuery(GET_TODOS);
+
   return (
     <div>
       <span>
@@ -51,10 +84,7 @@ const Dashboard = () => {
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(
-              { type: 'addTodo', payload: inputRef.current.value },
-              ...todos,
-            );
+            addTodo({ variables: { text: inputRef.current.value } });
             inputRef.current.value = '';
           }}
         >
@@ -67,25 +97,29 @@ const Dashboard = () => {
           </Form.Group>
 
           <div className="container mt-5 ">
-            <ListGroup>
-              {todos.map((todo, i) => (
-                <>
-                  <ListGroup.Item
-                    className="d-flex justify-content-evenly"
-                    onClick={() => {
-                      dispatch({ type: 'toggleTodoDone', payload: i });
-                    }}
-                  >
-                    <InputGroup.Checkbox
-                      aria-label="Checkbox for following text input"
-                      checked={todo.done}
-                    />
-                    <span>{todo.value}</span>
-                  </ListGroup.Item>
-                </>
-              ))}
-              {console.log(todos)}
-            </ListGroup>
+            {loading ? <div>loading...</div> : null}
+            {error ? <div>{error.message}</div> : null}
+            {!loading && !error && (
+              <ListGroup>
+                {todos.map((todo) => (
+                  <>
+                    <ListGroup.Item
+                      className="d-flex justify-content-evenly"
+                      onClick={() => {
+                        updateTodoDone({ variables: { id: todo.id } });
+                      }}
+                    >
+                      <InputGroup.Checkbox
+                        aria-label="Checkbox for following text input"
+                        checked={todo.done}
+                      />
+                      <span>{todo.value}</span>
+                    </ListGroup.Item>
+                  </>
+                ))}
+                {/* {console.log(todos)} */}
+              </ListGroup>
+            )}
           </div>
         </Form>
       </div>

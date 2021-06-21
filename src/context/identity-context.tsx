@@ -17,13 +17,13 @@ const IdentityProvider = ({ children }) => {
 
   useEffect(() => {
     netlifyIdentity.init({});
-    // netlifyIdentity.refresh().then((jwt) => jwt);
 
-    const nieuwtoch = localStorage.getItem('gotrue.user');
+    // const nieuwtoch = localStorage.getItem('gotrue.user');
+    // console.log();
 
-    if (nieuwtoch) {
-      setGebruiker(JSON.parse(nieuwtoch));
-    }
+    // if (nieuwtoch) {
+    //   setGebruiker(JSON.parse(nieuwtoch));
+    // }
   }, []);
   netlifyIdentity.on('login', (gebruiker) => {
     setGebruiker(gebruiker);

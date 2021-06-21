@@ -16,7 +16,7 @@ import IdentityContext, { IdentityOpen } from '../context/identity-context';
 
 const Header = () => {
   const { gebruiker } = useContext(IdentityContext);
-  console.log(gebruiker);
+  // console.log(gebruiker);
 
   return (
     <Navbar expand="lg">
