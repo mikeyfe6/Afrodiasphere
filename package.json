@@ -7,7 +7,6 @@
   "keywords": [
     "gatsby"
   ],
-  "type": "module",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
