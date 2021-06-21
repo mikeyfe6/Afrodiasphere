@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
 import {
@@ -11,12 +12,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { IdentityProvider } from './src/context/identity-context';
 
+import Layout from './src/components/layout';
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: 'https://afrodiasphere.netlify.app/.netlify/functions/graphql',
   }),
 });
+
+export const wrapPageElement = ({ element, props }) => (
+  <Layout {...props}>{element}</Layout>
+);
 
 export const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Layout from '../components/layout';
+// import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import Pagina from '../components/pagina';
@@ -12,7 +12,8 @@ import Pagina from '../components/pagina';
 // markup
 const IndexPage = () => {
   return (
-    <Layout>
+    // <Layout>
+    <>
       <SEO
         title="Home"
         description="Afrodiasphere uit Amsterdam staat garant voor al uw sociale mediatering."
@@ -23,7 +24,8 @@ const IndexPage = () => {
       <br />
       <Pagina />
       <br />
-    </Layout>
+    </>
+    // </Layout>
   );
 };
 

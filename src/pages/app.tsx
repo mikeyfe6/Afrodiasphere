@@ -4,7 +4,7 @@ import { Router, Link } from '@reach/router';
 import { Button } from 'react-bootstrap';
 import IdentityContext from '../context/identity-context';
 
-import Layout from '../components/layout';
+// import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import Dashboard from '../components/dashboard';
@@ -54,21 +54,21 @@ const App = () => {
 
   if (!gebruiker) {
     return (
-      <Layout>
+      <>
         <SeoApp seoTitle="Niet ingelogd" />
         <Router>
           <DashLoggedOut path="/app" />
         </Router>
-      </Layout>
+      </>
     );
   }
   return (
-    <Layout>
+    <>
       <SeoApp seoTitle="Ingelogd" />
       <Router>
         <Dashboard path="/app" />
       </Router>
-    </Layout>
+    </>
   );
 };
 

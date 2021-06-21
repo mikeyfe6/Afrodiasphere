@@ -4,13 +4,13 @@ import * as netlifyIdentity from 'netlify-identity-widget';
 
 const IdentityContext = createContext({});
 
-const IdentityOpen = () => {
-  netlifyIdentity.open();
-};
+// const IdentityOpen = () => {
+//   netlifyIdentity.open();
+// };
 
-const IdentityInit = () => {
-  netlifyIdentity.init({});
-};
+// const IdentityInit = () => {
+//   netlifyIdentity.init({});
+// };
 
 const IdentityProvider = ({ children }) => {
   const [gebruiker, setGebruiker] = useState();
@@ -19,14 +19,13 @@ const IdentityProvider = ({ children }) => {
     netlifyIdentity.init({});
 
     // const nieuwtoch = localStorage.getItem('gotrue.user');
-    // console.log();
 
     // if (nieuwtoch) {
     //   setGebruiker(JSON.parse(nieuwtoch));
     // }
   }, []);
-  netlifyIdentity.on('login', (gebruiker) => {
-    setGebruiker(gebruiker);
+  netlifyIdentity.on('login', (waarde) => {
+    setGebruiker(waarde);
     netlifyIdentity.close();
   });
   netlifyIdentity.on('logout', () => setGebruiker());
@@ -40,4 +39,4 @@ const IdentityProvider = ({ children }) => {
 };
 
 export default IdentityContext;
-export { IdentityProvider, IdentityOpen, IdentityInit };
+export { IdentityProvider };

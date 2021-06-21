@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server-lambda');
+import { ApolloServer, gql } from 'apollo-server-lambda';
 
 const typeDefs = gql`
   type Query {
@@ -47,6 +47,6 @@ const server = new ApolloServer({
   introspection: true,
 });
 
-exports.handler = server.createHandler({
+export const handler = server.createHandler({
   cors: { origin: '*', credentials: true },
 });

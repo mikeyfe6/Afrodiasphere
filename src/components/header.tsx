@@ -12,10 +12,10 @@ import {
   Button,
 } from 'react-bootstrap';
 
-import IdentityContext, { IdentityOpen } from '../context/identity-context';
+import IdentityContext from '../context/identity-context';
 
 const Header = () => {
-  const { gebruiker } = useContext(IdentityContext);
+  const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
   // console.log(gebruiker);
 
   return (
@@ -68,7 +68,7 @@ const Header = () => {
               }}
               onClick={(event) => {
                 event.preventDefault();
-                IdentityOpen();
+                netlifyIdentity.open();
               }}
             >
               Logout
@@ -80,7 +80,7 @@ const Header = () => {
               className="px-4 mx-4"
               onClick={(event) => {
                 event.preventDefault();
-                IdentityOpen();
+                netlifyIdentity.open();
               }}
               style={{
                 backgroundColor: '#cc9932',

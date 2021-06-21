@@ -61,6 +61,8 @@ const Dashboard = () => {
   const [updateTodoDone] = useMutation(UPDATE_TODO_DONE);
   const { loading, error, data } = useQuery(GET_TODOS);
 
+  console.log('displatch! :', dispatch, 'data! :', data);
+
   return (
     <div>
       <span>
