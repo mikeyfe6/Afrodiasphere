@@ -14,7 +14,7 @@ require('bootstrap/dist/css/bootstrap.min.css');
 
 const { IdentityProvider } = require('./src/context/identity-context');
 
-const Layout = require('./src/components/layout');
+const Layout = require('./src/components/layout').default;
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
