@@ -15,19 +15,19 @@ const ADD_TODO = gql`
   }
 `;
 
-const GET_TODOS = gql`
-  query GetTodos($type: String!) {
-    todos {
-      id
+const UPDATE_TODO_DONE = gql`
+  mutation UpdateTodoDone($id: ID!) {
+    updateTodoDone(id: $id) {
       text
       done
     }
   }
 `;
 
-const UPDATE_TODO_DONE = gql`
-  mutation UpdateTodoDone($id: ID!) {
-    updateTodoDone(id: $id) {
+const GET_TODOS = gql`
+  query GetTodos {
+    todos {
+      id
       text
       done
     }
@@ -55,13 +55,14 @@ const Dashboard = () => {
   const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
 
   const inputRef = useRef();
-  const [todos, dispatch] = useReducer(todosReducer, []);
+  const [todos] = useReducer(todosReducer, []);
 
   const [addTodo] = useMutation(ADD_TODO);
   const [updateTodoDone] = useMutation(UPDATE_TODO_DONE);
-  const { loading, error, data } = useQuery(GET_TODOS);
+  const { loading, error, data, refetch } = useQuery(GET_TODOS);
 
-  console.log('displatch! :', dispatch, 'data! :', data);
+  console.log(data);
+  // console.log('displatch! :', dispatch, 'data! :', data);
 
   return (
     <div>
@@ -103,9 +104,10 @@ const Dashboard = () => {
             {error ? <div>{error.message}</div> : null}
             {!loading && !error && (
               <ListGroup>
-                {todos.map((todo) => (
+                {data.todos.map((todo) => (
                   <>
                     <ListGroup.Item
+                      key={todo.id}
                       className="d-flex justify-content-evenly"
                       onClick={() => {
                         updateTodoDone({ variables: { id: todo.id } });
