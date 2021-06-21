@@ -1,20 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+const React = require('react');
 
-import {
+const {
   ApolloProvider,
   ApolloClient,
   HttpLink,
   InMemoryCache,
-} from '@apollo/client';
+} = require('@apollo/client');
 
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+require('bootstrap/dist/css/bootstrap.min.css');
 
-import { IdentityProvider } from './src/context/identity-context';
+const { IdentityProvider } = require('./src/context/identity-context');
 
-import Layout from './src/components/layout';
+const Layout = require('./src/components/layout');
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -24,15 +24,19 @@ const client = new ApolloClient({
   }),
 });
 
-export const wrapPageElement = ({ element, props }) => (
+const wrapPageElement = ({ element, props }) => (
   <Layout {...props}>{element}</Layout>
 );
 
-export const wrapRootElement = ({ element }) => (
+exports.wrapPageElement = wrapPageElement;
+
+const wrapRootElement = ({ element }) => (
   <ApolloProvider client={client}>
     <IdentityProvider>{element}</IdentityProvider>
   </ApolloProvider>
 );
+
+exports.wrapRootElement = wrapRootElement;
 
 // export const onPreRouteUpdate = ({ location, prevLocation }) => {
 //   console.log('new pathname', location.pathname);
