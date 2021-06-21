@@ -8,6 +8,8 @@ import {
   InMemoryCache,
 } from '@apollo/client';
 
+import fetch from 'node-fetch';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { IdentityProvider } from './src/context/identity-context';
@@ -18,6 +20,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: 'https://afrodiasphere.netlify.app/.netlify/functions/graphql',
+    fetch,
   }),
 });
 

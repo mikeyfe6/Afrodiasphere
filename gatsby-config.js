@@ -4,6 +4,9 @@ require('dotenv').config({
 });
 
 module.exports = {
+  flags: {
+    DEV_SSR: true,
+  },
   siteMetadata: {
     title: 'Afrodiasphere',
     description: 'Webapp that locates melanated businesses worldwide!',
