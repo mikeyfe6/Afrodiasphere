@@ -121,7 +121,7 @@ const Dashboard = () => {
                     </ListGroup.Item>
                   </>
                 ))}
-                {/* {console.log(todos)} */}
+                {console.log(data)}
               </ListGroup>
             )}
           </div>
