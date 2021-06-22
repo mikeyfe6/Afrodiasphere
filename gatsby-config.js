@@ -6,7 +6,6 @@ require('dotenv').config({
 module.exports = {
   flags: {
     PRESERVE_WEBPACK_CACHE: true,
-    DEV_SSR: false,
   },
   siteMetadata: {
     title: 'Afrodiasphere',

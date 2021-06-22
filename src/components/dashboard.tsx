@@ -8,7 +8,7 @@ import IdentityContext from '../context/identity-context';
 // interface Props {}
 
 const ADD_TODO = gql`
-  mutation AddTodo($type: String!) {
+  mutation AddTodo($text: String!) {
     addTodo(text: $text) {
       id
     }

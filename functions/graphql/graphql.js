@@ -34,7 +34,6 @@ const resolvers = {
         text,
         done,
       }));
-      // return Object.values(todos);
     },
   },
 
