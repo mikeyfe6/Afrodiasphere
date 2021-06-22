@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/jsx-props-no-spreading */
 const React = require('react');
 
@@ -8,21 +9,38 @@ const {
   InMemoryCache,
 } = require('@apollo/client');
 
-const fetch = require('cross-fetch');
-
 require('bootstrap/dist/css/bootstrap.min.css');
+
+const netlifyIdentity = require('netlify-identity-widget');
+
+const { setContext } = require('apollo-link-context');
+
+const fetch = require('cross-fetch');
 
 const { IdentityProvider } = require('./src/context/identity-context');
 
 const Layout = require('./src/components/layout').default;
 
+const authLink = setContext((_, { headers }) => {
+  const user = netlifyIdentity.currentUser();
+  const token = user.token.access_token;
+
+  return {
+    headers: {
+      ...headers,
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const httpLink = new HttpLink({
+  uri: 'https://afrodiasphere.netlify.app/.netlify/functions/graphql',
+  fetch,
+});
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  credentials: 'include',
-  link: new HttpLink({
-    uri: 'https://afrodiasphere.netlify.app/.netlify/functions/graphql',
-    fetch,
-  }),
+  link: authLink.concat(httpLink),
 });
 
 const wrapPageElement = ({ element, props }) => (

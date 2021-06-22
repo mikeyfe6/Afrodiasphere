@@ -104,11 +104,12 @@ const Dashboard = () => {
             {loading ? <div>loading...</div> : null}
             {error ? <div>{error.message}</div> : null}
             {!loading && !error && (
-              <ListGroup>
+              <ListGroup as="ul">
                 {data.todos.map((todo) => (
                   <>
                     <ListGroup.Item
                       key={todo.id}
+                      as="li"
                       className="d-flex justify-content-evenly"
                       onClick={async () => {
                         await updateTodoDone({ variables: { id: todo.id } });
