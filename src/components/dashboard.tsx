@@ -9,7 +9,7 @@ import IdentityContext from '../context/identity-context';
 
 const ADD_TODO = gql`
   mutation AddTodo($type: String!) {
-    addTodo(text: "one todo") {
+    addTodo(text: $text) {
       id
     }
   }
