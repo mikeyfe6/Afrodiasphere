@@ -85,10 +85,11 @@ const Dashboard = () => {
 
       <div className="container my-5">
         <Form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            addTodo({ variables: { text: inputRef.current.value } });
+            await addTodo({ variables: { text: inputRef.current.value } });
             inputRef.current.value = '';
+            await refetch();
           }}
         >
           <Form.Group className="d-flex justify-content-between">
@@ -109,15 +110,16 @@ const Dashboard = () => {
                     <ListGroup.Item
                       key={todo.id}
                       className="d-flex justify-content-evenly"
-                      onClick={() => {
-                        updateTodoDone({ variables: { id: todo.id } });
+                      onClick={async () => {
+                        await updateTodoDone({ variables: { id: todo.id } });
+                        await refetch();
                       }}
                     >
                       <InputGroup.Checkbox
                         aria-label="Checkbox for following text input"
                         checked={todo.done}
                       />
-                      <span>{todo.value}</span>
+                      <span>{todo.text}</span>
                     </ListGroup.Item>
                   </>
                 ))}

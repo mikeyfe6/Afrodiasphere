@@ -18,6 +18,7 @@ const Layout = require('./src/components/layout').default;
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
+  credentials: 'include',
   link: new HttpLink({
     uri: 'https://afrodiasphere.netlify.app/.netlify/functions/graphql',
     fetch,
