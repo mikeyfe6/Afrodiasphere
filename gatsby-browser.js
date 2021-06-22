@@ -8,7 +8,7 @@ const {
   InMemoryCache,
 } = require('@apollo/client');
 
-const fetch = require('node-fetch');
+const fetch = require('cross-fetch');
 
 require('bootstrap/dist/css/bootstrap.min.css');
 
