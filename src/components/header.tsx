@@ -15,7 +15,7 @@ import {
 import IdentityContext from '../context/identity-context';
 
 const Header = () => {
-  const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
+  const { user, identity: netlifyIdentity } = useContext(IdentityContext);
   // console.log(gebruiker);
 
   return (
@@ -56,7 +56,7 @@ const Header = () => {
             Login / Logout
           </Nav.Link> */}
 
-          {gebruiker ? (
+          {user ? (
             <Nav.Link
               as={Button}
               to="/"
@@ -92,9 +92,9 @@ const Header = () => {
             </Nav.Link>
           )}
 
-          {gebruiker && (
+          {user && (
             <Nav.Link href="#!" disabled>
-              {gebruiker.user_metadata.full_name}
+              {user.user_metadata.full_name}
             </Nav.Link>
           )}
 

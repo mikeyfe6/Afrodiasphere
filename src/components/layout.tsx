@@ -4,8 +4,6 @@ import '../styles/layout.scss';
 
 import Header from './header';
 
-// import { IdentityProvider } from '../context/identity-context';
-
 export declare interface LayoutProps {
   children: React.ReactNode;
 }

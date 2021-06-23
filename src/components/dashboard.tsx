@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useReducer } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { Button, Form, ListGroup, InputGroup } from 'react-bootstrap';
@@ -34,43 +34,23 @@ const GET_TODOS = gql`
   }
 `;
 
-const todosReducer = (state, action) => {
-  const newState = [...state];
-  switch (action.type) {
-    case 'addTodo':
-      return [{ done: false, value: action.payload }, ...state];
-
-    case 'toggleTodoDone':
-      newState[action.payload] = {
-        done: !state[action.payload].done,
-        value: state[action.payload].value,
-      };
-      return newState;
-    default:
-  }
-  return undefined;
-};
-
 const Dashboard = () => {
-  const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
+  const { user, identity: netlifyIdentity } = useContext(IdentityContext);
 
   const inputRef = useRef();
-  const [todos] = useReducer(todosReducer, []);
 
   const [addTodo] = useMutation(ADD_TODO);
   const [updateTodoDone] = useMutation(UPDATE_TODO_DONE);
   const { loading, error, data, refetch } = useQuery(GET_TODOS);
 
-  console.log(data);
+  // console.log(todos);
   // console.log('displatch! :', dispatch, 'data! :', data);
 
   return (
     <div>
-      <span>
-        Hallo {gebruiker && gebruiker.user_metadata.full_name}, welkom!
-      </span>
+      <span>Hallo {user && user.user_metadata.full_name}, welkom!</span>
 
-      {gebruiker && (
+      {user && (
         <Button
           variant="outline-danger"
           type="button"
@@ -79,7 +59,7 @@ const Dashboard = () => {
             netlifyIdentity.logout();
           }}
         >
-          Log out {gebruiker.user_metadata.full_name}
+          Log out {user.user_metadata.full_name}
         </Button>
       )}
 
@@ -108,7 +88,7 @@ const Dashboard = () => {
                 {data.todos.map((todo) => (
                   <>
                     <ListGroup.Item
-                      key={todo.id}
+                      eventKey={todo.id}
                       as="li"
                       className="d-flex justify-content-evenly"
                       onClick={async () => {

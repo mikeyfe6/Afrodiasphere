@@ -4,16 +4,8 @@ import * as netlifyIdentity from 'netlify-identity-widget';
 
 const IdentityContext = createContext({});
 
-// const IdentityOpen = () => {
-//   netlifyIdentity.open();
-// };
-
-// const IdentityInit = () => {
-//   netlifyIdentity.init({});
-// };
-
 const IdentityProvider = ({ children }) => {
-  const [gebruiker, setGebruiker] = useState();
+  const [user, setUser] = useState();
 
   useEffect(() => {
     netlifyIdentity.init({});
@@ -23,16 +15,17 @@ const IdentityProvider = ({ children }) => {
     // if (nieuwtoch) {
     //   setGebruiker(JSON.parse(nieuwtoch));
     // }
-  }, []);
-  netlifyIdentity.on('login', (waarde) => {
-    setGebruiker(waarde);
+  }, [user]);
+  netlifyIdentity.on('login', (loginUser) => {
+    setUser(loginUser);
+    console.log(loginUser);
     netlifyIdentity.close();
   });
-  netlifyIdentity.on('logout', () => setGebruiker());
+  netlifyIdentity.on('logout', () => setUser());
   netlifyIdentity.close();
 
   return (
-    <IdentityContext.Provider value={{ identity: netlifyIdentity, gebruiker }}>
+    <IdentityContext.Provider value={{ identity: netlifyIdentity, user }}>
       {children}
     </IdentityContext.Provider>
   );

@@ -27,13 +27,13 @@ const SeoApp = ({ seoTitle }: string) => {
 };
 
 const DashLoggedOut = () => {
-  const { gebruiker, identity: netlifyIdentity } = useContext(IdentityContext);
+  const { user, identity: netlifyIdentity } = useContext(IdentityContext);
 
   return (
     <div>
       <span>Zorg dat je inlogt, anders zie je deze content niet!</span>
 
-      {!gebruiker && (
+      {!user && (
         <Button
           variant="outline-warning"
           type="button"
@@ -50,9 +50,9 @@ const DashLoggedOut = () => {
 };
 
 const App = () => {
-  const { gebruiker } = useContext(IdentityContext);
+  const { user } = useContext(IdentityContext);
 
-  if (!gebruiker) {
+  if (!user) {
     return (
       <>
         <SeoApp seoTitle="Niet ingelogd" />
