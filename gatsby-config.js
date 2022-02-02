@@ -1,3 +1,6 @@
+const fs = require("fs")
+const { buildSchema, buildClientSchema } = require("graphql")
+
 require("dotenv").config({
   // path: `.env.${process.env.NODE_ENV}`,
   path: ".env",
@@ -56,6 +59,12 @@ module.exports = {
         fieldName: "instantie",
         // Url to query from
         url: `${process.env.GATSBY_BASE_URL}/graphql`,
+        createSchema: async () => {
+          const json = JSON.parse(
+            fs.readFileSync(`${__dirname}/introspection.json`)
+          )
+          return buildClientSchema(json)
+        },
       },
     },
 
