@@ -1,0 +1,46 @@
+@import "../customs/colors";
+@import "../customs/utilities";
+
+.navbar {
+  background-color: black;
+  height: 70px;
+  color: #fff;
+
+  ul {
+    display: flex;
+  }
+
+  a {
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+
+    &:hover {
+      border-bottom: 2px #fff solid;
+    }
+  }
+
+  .flex {
+    justify-content: space-between;
+  }
+}
+
+// --> MQ: Tablet !
+@media (max-width: 768px) {
+}
+
+// --> MQ: Mobile !
+@media (max-width: 600px) {
+  .navbar {
+    height: 125px;
+
+    .flex {
+      flex-direction: column;
+    }
+
+    ul {
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}

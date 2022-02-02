@@ -1,0 +1,1354 @@
+@import "../customs/colors";
+@import "../customs/utilities";
+
+@mixin chooseDisplay {
+  border-radius: 12.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  height: 200px;
+  border: solid 5px #424242;
+  cursor: pointer;
+  transition: all 0.6s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+    border: solid 5px $secondary-color;
+    transition: all 0.6s ease-in-out;
+  }
+}
+
+@mixin chooseUsername {
+  position: absolute;
+  top: 34%;
+  left: 34%;
+  z-index: 2;
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
+  width: 99.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin chooseIcon {
+  display: flex;
+  position: absolute;
+  gap: 17.5px;
+  top: 87.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin chooseLinks {
+  display: inline-block;
+  width: 100%;
+  padding: 5px 25px;
+}
+
+@mixin chooseStrokes {
+  width: 50px;
+  height: 12.5px;
+  margin: 10px 0;
+}
+
+.grid-container {
+  display: grid;
+  min-height: calc(100vh - 290px);
+  grid-template-columns: 0.3fr 1.3fr 1fr;
+  grid-template-rows: 0fr 2.8fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Sidebar Dashboard Dashboard Link"
+    "Sidebar Dashboard Dashboard Preview"
+    "Sidebar Dashboard Dashboard Preview";
+  // background: linear-gradient(to top, white, #ededed);
+
+  background: linear-gradient(to bottom, black, $primary-color) no-repeat 0 0 /
+    cover;
+}
+
+// SIDEBAR
+.Sidebar {
+  grid-area: Sidebar;
+  // background: linear-gradient(to bottom, white, #ededed);
+  // background: linear-gradient(to bottom, black, white, white, white) no-repeat 0
+  //   0 / cover;
+  border: 2px solid $primary-color;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+// NAVIGATION
+// .Navigation {
+//   grid-area: Navigation;
+//   // background: linear-gradient(to bottom, white, #ededed);
+//   background: linear-gradient(to left, white, $primary-color) no-repeat 0 0 /
+//     cover;
+// }
+
+// PREVIEW
+.Preview {
+  grid-area: Preview;
+  // background: linear-gradient(to bottom, white, #ededed);
+  // background: #1616167e;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid $primary-color;
+
+  display: flex;
+  justify-content: center;
+
+  .iphone {
+    // overflow: hidden;
+    &-frame {
+      position: -webkit-sticky;
+      position: sticky;
+      overflow: hidden;
+      height: 675px;
+      margin: 5% 1%;
+      width: 325px;
+      border-radius: 50px;
+      border: solid #333 10px;
+      top: 150px;
+    }
+
+    // &-bg {
+    //   position: relative;
+    //   width: 100vh;
+    //   height: 100%;
+    //   z-index: 1;
+    // }
+
+    &-background {
+      position: relative;
+      height: 100%;
+      z-index: 1;
+    }
+
+    &-avatar {
+      position: absolute;
+      top: 12.5%;
+      left: 30%;
+      width: 125px;
+      height: 125px;
+      z-index: 2;
+      border-radius: 50%;
+      display: inline-block;
+      object-fit: cover;
+      //
+    }
+
+    &-links {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      font-size: 0.875em;
+
+      a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-socials {
+      display: flex;
+      position: absolute;
+    }
+  }
+}
+
+// DASHBOARD
+.Dashboard {
+  grid-area: Dashboard;
+  // background: linear-gradient(to bottom, black, #1616167e) no-repeat 0 0 / cover;
+  // background: #1616167e;
+  background: rgba(0, 0, 0, 0.9);
+
+  border: 2px solid $primary-color;
+  // background: linear-gradient(to top, white, #ededed);
+  .avatarformcont {
+    display: flex;
+    position: relative;
+    padding-bottom: 5%;
+
+    .loading-complete {
+      color: white;
+      background-color: green;
+      display: inline-block;
+      position: absolute;
+      bottom: 60px;
+      padding: 1px 7.5px;
+      border-radius: 2.5px;
+      opacity: 0.9;
+      left: 45px;
+    }
+  }
+
+  .avatar-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: white;
+  }
+
+  .progress {
+    margin: 1rem 0;
+    background-color: red;
+
+    &-seek {
+      background-color: green;
+      height: 3px;
+    }
+  }
+
+  .formavatar {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .buttonsenzo {
+      display: flex;
+      flex-direction: column;
+
+      .add-btn {
+        margin: 5px;
+        width: 100px;
+      }
+
+      .reset-btn {
+        margin: 5px;
+        width: 100px;
+      }
+
+      .submit-btn {
+        margin: 5px;
+        width: 100px;
+      }
+    }
+  }
+
+  .edit-input {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    color: white;
+    padding: 3px;
+    font-size: 14px;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-size: 0.75em;
+    }
+  }
+
+  .updateLink {
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: $primary-color;
+  }
+
+  .updateLinkShow {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $secondary-color;
+  }
+
+  .updateHyperLinkShow {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $secondary-color;
+  }
+
+  .profile-info {
+    flex: 0.6;
+    margin-left: 10%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    // align-items: center;
+    align-self: center;
+  }
+
+  .logerror {
+    // box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+    border: black 1px solid;
+    background-color: red;
+    opacity: 0.75;
+    font-weight: bold;
+    color: white;
+    padding: 0.3rem 0.5rem;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    font-size: 0.7em;
+  }
+
+  .linkErrorStyle {
+    // box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+    display: inline-block;
+    position: absolute;
+    background-color: red;
+    opacity: 0.75;
+    border: black 1px solid;
+    top: 60px;
+    width: 95%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.7em;
+    color: white;
+    padding: 0.3rem 0.5rem;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 3px;
+  }
+
+  .profile-input {
+    color: black;
+    width: 250px;
+    margin: 10px 15px;
+    opacity: 0.75;
+    outline: none;
+    border: none;
+    padding: 7.5px 10px;
+    border-bottom: 1px $secondary-color solid;
+    margin-right: 5%;
+    border-radius: 3px;
+  }
+
+  .link-cont {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 2.5% !important;
+
+    .link-input {
+      padding: 10px;
+      font-size: 14px;
+      opacity: 0.75;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid $secondary-color !important;
+      width: 25%;
+      border-radius: 3px;
+
+      &::placeholder {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .social-cont {
+    display: flex;
+    // border: 1px solid rgba(128, 128, 128, 0.192);
+    background: linear-gradient(to left, $primary-color, black) no-repeat 0 0 /
+      cover;
+    justify-content: space-around;
+    border: 2px solid black;
+
+    // border-bottom: solid 3px black;
+    border-radius: 10px;
+    padding: 45px 25px;
+    margin: 15px 0;
+
+    .social-form {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+
+      // &:nth-child(-n + 2) {
+      //   padding-right: 50px;
+      //   border-right: 1px solid rgba(128, 128, 128, 0.404);
+      // }
+    }
+
+    .vl {
+      border-left: 3px solid black;
+      height: 75%;
+      position: absolute;
+      left: 50%;
+      top: 12.5%;
+      opacity: 0.1;
+    }
+
+    .social-icons {
+      position: relative;
+      top: 5px;
+      right: 2px;
+      z-index: 3;
+
+      margin-right: 5px;
+    }
+
+    .social-input {
+      padding: 10px;
+      color: black;
+      opacity: 0.75;
+      outline: none;
+      border: none;
+      text-align: center;
+      border-radius: 3px;
+    }
+
+    .social-buttons {
+      margin-top: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.links-cont {
+  // border: 3px solid rgba(128, 128, 128, 0.192);
+  // background: linear-gradient(
+  //     to right,
+  //     white,
+  //     white,
+  //     white,
+  //     white,
+  //     white,
+  //     // rgba(128, 128, 128, 0.087)
+  //     #16b7f275
+  //   )
+  //   no-repeat 0 0 / cover;
+  background: linear-gradient(
+      to right,
+      white,
+      white,
+      white,
+      white,
+      white,
+      white,
+      // rgba(128, 128, 128, 0.087)
+      $primary-color
+    )
+    no-repeat 0 0 / cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+// ----------- //
+
+.inputCont {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 17.5px;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.inputCont input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 17.5px;
+  width: 17.5px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 17.5px;
+  width: 17.5px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.inputCont:hover input ~ .checkmark {
+  background-color: $light-color;
+}
+
+/* When the checkbox is checked, add a blue background */
+.inputCont input:checked ~ .checkmark {
+  background-color: rgb(43, 169, 43);
+  border-radius: 2.5px;
+}
+
+.inputCont:hover input:checked ~ .checkmark {
+  background-color: rgb(255, 81, 81);
+  border-radius: 2.5px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.inputCont input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.inputCont .checkmark:after {
+  left: 6px;
+  top: 2.5px;
+  width: 3px;
+  height: 7.5px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+// ----------- //
+
+.pickColor {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-rows: auto;
+  gap: 25px;
+}
+
+.chooseColor {
+  align-self: center;
+  justify-self: center;
+}
+
+// ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
+
+.yellowstyle {
+  background: linear-gradient(to bottom, yellow, black);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      background: #5e5d0d;
+      color: white;
+      border: 1px solid white;
+      border-radius: 3px;
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: yellow;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
+.yellowtheme {
+  background: linear-gradient(to bottom, yellow, black);
+  @include chooseDisplay;
+
+  .yellowlinks {
+    background: #5e5d0d;
+    border: 1px solid white;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
+
+.graystyle {
+  background: linear-gradient(to bottom, grey, white);
+
+  &-username {
+    @include chooseUsername;
+    color: #595959;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      background: rgba(255, 255, 255, 0.797);
+      color: #878787;
+      border: 1px solid #878787;
+      border-radius: 3px;
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: grey;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+.graytheme {
+  background: linear-gradient(to bottom, grey, white);
+  @include chooseDisplay;
+
+  .graylinks {
+    background: rgba(255, 255, 255, 0.797);
+    border: 1px solid #878787;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // PINK PINK PINK
+
+.pinkstyle {
+  background: linear-gradient(to bottom, pink, grey);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      color: white;
+      background: #878787;
+      border: 1px solid white;
+      border-radius: 3px;
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: pink;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
+.pinktheme {
+  background: linear-gradient(to bottom, pink, grey);
+  @include chooseDisplay;
+
+  .pinklinks {
+    background: #878787;
+    border: 1px solid white;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
+
+.blackstyle {
+  background: linear-gradient(to bottom, black, grey);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      background: #878787;
+      color: black;
+      border: 1px solid white;
+      border-radius: 3px;
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: white;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+.blacktheme {
+  background: linear-gradient(to bottom, black, grey);
+  @include chooseDisplay;
+
+  .blacklinks {
+    background: #878787;
+    border: 1px solid white;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // BROWN BROWN BROWN
+
+.brownstyle {
+  background: linear-gradient(to bottom, brown, white);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      background: white;
+      color: brown;
+      border: 1px solid brown;
+      border-radius: 3px;
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: brown;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+.browntheme {
+  background: linear-gradient(to bottom, brown, white);
+  @include chooseDisplay;
+
+  .brownlinks {
+    background: white;
+    border: 1px solid brown;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // GREEN GREEN GREEN
+
+.greenstyle {
+  background: linear-gradient(to bottom, green, white);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      background: white;
+      color: green;
+      border: 1px solid green;
+      border-radius: 3px;
+      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: green;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+.greentheme {
+  background: linear-gradient(to bottom, green, white);
+  @include chooseDisplay;
+
+  .greenlinks {
+    background: white;
+    border: 1px solid green;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // NEGO THEME NEGO THEME NEGO THEME
+
+.afrospecstyle {
+  background: linear-gradient(to bottom, #e6541b, black);
+
+  &-username {
+    @include chooseUsername;
+    color: white;
+  }
+
+  &-links {
+    margin: 10px 0;
+
+    a {
+      background: white;
+      color: black;
+      border: 1px solid #e6541b;
+      border-radius: 3px;
+
+      @include chooseLinks;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &-icons {
+    @include chooseIcon;
+
+    &:nth-child(n) {
+      a {
+        color: #e6541b;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+.afrospectheme {
+  background: linear-gradient(to bottom, #e6541b, black);
+  @include chooseDisplay;
+
+  .afrospeclinks {
+    background: white;
+    border: 1px solid #e6541b;
+    border-radius: 2px;
+    @include chooseStrokes;
+  }
+}
+
+// ---------------------------------------------------------------------------------------- // COLORS
+
+// LINK
+.Adslink {
+  grid-area: Link;
+
+  .usLinkAfro {
+    border: 2px solid $primary-color;
+    float: left;
+    width: 40%;
+    color: white;
+    background: $primary-color;
+    padding: 10px 10px;
+    border-radius: 10px 0 0px 10px;
+  }
+
+  .usLinkSite {
+    border: 2px solid $primary-color;
+    float: right;
+    width: 60%;
+    background: black;
+    padding: 10px 10px;
+    border-radius: 0 10px 10px 0;
+    color: white;
+
+    .userLink {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 200px;
+      color: $primary-color;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+  }
+
+  .Sidebar {
+    background: linear-gradient(to right, $primary-color, black);
+    // background: linear-gradient(to bottom, black, white, white, white) no-repeat
+    //   0 0 / cover;
+
+    h5 {
+      text-align: left !important;
+      padding: 15px;
+    }
+
+    button {
+    }
+  }
+
+  .Adslink {
+    // font-size: 0.8em;
+
+    .usLinkAfro {
+      color: black;
+      background: white;
+    }
+
+    .usLinkSite {
+      background: black;
+
+      color: white;
+    }
+
+    .userLink {
+      color: $primary-color;
+      width: 100% !important;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+
+    .Dashboard {
+      .avatarformcont {
+        flex-direction: column !important;
+
+        .profile-info {
+          margin-top: 10%;
+          margin-left: 17.5%;
+          align-self: auto;
+        }
+
+        .profile-input {
+          width: 275px;
+        }
+
+        .loading-complete {
+          top: 165px;
+          padding: 1px 7.5px;
+          border-radius: 2.5px;
+          opacity: 0.9;
+          left: 16%;
+          bottom: initial;
+        }
+
+        .link-cont {
+          padding: 1%;
+
+          .link-input {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Dashboard {
+    .avatarformcont {
+      flex-direction: column;
+
+      .profile-input {
+        width: 70% !important;
+      }
+
+      .profile-info {
+        margin-top: 10%;
+        margin-left: 5%;
+        align-self: auto;
+      }
+
+      .loading-complete {
+        padding: 1px 7.5px;
+        border-radius: 2.5px;
+        opacity: 0.9;
+        left: 8.75%;
+        bottom: initial;
+      }
+    }
+
+    .social-cont {
+      flex-direction: column;
+      background: linear-gradient(to bottom, black, $primary-color) no-repeat 0
+        0 / cover;
+      border-radius: 3px;
+      padding: 25px 7%;
+      margin-top: 25px;
+      box-shadow: none;
+    }
+
+    .social-form {
+      margin-bottom: 5%;
+    }
+
+    .social-buttons {
+      margin-top: 20px;
+      float: right;
+
+      .socialSpec {
+        margin-left: 25px;
+      }
+      // &:nth-child(2) {
+      //   padding-right: 15px !important;
+      //   color: red !important;
+      //   background: red !important;
+      // }
+    }
+
+    .link-cont {
+      display: block;
+      margin: 20px 5px 35px 5px;
+
+      .link-input {
+        width: 50%;
+      }
+
+      .nextoClear {
+        margin: 0 2.5%;
+      }
+
+      h3 {
+        margin-top: 10px;
+        margin-left: 15px;
+      }
+    }
+
+    .links-cont {
+      display: block;
+      padding: 15px 10px 30px 15px !important;
+      background: white;
+    }
+
+    .edit-input {
+      width: 50%;
+    }
+
+    .updateLink {
+      float: right;
+      bottom: 47.5px;
+      right: 10px;
+      position: relative;
+    }
+
+    .updateLinkShow {
+      margin-bottom: 5px;
+    }
+
+    .updateHyperLinkShow {
+      margin-top: 15px;
+    }
+
+    .inputCont {
+      float: right;
+      position: relative;
+      left: 75px;
+      bottom: 10px;
+    }
+
+    .trashBtn {
+      cursor: pointer;
+      position: relative;
+      float: right;
+      left: 75px;
+      bottom: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+  }
+
+  .Preview {
+    .iphone-frame {
+      transform: scale(0.875);
+    }
+  }
+
+  .Sidebar {
+    background: linear-gradient(to right, $primary-color, black);
+    // background: linear-gradient(to bottom, black, white, white, white) no-repeat
+    //   0 0 / cover;
+
+    h5 {
+      text-align: left;
+      padding: 15px;
+    }
+
+    button {
+    }
+  }
+
+  // .Navigation {
+  //   background: linear-gradient(to bottom, white, #ededed);
+  // }
+
+  .Link {
+    font-size: 0.8em;
+
+    .usLinkAfro {
+      color: black;
+      background: white;
+    }
+
+    .usLinkSite {
+      background: black;
+
+      color: white;
+    }
+
+    .userLink {
+      color: $primary-color;
+      width: 175px;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .Dashboard {
+    .avatarformcont {
+      flex-direction: column;
+      padding-bottom: 10%;
+
+      .loading-complete {
+        top: 20% !important;
+        padding: 1px 7.5px;
+        border-radius: 2.5px;
+        opacity: 0.9;
+        left: 5% !important;
+        bottom: initial;
+      }
+    }
+    .formavatar {
+      margin-bottom: 7.5%;
+    }
+
+    .profile-info {
+      margin: 10% 15px !important;
+    }
+
+    .profile-input {
+      margin: 6% 6% 7.5% 3%;
+    }
+
+    // .logerror {
+    //   bottom: 0px;
+    // }
+
+    .linkErrorStyle {
+      width: 95%;
+      // bottom: 500px !important;
+      top: 267.5px;
+      left: 2.5%;
+    }
+
+    .social-cont {
+      flex-direction: column;
+      background: linear-gradient(to bottom, black, $primary-color) no-repeat 0
+        0 / cover;
+      border-radius: 3px;
+      padding: 25px 4%;
+      margin-top: 25px;
+      box-shadow: none;
+    }
+
+    .social-buttons {
+      margin-top: 20px;
+      float: right;
+
+      .socialSpec {
+        margin-left: 25px;
+      }
+      // &:nth-child(2) {
+      //   padding-right: 15px !important;
+      //   color: red !important;
+      //   background: red !important;
+      // }
+    }
+
+    .link-cont {
+      display: block;
+      margin: 20px 5px 35px 5px;
+
+      .nextoClear {
+        margin: 0 2.5%;
+      }
+
+      h3 {
+        margin-top: 10px;
+        margin-left: 15px;
+      }
+
+      .link-input {
+        margin: 5% 7.5%;
+        width: 75%;
+      }
+    }
+
+    .updateLink {
+      float: right;
+      bottom: 47.5px;
+      right: 10px;
+      position: relative;
+    }
+
+    .updateLinkShow {
+      margin-bottom: 5px;
+      width: 150px;
+    }
+
+    .updateHyperLinkShow {
+      margin-top: 15px;
+      width: 150px;
+    }
+
+    .inputCont {
+      float: right;
+      position: relative;
+      left: 75px;
+      bottom: 10px;
+    }
+
+    .trashBtn {
+      cursor: pointer;
+      position: relative;
+      float: right;
+      left: 75px;
+      bottom: 10px;
+    }
+
+    .pickColor {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .chooseColor {
+      transform: scale(0.75);
+    }
+  }
+}

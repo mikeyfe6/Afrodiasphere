@@ -1,0 +1,295 @@
+@mixin fullBG {
+}
+
+@mixin profileLinks {
+  display: inline-block;
+
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 750px;
+
+  &:hover {
+    opacity: 0.875;
+  }
+}
+
+@mixin iconCenter {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
+}
+
+.theme {
+  // ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
+  &-geel {
+    background: linear-gradient(to bottom, yellow, black);
+
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: #5e5d0d;
+        color: white;
+        border: 1px solid white;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: yellow;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
+  &-grijs {
+    background: linear-gradient(to bottom, grey, white);
+    @include fullBG;
+
+    h1 {
+      color: #595959;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: rgba(255, 255, 255, 0.797);
+        color: #878787;
+        border: 1px solid #878787;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: grey;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // PINK PINK PINK
+  &-roze {
+    background: linear-gradient(to bottom, pink, grey);
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: #878787;
+        color: white;
+        border: 1px solid #878787;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: pink;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
+  &-zwart {
+    background: linear-gradient(to bottom, black, grey);
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: #878787;
+        color: black;
+        border: 1px solid white;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: white;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
+  &-bruin {
+    background: linear-gradient(to bottom, brown, white);
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: white;
+
+        color: brown;
+        border: 1px solid brown;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: brown;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
+  &-groen {
+    background: linear-gradient(to bottom, green, white);
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: white;
+
+        color: green;
+        border: 1px solid green;
+        border-radius: 3px;
+        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: green;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+  // ---------------------------------------------------------------------------------------- // NEGO THEME NEGO THEME
+  &-afrotheme {
+    background: linear-gradient(to bottom, #e6541b, black);
+    @include fullBG;
+
+    h1 {
+      color: white;
+      margin: 25px 0 50px;
+    }
+
+    &-links {
+      margin: 15px 0;
+
+      a {
+        background: white;
+
+        color: black;
+        border: 1px solid #e6541b;
+        border-radius: 3px;
+
+        @include profileLinks;
+      }
+    }
+
+    &-icons {
+      @include iconCenter;
+
+      a {
+        margin: 0 15px;
+        bottom: 10px;
+        color: #e6541b;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 600px) {
+}

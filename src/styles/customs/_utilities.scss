@@ -1,0 +1,256 @@
+// --> CUSTOMS !
+
+@import "./colors";
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// --> TEXT SIZES !
+
+.lead {
+  font-size: 20px;
+}
+
+.sm {
+  font-size: 1rem;
+}
+
+.md {
+  font-size: 2.5rem;
+}
+
+.lg {
+  font-size: 3rem;
+}
+
+.xl {
+  font-size: 4rem;
+  color: $primary-color;
+}
+
+// --> CARDS !
+
+.card {
+  color: $dark-color;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.438);
+  padding: 20px;
+  margin: 10px;
+}
+
+// --> IMAGES !
+
+.docs-head,
+.login-head {
+  img {
+    width: 200px;
+    justify-self: flex-end;
+  }
+}
+
+// --> MARGINS & PADDINGS !
+
+.my {
+  &-1 {
+    margin: 1rem 0;
+  }
+  &-2 {
+    margin: 1.5rem 0;
+  }
+  &-3 {
+    margin: 2rem 0;
+  }
+  &-4 {
+    margin: 3rem 0;
+  }
+  &-5 {
+    margin: 4rem 0;
+  }
+}
+
+.m {
+  &-1 {
+    margin: 1rem;
+  }
+  &-2 {
+    margin: 1.5rem;
+  }
+  &-3 {
+    margin: 2rem;
+  }
+  &-4 {
+    margin: 3rem;
+  }
+  &-5 {
+    margin: 4rem;
+  }
+}
+
+.py {
+  &-1 {
+    padding: 1rem 0;
+  }
+  &-2 {
+    padding: 1.5rem 0;
+  }
+  &-3 {
+    padding: 2rem 0;
+  }
+  &-4 {
+    padding: 3rem 0;
+  }
+  &-5 {
+    padding: 4rem 0;
+  }
+}
+
+.p {
+  &-1 {
+    padding: 1rem;
+  }
+  &-2 {
+    padding: 1.5rem;
+  }
+  &-3 {
+    padding: 2rem;
+  }
+  &-4 {
+    padding: 3rem;
+  }
+  &-5 {
+    padding: 4rem;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+// --> BUTTONS !
+
+.btn {
+  font-family: "Poppins", sans-serif;
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  background: whitesmoke;
+  color: black;
+  border: none;
+  border-radius: 2.5px;
+  // box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+
+  &:hover {
+    transform: scale(0.97);
+  }
+
+  &-outline {
+    background-color: transparent;
+    border: 1px $white-color solid;
+  }
+}
+
+.bg-primary,
+.btn-primary {
+  // background-color: $primary-color;
+  background-color: black;
+  color: $white-color;
+}
+
+.bg-secondary,
+.btn-secondary {
+  background-color: $secondary-color;
+  color: $white-color;
+}
+
+.bg-light,
+.btn-light {
+  background-color: $light-color;
+  color: $dark-color;
+}
+
+.bg-dark,
+.btn-dark {
+  background-color: $dark-color;
+  color: $white-color;
+}
+
+.bg-primary,
+.btn-primary,
+.bg-secondary,
+.btn-secondary,
+.bg-dark,
+.btn-dark {
+  a {
+    color: $white-color;
+  }
+}
+
+// --> MQ: Alert !
+.alert {
+  background-color: $light-color;
+  padding: 10px 20px;
+  font-weight: bold;
+  margin: 15px 0;
+
+  &-success {
+    background-color: $success-color;
+    color: $white-color;
+  }
+
+  &-error {
+    background-color: $error-color;
+    color: $white-color;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+// --> MQ: Tablet !
+@media (max-width: 768px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
+  }
+}
+
+// --> MQ: Mobile !
+@media (max-width: 600px) {
+  .card {
+    padding: 5px !important;
+    margin: 5px !important;
+  }
+
+  .btn {
+    float: right;
+  }
+}

@@ -1,0 +1,87 @@
+@import "../customs/colors";
+@import "../customs/utilities";
+
+.showcase {
+  height: 400px;
+  background-color: $primary-color;
+  color: #fff;
+  position: relative;
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  .grid {
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+    overflow: visible;
+  }
+
+  &-form {
+    position: relative;
+    top: 60px;
+    height: 350px;
+    width: 400px;
+    padding: 40px;
+    justify-self: flex-end;
+    z-index: 100;
+
+    .form-control {
+      margin: 30px 0;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      border: 0;
+      border-bottom: 1px solid #b4becb;
+      width: 100%;
+      padding: 3px;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+    background: #fff;
+    transform: skewY(-3deg);
+  }
+}
+
+// --> MQ: Tablet !
+@media (max-width: 768px) {
+  .showcase {
+    height: auto;
+
+    &-text {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    &-form {
+      justify-self: center;
+      margin: auto;
+    }
+
+    p {
+      margin: 20px;
+    }
+  }
+}
+
+// --> MQ: Mobile !
+@media (max-width: 600px) {
+}

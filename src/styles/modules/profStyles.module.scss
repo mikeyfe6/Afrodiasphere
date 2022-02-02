@@ -1,0 +1,45 @@
+@import "../customs/colors";
+@import "../customs/utilities";
+
+.prof-center {
+  display: table;
+  margin: 0 auto;
+  height: 100vh;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  text-align: center !important;
+}
+
+.imgavatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 600px) {
+  .prof-center {
+    padding-top: 5rem;
+    padding-bottom: 7rem;
+  }
+
+  .imgavatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .prof-center {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    ul li a {
+      width: 325px;
+      padding: 7.5px 15px;
+      font-size: 0.9em;
+    }
+  }
+}
