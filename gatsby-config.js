@@ -1,19 +1,19 @@
-const { ApolloLink, createHttpLink } = require(`@apollo/client`)
-const { RetryLink } = require(`@apollo/client/link/retry`)
-const fetch = require(`cross-fetch`)
+// const { ApolloLink, createHttpLink } = require(`@apollo/client`)
+// const { RetryLink } = require(`@apollo/client/link/retry`)
+// const fetch = require(`cross-fetch`)
 
-const retryLink = new RetryLink({
-  delay: {
-    initial: 100,
-    max: 2000,
-    jitter: true,
-  },
-  attempts: {
-    max: 5,
-    retryIf: (error, operation) =>
-      Boolean(error) && ![500, 400].includes(error.statusCode),
-  },
-})
+// const retryLink = new RetryLink({
+//   delay: {
+//     initial: 100,
+//     max: 2000,
+//     jitter: true,
+//   },
+//   attempts: {
+//     max: 5,
+//     retryIf: (error, operation) =>
+//       Boolean(error) && ![500, 400].includes(error.statusCode),
+//   },
+// })
 
 require("dotenv").config({
   // path: `.env.${process.env.NODE_ENV}`,
@@ -73,11 +73,11 @@ module.exports = {
         fieldName: "instantie",
         // Url to query from
         url: `${process.env.GATSBY_BASE_URL}/graphql`,
-        createLink: pluginOptions =>
-          ApolloLink.from([
-            retryLink,
-            createHttpLink({ uri: pluginOptions.url, fetch }),
-          ]),
+        // createLink: pluginOptions =>
+        //   ApolloLink.from([
+        //     retryLink,
+        //     createHttpLink({ uri: pluginOptions.url, fetch }),
+        //   ]),
       },
     },
 
