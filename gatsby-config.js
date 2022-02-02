@@ -1,3 +1,8 @@
+require("dotenv").config({
+  // path: `.env.${process.env.NODE_ENV}`,
+  path: ".env",
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://afrodiasphere.netlify.app`,
@@ -50,7 +55,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "instantie",
         // Url to query from
-        url: "http://localhost:1337/graphql",
+        url: `${process.env.GATSBY_BASE_URL}/graphql`,
       },
     },
 
