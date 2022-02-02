@@ -1,5 +1,18 @@
-const fs = require("fs")
-const { buildSchema, buildClientSchema } = require("graphql")
+const { createHttpLink } = require(`apollo-link-http`)
+const { RetryLink } = require(`apollo-link-retry`)
+
+const retryLink = new RetryLink({
+  delay: {
+    initial: 100,
+    max: 2000,
+    jitter: true,
+  },
+  attempts: {
+    max: 5,
+    retryIf: (error, operation) =>
+      Boolean(error) && ![500, 400].includes(error.statusCode),
+  },
+})
 
 require("dotenv").config({
   // path: `.env.${process.env.NODE_ENV}`,
@@ -59,12 +72,11 @@ module.exports = {
         fieldName: "instantie",
         // Url to query from
         url: `${process.env.GATSBY_BASE_URL}/graphql`,
-        createSchema: async () => {
-          const json = JSON.parse(
-            fs.readFileSync(`${__dirname}/introspection.json`)
-          )
-          return buildClientSchema(json)
-        },
+        createLink: pluginOptions =>
+          ApolloLink.from([
+            retryLink,
+            createHttpLink({ uri: pluginOptions.url }),
+          ]),
       },
     },
 
