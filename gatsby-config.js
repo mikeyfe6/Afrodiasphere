@@ -1,5 +1,6 @@
-const { createHttpLink } = require(`apollo-link-http`)
-const { RetryLink } = require(`apollo-link-retry`)
+const { ApolloLink, createHttpLink } = require(`@apollo/client`)
+const { RetryLink } = require(`@apollo/client/link/retry`)
+const fetch = require(`cross-fetch`)
 
 const retryLink = new RetryLink({
   delay: {
@@ -75,7 +76,7 @@ module.exports = {
         createLink: pluginOptions =>
           ApolloLink.from([
             retryLink,
-            createHttpLink({ uri: pluginOptions.url }),
+            createHttpLink({ uri: pluginOptions.url, fetch }),
           ]),
       },
     },
