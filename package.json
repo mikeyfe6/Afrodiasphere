@@ -12,12 +12,11 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.17",
     "axios": "^0.25.0",
-    "babel-plugin-styled-components": "^2.0.2",
     "cross-fetch": "^3.1.5",
     "gatsby": "^4.6.1",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-catch-links": "^4.6.0",
     "gatsby-plugin-create-client-paths": "^4.6.0",
+    "gatsby-plugin-image": "^2.6.0",
     "gatsby-plugin-manifest": "^4.6.0",
     "gatsby-plugin-netlify": "^4.1.0",
     "gatsby-plugin-nprogress": "^4.6.0",
@@ -26,9 +25,8 @@
     "gatsby-plugin-sass": "^5.6.0",
     "gatsby-plugin-sharp": "^4.6.0",
     "gatsby-plugin-sitemap": "^5.6.0",
-    "gatsby-plugin-styled-components": "^5.6.0",
     "gatsby-source-filesystem": "^4.6.0",
-    "gatsby-source-graphql": "^4.6.0",
+    "gatsby-source-graphql": "4.6.0",
     "gatsby-source-strapi": "^1.0.2",
     "gatsby-transformer-sharp": "^4.6.0",
     "prop-types": "^15.8.1",
@@ -37,12 +35,14 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
-    "react-markdown": "^8.0.0",
-    "styled-components": "^5.3.3"
+    "react-markdown": "^8.0.0"
   },
   "devDependencies": {
     "prettier": "^2.5.1",
-    "sass": "^1.49.6"
+    "sass": "^1.49.7"
+  },
+  "exports": {
+    "./public/extractFiles": "./public/extractFiles"
   },
   "keywords": [
     "gatsby"

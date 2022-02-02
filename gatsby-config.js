@@ -1,23 +1,38 @@
-// const { ApolloLink, createHttpLink } = require(`@apollo/client`)
-// const { RetryLink } = require(`@apollo/client/link/retry`)
-// const fetch = require(`cross-fetch`)
+const { ApolloLink, createHttpLink, InMemoryCache } = require(`@apollo/client`)
+const { RetryLink } = require(`@apollo/client/link/retry`)
+const { onError } = require(`@apollo/client/link/error`)
 
-// const retryLink = new RetryLink({
-//   delay: {
-//     initial: 100,
-//     max: 2000,
-//     jitter: true,
-//   },
-//   attempts: {
-//     max: 5,
-//     retryIf: (error, operation) =>
-//       Boolean(error) && ![500, 400].includes(error.statusCode),
-//   },
-// })
+const fetch = require(`cross-fetch`)
+// const fetch = require(`node-fetch`)
 
 require("dotenv").config({
   // path: `.env.${process.env.NODE_ENV}`,
   path: ".env",
+})
+
+const retryLink = new RetryLink({
+  delay: {
+    initial: 100,
+    max: 2000,
+    jitter: true,
+  },
+  attempts: {
+    max: 5,
+    retryIf: (error, operation) =>
+      Boolean(error) && ![500, 400].includes(error.statusCode),
+  },
+})
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    graphQLErrors.map(({ message, locations, path }) => {
+      console.log(`GraphQL Error:`)
+      console.log({ message, locations, path })
+    })
+  }
+  if (networkError) {
+    console.log(`Network Error: ${networkError.message}`)
+  }
 })
 
 module.exports = {
@@ -73,14 +88,18 @@ module.exports = {
         fieldName: "instantie",
         // Url to query from
         url: `${process.env.GATSBY_BASE_URL}/graphql`,
-        // createLink: pluginOptions =>
-        //   ApolloLink.from([
-        //     retryLink,
-        //     createHttpLink({ uri: pluginOptions.url, fetch }),
-        //   ]),
+        createLink: pluginOptions =>
+          ApolloLink.from([
+            errorLink,
+            retryLink,
+            createHttpLink({
+              uri: pluginOptions.url,
+              cache: new InMemoryCache(),
+              fetch,
+            }),
+          ]),
       },
     },
-
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/admin/*`] },
@@ -95,9 +114,23 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        // Defaults used for gatsbyImageData and StaticImage
+        defaults: {},
+        // Set to false to allow builds to continue on image errors
+        failOnError: true,
+        // deprecated options and their defaults:
+        base64Width: 20,
+        forceBase64Format: ``, // valid formats: png,jpg,webp
+        useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
+        stripMetadata: true,
+        defaultQuality: 50,
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-catch-links`,
     {
