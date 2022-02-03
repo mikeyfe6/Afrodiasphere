@@ -94,6 +94,7 @@ module.exports = {
             retryLink,
             createHttpLink({
               uri: pluginOptions.url,
+              introspection: true,
               cache: new InMemoryCache(),
               fetch,
             }),
@@ -114,13 +115,17 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
+    // `gatsby-plugin-image`,
+    // `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         // Defaults used for gatsbyImageData and StaticImage
-        defaults: {},
+        defaults: {
+          placeholder: "blurred",
+          formats: ["auto", "webp", "avif", "png"],
+          quality: 100,
+        },
         // Set to false to allow builds to continue on image errors
         failOnError: true,
         // deprecated options and their defaults:
@@ -128,9 +133,11 @@ module.exports = {
         forceBase64Format: `webp`, // valid formats: png,jpg,webp
         useMozJpeg: process.env.GATSBY_JPEG_ENCODER === `MOZJPEG`,
         stripMetadata: true,
-        defaultQuality: 50,
+        defaultQuality: 100,
       },
     },
+    `gatsby-transformer-sharp`,
+
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-catch-links`,
     {

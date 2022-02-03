@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react"
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+} from "react"
 import { Link } from "gatsby"
 import axios from "axios"
 import {
@@ -124,9 +130,6 @@ import {
 const apiURL = process.env.GATSBY_BASE_URL
 const instURL = process.env.GATSBY_CURR_URL
 
-console.log(instURL)
-console.log(process.env.GATSBY_BASE_URL)
-
 const ErrorMessage = ({ text }) => {
   return (
     <div className={logerror}>
@@ -203,19 +206,19 @@ const AccountPage = () => {
   const gatsbyUser = getUser()
   const token = gatsbyUser.jwt
 
-  const getUserId = async () => {
+  const getUserId = useCallback(async () => {
     const res = await axios.get(`${apiURL}/api/users/${gatsbyUser.user.id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-    console.log("yaaaaaaaaaaaw!", res.data.id)
+
     setUserId(res.data.id)
-  }
+  }, [gatsbyUser.user.id, token])
 
   useLayoutEffect(() => {
     getUserId()
-  }, [gatsbyUser.user.id, token])
+  }, [getUserId])
 
   // useEffect(() => {
   //   axios.put(
@@ -750,9 +753,6 @@ const AccountPage = () => {
         },
       })
 
-      console.log(res)
-      console.log(userId)
-
       setSlug(res.data.data.attributes?.slug)
     }
     getSlug()
@@ -786,7 +786,8 @@ const AccountPage = () => {
 
     const newLinks = [...links, res.data.data.attributes]
     setLinks(newLinks)
-    getLinks()
+    console.log(newLinks)
+    // getLinks()
   }
 
   // TOGGLE LINKS <--------------------------------------------------------------------------------> TOGGLE LINKS //
@@ -861,7 +862,7 @@ const AccountPage = () => {
       return el
     })
     setLinks(newLinks)
-    getLinks()
+    // getLinks()
   }
 
   // EDIT HYPERLINKS <--------------------------------------------------------------------------------> EDIT HYPERLINKS //
@@ -894,23 +895,23 @@ const AccountPage = () => {
     })
     setLinks(newLinks)
     setEditHyperLink("")
-    getLinks()
+    // getLinks()
   }
 
   // GET LINKS <--------------------------------------------------------------------------------> GET LINKS //
 
-  const getLinks = async () => {
+  const getLinks = useCallback(async () => {
     const res = await axios.get(`${apiURL}/api/connections`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
     setLinks(res.data)
-  }
-
-  useEffect(() => {
-    getLinks()
   }, [token])
+
+  useLayoutEffect(() => {
+    getLinks()
+  }, [getLinks])
 
   // CHANGE THEME <--------------------------------------------------------------------------------> CHANGE THEME //
   const onRadioChange = async e => {
@@ -2114,7 +2115,7 @@ const AccountPage = () => {
               <Link
                 className={userLink}
                 to={`/${slug}`}
-              >{`${process.env.GATSBY_CURR_URL}/${slug}`}</Link>
+              >{`${instURL}/${slug}`}</Link>
             </div>
           </div>
         </div>

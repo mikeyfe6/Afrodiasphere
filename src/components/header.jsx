@@ -7,6 +7,7 @@ import {
   flex,
   container,
 } from "../styles/modules/headerStyles.module.scss"
+
 import afroLogo from "../../static/afroadiaspheretest.png"
 
 const Header = () => (

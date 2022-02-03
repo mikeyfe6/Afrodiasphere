@@ -41,9 +41,6 @@
     "prettier": "^2.5.1",
     "sass": "^1.49.7"
   },
-  "exports": {
-    "./public/extractFiles": "./public/extractFiles"
-  },
   "keywords": [
     "gatsby"
   ],
