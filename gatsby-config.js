@@ -94,7 +94,6 @@ module.exports = {
             retryLink,
             createHttpLink({
               uri: pluginOptions.url,
-              introspection: true,
               cache: new InMemoryCache(),
               fetch,
             }),
