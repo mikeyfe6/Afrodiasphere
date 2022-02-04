@@ -156,19 +156,14 @@ const LoginPage = () => {
         }
       )
 
-      const strapiCreatePage = () => {
-        if (process.env.NODE_ENV === "production") {
-          axios.post(
-            `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
-          )
-        }
-      }
+      await axios.post(
+        `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
+      )
 
       console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
       setError(null)
       navigate("/admin/account")
-      strapiCreatePage()
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
