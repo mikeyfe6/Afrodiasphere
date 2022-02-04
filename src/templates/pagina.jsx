@@ -208,7 +208,7 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
               src={afroLogo}
               alt=""
               style={{
-                top: "100px",
+                top: "200px",
                 position: "relative",
                 width: "100px",
               }}

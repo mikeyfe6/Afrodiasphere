@@ -28,6 +28,9 @@ const Header = () => (
             </a>
           </li>
           <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
             <Link to="/admin/login">Login</Link>
           </li>
           <li>

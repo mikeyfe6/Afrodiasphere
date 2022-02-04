@@ -278,7 +278,7 @@ fieldset {
   .docs-head {
     text-align: center;
 
-    img {
+    .imgHide {
       justify-self: center;
       display: none;
     }
@@ -319,9 +319,9 @@ fieldset {
 
   .docs-head {
     text-align: center;
-    padding: 1rem 0 0 0 !important;
+    padding: 2rem 0 0 0 !important;
 
-    img {
+    .imgHide {
       justify-self: center;
       display: none;
     }

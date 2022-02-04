@@ -237,10 +237,10 @@
   .edit-input {
     border: 0;
     border-bottom: 1px solid #b4becb;
-    color: white;
-    padding: 3px;
+    color: $black-color;
     font-size: 14px;
     background: transparent;
+    padding: 5px 0px;
 
     &:focus {
       outline: none;
@@ -248,6 +248,7 @@
 
     &::placeholder {
       font-size: 0.75em;
+      padding: 0px 2.5px;
     }
   }
 
@@ -283,6 +284,10 @@
     flex-direction: column;
     // align-items: center;
     align-self: center;
+
+    .btn {
+      margin-left: 30px;
+    }
   }
 
   .logerror {
@@ -327,7 +332,7 @@
 
   .profile-input {
     color: black;
-    width: 250px;
+    width: 300px;
     margin: 10px 15px;
     opacity: 0.75;
     outline: none;
@@ -368,6 +373,7 @@
       cover;
     justify-content: space-around;
     border: 2px solid black;
+    gap: 20px;
 
     // border-bottom: solid 3px black;
     border-radius: 10px;
@@ -397,7 +403,7 @@
     .social-icons {
       position: relative;
       top: 5px;
-      right: 2px;
+      right: 3px;
       z-index: 3;
 
       margin-right: 5px;
@@ -411,12 +417,18 @@
       border: none;
       text-align: center;
       border-radius: 3px;
+      width: 75%;
     }
 
     .social-buttons {
       margin-top: 10px;
       justify-content: center;
       align-items: center;
+
+      .btn {
+        margin-top: 10px;
+        width: 100%;
+      }
     }
   }
 }
@@ -450,6 +462,7 @@
   justify-content: space-between;
   align-items: center;
   align-content: center;
+  border: 2.5px $primary-color solid;
 }
 
 // ----------- //
@@ -1065,13 +1078,18 @@
       flex-direction: column;
 
       .profile-input {
-        width: 70% !important;
+        width: 75% !important;
       }
 
       .profile-info {
         margin-top: 10%;
         margin-left: 5%;
         align-self: auto;
+
+        .btn {
+          margin-bottom: 20px;
+          width: 100%;
+        }
       }
 
       .loading-complete {
@@ -1091,6 +1109,11 @@
       padding: 25px 7%;
       margin-top: 25px;
       box-shadow: none;
+      gap: 10px;
+
+      .btn {
+        width: 100% !important;
+      }
     }
 
     .social-form {
@@ -1099,7 +1122,6 @@
 
     .social-buttons {
       margin-top: 20px;
-      float: right;
 
       .socialSpec {
         margin-left: 25px;
@@ -1276,11 +1298,15 @@
       padding: 25px 4%;
       margin-top: 25px;
       box-shadow: none;
+
+      .social-input {
+        width: 82.5%;
+      }
     }
 
     .social-buttons {
-      margin-top: 20px;
-      float: right;
+      margin-top: 2000px;
+      width: 100%;
 
       .socialSpec {
         margin-left: 25px;
@@ -1294,10 +1320,10 @@
 
     .link-cont {
       display: block;
-      margin: 20px 5px 35px 5px;
+      margin: 10px 5px 35px 5px;
 
       .nextoClear {
-        margin: 0 2.5%;
+        margin: 0 5%;
       }
 
       h3 {
@@ -1306,8 +1332,8 @@
       }
 
       .link-input {
-        margin: 5% 7.5%;
-        width: 75%;
+        margin: 2% 5% 7.5% 5%;
+        width: 90%;
       }
     }
 

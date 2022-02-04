@@ -32,6 +32,7 @@ import {
   signUpText,
   ghost,
   overlayRight,
+  imgHide,
 } from "../../styles/modules/loginStyles.module.scss"
 
 import servImage from "../../images/server.png"
@@ -182,7 +183,7 @@ const LoginPage = () => {
           <div>
             <h1 className={xl}>Login / Register</h1>
           </div>
-          <img src={servImage} alt="" />
+          <img src={servImage} alt="" className={imgHide} />
         </div>
       </section>
       <div className={indexBg} />

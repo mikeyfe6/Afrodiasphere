@@ -19,6 +19,7 @@ import {
   lead,
   btn,
   // indexBg,
+  imgHide,
   card,
 } from "../styles/modules/loginStyles.module.scss"
 
@@ -75,7 +76,7 @@ const IndexPage = () => {
               om in te loggen..
             </p>
           </div>
-          <img src={servImage} alt="" />
+          <img src={servImage} alt="" className={imgHide} />
 
           <ul className={`${carouselCont} ${card}`}>
             {carousel.map(ads => (

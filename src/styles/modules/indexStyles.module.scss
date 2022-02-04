@@ -4,6 +4,10 @@
 @mixin testMixin {
 }
 
+img {
+  width: 100%;
+}
+
 .home-ads-bio {
   font-size: 0.8em;
   color: rgb(192, 192, 192) !important;
@@ -37,6 +41,19 @@
 }
 
 @media screen and (max-width: 768px) {
+  .carouselCont {
+    flex-direction: column;
+    margin-bottom: 50px !important;
+
+    .carouselRow {
+      margin: 75px 0px 0px 0px;
+
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 50px 40px;
+      text-align: center;
+    }
+  }
 }
 
 @media screen and (max-width: 600px) {

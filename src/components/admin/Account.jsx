@@ -1070,6 +1070,7 @@ const AccountPage = () => {
               alt=""
               className={iphoneAvatar}
               id="iphone-avatar"
+              style={{ border: "3px solid white" }}
             />
             <p
               id="iphone-username"
@@ -1171,6 +1172,7 @@ const AccountPage = () => {
                   alt=""
                   className={avatarImage}
                   id="avatar-image"
+                  style={{ border: "3px solid white" }}
                 />{" "}
                 {loading && (
                   <div className={loadingComplete}>Profielfoto Geupload</div>
@@ -1253,7 +1255,6 @@ const AccountPage = () => {
                     style={{
                       position: "relative",
                       top: "5px",
-                      right: "10px",
                       cursor: "pointer",
                     }}
                     onClick={() => setDisabledProfile(false)}
@@ -1301,7 +1302,6 @@ const AccountPage = () => {
                   style={{
                     position: "relative",
                     top: "5px",
-                    right: "10px",
                     cursor: "pointer",
                   }}
                   onClick={() => setDisabledUsername(false)}
@@ -1348,7 +1348,6 @@ const AccountPage = () => {
                     style={{
                       position: "relative",
                       top: "5px",
-                      right: "10px",
                       cursor: "pointer",
                     }}
                     onClick={() => setDisabledEmail(false)}
@@ -1397,7 +1396,6 @@ const AccountPage = () => {
                     style={{
                       position: "relative",
                       top: "5px",
-                      right: "10px",
                       cursor: "pointer",
                     }}
                     onClick={() => setDisabledPassword(false)}
@@ -1449,7 +1447,6 @@ const AccountPage = () => {
                     style={{
                       position: "relative",
                       top: "5px",
-                      right: "10px",
                       cursor: "pointer",
                     }}
                     onClick={() => setDisabledSlug(false)}
@@ -1514,32 +1511,32 @@ const AccountPage = () => {
                     placeholder="facebook.com/jouwprofiel"
                     className={socialInput}
                   />
+                  <FaRegEdit
+                    color="white"
+                    size="1.1em"
+                    style={{
+                      position: "relative",
+                      top: "5px",
+                      left: "15px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setDisabledFbLink(false)}
+                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} $btnSecondary} ${socialSpec} `}
+                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
+                    paddingTop: "10px",
                     paddingBottom: "7.5px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
                   }}
                 >
                   Save Facebook
                 </button>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    left: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledFbLink(false)}
-                />
               </div>
               <div style={{ clear: "both" }} />
             </form>
@@ -1567,6 +1564,17 @@ const AccountPage = () => {
                     placeholder="twitter.com/jouwprofiel"
                     className={socialInput}
                   />
+                  <FaRegEdit
+                    color="white"
+                    size="1.1em"
+                    style={{
+                      position: "relative",
+                      top: "5px",
+                      left: "15px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setDisabledTwLink(false)}
+                  />
                 </label>
               </div>
               <div className={socialButtons}>
@@ -1582,17 +1590,6 @@ const AccountPage = () => {
                 >
                   Save Twitter
                 </button>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    left: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledTwLink(false)}
-                />
               </div>
             </form>
 
@@ -1619,6 +1616,17 @@ const AccountPage = () => {
                     placeholder="instagram.com/jouwprofiel"
                     className={socialInput}
                   />
+                  <FaRegEdit
+                    color="white"
+                    size="1.1em"
+                    style={{
+                      position: "relative",
+                      top: "5px",
+                      left: "15px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setDisabledIgLink(false)}
+                  />
                 </label>
               </div>
               <div className={socialButtons}>
@@ -1634,17 +1642,6 @@ const AccountPage = () => {
                 >
                   Save Instagram
                 </button>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    left: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledIgLink(false)}
-                />
               </div>
             </form>
 
@@ -1672,6 +1669,17 @@ const AccountPage = () => {
                     placeholder="bijv.: 31601234567"
                     className={socialInput}
                   />
+                  <FaRegEdit
+                    color="white"
+                    size="1.1em"
+                    style={{
+                      position: "relative",
+                      top: "5px",
+                      left: "15px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setDisabledWaLink(false)}
+                  />
                 </label>
               </div>
               <div className={socialButtons}>
@@ -1687,17 +1695,6 @@ const AccountPage = () => {
                 >
                   Save Whatsapp
                 </button>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    left: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledWaLink(false)}
-                />
               </div>
             </form>
 
@@ -1724,6 +1721,17 @@ const AccountPage = () => {
                     placeholder="tiktok.com/jouwprofiel"
                     className={socialInput}
                   />
+                  <FaRegEdit
+                    color="white"
+                    size="1.1em"
+                    style={{
+                      position: "relative",
+                      top: "5px",
+                      left: "15px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setDisabledTkLink(false)}
+                  />
                 </label>
               </div>
               <div className={socialButtons}>
@@ -1739,17 +1747,6 @@ const AccountPage = () => {
                 >
                   Save Tiktok
                 </button>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    left: "15px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledTkLink(false)}
-                />
               </div>
             </form>
           </div>
