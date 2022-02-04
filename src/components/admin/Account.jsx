@@ -2093,7 +2093,7 @@ const AccountPage = () => {
             }}
           >
             <div className={usLinkAfro}>
-              <b>Afrodiasphere Profiel URL</b>
+              <b>Afrodiasphere URL</b>
             </div>
 
             <div className={usLinkSite}>
