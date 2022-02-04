@@ -139,22 +139,27 @@ const LoginPage = () => {
         password: passwordRegRef.current.value,
       })
 
+      setUser(data)
+
+      const params = {
+        profiel: usernameRegRef.current.value,
+        slug: usernameRegRef.current.value,
+      }
+
+      await axios.post(
+        `${apiURL}/api/instanties`,
+        { data: params },
+        {
+          headers: {
+            Authorization: `Bearer ${data.jwt}`,
+          },
+        }
+      )
+
+      console.log("NIEUWE account aangemaakt", data)
+
       // axios.post(
       //   "https://api.netlify.com/build_hooks/5fa20c6490bf4b2b591bf2e1",
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${data.jwt}`,
-      //     },
-      //   }
-      // )
-      setUser(data)
-      console.log("nieuwe accoutn aangemaakt", data)
-
-      // await axios.post(
-      //   `${apiURL}/api/instanties`,
-      //   {
-      //     profiel: "",
-      //   },
       //   {
       //     headers: {
       //       Authorization: `Bearer ${data.jwt}`,

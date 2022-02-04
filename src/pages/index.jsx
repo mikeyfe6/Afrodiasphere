@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+// import axios from "axios"
+
 import Layout from "../components/layout"
 
 import Seo from "../components/seo"
@@ -18,6 +20,14 @@ import {
 } from "../styles/modules/loginStyles.module.scss"
 
 import servImage from "../images/server.png"
+
+// const apiURL = process.env.GATSBY_BASE_URL
+
+// const testUm = async () => {
+//   const res = await axios.get(`${apiURL}/api/instanties`)
+//   console.log(res.data.data)
+// }
+// testUm()
 
 const IndexPage = () => (
   <Layout>

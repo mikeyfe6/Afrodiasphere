@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState, useEffect } from "react"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 // import Reactmarkdown from "react-markdown"
 import axios from "axios"
 
@@ -25,7 +25,7 @@ import noavatar from "../images/noavatar.png"
 
 const apiURL = process.env.GATSBY_BASE_URL
 
-const AdsTemplate = ({ data }) => {
+const AdsTemplate = ({ pageContext: { id, slug } }) => {
   // useEffect(() => {
   //   function hideDiv(elem) {
   //     if (elem.href === "")
@@ -36,8 +36,8 @@ const AdsTemplate = ({ data }) => {
   // }, [])
 
   const [color, setColor] = useState("")
-  const [avatar, setAvatar] = useState()
-  const [username, setUsername] = useState()
+  const [avatar, setAvatar] = useState(null)
+  const [username, setUsername] = useState("")
   const [links, setLinks] = useState([])
 
   const [fbLink, setFbLink] = useState("")
@@ -48,19 +48,14 @@ const AdsTemplate = ({ data }) => {
 
   useLayoutEffect(() => {
     const getLinks = async () => {
-      const res = await axios.get(
-        `${apiURL}/api/instanties/${data.instantie.instanties.data[0].id}/?populate=*`
-      )
-
+      const res = await axios.get(`${apiURL}/api/instanties/${id}/?populate=*`)
       const reslinks = await axios.get(`${apiURL}/api/connections?populate=*`)
-
       var allLinks = reslinks.data
       var sortedLinks = allLinks.filter(
-        element => element.links.id === data.instantie.instanties.data[0].id
+        element => element.links.username === slug
       )
 
       setLinks(sortedLinks)
-
       setColor(res.data.data.attributes.bgfree)
       setUsername(res.data.data.attributes.profiel)
       setFbLink(res.data.data.attributes.facebooklink)
@@ -69,15 +64,14 @@ const AdsTemplate = ({ data }) => {
       setWaLink(res.data.data.attributes.whatsapplink)
       setTkLink(res.data.data.attributes.tiktoklink)
 
-      if (!res.data.data.attributes?.avatar) {
-        // return setAvatar(noavatar)
-        setAvatar(noavatar)
+      if (!res.data.data.attributes.avatar.data) {
+        return setAvatar(noavatar)
       } else {
         setAvatar(res.data.data.attributes.avatar.data.attributes?.url)
       }
     }
     getLinks()
-  }, [data.instantie.instanties.data])
+  }, [id, slug])
 
   useEffect(() => {
     var fbhideman = document.getElementById("fbhidesm")
@@ -235,19 +229,19 @@ const AdsTemplate = ({ data }) => {
 
 export default AdsTemplate
 
-export const query = graphql`
-  query InstantieTemplate($slug: String!) {
-    instantie {
-      instanties(filters: { slug: { eq: $slug } }) {
-        data {
-          id
-          attributes {
-            slug
-          }
-        }
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query InstantieTemplate($slug: String!) {
+//     instantie {
+//       instanties(filters: { slug: { eq: $slug } }) {
+//         data {
+//           id
+//           attributes {
+//             slug
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 // (slug: { eq: $slug })

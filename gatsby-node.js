@@ -8,79 +8,31 @@
 
 const path = require(`path`)
 
-const makeRequest = (graphql, request) =>
-  new Promise((resolve, reject) => {
-    // Query for article nodes to use in creating pages.
-    resolve(
-      graphql(request).then(result => {
-        if (result.errors) {
-          reject(result.errors)
-        }
+const axios = require("axios")
 
-        return result
-      })
-    )
-  })
+const apiURL = process.env.GATSBY_BASE_URL
 
-// Implement the Gatsby API “createPages”. This is called once the
-// data layer is bootstrapped to let plugins create pages from data.
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions
+exports.createPages = async ({ actions: { createPage } }) => {
+  const getPageInstanties = await axios.get(
+    `${apiURL}/api/instanties?populate=*`
+  )
 
-  const getInstanties = makeRequest(
-    graphql,
-    `
-    {
-        instantie {
-          instanties {
-            data {
-              attributes {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
-  ).then(result => {
-    // Create pages for each article.
-    result.data.instantie.instanties.data.forEach(({ attributes }) => {
-      createPage({
-        path: `/${attributes.slug}`,
-        component: path.resolve(`src/templates/pagina.jsx`),
-        context: {
-          slug: attributes.slug,
-        },
-      })
+  // ! OTHER PAGES
+  // createPage({
+  //   path: `/`,
+  //   component: require.resolve("./src/templates/gebruiker.jsx"),
+  //   context: { getPageInstanties },
+  // })
+
+  // ! EACH PAGE INSTANTIE
+  getPageInstanties.data.forEach(({ slug, id }) => {
+    createPage({
+      path: `/${slug}`,
+      component: path.resolve("./src/templates/pagina.jsx"),
+      context: {
+        slug: slug,
+        id,
+      },
     })
   })
-
-  // const getGebruiker = makeRequest(
-  //   graphql,
-  //   `
-  //   {
-  //     allStrapiUser {
-  //       edges {
-  //         node {
-  //           id
-  //         }
-  //       }
-  //     }
-  //   }
-  //   `
-  // ).then(result => {
-  //   // Create pages for each user.
-  //   result.data.allStrapiUser.edges.forEach(({ node }) => {
-  //     createPage({
-  //       path: `/gebruiker/${node.id}`,
-  //       component: path.resolve(`src/templates/gebruiker.jsx`),
-  //       context: {
-  //         id: node.id,
-  //       },
-  //     })
-  //   })
-  // }) , getGebruiker | hier beneden toevoegen bij Promise.all
-
-  // Queries for articles and authors nodes to use in creating pages.
-  return Promise.all([getInstanties])
 }

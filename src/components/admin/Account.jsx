@@ -207,32 +207,18 @@ const AccountPage = () => {
   const token = gatsbyUser.jwt
 
   const getUserId = useCallback(async () => {
-    const res = await axios.get(`${apiURL}/api/users/${gatsbyUser.user.id}`, {
+    const res = await axios.get(`${apiURL}/api/instanties`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
     setUserId(res.data.id)
-  }, [gatsbyUser.user.id, token])
+  }, [token])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getUserId()
   }, [getUserId])
-
-  // useEffect(() => {
-  //   axios.put(
-  //     `${apiURL}/{afro}/${userId}`,
-  //     {
-  //       profiel: gatsbyUser.user.username,
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   )
-  // }, [gatsbyUser.user.username, token, userId])
 
   // AVATAR CHANGE <--------------------------------------------------------------------------------> AVATAR CHANGE //
   const removeHeading = () => {
@@ -281,20 +267,19 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getAvatarImage = async () => {
-      const res = await axios.get(
-        `${apiURL}/api/instanties/${userId}?populate=*`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      if (!res.data.data.attributes?.avatar) {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      if (!res.data.avatar) {
         setPreview(noavatar)
       } else {
-        setPreview(res.data.data.attributes.avatar.data.attributes?.url)
+        setPreview(res.data.avatar.url)
       }
     }
+
     getAvatarImage()
   }, [userId, token])
 
@@ -331,7 +316,7 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getProfile = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -342,7 +327,7 @@ const AccountPage = () => {
       // } else {
       //   setProfile(res.data.profiel)
       // }
-      setProfile(res.data.data.attributes?.profiel)
+      setProfile(res.data.profiel)
     }
     getProfile()
   }, [userId, token])
@@ -464,13 +449,13 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getFbLink = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
 
-      setFbLink(res.data.data.attributes?.facebooklink)
+      setFbLink(res.data.facebooklink)
     }
     getFbLink()
   }, [userId, token])
@@ -516,12 +501,12 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getTwLink = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTwLink(res.data.data.attributes?.twitterlink)
+      setTwLink(res.data.twitterlink)
     }
     getTwLink()
   }, [userId, token])
@@ -567,12 +552,12 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getIgLink = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setIgLink(res.data.data.attributes?.instagramlink)
+      setIgLink(res.data.instagramlink)
     }
     getIgLink()
   }, [userId, token])
@@ -618,12 +603,12 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getWaLink = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setWaLink(res.data.data.attributes?.whatsapplink)
+      setWaLink(res.data.whatsapplink)
     }
     getWaLink()
   }, [userId, token])
@@ -669,12 +654,12 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getTkLink = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTkLink(res.data.data.attributes?.tiktoklink)
+      setTkLink(res.data.tiktoklink)
     }
     getTkLink()
   }, [userId, token])
@@ -747,13 +732,13 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getSlug = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
 
-      setSlug(res.data.data.attributes?.slug)
+      setSlug(res.data.slug)
     }
     getSlug()
   }, [userId, token])
@@ -787,7 +772,7 @@ const AccountPage = () => {
     const newLinks = [...links, res.data.data.attributes]
     setLinks(newLinks)
     console.log(newLinks)
-    // getLinks()
+    getLinks()
   }
 
   // TOGGLE LINKS <--------------------------------------------------------------------------------> TOGGLE LINKS //
@@ -862,7 +847,7 @@ const AccountPage = () => {
       return el
     })
     setLinks(newLinks)
-    // getLinks()
+    getLinks()
   }
 
   // EDIT HYPERLINKS <--------------------------------------------------------------------------------> EDIT HYPERLINKS //
@@ -895,7 +880,7 @@ const AccountPage = () => {
     })
     setLinks(newLinks)
     setEditHyperLink("")
-    // getLinks()
+    getLinks()
   }
 
   // GET LINKS <--------------------------------------------------------------------------------> GET LINKS //
@@ -1010,13 +995,13 @@ const AccountPage = () => {
 
   useEffect(() => {
     const getColor = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${userId}`, {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setColor(res.data.data.attributes?.bgfree)
-      changeHeadingBg(res.data.data.attributes?.bgfree)
+      setColor(res.data.bgfree)
+      changeHeadingBg(res.data.bgfree)
     }
     getColor()
     changeHeadingBg()
