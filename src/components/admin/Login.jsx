@@ -158,7 +158,7 @@ const LoginPage = () => {
 
       const strapiCreatePage = () => {
         if (process.env.NODE_ENV === "production") {
-          await axios.post(
+          axios.post(
             `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
           )
         }
