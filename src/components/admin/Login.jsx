@@ -156,20 +156,19 @@ const LoginPage = () => {
         }
       )
 
-      console.log("NIEUWE account aangemaakt", data)
+      const strapiCreatePage = () => {
+        if (process.env.NODE_ENV === "production") {
+          await axios.post(
+            `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
+          )
+        }
+      }
 
-      // axios.post(
-      //   "https://api.netlify.com/build_hooks/5fa20c6490bf4b2b591bf2e1",
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${data.jwt}`,
-      //     },
-      //   }
-      // )
-
+      console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
       setError(null)
       navigate("/admin/account")
+      strapiCreatePage()
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -182,7 +181,7 @@ const LoginPage = () => {
   }
 
   return (
-    <div>
+    <>
       <section className={`${docsHead} ${bgPrimary} ${py3}`}>
         <div className={`${container} ${grid}`}>
           <div>
@@ -354,7 +353,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
