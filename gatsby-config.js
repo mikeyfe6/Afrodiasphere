@@ -13,6 +13,18 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-PRN53H8",
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+
+        // Specify optional GTM environment details.
+        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -84,7 +96,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#a9a9a9`,
         lang: `nl`,
-        theme_color: `#16b7f2`,
+        theme_color: `#cc9932`,
         display: `standalone`,
         icon: "src/images/afroadiaspheretest.png",
         icon_options: {

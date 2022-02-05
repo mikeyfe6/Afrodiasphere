@@ -2,12 +2,12 @@
 
 &nbsp;&nbsp;
 
-<p align="center">
-  <a href="https://negoscan.netlify.app/" rel="noopener noreferrer"
+<!-- <p align="center">
+  <a href="https://afrodiasphere.netlify.app/" rel="noopener noreferrer"
               target="_blank">
-    <img alt="Afrodiasphere" src="" width="500" />
+    <img alt="Afrodiasphere" src="https://i.postimg.cc/Yq04rydW/Afrodiasphere-screen.png" width="500" />
   </a>
-</p>
+</p> -->
 
 &nbsp;&nbsp;
 

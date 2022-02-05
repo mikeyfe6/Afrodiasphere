@@ -129,7 +129,12 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
 
       <div className={`theme-${color}`}>
         <div className={profCenter} style={{ zIndex: 2 }}>
-          <img src={avatar} className={imgavatar} alt="avatar" />
+          <img
+            src={avatar}
+            className={imgavatar}
+            alt="avatar"
+            style={{ border: "3px solid white" }}
+          />
 
           <h1>{username}</h1>
           {/* <Reactmarkdown
@@ -208,9 +213,9 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
               src={afroLogo}
               alt=""
               style={{
-                top: "200px",
+                top: "150px",
                 position: "relative",
-                width: "100px",
+                width: "50px",
               }}
             ></img>
           </Link>
