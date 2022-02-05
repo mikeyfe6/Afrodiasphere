@@ -162,7 +162,7 @@ const IndexPage = () => {
                 <div>
                   {" "}
                   <Link to={`/${ads.slug}`} style={{ color: "black" }}>
-                    ../{`${ads.slug}`}
+                    ✨../{`${ads.slug}`}
                   </Link>
                 </div>
               </li>
