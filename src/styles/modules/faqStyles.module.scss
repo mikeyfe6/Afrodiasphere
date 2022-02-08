@@ -30,8 +30,16 @@ pre {
   padding: 10px;
 }
 
-// --> MQ: Tablet !
-@media (max-width: 768px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
+}
+
+// Small devices
+@media (max-width: 575.98px) {
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
   .docs-head {
     text-align: center;
 
@@ -41,6 +49,10 @@ pre {
   }
 }
 
-// --> MQ: Mobile !
-@media (max-width: 600px) {
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

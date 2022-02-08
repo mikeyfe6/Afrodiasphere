@@ -209,23 +209,6 @@
   margin: 20px 0 30px;
 }
 
-label {
-}
-
-legend {
-}
-
-.afroform {
-}
-
-.afroinput {
-  &:focus {
-  }
-}
-
-fieldset {
-}
-
 .storeCode input {
   padding: 10px 12.5px !important;
   font-weight: bold;
@@ -267,56 +250,12 @@ fieldset {
   }
 }
 
-.indexBg {
-  height: 675px;
-  z-index: -100;
-  // background: linear-gradient(to bottom, $primary-color, black, black);
-  display: block;
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 991.98px) and (orientation: landscape) {
 }
 
-@media (max-width: 768px) {
-  .docs-head {
-    text-align: center;
-
-    .imgHide {
-      justify-self: center;
-      display: none;
-    }
-
-    h1 {
-      display: none;
-    }
-
-    p {
-      // display: none;
-    }
-  }
-
-  .afroform {
-    display: table;
-    width: 100%;
-  }
-}
-
-// p {
-//   color: black;
-// }
-
-// --> MQ: Mobile !
-@media (max-width: 600px) {
-  .logerror {
-    position: absolute;
-    bottom: 80px;
-    font-size: 9px !important;
-    padding: 0.1rem 0.3rem;
-  }
-
-  .storeCode input {
-    padding: 7.5px 7.5px !important;
-    margin: 8px 1px !important;
-    font-size: 0.7em;
-  }
-
+// Small devices
+@media (max-width: 575.98px) {
   .docs-head {
     text-align: center;
     padding: 2rem 0 0 0 !important;
@@ -330,9 +269,32 @@ fieldset {
       display: none;
     }
   }
+}
 
-  .indexBg {
-    height: 500px;
+// Normal devices
+@media (max-width: 767.98px) {
+  .docs-head {
+    .imgHide {
+      justify-self: center;
+      display: none;
+    }
+
+    h1 {
+      display: none;
+    }
+  }
+
+  .logerror {
+    position: absolute;
+    bottom: 80px;
+    font-size: 9px !important;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .storeCode input {
+    padding: 7.5px 7.5px !important;
+    margin: 8px 1px !important;
+    font-size: 0.7em;
   }
 
   .superContainer {
@@ -343,12 +305,7 @@ fieldset {
     }
 
     position: absolute;
-    top: 150px;
-
-    // span {
-    //   font-size: 10px;
-    //   margin: 15px 0;
-    // }
+    top: 175px;
 
     .container {
       width: 97%;
@@ -363,21 +320,6 @@ fieldset {
           margin: 8px 0;
           width: 100%;
         }
-
-        // .socialContainer {
-        //   margin: 20px 0;
-
-        //   a {
-        //     border: 1px solid #333;
-        //     border-radius: 50%;
-        //     display: inline-flex;
-        //     justify-content: center;
-        //     align-items: center;
-        //     margin: 0 5px;
-        //     height: 40px;
-        //     width: 40px;
-        //   }
-        // }
       }
     }
 
@@ -387,4 +329,25 @@ fieldset {
       }
     }
   }
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+  .docs-head {
+    text-align: center;
+    padding: 2rem 0 0 0 !important;
+
+    .imgHide {
+      justify-self: center;
+      transform: scale(0.6);
+    }
+
+    h1 {
+      transform: scale(0.9);
+    }
+  }
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

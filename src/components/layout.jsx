@@ -33,7 +33,11 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div>
-        <main>{children}</main>
+        <main
+        // style={{ minHeight: "calc(100vh - 211px - 58px)" }} sticky footer code
+        >
+          {children}
+        </main>
         <Footer />
       </div>
     </>

@@ -2,9 +2,12 @@ import React, { useState, useRef } from "react"
 import axios from "axios"
 import { navigate } from "@reach/router"
 
-import { logerror, inputRes } from "../styles/modules/forgetStyles.module.scss"
-
-import { btn, loadingmsg } from "../styles/modules/loginStyles.module.scss"
+import {
+  logerror,
+  inputRes,
+  btn,
+  loadingmsg,
+} from "../styles/modules/forgetStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
 
@@ -59,7 +62,7 @@ const ForgetPwd = () => {
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
         />
         <button
-          className={`${btn}`}
+          className={btn}
           style={{
             cursor: "pointer",
             paddingTop: "3px",

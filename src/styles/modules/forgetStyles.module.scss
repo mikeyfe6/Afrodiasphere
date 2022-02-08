@@ -12,12 +12,28 @@
     width: 100%;
     border-radius: 3px;
   }
+
+  button:focus {
+    outline: none;
+  }
+
+  button {
+    margin-top: 3%;
+    padding: 3.5px 20px 2.5px 20px;
+    float: none;
+    color: black;
+    background-color: #cc9932;
+  }
+}
+
+.forgetImg {
+  width: 200px;
 }
 
 .indexBg {
-  height: 675px;
+  height: 150px;
   z-index: -100;
-  background: linear-gradient(to bottom, $primary-color, white, white);
+  background: linear-gradient(to bottom, black, $primary-color, black);
   display: block;
 }
 
@@ -36,18 +52,60 @@
   font-size: 0.6em;
 }
 
-@media (max-width: 768px) {
+.loadingmsg {
+  background-color: green;
+  font-weight: bold;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
-// --> MQ: Mobile !
-@media (max-width: 600px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
+}
+
+// Small devices
+@media (max-width: 575.98px) {
   .logerror {
     top: 67.5px;
     left: 0px;
     font-size: 0.45em;
   }
 
+  .forgetImg {
+    display: none;
+  }
+
   .indexBg {
     height: 412.5px;
   }
+}
+
+.navbar {
+  height: 125px;
+
+  .flex {
+    flex-direction: column;
+  }
+
+  ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

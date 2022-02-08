@@ -25,7 +25,7 @@ import noavatar from "../images/noavatar.png"
 
 const apiURL = process.env.GATSBY_BASE_URL
 
-const AdsTemplate = ({ pageContext: { id, slug } }) => {
+const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
   // useEffect(() => {
   //   function hideDiv(elem) {
   //     if (elem.href === "")
@@ -52,7 +52,7 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
       const reslinks = await axios.get(`${apiURL}/api/connections?populate=*`)
       var allLinks = reslinks.data
       var sortedLinks = allLinks.filter(
-        element => element.links.username === slug
+        element => element.links.username === persoon.username
       )
 
       setLinks(sortedLinks)
@@ -71,7 +71,7 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
       }
     }
     getLinks()
-  }, [id, slug])
+  }, [id, slug, persoon.username])
 
   useEffect(() => {
     var fbhideman = document.getElementById("fbhidesm")
@@ -208,18 +208,6 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
             </a>
           </div>
 
-          <Link to="/">
-            <img
-              src={afroLogo}
-              alt=""
-              style={{
-                top: "150px",
-                position: "relative",
-                width: "50px",
-              }}
-            ></img>
-          </Link>
-
           {/* <p></p>
             by{" "}
             <Link to={`/gebruiker/User_${data.strapiAfrosite.website.id}`}>
@@ -227,6 +215,25 @@ const AdsTemplate = ({ pageContext: { id, slug } }) => {
             </Link>
           </p> */}
         </div>
+        <Link
+          to="/"
+          style={{
+            position: "absolute",
+            bottom: "0",
+            width: "100%",
+            textAlign: "center",
+            padding: "20px",
+          }}
+        >
+          <img
+            src={afroLogo}
+            alt=""
+            style={{
+              width: "50px",
+              margin: "50px",
+            }}
+          ></img>
+        </Link>
       </div>
     </ProfLayout>
   )

@@ -2,9 +2,12 @@ import React, { useState, useRef } from "react"
 import axios from "axios"
 import { navigate } from "@reach/router"
 
-import { logerror, inputRes } from "../styles/modules/resetStyles.module.scss"
-
-import { btn, loadingmsg } from "../styles/modules/loginStyles.module.scss"
+import {
+  logerror,
+  inputRes,
+  btn,
+  loadingmsg,
+} from "../styles/modules/resetStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
 
@@ -80,7 +83,7 @@ const ResetPwd = () => {
         />{" "}
         <br />
         <button
-          className={`${btn}`}
+          className={btn}
           style={{
             cursor: "pointer",
             paddingTop: "3px",

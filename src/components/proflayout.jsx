@@ -22,12 +22,10 @@ const ProfLayout = ({ children }) => {
 
   return (
     <>
-      {/* <div siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
       <div>
         <div>
           <main>{children}</main>
         </div>
-        {/* <footer id="footer" style={{ zIndex: 2, width: "250px" }}></footer> */}
       </div>
     </>
   )

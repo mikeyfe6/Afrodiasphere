@@ -24,7 +24,9 @@ const Header = () => (
               rel="noopener noreferrer"
               target="_blank"
             >
-              <strong>MF</strong>
+              <strong>
+                <i>MF</i>
+              </strong>
             </a>
           </li>
           <li>

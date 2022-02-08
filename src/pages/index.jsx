@@ -11,23 +11,19 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 import {
+  carouselCont,
+  carouselRow,
+  homeAdsBio,
+  imgHide,
+  xl,
   docsHead,
   bgPrimary,
   py3,
   container,
   grid,
-  xl,
   lead,
   btn,
-  // indexBg,
-  imgHide,
   card,
-} from "../styles/modules/loginStyles.module.scss"
-
-import {
-  carouselCont,
-  carouselRow,
-  homeAdsBio,
 } from "../styles/modules/indexStyles.module.scss"
 
 import { imgavatar } from "../styles/modules/profStyles.module.scss"
@@ -55,7 +51,7 @@ const IndexPage = () => {
       <Seo title="Home" />
       <section className={`${docsHead} ${bgPrimary} ${py3}`}>
         <div className={`${container} ${grid}`}>
-          <div>
+          <div style={{ textAlign: "left" }}>
             <h1 className={xl}>Afrodiasphere</h1>
             <p className={lead}>
               <small style={{ color: "grey" }}>JOIN THE MOVEMENT !</small>{" "}
@@ -78,49 +74,6 @@ const IndexPage = () => {
             </p>
           </div>
           <img src={servImage} alt="" className={imgHide} />
-
-          {/* <Carousel>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=First slide&bg=373940"
-                alt="First slide"
-              />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=Second slide&bg=282c34"
-                alt="Second slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=Third slide&bg=20232a"
-                alt="Third slide"
-              />
-
-              <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>
-                  Praesent commodo cursus magna, vel scelerisque nisl
-                  consectetur.
-                </p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          </Carousel> */}
 
           <ul className={`${carouselCont} ${card}`}>
             {carousel.map(ads => (
@@ -150,7 +103,6 @@ const IndexPage = () => {
                   className={homeAdsBio}
                   children={ads.biografie}
                   remarkPlugins={[remarkGfm]}
-
                   // escapeHtml={false}
                 />
                 <br />
@@ -170,7 +122,6 @@ const IndexPage = () => {
           </ul>
         </div>
       </section>
-      {/* <div className={indexBg} /> */}
     </Layout>
   )
 }

@@ -25,12 +25,13 @@ exports.createPages = async ({ actions: { createPage } }) => {
   // })
 
   // ! EACH PAGE INSTANTIE
-  getPageInstanties.data.forEach(({ slug, id }) => {
+  getPageInstanties.data.forEach(({ slug, persoon, id }) => {
     createPage({
       path: `/${slug}`,
       component: path.resolve("./src/templates/pagina.jsx"),
       context: {
         slug: slug,
+        persoon,
         id,
       },
     })

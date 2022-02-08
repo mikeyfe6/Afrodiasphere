@@ -2,25 +2,28 @@
 @import "../customs/utilities";
 
 .prof-center {
-  display: table;
-  margin: 0 auto;
-  height: 100vh;
   padding-top: 10rem;
-  padding-bottom: 10rem;
   text-align: center !important;
+  margin-bottom: -58px;
 }
 
 .imgavatar {
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-@media (max-width: 768px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-@media (max-width: 600px) {
+// Small devices
+@media (max-width: 575.98px) {
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
   .prof-center {
     padding-top: 5rem;
     padding-bottom: 7rem;
@@ -42,4 +45,12 @@
       font-size: 0.9em;
     }
   }
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

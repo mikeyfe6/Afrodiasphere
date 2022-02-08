@@ -14,10 +14,17 @@
   outline: none;
 }
 
+p {
+  font-size: 16px;
+}
+
 body {
   line-height: 1.6;
   font-family: "Poppins", sans-serif;
   background-color: black;
+  position: relative;
+  padding-bottom: 58px;
+  min-height: 100vh;
 }
 
 a {
@@ -51,3 +58,23 @@ h2 {
 //   width: 100%;
 //   height: 2.5rem; /* Footer height */
 // }
+
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
+}
+
+// Small devices
+@media (max-width: 575.98px) {
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
+}

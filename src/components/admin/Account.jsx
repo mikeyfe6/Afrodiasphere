@@ -16,7 +16,7 @@ import {
   FaInstagram,
   FaTwitter,
   FaTrash,
-  FaRegEdit,
+  // FaRegEdit,
   FaRegUserCircle,
   FaWhatsapp,
 } from "react-icons/fa"
@@ -93,7 +93,6 @@ import {
   socialIcons,
   socialInput,
   socialButtons,
-  socialSpec,
   vl,
   linksCont,
   linkCont,
@@ -125,6 +124,8 @@ import {
   usLinkAfro,
   usLinkSite,
   userLink,
+  currentStyle,
+  specsBtn,
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
@@ -176,23 +177,11 @@ const AccountPage = () => {
   const [password, setPassword] = useState("")
   const [slug, setSlug] = useState("")
 
-  const [disabledProfile, setDisabledProfile] = useState(true)
-  const [disabledUsername, setDisabledUsername] = useState(true)
-  const [disabledEmail, setDisabledEmail] = useState(true)
-  const [disabledPassword, setDisabledPassword] = useState(true)
-  const [disabledSlug, setDisabledSlug] = useState(true)
-
   const [fbLink, setFbLink] = useState("")
   const [twLink, setTwLink] = useState("")
   const [igLink, setIgLink] = useState("")
   const [waLink, setWaLink] = useState("")
   const [tkLink, setTkLink] = useState("")
-
-  const [disabledFbLink, setDisabledFbLink] = useState(true)
-  const [disabledTwLink, setDisabledTwLink] = useState(true)
-  const [disabledIgLink, setDisabledIgLink] = useState(true)
-  const [disabledWaLink, setDisabledWaLink] = useState(true)
-  const [disabledTkLink, setDisabledTkLink] = useState(true)
 
   const linkTitle = useRef()
   const hyperLink = useRef()
@@ -306,7 +295,6 @@ const AccountPage = () => {
       )
 
       setError(null)
-      setDisabledProfile(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -351,7 +339,6 @@ const AccountPage = () => {
         },
       })
       setError(null)
-      setDisabledUsername(true)
     } catch (err) {
       setError("Er is iets misgegaan, probeer het opnieuw!")
       setTimeout(() => setError(null), 5000)
@@ -388,7 +375,6 @@ const AccountPage = () => {
         },
       })
       setError(null)
-      setDisabledEmail(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -439,7 +425,6 @@ const AccountPage = () => {
         }
       )
       setError(null)
-      setDisabledFbLink(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -491,7 +476,6 @@ const AccountPage = () => {
         }
       )
       setError(null)
-      setDisabledTwLink(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -542,7 +526,6 @@ const AccountPage = () => {
         }
       )
       setError(null)
-      setDisabledIgLink(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -593,7 +576,6 @@ const AccountPage = () => {
         }
       )
       setError(null)
-      setDisabledWaLink(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -644,7 +626,6 @@ const AccountPage = () => {
         }
       )
       setError(null)
-      setDisabledTkLink(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -682,7 +663,6 @@ const AccountPage = () => {
         },
       })
       setError(null)
-      setDisabledPassword(true)
     } catch (err) {
       console.log(err.message)
       setError("Er is iets misgegaan, probeer het opnieuw!")
@@ -713,7 +693,6 @@ const AccountPage = () => {
       )
 
       setError(null)
-      setDisabledSlug(true)
 
       // axios.post(
       //   "https://api.netlify.com/build_hooks/5fa20c6490bf4b2b591bf2e1",
@@ -771,8 +750,10 @@ const AccountPage = () => {
 
     const newLinks = [...links, res.data.data.attributes]
     setLinks(newLinks)
-    console.log(newLinks)
+
     getLinks()
+    linkTitle.current.value = ""
+    hyperLink.current.value = ""
   }
 
   // TOGGLE LINKS <--------------------------------------------------------------------------------> TOGGLE LINKS //
@@ -1005,7 +986,46 @@ const AccountPage = () => {
     }
     getColor()
     changeHeadingBg()
-  }, [userId, token, links])
+    // }, [userId, token, links])
+  }, [token, links])
+
+  useEffect(() => {
+    if (color === "geel") {
+      document.getElementById("currentYellow").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentYellow").classList.remove(currentStyle)
+    }
+    if (color === "grijs") {
+      document.getElementById("currentGrey").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentGrey").classList.remove(currentStyle)
+    }
+    if (color === "roze") {
+      document.getElementById("currentPink").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentPink").classList.remove(currentStyle)
+    }
+    if (color === "zwart") {
+      document.getElementById("currentBlack").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentBlack").classList.remove(currentStyle)
+    }
+    if (color === "bruin") {
+      document.getElementById("currentBrown").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentBrown").classList.remove(currentStyle)
+    }
+    if (color === "groen") {
+      document.getElementById("currentGreen").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentGreen").classList.remove(currentStyle)
+    }
+    if (color === "afrotheme") {
+      document.getElementById("currentAfro").classList.add(currentStyle)
+    } else {
+      document.getElementById("currentAfro").classList.remove(currentStyle)
+    }
+  }, [color])
 
   // function changeHeadingBg(klasse) {
   //   document.getElementById("iphone-bg").className = klasse
@@ -1043,7 +1063,7 @@ const AccountPage = () => {
               bottom: "10px",
               right: "10px",
               color: "white",
-              backgroundColor: "#e6541b",
+              backgroundColor: "red",
             }}
             className={btn}
             href="#"
@@ -1227,60 +1247,50 @@ const AccountPage = () => {
 
             <div className={profileInfo}>
               <form onSubmit={submitProfile}>
-                <div>
-                  <label htmlFor="profile">
-                    <FaRegUserCircle
-                      color="white"
-                      size="1.25em"
-                      style={{
-                        position: "relative",
-                        top: "5px",
-                        marginRight: "5px",
-                      }}
-                    />
-                    <input
-                      onChange={setProfileHandler}
-                      value={profile || ""}
-                      type="text"
-                      maxLength="35"
-                      disabled={disabledProfile}
-                      name="text"
-                      id="profile"
-                      className={profileInput}
-                    />
-                  </label>
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
+                <label htmlFor="profile">
+                  <FaRegUserCircle
+                    color="#cc9932"
+                    size="1em"
                     style={{
                       position: "relative",
-                      top: "5px",
+                      top: "7.5px",
+                      margin: "0 10px",
+                    }}
+                  />
+                  <input
+                    onChange={setProfileHandler}
+                    value={profile || ""}
+                    type="text"
+                    maxLength="35"
+                    name="text"
+                    id="profile"
+                    className={profileInput}
+                    style={{
                       cursor: "pointer",
                     }}
-                    onClick={() => setDisabledProfile(false)}
                   />
-                  <button
-                    className={`${btn}`}
-                    type="submit"
-                    style={{
-                      paddingTop: "7.5px",
-                      paddingBottom: "7.5px",
-                    }}
-                  >
-                    Save Profile Name
-                  </button>
-                </div>
+                </label>
+                <button
+                  className={btn}
+                  type="submit"
+                  style={{
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Save
+                </button>
               </form>
 
               <form onSubmit={submitUsername}>
                 <label htmlFor="username">
                   <FaUser
-                    color="white"
-                    size="1.25em"
+                    color="#cc9932"
+                    size="1em"
                     style={{
                       position: "relative",
-                      top: "5px",
-                      marginRight: "5px",
+                      top: "7.5px",
+                      margin: "0 10px",
                     }}
                   />
                   <input
@@ -1288,194 +1298,156 @@ const AccountPage = () => {
                     value={username || ""}
                     type="text"
                     maxLength="25"
-                    disabled={disabledUsername}
                     name="username"
                     id="username"
                     pattern="[^\s]+"
                     title="Geen spaties"
                     className={profileInput}
+                    style={{
+                      cursor: "pointer",
+                    }}
                   />
                 </label>
-                <FaRegEdit
-                  color="white"
-                  size="1.1em"
-                  style={{
-                    position: "relative",
-                    top: "5px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => setDisabledUsername(false)}
-                />
                 <button
-                  className={`${btn} ${btnSecondary} ${submitBtn}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
-                    paddingBottom: "7.5px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Username
+                  Save
                 </button>
               </form>
 
               <form onSubmit={submitEmail}>
-                <div>
-                  <label htmlFor="email">
-                    <FaAt
-                      color="white"
-                      size="1.25em"
-                      style={{
-                        position: "relative",
-                        top: "5px",
-                        marginRight: "5px",
-                      }}
-                    />
-                    <input
-                      onChange={setEmailHandler}
-                      value={email || ""}
-                      type="email"
-                      disabled={disabledEmail}
-                      name="email"
-                      maxLength="35"
-                      id="email"
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                      className={profileInput}
-                    />
-                  </label>
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
+                <label htmlFor="email">
+                  <FaAt
+                    color="#cc9932"
+                    size="1em"
                     style={{
                       position: "relative",
-                      top: "5px",
-                      cursor: "pointer",
+                      top: "7.5px",
+                      margin: "0 10px",
                     }}
-                    onClick={() => setDisabledEmail(false)}
                   />
-                  <button
-                    className={`${btn} ${btnSecondary} ${submitBtn}`}
-                    type="submit"
-                    style={{
-                      paddingTop: "7.5px",
-                      paddingBottom: "7.5px",
-                    }}
-                  >
-                    Save Email
-                  </button>
-                </div>
+                  <input
+                    onChange={setEmailHandler}
+                    value={email || ""}
+                    type="email"
+                    name="email"
+                    maxLength="35"
+                    id="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    className={profileInput}
+                  />
+                </label>
+                <button
+                  className={btn}
+                  type="submit"
+                  style={{
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Save
+                </button>
               </form>
 
               <form onSubmit={submitPassword}>
-                <div>
-                  <label htmlFor="password">
-                    <FaLock
-                      color="white"
-                      size="1.25em"
-                      style={{
-                        position: "relative",
-                        top: "5px",
-                        marginRight: "5px",
-                      }}
-                    />
-                    <input
-                      onChange={setPasswordHandler}
-                      value={password || ""}
-                      placeholder="*********"
-                      type="password"
-                      disabled={disabledPassword}
-                      name="password"
-                      id="password"
-                      className={profileInput}
-                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                      title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
-                    />
-                  </label>
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
+                <label htmlFor="password">
+                  <FaLock
+                    color="#cc9932"
+                    size="1em"
                     style={{
                       position: "relative",
-                      top: "5px",
+                      top: "7.5px",
+                      margin: "0 10px",
+                    }}
+                  />
+                  <input
+                    onChange={setPasswordHandler}
+                    value={password || ""}
+                    placeholder="*********"
+                    type="password"
+                    when
+                    name="password"
+                    id="password"
+                    className={profileInput}
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
+                    style={{
                       cursor: "pointer",
                     }}
-                    onClick={() => setDisabledPassword(false)}
                   />
-                  <button
-                    className={`${btn} ${btnSecondary} ${submitBtn}`}
-                    type="submit"
-                    style={{
-                      paddingTop: "7.5px",
-                      paddingBottom: "7.5px",
-                    }}
-                  >
-                    Update Password
-                  </button>
-                </div>
+                </label>
+                <button
+                  className={`${btn} ${btnSecondary} ${submitBtn}`}
+                  type="submit"
+                  style={{
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Update
+                </button>
               </form>
 
               <form onSubmit={submitSlug}>
-                <div>
-                  <label htmlFor="slug">
-                    <FaGlobe
-                      color="white"
-                      size="1.25em"
-                      style={{
-                        position: "relative",
-                        top: "5px",
-                        marginRight: "5px",
-                      }}
-                    />
-                    <input
-                      onChange={setSlugHandler}
-                      value={slug}
-                      type="text"
-                      disabled={disabledSlug}
-                      name="slug"
-                      id="slug"
-                      readOnly
-                      // placeholder="*verplicht, bijv: 'jouw-profiel'"
-                      placeholder="*verplicht, de beheerder maakt deze voor u aan"
-                      maxLength="15"
-                      className={profileInput}
-                      pattern="[^\s]+"
-                      title="geen spaties, alleen '-'"
-                    />
-                  </label>
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
+                <label htmlFor="slug">
+                  <FaGlobe
+                    color="#cc9932"
+                    size="1em"
                     style={{
                       position: "relative",
-                      top: "5px",
-                      cursor: "pointer",
+                      top: "7.5px",
+                      margin: "0 10px",
                     }}
-                    onClick={() => setDisabledSlug(false)}
                   />
-                  <button
-                    className={btn}
-                    type="submit"
+                  <input
+                    onChange={setSlugHandler}
+                    value={slug}
+                    type="text"
+                    name="slug"
+                    id="slug"
+                    readOnly
                     disabled
-                    style={{
-                      paddingTop: "7.5px",
-                      paddingBottom: "7.5px",
-                      background: "red",
-                      opacity: "0.3",
-                    }}
-                  >
-                    Update Profiel URL
-                  </button>
-                </div>
+                    // placeholder="*verplicht, bijv: 'jouw-profiel'"
+                    placeholder="*verplicht, de beheerder maakt deze voor u aan"
+                    maxLength="15"
+                    className={profileInput}
+                    pattern="[^\s]+"
+                    title="geen spaties, alleen '-'"
+                  />
+                </label>
+
+                <button
+                  className={btn}
+                  type="submit"
+                  disabled
+                  style={{
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                    background: "red",
+                    opacity: "0.3",
+                  }}
+                >
+                  Update
+                </button>
               </form>
             </div>
             {error && <ErrorMessage text={error} />}
           </div>
 
-          {/* <hr
-          style={{
-            border: "1px solid #35748d",
-            opacity: "0.5",
-          }}
-        /> */}
+          {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> DASHBOARD SOCIAL CONT DASHBOARD SOCIAL CONT */}
+
+          <hr
+            style={{
+              border: "1px solid white",
+              margin: "75px 50px",
+              opacity: "0.1",
+            }}
+          />
 
           <h2 style={{ textAlign: "center" }}>
             <b>
@@ -1483,7 +1455,7 @@ const AccountPage = () => {
                 style={{
                   color: "white",
                   textDecoration: "underline",
-                  textDecorationColor: "#e6541b",
+                  textDecorationColor: "grey",
                 }}
               >
                 Social Links
@@ -1505,37 +1477,23 @@ const AccountPage = () => {
                     onChange={setFbHandler}
                     value={fbLink}
                     type="text"
-                    disabled={disabledFbLink}
                     name="fblink"
                     id="fblink"
                     placeholder="facebook.com/jouwprofiel"
                     className={socialInput}
                   />
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
-                    style={{
-                      position: "relative",
-                      top: "5px",
-                      left: "15px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setDisabledFbLink(false)}
-                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "10px",
-                    paddingBottom: "7.5px",
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Facebook
+                  Save
                 </button>
               </div>
               <div style={{ clear: "both" }} />
@@ -1558,37 +1516,23 @@ const AccountPage = () => {
                     onChange={setTwHandler}
                     value={twLink}
                     type="text"
-                    disabled={disabledTwLink}
                     name="twlink"
                     id="twlink"
                     placeholder="twitter.com/jouwprofiel"
                     className={socialInput}
                   />
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
-                    style={{
-                      position: "relative",
-                      top: "5px",
-                      left: "15px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setDisabledTwLink(false)}
-                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
-                    paddingBottom: "7.5px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Twitter
+                  Save
                 </button>
               </div>
             </form>
@@ -1610,37 +1554,23 @@ const AccountPage = () => {
                     onChange={setIgHandler}
                     value={igLink}
                     type="text"
-                    disabled={disabledIgLink}
                     name="iglink"
                     id="iglink"
                     placeholder="instagram.com/jouwprofiel"
                     className={socialInput}
                   />
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
-                    style={{
-                      position: "relative",
-                      top: "5px",
-                      left: "15px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setDisabledIgLink(false)}
-                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
-                    paddingBottom: "7.5px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Instagram
+                  Save
                 </button>
               </div>
             </form>
@@ -1662,38 +1592,24 @@ const AccountPage = () => {
                     onChange={setWaHandler}
                     value={waLink}
                     type="text"
-                    disabled={disabledWaLink}
                     name="walink"
                     id="walink"
                     maxLength="15"
                     placeholder="bijv.: 31601234567"
                     className={socialInput}
                   />
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
-                    style={{
-                      position: "relative",
-                      top: "5px",
-                      left: "15px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setDisabledWaLink(false)}
-                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
-                    paddingBottom: "7.5px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Whatsapp
+                  Save
                 </button>
               </div>
             </form>
@@ -1715,51 +1631,52 @@ const AccountPage = () => {
                     onChange={setTkHandler}
                     value={tkLink}
                     type="text"
-                    disabled={disabledTkLink}
                     name="tklink"
                     id="tklink"
                     placeholder="tiktok.com/jouwprofiel"
                     className={socialInput}
                   />
-                  <FaRegEdit
-                    color="white"
-                    size="1.1em"
-                    style={{
-                      position: "relative",
-                      top: "5px",
-                      left: "15px",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setDisabledTkLink(false)}
-                  />
                 </label>
               </div>
               <div className={socialButtons}>
                 <button
-                  className={`${btn} ${submitBtn} ${btnSecondary} ${socialSpec}`}
+                  className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "7.5px",
-                    paddingBottom: "7.5px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
-                  Save Tiktok
+                  Save
                 </button>
               </div>
             </form>
           </div>
 
-          {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> ADDD LINK SECTIEEE ADDD LINK SECTIEEE ADDD LINK SECTIEEE */}
-          <br />
+          {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> ADDD LINK DASHBOARD ADDD LINK DASHBOARD ADDD LINK DASDHBOARD */}
+
           <hr
             style={{
-              border: "1px solid black",
-              margin: "15px 50px",
+              border: "1px solid white",
+              margin: "75px 50px",
               opacity: "0.1",
             }}
           />
+
+          <h2 style={{ textAlign: "center" }}>
+            <b>
+              <u
+                style={{
+                  color: "white",
+                  textDecoration: "underline",
+                  textDecorationColor: "grey",
+                }}
+              >
+                Hyper Links
+              </u>
+            </b>
+          </h2>
+
           <br />
           <div style={{ position: "relative" }}>
             <div className={linkCont}>
@@ -1796,11 +1713,12 @@ const AccountPage = () => {
                   event.preventDefault()
                 }}
               >
-                Maak een link
+                Creëer link
               </button>
               <button
                 className={btn}
-                style={{ background: "red", float: "right" }}
+                id={specsBtn}
+                style={{ background: "red", float: "right", color: "white" }}
                 onClick={event => {
                   linkTitle.current.value = ""
                   hyperLink.current.value = ""
@@ -1899,22 +1817,22 @@ const AccountPage = () => {
               ))}
             </ul>
           </div>
+
           <hr
             style={{
-              border: "1px solid black",
-              margin: "50px 50px 25px 50px",
+              border: "1px solid white",
+              margin: "75px 50px",
               opacity: "0.1",
             }}
           />
 
-          <br />
           <h2 style={{ textAlign: "center" }}>
             <b>
               <u
                 style={{
                   color: "white",
                   textDecoration: "underline",
-                  textDecorationColor: "#e6541b",
+                  textDecorationColor: "grey",
                 }}
               >
                 Thema's
@@ -1937,7 +1855,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={yellowtheme}>
+                <div id="currentYellow" className={yellowtheme}>
                   <div className={yellowlinks} />
                   <div className={yellowlinks} />
                   <div className={yellowlinks} />
@@ -1958,7 +1876,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={graytheme}>
+                <div id="currentGrey" className={graytheme}>
                   <div className={graylinks} />
                   <div className={graylinks} />
                   <div className={graylinks} />
@@ -1979,7 +1897,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={pinktheme}>
+                <div id="currentPink" className={pinktheme}>
                   <div className={pinklinks} />
                   <div className={pinklinks} />
                   <div className={pinklinks} />
@@ -2000,7 +1918,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={blacktheme}>
+                <div id="currentBlack" className={blacktheme}>
                   <div className={blacklinks} />
                   <div className={blacklinks} />
                   <div className={blacklinks} />
@@ -2021,7 +1939,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={browntheme}>
+                <div id="currentBrown" className={browntheme}>
                   <div className={brownlinks} />
                   <div className={brownlinks} />
                   <div className={brownlinks} />
@@ -2042,7 +1960,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={greentheme}>
+                <div id="currentGreen" className={greentheme}>
                   <div className={greenlinks} />
                   <div className={greenlinks} />
                   <div className={greenlinks} />
@@ -2063,7 +1981,7 @@ const AccountPage = () => {
                   }}
                   style={{ display: "none" }}
                 />
-                <div className={afrospectheme}>
+                <div id="currentAfro" className={afrospectheme}>
                   <div className={afrospeclinks} />
                   <div className={afrospeclinks} />
                   <div className={afrospeclinks} />

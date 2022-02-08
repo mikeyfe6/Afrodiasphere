@@ -4,10 +4,6 @@
 @mixin testMixin {
 }
 
-img {
-  width: 100%;
-}
-
 .home-ads-bio {
   font-size: 0.8em;
   color: rgb(192, 192, 192) !important;
@@ -34,13 +30,29 @@ img {
   text-align: center;
 }
 
-@media screen and (max-width: 1440px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-@media screen and (max-width: 1024px) {
+// Small devices
+@media (max-width: 575.98px) {
 }
 
-@media screen and (max-width: 768px) {
+// Normal devices
+@media (max-width: 767.98px) {
+  .docs-head {
+    text-align: center;
+    padding: 2rem 0 0 0 !important;
+
+    .imgHide {
+      display: none;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+  }
+
   .carouselCont {
     flex-direction: column;
     margin-bottom: 50px !important;
@@ -56,5 +68,10 @@ img {
   }
 }
 
-@media screen and (max-width: 600px) {
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

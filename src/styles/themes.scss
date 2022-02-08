@@ -1,4 +1,6 @@
 @mixin fullBG {
+  height: 100vh;
+  margin-bottom: -58px;
 }
 
 @mixin profileLinks {
@@ -18,20 +20,18 @@
 @mixin iconCenter {
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 50px;
+  margin: 75px 0px;
 }
 
 .theme {
   // ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
   &-geel {
     background: linear-gradient(to bottom, yellow, black);
-
     @include fullBG;
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -68,7 +68,7 @@
 
     h1 {
       color: #595959;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -105,7 +105,7 @@
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -142,7 +142,7 @@
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -151,7 +151,7 @@
       a {
         background: #878787;
         color: black;
-        border: 1px solid white;
+        border: 2px solid white;
         border-radius: 3px;
         box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
         @include profileLinks;
@@ -179,7 +179,7 @@
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -217,7 +217,7 @@
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -255,7 +255,7 @@
 
     h1 {
       color: white;
-      margin: 25px 0 50px;
+      margin: 25px 0 75px;
     }
 
     &-links {
@@ -288,8 +288,22 @@
   }
 }
 
-@media (max-width: 768px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-@media (max-width: 600px) {
+// Small devices
+@media (max-width: 575.98px) {
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

@@ -1,13 +1,17 @@
 @import "../customs/colors";
 @import "../customs/utilities";
 
-.footerCont {
+footer {
   font-size: 15px;
-  margin: 1.25% 0;
+  text-align: center;
+  color: #8c8c8c;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #8c8c8c;
 
   a {
     filter: grayscale(100%);
@@ -33,11 +37,25 @@
   }
 }
 
-@media (max-width: 768px) {
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-@media (max-width: 600px) {
-  .footerCont {
+// Small devices
+@media (max-width: 575.98px) {
+}
+
+// Normal devices
+@media (max-width: 767.98px) {
+  footer {
     font-size: 0.675em;
   }
+}
+
+// Medium devices
+@media (max-width: 991.98px) {
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
 }

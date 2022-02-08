@@ -18,7 +18,6 @@ import {
   container,
   grid,
   xl,
-  indexBg,
   superContainer,
   formContainer,
   signInContainer,
@@ -186,7 +185,6 @@ const LoginPage = () => {
           <img src={servImage} alt="" className={imgHide} />
         </div>
       </section>
-      <div className={indexBg} />
 
       <div className={superContainer}>
         <div className={container} id="container">

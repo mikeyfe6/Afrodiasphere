@@ -20,9 +20,13 @@
   }
 }
 
+@mixin smoothtrans {
+  transition: all 0.5s ease-in-out;
+}
+
 @mixin chooseUsername {
   position: absolute;
-  top: 34%;
+  top: 33%;
   left: 34%;
   z-index: 2;
   font-weight: bold;
@@ -130,9 +134,9 @@
     &-avatar {
       position: absolute;
       top: 12.5%;
-      left: 30%;
-      width: 125px;
-      height: 125px;
+      left: 35%;
+      width: 100px;
+      height: 100px;
       z-index: 2;
       border-radius: 50%;
       display: inline-block;
@@ -173,8 +177,9 @@
   // background: linear-gradient(to top, white, #ededed);
   .avatarformcont {
     display: flex;
+    gap: 50px;
     position: relative;
-    padding-bottom: 5%;
+    padding-bottom: 1%;
 
     .loading-complete {
       color: white;
@@ -190,8 +195,8 @@
   }
 
   .avatar-image {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     object-fit: cover;
     background: white;
@@ -238,7 +243,6 @@
     border: 0;
     border-bottom: 1px solid #b4becb;
     color: $black-color;
-    font-size: 14px;
     background: transparent;
     padding: 5px 0px;
 
@@ -258,6 +262,12 @@
     background: transparent;
     cursor: pointer;
     color: $primary-color;
+    @include smoothtrans;
+
+    &:hover {
+      color: $secondary-color;
+      @include smoothtrans;
+    }
   }
 
   .updateLinkShow {
@@ -278,15 +288,35 @@
 
   .profile-info {
     flex: 0.6;
-    margin-left: 10%;
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    // align-items: center;
     align-self: center;
 
     .btn {
-      margin-left: 30px;
+      margin-left: 15px;
+    }
+
+    .profile-input {
+      color: white;
+      width: 300px;
+      margin: 10px 15px;
+      background: transparent;
+      outline: none;
+      border: none;
+      padding: 7.5px 10px;
+      border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
+      border-radius: 1px;
+      @include smoothtrans;
+    }
+
+    input:focus {
+      color: $secondary-color;
+    }
+
+    input:hover {
+      @include smoothtrans;
+    }
+
+    input[type="password"]:focus::placeholder {
+      opacity: 0;
     }
   }
 
@@ -330,29 +360,17 @@
     border-radius: 3px;
   }
 
-  .profile-input {
-    color: black;
-    width: 300px;
-    margin: 10px 15px;
-    opacity: 0.75;
-    outline: none;
-    border: none;
-    padding: 7.5px 10px;
-    border-bottom: 1px $secondary-color solid;
-    margin-right: 5%;
-    border-radius: 3px;
-  }
-
   .link-cont {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
     margin-bottom: 2.5% !important;
+    gap: 30px;
 
     .link-input {
       padding: 10px;
-      font-size: 14px;
+      // font-size: 14px;
       opacity: 0.75;
       outline: none;
       border: none;
@@ -361,7 +379,7 @@
       border-radius: 3px;
 
       &::placeholder {
-        font-size: 0.9em;
+        // font-size: 0.9em;
       }
     }
   }
@@ -369,15 +387,13 @@
   .social-cont {
     display: flex;
     // border: 1px solid rgba(128, 128, 128, 0.192);
-    background: linear-gradient(to left, $primary-color, black) no-repeat 0 0 /
-      cover;
+    background: linear-gradient(to left, #cd9c32, black) no-repeat 0 0 / cover;
     justify-content: space-around;
-    border: 2px solid black;
-    gap: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    gap: 5px;
 
-    // border-bottom: solid 3px black;
-    border-radius: 10px;
-    padding: 45px 25px;
+    border-radius: 12.5px;
+    padding: 45px 25px 45px 25px;
     margin: 15px 0;
 
     .social-form {
@@ -405,29 +421,35 @@
       top: 5px;
       right: 3px;
       z-index: 3;
-
       margin-right: 5px;
     }
 
     .social-input {
       padding: 10px;
-      color: black;
+      color: white;
       opacity: 0.75;
+      background: transparent;
       outline: none;
       border: none;
       text-align: center;
       border-radius: 3px;
-      width: 75%;
+      @include smoothtrans;
+    }
+
+    input:focus {
+      color: $secondary-color;
+    }
+
+    input:hover {
+      @include smoothtrans;
     }
 
     .social-buttons {
-      margin-top: 10px;
-      justify-content: center;
-      align-items: center;
+      margin-top: 30px;
+      text-align: center;
 
       .btn {
-        margin-top: 10px;
-        width: 100%;
+        width: 100px;
       }
     }
   }
@@ -491,6 +513,10 @@
   bottom: 0;
   right: 0;
   z-index: 4;
+}
+
+.trashBtn:hover {
+  color: red !important;
 }
 
 /* Create a custom checkbox */
@@ -560,6 +586,10 @@
 .chooseColor {
   align-self: center;
   justify-self: center;
+}
+
+.currentStyle {
+  border: 5px $primary-color solid !important;
 }
 
 // ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
@@ -764,6 +794,7 @@
     }
   }
 }
+
 .blacktheme {
   background: linear-gradient(to bottom, black, grey);
   @include chooseDisplay;
@@ -882,7 +913,7 @@
   }
 }
 
-// ---------------------------------------------------------------------------------------- // NEGO THEME NEGO THEME NEGO THEME
+// ---------------------------------------------------------------------------------------- // AFRO THEME AFRO THEME AFRO THEME
 
 .afrospecstyle {
   background: linear-gradient(to bottom, #e6541b, black);
@@ -975,7 +1006,24 @@
   }
 }
 
-@media screen and (max-width: 1440px) {
+// @media screen and (max-width: 1900) {
+//   .grid-container {
+//     .Dashboard {
+//       .avatarformcont {
+//         .profile-info {
+//           margin-left: 0% !important;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// Landscape view
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
+}
+
+// Small devices
+@media (max-width: 575.98px) {
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
@@ -987,23 +1035,28 @@
       "Link";
   }
 
+  .Preview {
+    .iphone-frame {
+      transform: scale(0.875);
+    }
+  }
+
   .Sidebar {
     background: linear-gradient(to right, $primary-color, black);
     // background: linear-gradient(to bottom, black, white, white, white) no-repeat
     //   0 0 / cover;
 
     h5 {
-      text-align: left !important;
+      text-align: left;
       padding: 15px;
-    }
-
-    button {
     }
   }
 
-  .Adslink {
-    // font-size: 0.8em;
+  // .Navigation {
+  //   background: linear-gradient(to bottom, white, #ededed);
+  // }
 
+  .Link {
     .usLinkAfro {
       color: black;
       background: white;
@@ -1017,62 +1070,136 @@
 
     .userLink {
       color: $primary-color;
-      width: 100% !important;
+      width: 175px;
 
       &:hover {
         color: $secondary-color;
       }
     }
   }
-}
 
-@media screen and (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "Sidebar"
-      "Dashboard"
-      "Preview"
-      "Link";
+  .Dashboard {
+    .avatarformcont {
+      flex-direction: column;
+      padding-bottom: 10%;
 
-    .Dashboard {
-      .avatarformcont {
-        flex-direction: column !important;
-
-        .profile-info {
-          margin-top: 10%;
-          margin-left: 17.5%;
-          align-self: auto;
-        }
-
-        .profile-input {
-          width: 275px;
-        }
-
-        .loading-complete {
-          top: 165px;
-          padding: 1px 7.5px;
-          border-radius: 2.5px;
-          opacity: 0.9;
-          left: 16%;
-          bottom: initial;
-        }
-
-        .link-cont {
-          padding: 1%;
-
-          .link-input {
-            width: 100% !important;
-          }
-        }
+      .loading-complete {
+        top: 20% !important;
+        padding: 1px 7.5px;
+        border-radius: 2.5px;
+        opacity: 0.9;
+        left: 5% !important;
+        bottom: initial;
       }
+    }
+    .formavatar {
+      margin-bottom: 7.5%;
+    }
+
+    .profile-input {
+      margin: 6% 6% 7.5% 3%;
+    }
+
+    .profile-info {
+      .btn {
+        margin-left: 0px;
+      }
+    }
+
+    // .logerror {
+    //   bottom: 0px;
+    // }
+
+    .linkErrorStyle {
+      width: 95%;
+      // bottom: 500px !important;
+      top: 267.5px;
+      left: 2.5%;
+    }
+
+    .social-cont {
+      .social-input {
+        width: 82.5%;
+      }
+    }
+
+    .social-buttons {
+      margin-top: 2000px;
+      width: 100%;
+
+      .socialSpec {
+        margin-left: 25px;
+      }
+    }
+
+    .link-cont {
+      display: block;
+      margin: 10px 5px 35px 5px;
+
+      .nextoClear {
+        margin: 0 5%;
+      }
+
+      h3 {
+        margin-top: 10px;
+        margin-left: 15px;
+      }
+
+      .link-input {
+        margin: 2% 5% 7.5% 5%;
+        width: 90%;
+      }
+
+      #specsBtn {
+        float: left !important;
+        margin: 0 5%;
+      }
+    }
+
+    .updateLink {
+      float: right;
+      bottom: 47.5px;
+      right: 10px;
+      position: relative;
+    }
+
+    .updateLinkShow {
+      margin-bottom: 5px;
+      width: 150px;
+    }
+
+    .updateHyperLinkShow {
+      margin-top: 15px;
+      width: 150px;
+    }
+
+    .inputCont {
+      float: right;
+      position: relative;
+      left: 75px;
+      bottom: 10px;
+    }
+
+    .trashBtn {
+      cursor: pointer;
+      position: relative;
+      float: right;
+      left: 75px;
+      bottom: 10px;
+    }
+
+    .pickColor {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .chooseColor {
+      transform: scale(0.75);
     }
   }
 }
 
-@media screen and (max-width: 768px) {
+// Normal devices
+@media (max-width: 767.98px) {
   .Dashboard {
     .avatarformcont {
       flex-direction: column;
@@ -1082,10 +1209,6 @@
       }
 
       .profile-info {
-        margin-top: 10%;
-        margin-left: 5%;
-        align-self: auto;
-
         .btn {
           margin-bottom: 20px;
           width: 100%;
@@ -1138,7 +1261,7 @@
       margin: 20px 5px 35px 5px;
 
       .link-input {
-        width: 50%;
+        width: 90%;
       }
 
       .nextoClear {
@@ -1155,10 +1278,6 @@
       display: block;
       padding: 15px 10px 30px 15px !important;
       background: white;
-    }
-
-    .edit-input {
-      width: 50%;
     }
 
     .updateLink {
@@ -1193,7 +1312,8 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+// Medium devices
+@media (max-width: 991.98px) {
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
@@ -1203,34 +1323,81 @@
       "Dashboard"
       "Preview"
       "Link";
-  }
 
-  .Preview {
-    .iphone-frame {
-      transform: scale(0.875);
+    .Dashboard {
+      .avatarformcont {
+        flex-direction: column;
+
+        .profile-info {
+          margin: 2.5% auto;
+          align-self: auto;
+          min-width: 75%;
+
+          .btn {
+            margin-left: 0px;
+          }
+        }
+
+        .profile-input {
+          width: 275px;
+        }
+
+        .loading-complete {
+          top: 165px;
+          padding: 1px 7.5px;
+          border-radius: 2.5px;
+          opacity: 0.9;
+          left: 16%;
+          bottom: initial;
+        }
+      }
+
+      .social-cont {
+        flex-direction: column;
+      }
+
+      .link-cont {
+        padding: 1%;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// Large devices
+@media (max-width: 1199.98px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+    .Dashboard {
+      .social-cont {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   }
 
   .Sidebar {
-    background: linear-gradient(to right, $primary-color, black);
+    background: linear-gradient(to right, #e9c986, black);
     // background: linear-gradient(to bottom, black, white, white, white) no-repeat
     //   0 0 / cover;
 
     h5 {
-      text-align: left;
+      text-align: left !important;
       padding: 15px;
-    }
-
-    button {
     }
   }
 
-  // .Navigation {
-  //   background: linear-gradient(to bottom, white, #ededed);
-  // }
-
-  .Link {
-    font-size: 0.8em;
+  .Adslink {
+    // font-size: 0.8em;
 
     .usLinkAfro {
       color: black;
@@ -1245,136 +1412,36 @@
 
     .userLink {
       color: $primary-color;
-      width: 175px;
+      width: 100% !important;
 
       &:hover {
         color: $secondary-color;
       }
     }
   }
+}
 
-  .Dashboard {
-    .avatarformcont {
-      flex-direction: column;
-      padding-bottom: 10%;
+// Huge devices
+@media (max-width: 1441px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+    .Dashboard {
+      .social-cont {
+        flex-direction: column;
+        gap: 15px;
 
-      .loading-complete {
-        top: 20% !important;
-        padding: 1px 7.5px;
-        border-radius: 2.5px;
-        opacity: 0.9;
-        left: 5% !important;
-        bottom: initial;
+        .social-buttons {
+          margin-top: 30px;
+          text-align: right;
+        }
       }
-    }
-    .formavatar {
-      margin-bottom: 7.5%;
-    }
-
-    .profile-info {
-      margin: 10% 15px !important;
-    }
-
-    .profile-input {
-      margin: 6% 6% 7.5% 3%;
-    }
-
-    // .logerror {
-    //   bottom: 0px;
-    // }
-
-    .linkErrorStyle {
-      width: 95%;
-      // bottom: 500px !important;
-      top: 267.5px;
-      left: 2.5%;
-    }
-
-    .social-cont {
-      flex-direction: column;
-      background: linear-gradient(to bottom, black, $primary-color) no-repeat 0
-        0 / cover;
-      border-radius: 3px;
-      padding: 25px 4%;
-      margin-top: 25px;
-      box-shadow: none;
-
-      .social-input {
-        width: 82.5%;
-      }
-    }
-
-    .social-buttons {
-      margin-top: 2000px;
-      width: 100%;
-
-      .socialSpec {
-        margin-left: 25px;
-      }
-      // &:nth-child(2) {
-      //   padding-right: 15px !important;
-      //   color: red !important;
-      //   background: red !important;
-      // }
-    }
-
-    .link-cont {
-      display: block;
-      margin: 10px 5px 35px 5px;
-
-      .nextoClear {
-        margin: 0 5%;
-      }
-
-      h3 {
-        margin-top: 10px;
-        margin-left: 15px;
-      }
-
-      .link-input {
-        margin: 2% 5% 7.5% 5%;
-        width: 90%;
-      }
-    }
-
-    .updateLink {
-      float: right;
-      bottom: 47.5px;
-      right: 10px;
-      position: relative;
-    }
-
-    .updateLinkShow {
-      margin-bottom: 5px;
-      width: 150px;
-    }
-
-    .updateHyperLinkShow {
-      margin-top: 15px;
-      width: 150px;
-    }
-
-    .inputCont {
-      float: right;
-      position: relative;
-      left: 75px;
-      bottom: 10px;
-    }
-
-    .trashBtn {
-      cursor: pointer;
-      position: relative;
-      float: right;
-      left: 75px;
-      bottom: 10px;
-    }
-
-    .pickColor {
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    .chooseColor {
-      transform: scale(0.75);
     }
   }
 }
