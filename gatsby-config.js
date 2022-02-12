@@ -106,9 +106,9 @@ module.exports = {
         theme_color: `#cc9932`,
         display: `standalone`,
         icon: "src/images/afrodiasphere-logo.png",
-        icon_options: {
-          purpose: `any maskable`,
-        },
+        // icon_options: {
+        //   purpose: `any maskable`,
+        // },
         crossOrigin: `use-credentials`,
       },
     },
