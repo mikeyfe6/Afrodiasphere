@@ -17,11 +17,11 @@
 
 <br>
 
-<!-- Gimmix is een jong en modern webmediabedrijf, opgericht door [Michael Fransman](https://www.linkedin.com/in/michaelfransman/).
+Afrodiasphere is een sociaal netwerk webapplicatie, opgericht door [Michael Fransman](https://www.linkedin.com/in/michaelfransman/).
 
-Die zich inzet en gespecialiseerd is in het uitdenken en ontwikkelen van websites en webapplicaties. Wij zorgen dat de ambities van de klant en het eindproduct tot één komen. -->
+Die ervoor dient bedrijven, particulieren en hobbyisten meer netwerkmogelijkheden te bieden, door middel van jouw dashboard waarin je jouw belangrijke hyperlinks en andere relevante informatie als gebruiker invoert!
 
-- _Bekijk ook de webapp / Also check the webapp: [Afrodiasphere](https://afrodiasphere.netlify.app/)_
+- _Meer weten? Bekijk de webapp / check the webapp: [Afrodiasphere](https://afrodiasphere.netlify.app/)_
 
 <br>
 
