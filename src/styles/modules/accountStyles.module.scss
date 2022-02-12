@@ -319,7 +319,7 @@
       .social-input {
         font-size: 16px !important;
         padding: 10px;
-        color: $white-color;
+        color: rgba(255, 255, 255, 0.5);
 
         opacity: 0.75;
         background: transparent;
@@ -330,9 +330,9 @@
         @include smoothtrans;
       }
 
-      // input:focus {
-      //   color: grey;
-      // }
+      input:focus {
+        color: $white-color;
+      }
 
       input:hover {
         @include smoothtrans;
@@ -340,7 +340,7 @@
 
       input::placeholder {
         font-size: 0.75em;
-        color: rgba(255, 255, 255, 0.658);
+        color: rgba(255, 255, 255, 0.5);
       }
 
       button {
@@ -504,10 +504,10 @@
 
   .edit-input {
     border: 0;
-    border-bottom: 1px solid #b4becb;
+    border-bottom: 1px solid #b4becb77;
     color: $black-color;
     background: transparent;
-    padding: 5px 0px;
+    padding: 10px 0px;
     width: 17.5em;
     font-size: 16px !important;
 
@@ -640,7 +640,6 @@
 
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: auto;
-  gap: 1.5em;
 }
 
 .chooseColor {
@@ -1098,6 +1097,10 @@
         }
       }
 
+      .mobileHr {
+        margin: 50px auto !important;
+      }
+
       .vl {
         display: none;
       }
@@ -1111,7 +1114,7 @@
         margin: 0px;
         margin-bottom: 0.5em;
 
-        gap: 1em;
+        gap: 1.25em;
         padding: 1em;
 
         .updateLinkcont {
@@ -1128,6 +1131,12 @@
 
         .edit-input {
           width: 100%;
+        }
+      }
+
+      .pickColor {
+        .chooseColor {
+          transform: scale(0.8);
         }
       }
     }

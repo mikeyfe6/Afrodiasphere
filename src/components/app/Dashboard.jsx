@@ -118,6 +118,7 @@ import {
   updateLinkcont,
   updateHyperLinkcont,
   deleteShowcont,
+  mobileHr,
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
@@ -1461,6 +1462,7 @@ const DashboardPage = () => {
               width: "50%",
               margin: "75px auto",
             }}
+            className={mobileHr}
           />
 
           {/* SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT <--------------------------------------------------------------------------------> SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT */}
@@ -1660,6 +1662,7 @@ const DashboardPage = () => {
               width: "50%",
               margin: "75px auto",
             }}
+            className={mobileHr}
           />
 
           {/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
@@ -1844,6 +1847,7 @@ const DashboardPage = () => {
               width: "50%",
               margin: "75px auto",
             }}
+            className={mobileHr}
           />
 
           {/* CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR <-------------------------------------------------------------------------------->  CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR*/}
