@@ -382,9 +382,8 @@
 
     input {
       font-size: 16px !important;
-      min-width: 15em;
+      min-width: 5em;
       width: 100%;
-      font-size: 16 !important;
       padding: 10px;
       opacity: 0.75;
       outline: none;
@@ -477,7 +476,7 @@
 
   .updateLinkShow {
     width: 200px;
-    font-size: 1.1em;
+    font-size: 0.7em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -485,7 +484,7 @@
   }
 
   .updateHyperLinkShow {
-    font-size: 1.1em;
+    font-size: 0.7em;
     width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -518,7 +517,6 @@
 
     &::placeholder {
       font-size: 0.75em;
-      padding: 0px 2.5px;
     }
   }
 
@@ -642,7 +640,7 @@
 
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: auto;
-  gap: 25px;
+  gap: 1.5em;
 }
 
 .chooseColor {
