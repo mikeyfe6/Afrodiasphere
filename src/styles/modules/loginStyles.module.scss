@@ -3,17 +3,7 @@
 
 .superContainer {
   font-family: "Montserrat", "sans-serif";
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: 35%;
-  text-align: center;
+  margin: 1.5em 1em 0;
 
   span {
     font-size: 12px;
@@ -29,9 +19,9 @@
 
   button {
     // border-radius: 20px;
-    border: 1px solid black;
-    background: white;
-    // color: white;
+    border: 1px solid $black-color;
+    background: $white-color;
+    color: $black-color;
 
     font-weight: bold;
     padding: 12px 45px;
@@ -51,8 +41,8 @@
 
   button.ghost {
     background: transparent;
-    border-color: 000000;
-    color: black;
+    border-color: $primary-color;
+    color: $black-color;
   }
 
   .container {
@@ -71,6 +61,15 @@
       height: 100%;
       transition: all 0.6s ease-in-out;
 
+      .forgetLink {
+        margin: 1.75em 0 1em;
+        @include smoothtrans;
+
+        &:hover {
+          color: $white-color;
+        }
+      }
+
       form {
         display: flex;
         flex-direction: column;
@@ -84,10 +83,16 @@
       input {
         background: #eee;
         border: none;
-        padding: 12px 15px;
+        padding: 10px 15px;
         margin: 12.5px 0;
         width: 100%;
         border-radius: 3px;
+        font-size: 16px;
+        @include boxshadow;
+
+        &::placeholder {
+          font-size: 0.75em;
+        }
       }
 
       .socialContainer {
@@ -160,9 +165,9 @@
 
   .overlay {
     // background: linear-gradient(to left, gray, white) no-repeat 0 0 / cover;
-    background: linear-gradient(to left, rgba(255, 255, 255, 1), white)
+    background: linear-gradient(to left, rgba(255, 255, 255, 1), $white-color)
       no-repeat 0 0 / cover;
-    color: black;
+    color: $black-color;
     position: relative;
     left: -100%;
     height: 100%;
@@ -209,18 +214,18 @@
   margin: 20px 0 30px;
 }
 
-.storeCode input {
-  padding: 10px 12.5px !important;
-  font-weight: bold;
-  color: $secondary-color;
-}
+// .storeCode input {
+//   padding: 10px 12.5px !important;
+//   font-weight: bold;
+//   color: $secondary-color;
+// }
 
 .logerror {
   position: absolute;
   bottom: 75px;
   background-color: #ff0102;
   font-weight: bold;
-  color: white;
+  color: $white-color;
   padding: 0.1rem 0.7rem;
   display: table;
   margin: 0 auto;
@@ -231,7 +236,7 @@
 .loadingmsg {
   background-color: green;
   font-weight: bold;
-  color: white;
+  color: $white-color;
   padding: 0.3rem 0.7rem;
   display: table;
   margin: 0 auto;
@@ -254,8 +259,8 @@
 @media only screen and (min-device-width: 480px) and (max-device-width: 991.98px) and (orientation: landscape) {
 }
 
-// Small devices
-@media (max-width: 575.98px) {
+// SMALL devices
+@media (max-width: 40em) {
   .docs-head {
     text-align: center;
     padding: 2rem 0 0 0 !important;
@@ -271,31 +276,20 @@
   }
 }
 
-// Normal devices
-@media (max-width: 767.98px) {
-  .docs-head {
-    .imgHide {
-      justify-self: center;
-      display: none;
-    }
-
-    h1 {
-      display: none;
-    }
-  }
-
+// LARGE devices
+@media (max-width: 64em) {
   .logerror {
     position: absolute;
     bottom: 80px;
-    font-size: 9px !important;
+    font-size: 9px;
     padding: 0.1rem 0.3rem;
   }
 
-  .storeCode input {
-    padding: 7.5px 7.5px !important;
-    margin: 8px 1px !important;
-    font-size: 0.7em;
-  }
+  // .storeCode input {
+  //   padding: 7.5px 7.5px !important;
+  //   margin: 8px 1px !important;
+  //   font-size: 0.7em;
+  // }
 
   .superContainer {
     font-size: 0.8em;
@@ -304,12 +298,7 @@
       font-size: 0.9em;
     }
 
-    position: absolute;
-    top: 175px;
-
     .container {
-      width: 97%;
-
       .formContainer {
         form {
           padding: 0 15px;
@@ -318,7 +307,6 @@
         input {
           padding: 12px 15px;
           margin: 8px 0;
-          width: 100%;
         }
       }
     }
@@ -329,25 +317,4 @@
       }
     }
   }
-}
-
-// Medium devices
-@media (max-width: 991.98px) {
-  .docs-head {
-    text-align: center;
-    padding: 2rem 0 0 0 !important;
-
-    .imgHide {
-      justify-self: center;
-      transform: scale(0.6);
-    }
-
-    h1 {
-      transform: scale(0.9);
-    }
-  }
-}
-
-// Large devices
-@media (max-width: 1199.98px) {
 }

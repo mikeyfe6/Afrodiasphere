@@ -8,22 +8,16 @@ import React, {
 import { Link } from "gatsby"
 import axios from "axios"
 import {
-  FaLock,
-  FaAt,
-  FaUser,
-  FaGlobe,
   FaFacebookF,
   FaInstagram,
   FaTwitter,
   FaTrash,
-  // FaRegEdit,
-  FaRegUserCircle,
   FaWhatsapp,
 } from "react-icons/fa"
 
 import { SiTiktok } from "react-icons/si"
 
-import Seo from "../../components/seo"
+import Seo from "../seo"
 
 import { navigate } from "@reach/router"
 import { getUser, logout } from "../../services/auth"
@@ -64,7 +58,6 @@ import {
   gridContainer,
   card,
   Sidebar,
-  // userTitle,
   btn,
   Preview,
   iphoneFrame,
@@ -84,22 +77,17 @@ import {
   btnLight,
   resetBtn,
   btnSecondary,
-  nextoClear,
   submitBtn,
   profileInfo,
   profileInput,
   socialCont,
-  socialForm,
   socialIcons,
   socialInput,
-  socialButtons,
   vl,
   linksCont,
   linkCont,
-  linkInput,
   updateLinkShow,
   editInput,
-  updateLink,
   updateHyperLinkShow,
   trashBtn,
   inputCont,
@@ -125,7 +113,11 @@ import {
   usLinkSite,
   userLink,
   currentStyle,
-  specsBtn,
+  linksOnline,
+  buttonsOnline,
+  updateLinkcont,
+  updateHyperLinkcont,
+  deleteShowcont,
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
@@ -147,7 +139,7 @@ const DoThis = ({ text }) => {
   )
 }
 
-const AccountPage = () => {
+const DashboardPage = () => {
   // const { site } = useStaticQuery(
   //   graphql`
   //     query {
@@ -1033,11 +1025,12 @@ const AccountPage = () => {
 
   return (
     <>
-      <Seo title="Admin Panel" />
+      <Seo title="Dashboard" />
       <div className={`${gridContainer} ${card}`}>
         {/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
-        <div
+        <aside
+          id="ads-side"
           className={`${Sidebar} ${card}`}
           style={{
             position: "relative",
@@ -1047,13 +1040,18 @@ const AccountPage = () => {
             // className={userTitle}
             style={{
               textAlign: "center",
-              fontSize: "0.9em",
-              margin: "auto",
+              fontSize: "0.75em",
               color: "white",
             }}
           >
             Welkom{" "}
-            <span style={{ color: "#16b7f2" }}>{gatsbyUser.user.username}</span>{" "}
+            <span
+              style={{
+                color: "#ababab",
+              }}
+            >
+              {gatsbyUser.user.username}
+            </span>{" "}
             !
           </h5>
 
@@ -1063,26 +1061,26 @@ const AccountPage = () => {
               bottom: "10px",
               right: "10px",
               color: "white",
-              backgroundColor: "red",
+              backgroundColor: "#ababab",
             }}
             className={btn}
             href="#"
             onClick={e => {
               e.preventDefault()
-              logout(() => navigate("/admin/login"))
+              logout(() => navigate("/app/login"))
             }}
           >
             Logout
           </button>
-        </div>
+        </aside>
 
-        {/* NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION <--------------------------------------------------------------------------------> NAVIGATION NAVIGATION NAVIGATION NAVIGATION NAVIGATION */}
+        {/* NAVIGATION NAVIGATION NAVIGATION NAVIGATION <--------------------------------------------------------------------------------> NAVIGATION NAVIGATION NAVIGATION NAVIGATION */}
         {/* <div
         className={`${accountStyles.Navigation} ${accountStyles.card}`}
       ></div> */}
 
         {/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
-        <div className={`${Preview} ${card}`}>
+        <section id="ads-preview" className={`${Preview} ${card}`}>
           <div className={iphoneFrame}>
             {" "}
             <img
@@ -1179,11 +1177,29 @@ const AccountPage = () => {
             className={accountStyles.iphoneBg}
           />{" "} */}
           </div>
-        </div>
+        </section>
 
         {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD */}
-        <div className={`${Dashboard} ${p3} ${card}`}>
+
+        <section id="ads-dashboard" className={`${Dashboard} ${p3} ${card}`}>
           <br />
+
+          <h2 style={{ textAlign: "center" }}>
+            <b>
+              <u
+                style={{
+                  color: "white",
+                  textDecoration: "underline",
+                  textDecorationColor: "grey",
+                }}
+              >
+                Profile Info
+              </u>
+            </b>
+          </h2>
+
+          <br />
+
           <div className={avatarformcont}>
             <form onSubmit={handleSubmit} className={formavatar}>
               <div>
@@ -1245,31 +1261,32 @@ const AccountPage = () => {
               </div>
             </form>
 
+            {/* PROFILE INFO ROFILE INFO PROFILE INFO PROFILE INFO <--------------------------------------------------------------------------------> PROFILE INFO PROFILE INFO PROFILE INFO PROFILE INFO */}
+
             <div className={profileInfo}>
               <form onSubmit={submitProfile}>
-                <label htmlFor="profile">
-                  <FaRegUserCircle
-                    color="#cc9932"
-                    size="1em"
-                    style={{
-                      position: "relative",
-                      top: "7.5px",
-                      margin: "0 10px",
-                    }}
-                  />
-                  <input
-                    onChange={setProfileHandler}
-                    value={profile || ""}
-                    type="text"
-                    maxLength="35"
-                    name="text"
-                    id="profile"
-                    className={profileInput}
-                    style={{
-                      cursor: "pointer",
-                    }}
-                  />
-                </label>
+                {/* <FaRegUserCircle
+                  color="#cc9932"
+                  size="1em"
+                  style={{
+                    position: "relative",
+                    top: "7.5px",
+                    margin: "0 10px",
+                  }}
+                /> */}
+                <label htmlFor="profile">Profielnaam</label>
+                <input
+                  onChange={setProfileHandler}
+                  value={profile || ""}
+                  type="text"
+                  maxLength="35"
+                  name="text"
+                  id="profile"
+                  className={profileInput}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
                 <button
                   className={btn}
                   type="submit"
@@ -1283,8 +1300,7 @@ const AccountPage = () => {
               </form>
 
               <form onSubmit={submitUsername}>
-                <label htmlFor="username">
-                  <FaUser
+                {/* <FaUser
                     color="#cc9932"
                     size="1em"
                     style={{
@@ -1292,22 +1308,22 @@ const AccountPage = () => {
                       top: "7.5px",
                       margin: "0 10px",
                     }}
-                  />
-                  <input
-                    onChange={setUsernameHandler}
-                    value={username || ""}
-                    type="text"
-                    maxLength="25"
-                    name="username"
-                    id="username"
-                    pattern="[^\s]+"
-                    title="Geen spaties"
-                    className={profileInput}
-                    style={{
-                      cursor: "pointer",
-                    }}
-                  />
-                </label>
+                  /> */}
+                <label htmlFor="username">Gebruikersnaam</label>
+                <input
+                  onChange={setUsernameHandler}
+                  value={username || ""}
+                  type="text"
+                  maxLength="25"
+                  name="username"
+                  id="username"
+                  pattern="[^\s]+"
+                  title="Geen spaties"
+                  className={profileInput}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
                 <button
                   className={btn}
                   type="submit"
@@ -1321,27 +1337,27 @@ const AccountPage = () => {
               </form>
 
               <form onSubmit={submitEmail}>
-                <label htmlFor="email">
-                  <FaAt
-                    color="#cc9932"
-                    size="1em"
-                    style={{
-                      position: "relative",
-                      top: "7.5px",
-                      margin: "0 10px",
-                    }}
-                  />
-                  <input
-                    onChange={setEmailHandler}
-                    value={email || ""}
-                    type="email"
-                    name="email"
-                    maxLength="35"
-                    id="email"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    className={profileInput}
-                  />
-                </label>
+                <label htmlFor="email">Email</label>
+                {/* <FaAt
+                  color="#cc9932"
+                  size="1em"
+                  style={{
+                    position: "relative",
+                    top: "7.5px",
+                    margin: "0 10px",
+                  }}
+                /> */}
+                <input
+                  onChange={setEmailHandler}
+                  value={email || ""}
+                  type="email"
+                  name="email"
+                  maxLength="35"
+                  id="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                  className={profileInput}
+                />
+
                 <button
                   className={btn}
                   type="submit"
@@ -1355,32 +1371,32 @@ const AccountPage = () => {
               </form>
 
               <form onSubmit={submitPassword}>
-                <label htmlFor="password">
-                  <FaLock
-                    color="#cc9932"
-                    size="1em"
-                    style={{
-                      position: "relative",
-                      top: "7.5px",
-                      margin: "0 10px",
-                    }}
-                  />
-                  <input
-                    onChange={setPasswordHandler}
-                    value={password || ""}
-                    placeholder="*********"
-                    type="password"
-                    when
-                    name="password"
-                    id="password"
-                    className={profileInput}
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
-                    style={{
-                      cursor: "pointer",
-                    }}
-                  />
-                </label>
+                <label htmlFor="password"> Password </label>
+                {/* <FaLock
+                  color="#cc9932"
+                  size="1em"
+                  style={{
+                    position: "relative",
+                    top: "7.5px",
+                    margin: "0 10px",
+                  }}
+                /> */}
+                <input
+                  onChange={setPasswordHandler}
+                  value={password || ""}
+                  placeholder="*********"
+                  type="password"
+                  when
+                  name="password"
+                  id="password"
+                  className={profileInput}
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
+                  style={{
+                    cursor: "pointer",
+                  }}
+                />
+
                 <button
                   className={`${btn} ${btnSecondary} ${submitBtn}`}
                   type="submit"
@@ -1394,32 +1410,31 @@ const AccountPage = () => {
               </form>
 
               <form onSubmit={submitSlug}>
-                <label htmlFor="slug">
-                  <FaGlobe
-                    color="#cc9932"
-                    size="1em"
-                    style={{
-                      position: "relative",
-                      top: "7.5px",
-                      margin: "0 10px",
-                    }}
-                  />
-                  <input
-                    onChange={setSlugHandler}
-                    value={slug}
-                    type="text"
-                    name="slug"
-                    id="slug"
-                    readOnly
-                    disabled
-                    // placeholder="*verplicht, bijv: 'jouw-profiel'"
-                    placeholder="*verplicht, de beheerder maakt deze voor u aan"
-                    maxLength="15"
-                    className={profileInput}
-                    pattern="[^\s]+"
-                    title="geen spaties, alleen '-'"
-                  />
-                </label>
+                {/* <FaGlobe
+                  color="#cc9932"
+                  size="1em"
+                  style={{
+                    position: "relative",
+                    top: "7.5px",
+                    margin: "0 10px",
+                  }}
+                /> */}
+                <label htmlFor="slug">Slug</label>
+                <input
+                  onChange={setSlugHandler}
+                  value={slug}
+                  type="text"
+                  name="slug"
+                  id="slug"
+                  readOnly
+                  disabled
+                  // placeholder="*verplicht, bijv: 'jouw-profiel'"
+                  placeholder="*verplicht, de beheerder maakt deze voor u aan"
+                  maxLength="15"
+                  className={profileInput}
+                  pattern="[^\s]+"
+                  title="geen spaties, alleen '-'"
+                />
 
                 <button
                   className={btn}
@@ -1439,15 +1454,16 @@ const AccountPage = () => {
             {error && <ErrorMessage text={error} />}
           </div>
 
-          {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> DASHBOARD SOCIAL CONT DASHBOARD SOCIAL CONT */}
-
           <hr
             style={{
               border: "1px solid white",
-              margin: "75px 50px",
-              opacity: "0.1",
+              opacity: "0.025",
+              width: "50%",
+              margin: "75px auto",
             }}
           />
+
+          {/* SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT <--------------------------------------------------------------------------------> SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT */}
 
           <h2 style={{ textAlign: "center" }}>
             <b>
@@ -1463,205 +1479,190 @@ const AccountPage = () => {
             </b>
           </h2>
 
+          {/* <div className={socialButtons}>
+           */}
+
           <div className={socialCont}>
-            <form onSubmit={submitFB} className={socialForm}>
-              <div>
-                <label htmlFor="fblink">
-                  <FaFacebookF
-                    size="1.1em"
-                    className={socialIcons}
-                    color="#4867AA"
-                  />
-
-                  <input
-                    onChange={setFbHandler}
-                    value={fbLink}
-                    type="text"
-                    name="fblink"
-                    id="fblink"
-                    placeholder="facebook.com/jouwprofiel"
-                    className={socialInput}
-                  />
-                </label>
-              </div>
-              <div className={socialButtons}>
-                <button
-                  className={btn}
-                  type="submit"
-                  style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  Save
-                </button>
-              </div>
-              <div style={{ clear: "both" }} />
+            <form onSubmit={submitFB}>
+              <label htmlFor="fblink">
+                <FaFacebookF
+                  size="1.1em"
+                  className={socialIcons}
+                  color="#4867AA"
+                />
+                Facebook
+              </label>
+              <input
+                onChange={setFbHandler}
+                value={fbLink}
+                type="text"
+                name="fblink"
+                id="fblink"
+                placeholder="facebook.com/jouwprofiel"
+                className={socialInput}
+              />
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
             </form>
 
             <div style={{ position: "relative" }}>
               <div className={vl}></div>
             </div>
 
-            <form onSubmit={submitTW} className={socialForm}>
-              <div>
-                <label htmlFor="twlink">
-                  <FaTwitter
-                    size="1.1em"
-                    className={socialIcons}
-                    color="#1FA1F1"
-                  />
-
-                  <input
-                    onChange={setTwHandler}
-                    value={twLink}
-                    type="text"
-                    name="twlink"
-                    id="twlink"
-                    placeholder="twitter.com/jouwprofiel"
-                    className={socialInput}
-                  />
-                </label>
-              </div>
-              <div className={socialButtons}>
-                <button
-                  className={btn}
-                  type="submit"
-                  style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+            <form onSubmit={submitTW}>
+              <label htmlFor="twlink">
+                <FaTwitter
+                  size="1.1em"
+                  className={socialIcons}
+                  color="#1FA1F1"
+                />
+                Twitter
+              </label>
+              <input
+                onChange={setTwHandler}
+                value={twLink}
+                type="text"
+                name="twlink"
+                id="twlink"
+                placeholder="twitter.com/jouwprofiel"
+                className={socialInput}
+              />
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
             </form>
 
             <div style={{ position: "relative" }}>
               <div className={vl}></div>
             </div>
 
-            <form onSubmit={submitIG} className={socialForm}>
-              <div>
-                <label htmlFor="iglink">
-                  <FaInstagram
-                    size="1.1em"
-                    className={socialIcons}
-                    color="#F81F58"
-                  />
+            <form onSubmit={submitIG}>
+              <label htmlFor="iglink">
+                <FaInstagram
+                  size="1.1em"
+                  className={socialIcons}
+                  color="#F81F58"
+                />
+                Instagram
+              </label>
 
-                  <input
-                    onChange={setIgHandler}
-                    value={igLink}
-                    type="text"
-                    name="iglink"
-                    id="iglink"
-                    placeholder="instagram.com/jouwprofiel"
-                    className={socialInput}
-                  />
-                </label>
-              </div>
-              <div className={socialButtons}>
-                <button
-                  className={btn}
-                  type="submit"
-                  style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+              <input
+                onChange={setIgHandler}
+                value={igLink}
+                type="text"
+                name="iglink"
+                id="iglink"
+                placeholder="instagram.com/jouwprofiel"
+                className={socialInput}
+              />
+
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
             </form>
 
             <div style={{ position: "relative" }}>
               <div className={vl}></div>
             </div>
 
-            <form onSubmit={submitWA} className={socialForm}>
-              <div>
-                <label htmlFor="walink">
-                  <FaWhatsapp
-                    size="1.1em"
-                    className={socialIcons}
-                    color="#3FD252"
-                  />
-
-                  <input
-                    onChange={setWaHandler}
-                    value={waLink}
-                    type="text"
-                    name="walink"
-                    id="walink"
-                    maxLength="15"
-                    placeholder="bijv.: 31601234567"
-                    className={socialInput}
-                  />
-                </label>
-              </div>
-              <div className={socialButtons}>
-                <button
-                  className={btn}
-                  type="submit"
-                  style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+            <form onSubmit={submitWA}>
+              <label htmlFor="walink">
+                <FaWhatsapp
+                  size="1.1em"
+                  className={socialIcons}
+                  color="#3FD252"
+                />
+                Whatsapp
+              </label>
+              <input
+                onChange={setWaHandler}
+                value={waLink}
+                type="text"
+                name="walink"
+                id="walink"
+                maxLength="15"
+                placeholder="bijv.: 31601234567"
+                className={socialInput}
+              />
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
             </form>
 
             <div style={{ position: "relative" }}>
               <div className={vl}></div>
             </div>
 
-            <form onSubmit={submitTK} className={socialForm}>
-              <div>
-                <label htmlFor="tklink">
-                  <SiTiktok
-                    size="1.1em"
-                    className={socialIcons}
-                    color="#4BE1EB"
-                  />
-
-                  <input
-                    onChange={setTkHandler}
-                    value={tkLink}
-                    type="text"
-                    name="tklink"
-                    id="tklink"
-                    placeholder="tiktok.com/jouwprofiel"
-                    className={socialInput}
-                  />
-                </label>
-              </div>
-              <div className={socialButtons}>
-                <button
-                  className={btn}
-                  type="submit"
-                  style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  Save
-                </button>
-              </div>
+            <form onSubmit={submitTK}>
+              <label htmlFor="tklink">
+                <SiTiktok
+                  size="1.1em"
+                  className={socialIcons}
+                  color="#4BE1EB"
+                />
+                TikTok
+              </label>
+              <input
+                onChange={setTkHandler}
+                value={tkLink}
+                type="text"
+                name="tklink"
+                id="tklink"
+                placeholder="tiktok.com/jouwprofiel"
+                className={socialInput}
+              />
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
             </form>
           </div>
-
-          {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> ADDD LINK DASHBOARD ADDD LINK DASHBOARD ADDD LINK DASDHBOARD */}
 
           <hr
             style={{
               border: "1px solid white",
-              margin: "75px 50px",
-              opacity: "0.1",
+              opacity: "0.025",
+              width: "50%",
+              margin: "75px auto",
             }}
           />
+
+          {/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
 
           <h2 style={{ textAlign: "center" }}>
             <b>
@@ -1678,24 +1679,33 @@ const AccountPage = () => {
           </h2>
 
           <br />
-          <div style={{ position: "relative" }}>
-            <div className={linkCont}>
-              <h3 style={{ color: "white" }}>
-                Titel<span style={{ color: "#e6541b" }}>:</span>
-              </h3>
+          {/* <div style={{ position: "relative" }}> */}
+          <div className={linkCont}>
+            <div className={linksOnline}>
+              <label htmlFor="newlink">
+                <h3 style={{ color: "white" }}>
+                  Titel<span style={{ color: "#cc9932" }}>:</span>
+                </h3>
+              </label>
               <input
-                className={linkInput}
+                // className={linkInput}
+                id="newlink"
                 type="text"
                 placeholder="voer een titel in"
                 ref={linkTitle}
                 minLength="5"
                 required
               />
-              <h3 style={{ color: "white" }}>
-                Hyperlink<span style={{ color: "#e6541b" }}>:</span>{" "}
-              </h3>
+            </div>
+            <div className={linksOnline}>
+              <label htmlFor="newhyperlink">
+                <h3 style={{ color: "white" }}>
+                  Hyperlink<span style={{ color: "#cc9932" }}>:</span>
+                </h3>
+              </label>
               <input
-                className={linkInput}
+                id="newhyperlink"
+                // className={linkInput}
                 type="url"
                 placeholder="voer hyperlink in, bijv: voorbeeld.nl"
                 ref={hyperLink}
@@ -1703,11 +1713,11 @@ const AccountPage = () => {
                 minLength="5"
                 required
               />
+            </div>
+            {/* ${nextoClear} */}
+            <div className={buttonsOnline}>
               <button
-                className={`${btn} ${btnSecondary} ${nextoClear} `}
-                style={{
-                  float: "right",
-                }}
+                className={`${btn} ${btnSecondary}`}
                 onClick={event => {
                   createLink()
                   event.preventDefault()
@@ -1717,8 +1727,7 @@ const AccountPage = () => {
               </button>
               <button
                 className={btn}
-                id={specsBtn}
-                style={{ background: "red", float: "right", color: "white" }}
+                style={{ background: "red", color: "white" }}
                 onClick={event => {
                   linkTitle.current.value = ""
                   hyperLink.current.value = ""
@@ -1727,14 +1736,19 @@ const AccountPage = () => {
               >
                 Reset
               </button>
-              <div style={{ clear: "both" }} />
-              {linkError && <DoThis text={linkError} />}
             </div>
+            {/* <div style={{ clear: "both" }} /> */}
+            {linkError && <DoThis text={linkError} />}
+          </div>
 
-            <br />
-            <ul>
-              {links.map(link => (
-                <li key={link.id} className={`${linksCont} ${card}`}>
+          <br />
+
+          {/* LINK LIST LIK LIST LINK LIST LIK LIST LINK LIST LIK LIST <--------------------------------------------------------------------------------> LINK LIST LIK LIST LINK LIST LIK LIST LINK LIST LIK LIST */}
+
+          <ul>
+            {links.map(link => (
+              <li key={link.id} className={`${linksCont} ${card}`}>
+                <div className={updateLinkcont}>
                   <div>
                     <p className={updateLinkShow}>{link.title}</p>
                     <input
@@ -1750,7 +1764,7 @@ const AccountPage = () => {
                     />
                   </div>
                   <button
-                    className={updateLink}
+                    className={btn}
                     onClick={event => {
                       editTheLink({
                         id: link.id,
@@ -1759,8 +1773,11 @@ const AccountPage = () => {
                       event.preventDefault()
                     }}
                   >
-                    Update Titel
+                    Update <br />
+                    Titel
                   </button>
+                </div>
+                <div className={updateHyperLinkcont}>
                   <div>
                     <b>
                       <p className={updateHyperLinkShow}>{link.hyperlink}</p>{" "}
@@ -1779,7 +1796,7 @@ const AccountPage = () => {
                     />
                   </div>
                   <button
-                    className={updateLink}
+                    className={btn}
                     onClick={event => {
                       editTheHyperLink({
                         id: link.id,
@@ -1788,8 +1805,11 @@ const AccountPage = () => {
                       event.preventDefault()
                     }}
                   >
-                    Update Hyperlink
+                    Update <br /> Hyperlink
                   </button>
+                </div>
+
+                <div className={deleteShowcont}>
                   <FaTrash
                     color="black"
                     style={{ cursor: "pointer" }}
@@ -1809,22 +1829,24 @@ const AccountPage = () => {
                       onChange={e => toggleLink(link, e.target.checked)}
                     />
 
-                    {/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <--------------------------------------------------------------------------------> ADDD LINK SECTIEEE ADDD LINK SECTIEEE ADDD LINK SECTIEEE */}
-
                     <span className={checkmark}></span>
                   </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          {/* </div> */}
 
           <hr
             style={{
               border: "1px solid white",
-              margin: "75px 50px",
-              opacity: "0.1",
+              opacity: "0.025",
+              width: "50%",
+              margin: "75px auto",
             }}
           />
+
+          {/* CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR <-------------------------------------------------------------------------------->  CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR*/}
 
           <h2 style={{ textAlign: "center" }}>
             <b>
@@ -1991,11 +2013,11 @@ const AccountPage = () => {
           </ul>
           <br />
           <br />
-        </div>
+        </section>
 
-        {/* LINK LINK LINK LINK LINK <--------------------------------------------------------------------------------> LINK LINK LINK LINK LINK */}
+        {/* SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK <--------------------------------------------------------------------------------> SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK */}
 
-        <div
+        <aside
           className={`${Adslink}`}
           style={{
             margin: "10px",
@@ -2018,10 +2040,10 @@ const AccountPage = () => {
               >{`${instURL}/${slug}`}</Link>
             </div>
           </div>
-        </div>
+        </aside>
       </div>
     </>
   )
 }
 
-export default AccountPage
+export default DashboardPage

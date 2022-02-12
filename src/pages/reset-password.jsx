@@ -6,7 +6,6 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 import {
-  indexBg,
   docsHead,
   bgPrimary,
   py3,
@@ -17,7 +16,7 @@ import {
   resetImg,
 } from "../styles/modules/resetStyles.module.scss"
 
-import servImage from "../images/server.png"
+import servImage from "../images/mamafrica.png"
 
 import ResetPassword from "../components/resetpwd"
 
@@ -26,15 +25,16 @@ const IndexPage = () => (
     <Seo title="Reset wachtwoord" />
     <section className={`${docsHead} ${bgPrimary} ${py3}`}>
       <div className={`${container} ${grid}`}>
-        <div style={{ textAlign: "left" }}>
+        <div>
           <h1 className={md}>Nieuw wachtwoord</h1>
-          <p className={lead}>Voer hier je nieuwe wachtwoord in</p>
+          <p className={lead} style={{ color: "#cc9932" }}>
+            Voer hier je nieuwe wachtwoord in
+          </p>
           <ResetPassword />
         </div>
         <img src={servImage} alt="" className={resetImg} />
       </div>
     </section>
-    <div className={indexBg} />
   </Layout>
 )
 

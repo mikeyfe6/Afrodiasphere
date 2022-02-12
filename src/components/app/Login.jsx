@@ -32,9 +32,10 @@ import {
   ghost,
   overlayRight,
   imgHide,
+  forgetLink,
 } from "../../styles/modules/loginStyles.module.scss"
 
-import servImage from "../../images/server.png"
+import servImage from "../../images/mamafrica.png"
 
 // import afroLogo from ""
 
@@ -114,7 +115,7 @@ const LoginPage = () => {
       setUser(data)
       setLoading("Aan het laden")
       setError(null)
-      navigate("/admin/account")
+      navigate("/app/dashboard")
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -163,7 +164,7 @@ const LoginPage = () => {
       console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
       setError(null)
-      navigate("/admin/account")
+      navigate("/app/dashboard")
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -296,10 +297,10 @@ const LoginPage = () => {
               />
               {error && <ErrorMessage text={error} />}
               {loading && <LoadingMessage text={loading} />}
-              <Link to="/forget-password">Wachtwoord vergeten</Link>
+              <Link to="/forget-password" className={forgetLink}>
+                Wachtwoord vergeten
+              </Link>
               <button style={{ cursor: "pointer" }}>Log in</button>
-              <br />
-              <br />
               <br />
             </form>
           </div>

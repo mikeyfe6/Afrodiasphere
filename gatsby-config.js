@@ -44,7 +44,7 @@ module.exports = {
     // },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/admin/*`] },
+      options: { prefixes: [`/app/*`] },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
@@ -78,7 +78,14 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/, // See below to configure properly
+        },
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-catch-links`,
     {
@@ -98,7 +105,7 @@ module.exports = {
         lang: `nl`,
         theme_color: `#cc9932`,
         display: `standalone`,
-        icon: "src/images/afroadiaspheretest.png",
+        icon: "src/images/afrodiasphere-logo.png",
         icon_options: {
           purpose: `any maskable`,
         },

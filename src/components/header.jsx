@@ -8,16 +8,26 @@ import {
   container,
 } from "../styles/modules/headerStyles.module.scss"
 
-import afroLogo from "../../static/afroadiaspheretest.png"
+import AfroLogo from "../assets/Afrodiasphere-logo.svg"
 
 const Header = () => (
   <header className={navbar}>
     <div className={`${container} ${flex}`}>
       <Link to="/">
-        <img src={afroLogo} alt="" style={{ width: "35px" }} />
+        <AfroLogo fill="#cc9932" width="75" />
       </Link>
+
       <nav>
         <ul>
+          {/* <li>
+            <Link to="/">Home</Link>
+          </li> */}
+          <li>
+            <Link to="/app/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/app/dashboard">Dashboard</Link>
+          </li>
           <li>
             <a
               href="https://menefex.nl"
@@ -28,15 +38,6 @@ const Header = () => (
                 <i>MF</i>
               </strong>
             </a>
-          </li>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/admin/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/admin/account">Account</Link>
           </li>
         </ul>
       </nav>

@@ -2,15 +2,16 @@
 @import "../customs/utilities";
 
 .inputRes {
-  position: relative;
+  text-align: left;
 
   input {
     background: #eee;
     border: none;
-    padding: 12px 15px;
+    padding: 10px 15px;
     margin: 12.5px 0;
     width: 100%;
     border-radius: 3px;
+    font-size: 16px;
   }
 
   button:focus {
@@ -28,13 +29,6 @@
 
 .forgetImg {
   width: 200px;
-}
-
-.indexBg {
-  height: 150px;
-  z-index: -100;
-  background: linear-gradient(to bottom, black, $primary-color, black);
-  display: block;
 }
 
 .logerror {

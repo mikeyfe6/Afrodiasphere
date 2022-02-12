@@ -23,12 +23,12 @@ import {
   grid,
   lead,
   btn,
-  card,
+  // card,
 } from "../styles/modules/indexStyles.module.scss"
 
 import { imgavatar } from "../styles/modules/profStyles.module.scss"
 
-import servImage from "../images/server.png"
+import servImage from "../images/mamafrica.png"
 
 import noavatar from "../images/noavatar.png"
 
@@ -54,28 +54,29 @@ const IndexPage = () => {
           <div style={{ textAlign: "left" }}>
             <h1 className={xl}>Afrodiasphere</h1>
             <p className={lead}>
-              <small style={{ color: "grey" }}>JOIN THE MOVEMENT !</small>{" "}
+              <small style={{ color: "#ababab" }}>JOIN THE MOVEMENT !</small>{" "}
               <br /> Klik{" "}
-              <Link to="/admin/login">
+              <Link to="/app/login">
                 <button
-                  className={`${btn}`}
+                  className={btn}
                   type="button"
                   style={{
-                    padding: "3.5px 20px 2.5px 20px",
+                    padding: "2.5px 20px",
                     float: "none",
-                    color: "black",
+                    color: "#0e0e0e",
                     backgroundColor: "#cc9932",
                   }}
                 >
                   hier
                 </button>
               </Link>{" "}
-              om in te loggen..
+              om in te loggen <span style={{ color: "#cc9932" }}>/</span>{" "}
+              registreren..
             </p>
           </div>
           <img src={servImage} alt="" className={imgHide} />
 
-          <ul className={`${carouselCont} ${card}`}>
+          <ul className={carouselCont}>
             {carousel.map(ads => (
               <li
                 key={ads.id}
@@ -113,7 +114,7 @@ const IndexPage = () => {
 
                 <div>
                   {" "}
-                  <Link to={`/${ads.slug}`} style={{ color: "black" }}>
+                  <Link to={`/${ads.slug}`} style={{ color: "#cc9932" }}>
                     ✨../{`${ads.slug}`}
                   </Link>
                 </div>

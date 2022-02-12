@@ -2,21 +2,23 @@
 @import "../customs/utilities";
 
 .navbar {
-  background-color: black;
-  height: 70px;
-  color: #fff;
+  background-color: $black-color;
+  min-height: 70px;
+  color: $white-color;
 
   ul {
     display: flex;
   }
 
   a {
-    color: #fff;
+    color: $white-color;
     padding: 10px;
     margin: 0 5px;
+    @include smoothtrans;
 
     &:hover {
-      border-bottom: 2px #fff solid;
+      @include smoothtrans;
+      color: $primary-color;
     }
   }
 
@@ -32,7 +34,7 @@
 // Small devices
 @media (max-width: 575.98px) {
   .navbar {
-    height: 125px;
+    min-height: 125px;
 
     .flex {
       flex-direction: column;
@@ -40,7 +42,6 @@
 
     ul {
       padding: 10px;
-      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 }

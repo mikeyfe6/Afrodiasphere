@@ -15,7 +15,7 @@ import { profCenter, imgavatar } from "../styles/modules/profStyles.module.scss"
 
 import "../styles/themes.scss"
 
-import afroLogo from "../../static/afroadiaspheretest.png"
+import afroLogo from "../images/afrodiasphere-logo.png"
 
 import noavatar from "../images/noavatar.png"
 
@@ -222,14 +222,13 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
             bottom: "0",
             width: "100%",
             textAlign: "center",
-            padding: "20px",
           }}
         >
           <img
             src={afroLogo}
             alt=""
             style={{
-              width: "50px",
+              width: "100px",
               margin: "50px",
             }}
           ></img>

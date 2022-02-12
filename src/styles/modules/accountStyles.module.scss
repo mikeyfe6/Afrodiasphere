@@ -11,17 +11,11 @@
   height: 200px;
   border: solid 5px #424242;
   cursor: pointer;
-  transition: all 0.6s ease-in-out;
+  transition: border 0.5s ease-in-out;
 
   &:hover {
-    opacity: 0.9;
     border: solid 5px $secondary-color;
-    transition: all 0.6s ease-in-out;
   }
-}
-
-@mixin smoothtrans {
-  transition: all 0.5s ease-in-out;
 }
 
 @mixin chooseUsername {
@@ -69,20 +63,15 @@
     "Sidebar Dashboard Dashboard Link"
     "Sidebar Dashboard Dashboard Preview"
     "Sidebar Dashboard Dashboard Preview";
-  // background: linear-gradient(to top, white, #ededed);
 
-  background: linear-gradient(to bottom, black, $primary-color) no-repeat 0 0 /
-    cover;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), $primary-color);
 }
 
-// SIDEBAR
+// SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR  <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR
 .Sidebar {
   grid-area: Sidebar;
-  // background: linear-gradient(to bottom, white, #ededed);
-  // background: linear-gradient(to bottom, black, white, white, white) no-repeat 0
-  //   0 / cover;
-  border: 2px solid $primary-color;
-  background: rgba(0, 0, 0, 0.9);
+  border: 3px solid $primary-color;
+  background-color: $black-color;
 }
 
 // NAVIGATION
@@ -93,19 +82,15 @@
 //     cover;
 // }
 
-// PREVIEW
+// PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW  <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW
 .Preview {
   grid-area: Preview;
-  // background: linear-gradient(to bottom, white, #ededed);
-  // background: #1616167e;
-  background: rgba(0, 0, 0, 0.9);
-  border: 2px solid $primary-color;
-
+  background-color: $black-color;
+  border: 3px solid $primary-color;
   display: flex;
   justify-content: center;
 
   .iphone {
-    // overflow: hidden;
     &-frame {
       position: -webkit-sticky;
       position: sticky;
@@ -166,20 +151,20 @@
   }
 }
 
-// DASHBOARD
+// DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD  <--------------------------------------------------------------------------------> DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD
 .Dashboard {
   grid-area: Dashboard;
-  // background: linear-gradient(to bottom, black, #1616167e) no-repeat 0 0 / cover;
-  // background: #1616167e;
-  background: rgba(0, 0, 0, 0.9);
+  background-color: $black-color;
+  border: 3px solid $primary-color;
 
-  border: 2px solid $primary-color;
-  // background: linear-gradient(to top, white, #ededed);
   .avatarformcont {
     display: flex;
-    gap: 50px;
-    position: relative;
-    padding-bottom: 1%;
+    gap: 5em;
+
+    & > * {
+      flex: 1 1 50%;
+      justify-content: space-evenly;
+    }
 
     .loading-complete {
       color: white;
@@ -192,14 +177,43 @@
       opacity: 0.9;
       left: 45px;
     }
-  }
 
-  .avatar-image {
-    width: 125px;
-    height: 125px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: white;
+    .formavatar {
+      // flex-basis: 100%;
+      gap: 2em;
+      display: flex;
+      align-items: center;
+
+      .avatar-image {
+        width: 150px;
+        min-width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: white;
+      }
+
+      .buttonsenzo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25em;
+
+        .add-btn {
+          margin: 5px;
+          width: 100px;
+        }
+
+        .reset-btn {
+          margin: 5px;
+          width: 100px;
+        }
+
+        .submit-btn {
+          margin: 5px;
+          width: 100px;
+        }
+      }
+    }
   }
 
   .progress {
@@ -212,111 +226,175 @@
     }
   }
 
-  .formavatar {
-    flex: 0.5;
+  .profile-info {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
 
-    .buttonsenzo {
+    form {
       display: flex;
+      justify-content: space-evenly;
+
+      align-items: center;
+
+      & > * {
+        flex: 1 1 10em;
+      }
+
+      label {
+        color: $primary-color;
+        font-size: 0.65em;
+        max-width: 10em;
+      }
+
+      input:focus {
+        color: $secondary-color;
+      }
+
+      input:hover {
+        @include smoothtrans;
+      }
+
+      input[type="password"]:focus::placeholder {
+        opacity: 0;
+      }
+
+      .profile-input {
+        // flex: 2;
+        color: $white-color;
+        font-size: 16px !important;
+        min-width: 10em;
+        background: transparent;
+        outline: none;
+        border: none;
+        padding: 15px 15px;
+        max-width: 15em;
+        // border-bottom: 1px rgba(255, 255, 255, 0.05) solid;
+        border-radius: 1px;
+        @include smoothtrans;
+      }
+
+      button {
+        min-width: 75px;
+        max-width: 150px;
+        height: 35px;
+      }
+    }
+  }
+
+  .social-cont {
+    display: flex;
+    flex-wrap: wrap;
+    // background: linear-gradient(to left, #cd9c32, black) no-repeat 0 0 / cover;
+    background: $primary-color;
+
+    justify-content: space-evenly;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+
+    gap: 1em;
+    border-radius: 12.5px;
+    padding: 25px;
+    margin: 15px 0;
+
+    form {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      gap: 1em;
+      flex: 1;
       flex-direction: column;
 
-      .add-btn {
-        margin: 5px;
-        width: 100px;
+      // &:nth-child(-n + 2) {
+      //   padding-right: 50px;
+      //   border-right: 1px solid rgba(128, 128, 128, 0.404);
+      // }
+
+      .social-icons {
+        margin-right: 0.75em;
       }
 
-      .reset-btn {
-        margin: 5px;
-        width: 100px;
+      label {
+        font-size: 0.75em;
       }
 
-      .submit-btn {
-        margin: 5px;
+      .social-input {
+        font-size: 16px !important;
+        padding: 10px;
+        color: $white-color;
+
+        opacity: 0.75;
+        background: transparent;
+        outline: none;
+        border: none;
+        text-align: center;
+        border-radius: 3px;
+        @include smoothtrans;
+      }
+
+      // input:focus {
+      //   color: grey;
+      // }
+
+      input:hover {
+        @include smoothtrans;
+      }
+
+      input::placeholder {
+        font-size: 0.75em;
+        color: rgba(255, 255, 255, 0.658);
+      }
+
+      button {
         width: 100px;
       }
     }
-  }
 
-  .edit-input {
-    border: 0;
-    border-bottom: 1px solid #b4becb;
-    color: $black-color;
-    background: transparent;
-    padding: 5px 0px;
-
-    &:focus {
-      outline: none;
-    }
-
-    &::placeholder {
-      font-size: 0.75em;
-      padding: 0px 2.5px;
+    .vl {
+      border-left: 3px solid black;
+      height: 75%;
+      position: absolute;
+      left: 50%;
+      top: 12.5%;
+      opacity: 0.1;
     }
   }
 
-  .updateLink {
-    outline: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    color: $primary-color;
-    @include smoothtrans;
+  .link-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 2.5% !important;
+    gap: 1em;
+    flex-wrap: wrap;
 
-    &:hover {
-      color: $secondary-color;
-      @include smoothtrans;
-    }
-  }
-
-  .updateLinkShow {
-    width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: $secondary-color;
-  }
-
-  .updateHyperLinkShow {
-    width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: $secondary-color;
-  }
-
-  .profile-info {
-    flex: 0.6;
-    align-self: center;
-
-    .btn {
-      margin-left: 15px;
+    .linksOnline {
+      display: flex;
+      gap: 2em;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
     }
 
-    .profile-input {
-      color: white;
-      width: 300px;
-      margin: 10px 15px;
-      background: transparent;
+    .buttonsOnline {
+      display: flex;
+      gap: 1em;
+      align-items: flex-end;
+    }
+
+    input {
+      font-size: 16px !important;
+      min-width: 15em;
+      width: 100%;
+      font-size: 16 !important;
+      padding: 10px;
+      opacity: 0.75;
       outline: none;
       border: none;
-      padding: 7.5px 10px;
-      border-bottom: 1px rgba(255, 255, 255, 0.1) solid;
-      border-radius: 1px;
-      @include smoothtrans;
-    }
+      // border-bottom: 1px solid $secondary-color !important;
+      border-radius: 3px;
 
-    input:focus {
-      color: $secondary-color;
-    }
-
-    input:hover {
-      @include smoothtrans;
-    }
-
-    input[type="password"]:focus::placeholder {
-      opacity: 0;
+      &::placeholder {
+        font-size: 0.75em;
+      }
     }
   }
 
@@ -359,100 +437,6 @@
     text-align: center;
     border-radius: 3px;
   }
-
-  .link-cont {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    margin-bottom: 2.5% !important;
-    gap: 30px;
-
-    .link-input {
-      padding: 10px;
-      // font-size: 14px;
-      opacity: 0.75;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid $secondary-color !important;
-      width: 25%;
-      border-radius: 3px;
-
-      &::placeholder {
-        // font-size: 0.9em;
-      }
-    }
-  }
-
-  .social-cont {
-    display: flex;
-    // border: 1px solid rgba(128, 128, 128, 0.192);
-    background: linear-gradient(to left, #cd9c32, black) no-repeat 0 0 / cover;
-    justify-content: space-around;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    gap: 5px;
-
-    border-radius: 12.5px;
-    padding: 45px 25px 45px 25px;
-    margin: 15px 0;
-
-    .social-form {
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-
-      // &:nth-child(-n + 2) {
-      //   padding-right: 50px;
-      //   border-right: 1px solid rgba(128, 128, 128, 0.404);
-      // }
-    }
-
-    .vl {
-      border-left: 3px solid black;
-      height: 75%;
-      position: absolute;
-      left: 50%;
-      top: 12.5%;
-      opacity: 0.1;
-    }
-
-    .social-icons {
-      position: relative;
-      top: 5px;
-      right: 3px;
-      z-index: 3;
-      margin-right: 5px;
-    }
-
-    .social-input {
-      padding: 10px;
-      color: white;
-      opacity: 0.75;
-      background: transparent;
-      outline: none;
-      border: none;
-      text-align: center;
-      border-radius: 3px;
-      @include smoothtrans;
-    }
-
-    input:focus {
-      color: $secondary-color;
-    }
-
-    input:hover {
-      @include smoothtrans;
-    }
-
-    .social-buttons {
-      margin-top: 30px;
-      text-align: center;
-
-      .btn {
-        width: 100px;
-      }
-    }
-  }
 }
 
 .links-cont {
@@ -485,93 +469,171 @@
   align-items: center;
   align-content: center;
   border: 2.5px $primary-color solid;
+  // flex-wrap: wrap;
+
+  // & > * {
+  //   flex-basis: 100%;
+  // }
+
+  .updateLinkShow {
+    width: 200px;
+    font-size: 1.1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $black-color;
+  }
+
+  .updateHyperLinkShow {
+    font-size: 1.1em;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $black-color;
+  }
+
+  button {
+    background-color: $primary-color;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    color: $white-color;
+    font-size: 0.7em;
+    margin-left: 1em;
+  }
+
+  .edit-input {
+    border: 0;
+    border-bottom: 1px solid #b4becb;
+    color: $black-color;
+    background: transparent;
+    padding: 5px 0px;
+    width: 17.5em;
+    font-size: 16px !important;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-size: 0.75em;
+      padding: 0px 2.5px;
+    }
+  }
+
+  .trashBtn:hover {
+    color: red !important;
+  }
+
+  .updateLinkcont {
+    flex: 1 1 42.5%;
+    display: flex;
+    margin-right: 1em;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .updateHyperLinkcont {
+    flex: 1 1 42.5%;
+    display: flex;
+    margin-right: 1em;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .deleteShowcont {
+    flex: 1 1 15%;
+    display: flex;
+
+    justify-content: space-around;
+    gap: 1em;
+  }
+
+  .inputCont {
+    display: block;
+    position: relative;
+    user-select: none;
+    padding-left: 20px;
+    margin-bottom: 17.5px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 17.5px;
+      width: 17.5px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 4;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 17.5px;
+      width: 17.5px;
+      background-color: #eee;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+    }
+
+    /* On mouse-over, add a grey background color */
+    &:hover input ~ .checkmark {
+      background-color: $light-color;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    &:hover input:checked ~ .checkmark {
+      background-color: rgb(255, 81, 81);
+      border-radius: 2.5px;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    input:checked ~ .checkmark {
+      background-color: rgb(43, 169, 43);
+      border-radius: 2.5px;
+    }
+
+    /* Show the checkmark when checked */
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .checkmark:after {
+      left: 6px;
+      top: 2.5px;
+      width: 3px;
+      height: 7.5px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
 }
 
 // ----------- //
 
-.inputCont {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 17.5px;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 /* Hide the browser's default checkbox */
-.inputCont input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 17.5px;
-  width: 17.5px;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 4;
-}
-
-.trashBtn:hover {
-  color: red !important;
-}
-
-/* Create a custom checkbox */
-
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 17.5px;
-  width: 17.5px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.inputCont:hover input ~ .checkmark {
-  background-color: $light-color;
-}
-
-/* When the checkbox is checked, add a blue background */
-.inputCont input:checked ~ .checkmark {
-  background-color: rgb(43, 169, 43);
-  border-radius: 2.5px;
-}
-
-.inputCont:hover input:checked ~ .checkmark {
-  background-color: rgb(255, 81, 81);
-  border-radius: 2.5px;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the checkmark when checked */
-.inputCont input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.inputCont .checkmark:after {
-  left: 6px;
-  top: 2.5px;
-  width: 3px;
-  height: 7.5px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 
 // ----------- //
 
@@ -968,12 +1030,12 @@
 
 // ---------------------------------------------------------------------------------------- // COLORS
 
-// LINK
+// LINK LINK LINK LINK LINK LINK LINK LINK LINK <--------------------------------------------------------------------------------> LINK LINK LINK LINK LINK LINK LINK LINK
 .Adslink {
   grid-area: Link;
 
   .usLinkAfro {
-    border: 2px solid $primary-color;
+    border: 3px solid $primary-color;
     float: left;
     width: 40%;
     color: white;
@@ -983,10 +1045,10 @@
   }
 
   .usLinkSite {
-    border: 2px solid $primary-color;
+    border: 3px solid $primary-color;
     float: right;
     width: 60%;
-    background: black;
+    background-color: $black-color;
     padding: 10px 10px;
     border-radius: 0 10px 10px 0;
     color: white;
@@ -1006,25 +1068,15 @@
   }
 }
 
-// @media screen and (max-width: 1900) {
-//   .grid-container {
-//     .Dashboard {
-//       .avatarformcont {
-//         .profile-info {
-//           margin-left: 0% !important;
-//         }
-//       }
-//     }
-//   }
-// }
-
 // Landscape view
 @media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-// Small devices
-@media (max-width: 575.98px) {
+// small devices
+@media (max-width: 40em) {
   .grid-container {
+    margin: 5px !important;
+    padding: 2.5px !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
     gap: 0px 0px;
@@ -1033,287 +1085,59 @@
       "Dashboard"
       "Preview"
       "Link";
-  }
 
-  .Preview {
-    .iphone-frame {
-      transform: scale(0.875);
-    }
-  }
+    .Dashboard {
+      padding: 1rem;
 
-  .Sidebar {
-    background: linear-gradient(to right, $primary-color, black);
-    // background: linear-gradient(to bottom, black, white, white, white) no-repeat
-    //   0 0 / cover;
+      .social-cont {
+        form {
+          padding-bottom: 1.5em;
+          border-bottom: 3px rgba(255, 255, 255, 0.2) solid;
 
-    h5 {
-      text-align: left;
-      padding: 15px;
-    }
-  }
-
-  // .Navigation {
-  //   background: linear-gradient(to bottom, white, #ededed);
-  // }
-
-  .Link {
-    .usLinkAfro {
-      color: black;
-      background: white;
-    }
-
-    .usLinkSite {
-      background: black;
-
-      color: white;
-    }
-
-    .userLink {
-      color: $primary-color;
-      width: 175px;
-
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-  }
-
-  .Dashboard {
-    .avatarformcont {
-      flex-direction: column;
-      padding-bottom: 10%;
-
-      .loading-complete {
-        top: 20% !important;
-        padding: 1px 7.5px;
-        border-radius: 2.5px;
-        opacity: 0.9;
-        left: 5% !important;
-        bottom: initial;
-      }
-    }
-    .formavatar {
-      margin-bottom: 7.5%;
-    }
-
-    .profile-input {
-      margin: 6% 6% 7.5% 3%;
-    }
-
-    .profile-info {
-      .btn {
-        margin-left: 0px;
-      }
-    }
-
-    // .logerror {
-    //   bottom: 0px;
-    // }
-
-    .linkErrorStyle {
-      width: 95%;
-      // bottom: 500px !important;
-      top: 267.5px;
-      left: 2.5%;
-    }
-
-    .social-cont {
-      .social-input {
-        width: 82.5%;
-      }
-    }
-
-    .social-buttons {
-      margin-top: 2000px;
-      width: 100%;
-
-      .socialSpec {
-        margin-left: 25px;
-      }
-    }
-
-    .link-cont {
-      display: block;
-      margin: 10px 5px 35px 5px;
-
-      .nextoClear {
-        margin: 0 5%;
-      }
-
-      h3 {
-        margin-top: 10px;
-        margin-left: 15px;
-      }
-
-      .link-input {
-        margin: 2% 5% 7.5% 5%;
-        width: 90%;
-      }
-
-      #specsBtn {
-        float: left !important;
-        margin: 0 5%;
-      }
-    }
-
-    .updateLink {
-      float: right;
-      bottom: 47.5px;
-      right: 10px;
-      position: relative;
-    }
-
-    .updateLinkShow {
-      margin-bottom: 5px;
-      width: 150px;
-    }
-
-    .updateHyperLinkShow {
-      margin-top: 15px;
-      width: 150px;
-    }
-
-    .inputCont {
-      float: right;
-      position: relative;
-      left: 75px;
-      bottom: 10px;
-    }
-
-    .trashBtn {
-      cursor: pointer;
-      position: relative;
-      float: right;
-      left: 75px;
-      bottom: 10px;
-    }
-
-    .pickColor {
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    }
-
-    .chooseColor {
-      transform: scale(0.75);
-    }
-  }
-}
-
-// Normal devices
-@media (max-width: 767.98px) {
-  .Dashboard {
-    .avatarformcont {
-      flex-direction: column;
-
-      .profile-input {
-        width: 75% !important;
-      }
-
-      .profile-info {
-        .btn {
-          margin-bottom: 20px;
-          width: 100%;
+          button {
+            width: 75%;
+          }
         }
       }
 
-      .loading-complete {
-        padding: 1px 7.5px;
-        border-radius: 2.5px;
-        opacity: 0.9;
-        left: 8.75%;
-        bottom: initial;
-      }
-    }
-
-    .social-cont {
-      flex-direction: column;
-      background: linear-gradient(to bottom, black, $primary-color) no-repeat 0
-        0 / cover;
-      border-radius: 3px;
-      padding: 25px 7%;
-      margin-top: 25px;
-      box-shadow: none;
-      gap: 10px;
-
-      .btn {
-        width: 100% !important;
-      }
-    }
-
-    .social-form {
-      margin-bottom: 5%;
-    }
-
-    .social-buttons {
-      margin-top: 20px;
-
-      .socialSpec {
-        margin-left: 25px;
-      }
-      // &:nth-child(2) {
-      //   padding-right: 15px !important;
-      //   color: red !important;
-      //   background: red !important;
-      // }
-    }
-
-    .link-cont {
-      display: block;
-      margin: 20px 5px 35px 5px;
-
-      .link-input {
-        width: 90%;
+      .vl {
+        display: none;
       }
 
-      .nextoClear {
-        margin: 0 2.5%;
+      .avatarformcont {
+        flex-direction: column;
       }
 
-      h3 {
-        margin-top: 10px;
-        margin-left: 15px;
+      .links-cont {
+        flex-direction: column;
+        margin: 0px;
+        margin-bottom: 0.5em;
+
+        gap: 1em;
+        padding: 1em;
+
+        .updateLinkcont {
+          margin-right: 0;
+        }
+
+        .updateHyperLinkcont {
+          margin-right: 0;
+        }
+
+        .deleteShowcont {
+          margin-top: 0.5em !important;
+        }
+
+        .edit-input {
+          width: 100%;
+        }
       }
-    }
-
-    .links-cont {
-      display: block;
-      padding: 15px 10px 30px 15px !important;
-      background: white;
-    }
-
-    .updateLink {
-      float: right;
-      bottom: 47.5px;
-      right: 10px;
-      position: relative;
-    }
-
-    .updateLinkShow {
-      margin-bottom: 5px;
-    }
-
-    .updateHyperLinkShow {
-      margin-top: 15px;
-    }
-
-    .inputCont {
-      float: right;
-      position: relative;
-      left: 75px;
-      bottom: 10px;
-    }
-
-    .trashBtn {
-      cursor: pointer;
-      position: relative;
-      float: right;
-      left: 75px;
-      bottom: 10px;
     }
   }
 }
 
-// Medium devices
-@media (max-width: 991.98px) {
+// large devices
+@media (max-width: 64em) {
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
@@ -1327,120 +1151,86 @@
     .Dashboard {
       .avatarformcont {
         flex-direction: column;
-
-        .profile-info {
-          margin: 2.5% auto;
-          align-self: auto;
-          min-width: 75%;
-
-          .btn {
-            margin-left: 0px;
-          }
-        }
-
-        .profile-input {
-          width: 275px;
-        }
-
-        .loading-complete {
-          top: 165px;
-          padding: 1px 7.5px;
-          border-radius: 2.5px;
-          opacity: 0.9;
-          left: 16%;
-          bottom: initial;
-        }
       }
 
-      .social-cont {
+      .links-cont {
         flex-direction: column;
+
+        .updateLinkcont {
+          margin-right: 0;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .updateHyperLinkcont {
+          margin-right: 0;
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .deleteShowcont {
+          margin-top: 1.5em;
+          width: 100%;
+          justify-content: space-between;
+        }
       }
 
       .link-cont {
-        padding: 1%;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
-      }
-    }
-  }
-}
-
-// Large devices
-@media (max-width: 1199.98px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "Sidebar"
-      "Dashboard"
-      "Preview"
-      "Link";
-    .Dashboard {
-      .social-cont {
-        flex-direction: column;
-        gap: 15px;
-      }
-    }
-  }
-
-  .Sidebar {
-    background: linear-gradient(to right, #e9c986, black);
-    // background: linear-gradient(to bottom, black, white, white, white) no-repeat
-    //   0 0 / cover;
-
-    h5 {
-      text-align: left !important;
-      padding: 15px;
-    }
-  }
-
-  .Adslink {
-    // font-size: 0.8em;
-
-    .usLinkAfro {
-      color: black;
-      background: white;
-    }
-
-    .usLinkSite {
-      background: black;
-
-      color: white;
-    }
-
-    .userLink {
-      color: $primary-color;
-      width: 100% !important;
-
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-  }
-}
-
-// Huge devices
-@media (max-width: 1441px) {
-  .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 0px 0px;
-    grid-template-areas:
-      "Sidebar"
-      "Dashboard"
-      "Preview"
-      "Link";
-    .Dashboard {
-      .social-cont {
-        flex-direction: column;
-        gap: 15px;
-
-        .social-buttons {
-          margin-top: 30px;
-          text-align: right;
+        input {
+          &::placeholder {
+            // font-size: 0.9em;
+          }
         }
+      }
+    }
+
+    .Sidebar {
+      background: linear-gradient(to right, $primary-color, $black-color);
+      // background: linear-gradient(to bottom, black, white, white, white) no-repeat
+      //   0 0 / cover;
+    }
+
+    .Adslink {
+      // font-size: 0.8em;
+
+      .usLinkAfro {
+        color: black;
+        background: white;
+      }
+
+      .usLinkSite {
+        background: black;
+        color: white;
+      }
+
+      .userLink {
+        color: $primary-color;
+        width: 100% !important;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 90em) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Sidebar"
+      "Dashboard"
+      "Preview"
+      "Link";
+
+    .Sidebar {
+      background: linear-gradient(to right, $primary-color, $black-color);
+
+      h5 {
+        text-align: left !important;
       }
     }
   }

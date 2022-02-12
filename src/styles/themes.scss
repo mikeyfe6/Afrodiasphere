@@ -292,18 +292,10 @@
 @media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-// Small devices
-@media (max-width: 575.98px) {
+// small devices
+@media (max-width: 40em) {
 }
 
-// Normal devices
-@media (max-width: 767.98px) {
-}
-
-// Medium devices
-@media (max-width: 991.98px) {
-}
-
-// Large devices
-@media (max-width: 1199.98px) {
+// large devices
+@media (max-width: 64em) {
 }
