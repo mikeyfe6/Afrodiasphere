@@ -1676,7 +1676,7 @@ const DashboardPage = () => {
                   textDecorationColor: "grey",
                 }}
               >
-                Hyper Links
+                Link List
               </u>
             </b>
           </h2>
@@ -1686,9 +1686,9 @@ const DashboardPage = () => {
           <div className={linkCont}>
             <div className={linksOnline}>
               <label htmlFor="newlink">
-                <h3 style={{ color: "white" }}>
+                <h4 style={{ color: "white" }}>
                   Titel<span style={{ color: "#cc9932" }}>:</span>
-                </h3>
+                </h4>
               </label>
               <input
                 // className={linkInput}
@@ -1702,9 +1702,9 @@ const DashboardPage = () => {
             </div>
             <div className={linksOnline}>
               <label htmlFor="newhyperlink">
-                <h3 style={{ color: "white" }}>
+                <h4 style={{ color: "white" }}>
                   Hyperlink<span style={{ color: "#cc9932" }}>:</span>
-                </h3>
+                </h4>
               </label>
               <input
                 id="newhyperlink"
