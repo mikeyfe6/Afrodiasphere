@@ -190,7 +190,7 @@
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
-        background: white;
+        background: $white-color;
       }
 
       .buttonsenzo {
@@ -206,6 +206,8 @@
         .reset-btn {
           margin: 5px;
           width: 100px;
+          background-color: $error-color;
+          color: $white-color;
         }
 
         .submit-btn {
@@ -521,7 +523,7 @@
   }
 
   .trashBtn:hover {
-    color: red !important;
+    color: #d9534f !important;
   }
 
   .updateLinkcont {

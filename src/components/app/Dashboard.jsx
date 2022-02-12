@@ -170,6 +170,8 @@ const DashboardPage = () => {
   const [password, setPassword] = useState("")
   const [slug, setSlug] = useState("")
 
+  const [avatarId, setAvatarID] = useState()
+
   const [fbLink, setFbLink] = useState("")
   const [twLink, setTwLink] = useState("")
   const [igLink, setIgLink] = useState("")
@@ -202,12 +204,42 @@ const DashboardPage = () => {
     getUserId()
   }, [getUserId])
 
+  useEffect(() => {
+    const getAvatarId = async () => {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      if (!res.data.avatar) {
+        setPreview(noavatar)
+      } else {
+        setAvatarID(res.data.avatar.id)
+      }
+    }
+    getAvatarId()
+  }, [token])
+
   // AVATAR CHANGE <--------------------------------------------------------------------------------> AVATAR CHANGE //
-  const removeHeading = () => {
-    // document.getElementById("avatar-image").src = noavatar
-    // document.getElementById("iphone-avatar").src = noavatar
+  const removeHeading = async e => {
+    e.preventDefault()
     setImage(null)
     setPreview(noavatar)
+
+    try {
+      setLoading(true)
+      await axios.delete(`${apiURL}/api/upload/files/${avatarId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      // setPreview(res.data.data.attributes[0].url)
+      setTimeout(() => setLoading(false), 5000)
+    } catch (error) {
+      console.log("Niet gelukt!", error)
+    }
   }
 
   // SEND AVATAR <--------------------------------------------------------------------------------> SEND AVATAR //
@@ -230,7 +262,6 @@ const DashboardPage = () => {
         },
       })
       console.log("Geupload!", res)
-      // setPreview(res.data.data.attributes[0].url)
       setTimeout(() => setLoading(false), 5000)
     } catch (error) {
       console.log("Niet gelukt!", error)
@@ -302,12 +333,6 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-
-      // if (!res.data.profiel) {
-      //   setProfile("")
-      // } else {
-      //   setProfile(res.data.profiel)
-      // }
       setProfile(res.data.profiel)
     }
     getProfile()
@@ -1230,10 +1255,7 @@ const DashboardPage = () => {
                 <button
                   className={`${btn} ${btnLight} ${resetBtn}`}
                   type="reset"
-                  onClick={event => {
-                    removeHeading()
-                    event.preventDefault()
-                  }}
+                  onClick={removeHeading}
                 >
                   Reset
                 </button>
@@ -1730,7 +1752,7 @@ const DashboardPage = () => {
               </button>
               <button
                 className={btn}
-                style={{ background: "red", color: "white" }}
+                style={{ background: "#d9534f", color: "white" }}
                 onClick={event => {
                   linkTitle.current.value = ""
                   hyperLink.current.value = ""
