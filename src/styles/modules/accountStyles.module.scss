@@ -43,6 +43,7 @@
 
 @mixin chooseLinks {
   display: inline-block;
+  border-radius: 3px;
   width: 100%;
   padding: 5px 25px;
 }
@@ -141,6 +142,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: center;
       }
     }
 
@@ -239,7 +241,7 @@
       align-items: center;
 
       & > * {
-        flex: 1 1 10em;
+        flex: 1 1 50%;
       }
 
       label {
@@ -277,8 +279,104 @@
 
       button {
         min-width: 75px;
-        max-width: 150px;
+        max-width: 125px;
         height: 35px;
+      }
+    }
+  }
+
+  .bioAndOccupateCont {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2.5em 0;
+    flex-wrap: wrap;
+    gap: 2em;
+
+    label {
+      color: $primary-color;
+      font-size: 0.65em;
+    }
+
+    :nth-child(1) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+
+      .occupateInput {
+        background: linear-gradient(
+          135deg,
+          rgb(255, 255, 255, 0.05),
+          $black-color
+        );
+        text-align: center;
+        min-width: 75px;
+        padding: 10px 7.5px;
+        border: 1px $primary-color solid;
+        border-radius: 2.5px;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px $secondary-color solid;
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+
+      input {
+        display: none;
+      }
+
+      .currentOccupate {
+        border: 1px $white-color solid !important;
+        color: $white-color !important;
+      }
+    }
+
+    :nth-child(2) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75em;
+
+      label {
+        align-self: flex-start;
+      }
+
+      button {
+        min-width: 100px;
+        max-width: 125px;
+        height: 35px;
+        align-self: flex-end;
+      }
+
+      .bioInput {
+        // max-width: 25em;
+        width: 30em;
+        height: 10em;
+        font-family: "Poppins", sans-serif;
+        color: $white-color;
+        font-size: 16px !important;
+        background: transparent;
+        outline: none;
+        border: none;
+        resize: none;
+        // overflow:hidden;
+        padding: 17.5px;
+
+        background: linear-gradient(
+          135deg,
+          rgb(255, 255, 255, 0.05),
+          $black-color
+        );
+        // background-color: rgb(255, 255, 255, 0.05);
+        border: 1px $primary-color solid;
+        border-radius: 10px;
+        @include smoothtrans;
+
+        &:focus {
+          border: 1px $secondary-color solid;
+        }
       }
     }
   }
@@ -670,7 +768,7 @@
       background: #5e5d0d;
       color: white;
       border: 1px solid white;
-      border-radius: 3px;
+
       box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
       @include chooseLinks;
 
@@ -725,7 +823,7 @@
       background: rgba(255, 255, 255, 0.797);
       color: #878787;
       border: 1px solid #878787;
-      border-radius: 3px;
+
       @include chooseLinks;
 
       &:hover {
@@ -778,7 +876,7 @@
       color: white;
       background: #878787;
       border: 1px solid white;
-      border-radius: 3px;
+
       @include chooseLinks;
 
       &:hover {
@@ -831,7 +929,7 @@
       background: #878787;
       color: black;
       border: 1px solid white;
-      border-radius: 3px;
+
       box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
       @include chooseLinks;
 
@@ -885,7 +983,7 @@
       background: white;
       color: brown;
       border: 1px solid brown;
-      border-radius: 3px;
+
       box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
       @include chooseLinks;
 
@@ -938,7 +1036,7 @@
       background: white;
       color: green;
       border: 1px solid green;
-      border-radius: 3px;
+
       box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
       @include chooseLinks;
 
@@ -991,7 +1089,6 @@
       background: white;
       color: black;
       border: 1px solid #e6541b;
-      border-radius: 3px;
 
       @include chooseLinks;
 
@@ -1087,6 +1184,24 @@
 
     .Dashboard {
       padding: 1rem;
+
+      .bioAndOccupateCont {
+        margin: 1.5em 0;
+
+        :first-child {
+          gap: 0 !important;
+
+          label {
+            transform: scale(0.75);
+          }
+        }
+
+        .bioInput {
+          width: 22.5em;
+          height: 7.5em;
+          padding: 17.5px;
+        }
+      }
 
       .social-cont {
         form {

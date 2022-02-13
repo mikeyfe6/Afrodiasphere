@@ -7,6 +7,7 @@ import React, {
 } from "react"
 import { Link } from "gatsby"
 import axios from "axios"
+
 import {
   FaFacebookF,
   FaInstagram,
@@ -119,6 +120,10 @@ import {
   updateHyperLinkcont,
   deleteShowcont,
   mobileHr,
+  bioAndOccupateCont,
+  bioInput,
+  occupateInput,
+  currentOccupate,
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
@@ -169,6 +174,9 @@ const DashboardPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [slug, setSlug] = useState("")
+
+  const [occupate, setOccupate] = useState()
+  const [biography, setBiography] = useState("")
 
   const [avatarId, setAvatarID] = useState()
 
@@ -294,7 +302,7 @@ const DashboardPage = () => {
     }
 
     getAvatarImage()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE PROFILENAME <--------------------------------------------------------------------------------> UPDATE PROFILENAME //
   const setProfileHandler = e => {
@@ -336,7 +344,7 @@ const DashboardPage = () => {
       setProfile(res.data.profiel)
     }
     getProfile()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE USERNAME <--------------------------------------------------------------------------------> UPDATE USERNAME //
 
@@ -412,6 +420,115 @@ const DashboardPage = () => {
     getEmail()
   }, [gatsbyUser.user.id, token])
 
+  // UPDATE BIOGRAFIE <--------------------------------------------------------------------------------> UPDATE BIOGRAFIE //
+  const setBiografieHandler = e => {
+    setBiography(e.target.value)
+  }
+
+  const submitBiography = async e => {
+    e.preventDefault()
+
+    const params = {
+      biografie: biography,
+    }
+    try {
+      await axios.put(
+        `${apiURL}/api/instanties/${userId}`,
+        { data: params },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      setError(null)
+    } catch (err) {
+      console.log(err.message)
+      setError("Er is iets misgegaan, probeer het opnieuw!")
+      setTimeout(() => setError(null), 5000)
+    }
+  }
+
+  useEffect(() => {
+    const getBiography = async () => {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      setBiography(res.data.biografie)
+    }
+    getBiography()
+  }, [token])
+
+  // UPDATE BIOGRAFIE <--------------------------------------------------------------------------------> UPDATE BEDRIJF //
+  const onOccupateChange = async e => {
+    setOccupate(e.target.value)
+
+    const params = {
+      occupate: e.target.value,
+    }
+    await axios.put(
+      `${apiURL}/api/instanties/${userId}`,
+      { data: params },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+  }
+
+  useEffect(() => {
+    const getOccupate = async () => {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      setOccupate(res.data.occupate)
+    }
+
+    if (occupate === "bedrijf") {
+      document.getElementById("currentBedrijf").classList.add(currentOccupate)
+    } else {
+      document
+        .getElementById("currentBedrijf")
+        .classList.remove(currentOccupate)
+    }
+    if (occupate === "zelfstandig") {
+      document
+        .getElementById("currentZelfstandig")
+        .classList.add(currentOccupate)
+    } else {
+      document
+        .getElementById("currentZelfstandig")
+        .classList.remove(currentOccupate)
+    }
+    if (occupate === "hobbyist") {
+      document.getElementById("currentHobbyist").classList.add(currentOccupate)
+    } else {
+      document
+        .getElementById("currentHobbyist")
+        .classList.remove(currentOccupate)
+    }
+    if (occupate === "stichting") {
+      document.getElementById("currentStichting").classList.add(currentOccupate)
+    } else {
+      document
+        .getElementById("currentStichting")
+        .classList.remove(currentOccupate)
+    }
+    if (occupate === "artist") {
+      document.getElementById("currentArtist").classList.add(currentOccupate)
+    } else {
+      document.getElementById("currentArtist").classList.remove(currentOccupate)
+    }
+
+    getOccupate()
+  }, [occupate, token])
+
   // UPDATE FBLINK <--------------------------------------------------------------------------------> UPDATE FBLINK //
   const setFbHandler = e => {
     setFbLink(e.target.value.toLowerCase())
@@ -461,7 +578,7 @@ const DashboardPage = () => {
       setFbLink(res.data.facebooklink)
     }
     getFbLink()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE TWLINK <--------------------------------------------------------------------------------> UPDATE TWLINK //
   const setTwHandler = e => {
@@ -511,7 +628,7 @@ const DashboardPage = () => {
       setTwLink(res.data.twitterlink)
     }
     getTwLink()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE IGLINK <--------------------------------------------------------------------------------> UPDATE IGLINK //
   const setIgHandler = e => {
@@ -561,7 +678,7 @@ const DashboardPage = () => {
       setIgLink(res.data.instagramlink)
     }
     getIgLink()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE WHATSAPP <--------------------------------------------------------------------------------> UPDATE WHATSAPP //
   const setWaHandler = e => {
@@ -611,7 +728,7 @@ const DashboardPage = () => {
       setWaLink(res.data.whatsapplink)
     }
     getWaLink()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE TIKTOK <--------------------------------------------------------------------------------> UPDATE TIKTOK //
   const setTkHandler = e => {
@@ -661,7 +778,7 @@ const DashboardPage = () => {
       setTkLink(res.data.tiktoklink)
     }
     getTkLink()
-  }, [userId, token])
+  }, [token])
 
   // UPDATE PASSWORD <--------------------------------------------------------------------------------> UPDATE PASSWORD //
   const setPasswordHandler = e => {
@@ -738,7 +855,7 @@ const DashboardPage = () => {
       setSlug(res.data.slug)
     }
     getSlug()
-  }, [userId, token])
+  }, [token])
 
   // CREATE LINKS <--------------------------------------------------------------------------------> CREATE LINKS //
   const createLink = async () => {
@@ -913,12 +1030,6 @@ const DashboardPage = () => {
         },
       }
     )
-    // .then(response => {
-    //   console.log(response)
-    // })
-    // .catch(error => {
-    //   console.log(error.response.data.message)
-    // })
   }
 
   const changeHeadingBg = color => {
@@ -1002,12 +1113,7 @@ const DashboardPage = () => {
       setColor(res.data.bgfree)
       changeHeadingBg(res.data.bgfree)
     }
-    getColor()
-    changeHeadingBg()
-    // }, [userId, token, links])
-  }, [token, links])
 
-  useEffect(() => {
     if (color === "geel") {
       document.getElementById("currentYellow").classList.add(currentStyle)
     } else {
@@ -1043,11 +1149,10 @@ const DashboardPage = () => {
     } else {
       document.getElementById("currentAfro").classList.remove(currentStyle)
     }
-  }, [color])
 
-  // function changeHeadingBg(klasse) {
-  //   document.getElementById("iphone-bg").className = klasse
-  // }
+    getColor()
+    changeHeadingBg()
+  }, [token, color])
 
   return (
     <>
@@ -1295,7 +1400,7 @@ const DashboardPage = () => {
                     position: "relative",
                     top: "7.5px",
                     margin: "0 10px",
-                  }}
+                  }} // bewaren voor als ik 't nodig heb... icoontjes ipv van labels
                 /> */}
                 <label htmlFor="profile">Profielnaam</label>
                 <input
@@ -1323,15 +1428,6 @@ const DashboardPage = () => {
               </form>
 
               <form onSubmit={submitUsername}>
-                {/* <FaUser
-                    color="#cc9932"
-                    size="1em"
-                    style={{
-                      position: "relative",
-                      top: "7.5px",
-                      margin: "0 10px",
-                    }}
-                  /> */}
                 <label htmlFor="username">Gebruikersnaam</label>
                 <input
                   onChange={setUsernameHandler}
@@ -1361,15 +1457,6 @@ const DashboardPage = () => {
 
               <form onSubmit={submitEmail}>
                 <label htmlFor="email">Email</label>
-                {/* <FaAt
-                  color="#cc9932"
-                  size="1em"
-                  style={{
-                    position: "relative",
-                    top: "7.5px",
-                    margin: "0 10px",
-                  }}
-                /> */}
                 <input
                   onChange={setEmailHandler}
                   value={email || ""}
@@ -1379,6 +1466,9 @@ const DashboardPage = () => {
                   id="email"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   className={profileInput}
+                  style={{
+                    cursor: "pointer",
+                  }}
                 />
 
                 <button
@@ -1395,15 +1485,6 @@ const DashboardPage = () => {
 
               <form onSubmit={submitPassword}>
                 <label htmlFor="password"> Password </label>
-                {/* <FaLock
-                  color="#cc9932"
-                  size="1em"
-                  style={{
-                    position: "relative",
-                    top: "7.5px",
-                    margin: "0 10px",
-                  }}
-                /> */}
                 <input
                   onChange={setPasswordHandler}
                   value={password || ""}
@@ -1432,16 +1513,7 @@ const DashboardPage = () => {
                 </button>
               </form>
 
-              <form onSubmit={submitSlug}>
-                {/* <FaGlobe
-                  color="#cc9932"
-                  size="1em"
-                  style={{
-                    position: "relative",
-                    top: "7.5px",
-                    margin: "0 10px",
-                  }}
-                /> */}
+              <form onSubmit={submitSlug} style={{ display: "none" }}>
                 <label htmlFor="slug">Slug</label>
                 <input
                   onChange={setSlugHandler}
@@ -1477,12 +1549,115 @@ const DashboardPage = () => {
             {error && <ErrorMessage text={error} />}
           </div>
 
+          <div className={bioAndOccupateCont}>
+            <form>
+              <input
+                id="bedrijf"
+                type="radio"
+                value="bedrijf"
+                checked={occupate === "bedrijf"}
+                onChange={onOccupateChange}
+              />
+              <label
+                htmlFor="bedrijf"
+                className={occupateInput}
+                id="currentBedrijf"
+              >
+                Bedrijf
+              </label>
+
+              <input
+                id="zelfstandig"
+                type="radio"
+                value="zelfstandig"
+                checked={occupate === "zelfstandig"}
+                onChange={onOccupateChange}
+              />
+              <label
+                htmlFor="zelfstandig"
+                className={occupateInput}
+                id="currentZelfstandig"
+              >
+                Zelfstandig
+              </label>
+
+              <input
+                id="hobbyist"
+                type="radio"
+                value="hobbyist"
+                checked={occupate === "hobbyist"}
+                onChange={onOccupateChange}
+              />
+              <label
+                htmlFor="hobbyist"
+                className={occupateInput}
+                id="currentHobbyist"
+              >
+                Hobbyist
+              </label>
+
+              <input
+                id="stichting"
+                type="radio"
+                value="stichting"
+                checked={occupate === "stichting"}
+                onChange={onOccupateChange}
+              />
+              <label
+                htmlFor="stichting"
+                className={occupateInput}
+                id="currentStichting"
+              >
+                Stichting
+              </label>
+
+              <input
+                id="artist"
+                type="radio"
+                value="artist"
+                checked={occupate === "artist"}
+                onChange={onOccupateChange}
+              />
+              <label
+                htmlFor="artist"
+                className={occupateInput}
+                id="currentArtist"
+              >
+                Artist
+              </label>
+            </form>
+
+            <form onSubmit={submitBiography}>
+              <label htmlFor="biografie">Biografie</label>
+              <textarea
+                onChange={setBiografieHandler}
+                value={biography || ""}
+                type="text"
+                // maxLength="35"
+                name="text"
+                id="biografie"
+                className={bioInput}
+              />
+
+              <button
+                className={btn}
+                type="submit"
+                style={{
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Save
+              </button>
+            </form>
+          </div>
+
           <hr
             style={{
               border: "1px solid white",
               opacity: "0.025",
               width: "50%",
-              margin: "75px auto",
+              margin: "50px auto",
             }}
             className={mobileHr}
           />
@@ -1682,7 +1857,7 @@ const DashboardPage = () => {
               border: "1px solid white",
               opacity: "0.025",
               width: "50%",
-              margin: "75px auto",
+              margin: "50px auto",
             }}
             className={mobileHr}
           />
@@ -1713,7 +1888,6 @@ const DashboardPage = () => {
                 </h4>
               </label>
               <input
-                // className={linkInput}
                 id="newlink"
                 type="text"
                 placeholder="voer een titel in"
@@ -1730,7 +1904,6 @@ const DashboardPage = () => {
               </label>
               <input
                 id="newhyperlink"
-                // className={linkInput}
                 type="url"
                 placeholder="voer hyperlink in, bijv: voorbeeld.nl"
                 ref={hyperLink}
@@ -1867,7 +2040,7 @@ const DashboardPage = () => {
               border: "1px solid white",
               opacity: "0.025",
               width: "50%",
-              margin: "75px auto",
+              margin: "50px auto",
             }}
             className={mobileHr}
           />

@@ -23,7 +23,6 @@ import {
   grid,
   lead,
   btn,
-  // card,
 } from "../styles/modules/indexStyles.module.scss"
 
 import { imgavatar } from "../styles/modules/profStyles.module.scss"
@@ -98,6 +97,16 @@ const IndexPage = () => {
                 <br />
                 <div className={lead} style={{ color: "white" }}>
                   {ads.profiel}
+                </div>
+
+                <div
+                  style={{
+                    fontStyle: "italic",
+                    fontSize: "0.75em",
+                    color: "#2eb4e9",
+                  }}
+                >
+                  {ads.occupate}
                 </div>
                 <br />
                 <ReactMarkdown
