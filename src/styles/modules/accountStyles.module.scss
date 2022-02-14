@@ -32,6 +32,30 @@
   text-overflow: ellipsis;
 }
 
+@mixin occupateColor {
+  position: absolute;
+  top: 38%;
+  left: 38%;
+  z-index: 2;
+  margin: 0 auto;
+  text-align: center;
+  width: 75px;
+  border-radius: 7.5px;
+  font-size: 0.6em;
+  padding: 5px 2.5px;
+}
+
+@mixin biographyPhone {
+  position: absolute;
+  top: 45%;
+  left: 7.5%;
+  z-index: 2;
+  margin: 0 auto;
+  text-align: center;
+  width: 85%;
+  font-size: 0.6em;
+}
+
 @mixin chooseIcon {
   display: flex;
   position: absolute;
@@ -45,7 +69,8 @@
   display: inline-block;
   border-radius: 3px;
   width: 100%;
-  padding: 5px 25px;
+  padding: 2.5px 25px;
+  font-size: 0.9em;
 }
 
 @mixin chooseStrokes {
@@ -119,10 +144,10 @@
 
     &-avatar {
       position: absolute;
-      top: 12.5%;
-      left: 35%;
-      width: 100px;
-      height: 100px;
+      top: 10%;
+      left: 30%;
+      width: 125px;
+      height: 125px;
       z-index: 2;
       border-radius: 50%;
       display: inline-block;
@@ -132,7 +157,7 @@
 
     &-links {
       position: absolute;
-      top: 60%;
+      top: 67.5%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 250px;
@@ -761,15 +786,26 @@
     color: white;
   }
 
+  &-occupate {
+    @include occupateColor;
+    color: black;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: white;
+  }
+
   &-links {
     margin: 10px 0;
 
     a {
-      background: #5e5d0d;
-      color: white;
-      border: 1px solid white;
+      background: white;
+      color: black;
+      border: 1px solid yellow;
 
-      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
       @include chooseLinks;
 
       &:hover {
@@ -798,8 +834,8 @@
   @include chooseDisplay;
 
   .yellowlinks {
-    background: #5e5d0d;
-    border: 1px solid white;
+    background: white;
+    border: 1px solid yellow;
     border-radius: 2px;
     @include chooseStrokes;
   }
@@ -813,6 +849,17 @@
   &-username {
     @include chooseUsername;
     color: #595959;
+  }
+
+  &-occupate {
+    @include occupateColor;
+    color: black;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: white;
   }
 
   &-links {
@@ -868,13 +915,24 @@
     color: white;
   }
 
+  &-occupate {
+    @include occupateColor;
+    color: black;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: white;
+  }
+
   &-links {
     margin: 10px 0;
 
     a {
       box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
       color: white;
-      background: #878787;
+      background: #a8a8a8;
       border: 1px solid white;
 
       @include chooseLinks;
@@ -905,7 +963,7 @@
   @include chooseDisplay;
 
   .pinklinks {
-    background: #878787;
+    background: #a8a8a8;
     border: 1px solid white;
     border-radius: 2px;
     @include chooseStrokes;
@@ -922,15 +980,26 @@
     color: white;
   }
 
+  &-occupate {
+    @include occupateColor;
+    color: black;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: white;
+  }
+
   &-links {
     margin: 10px 0;
 
     a {
       background: #878787;
-      color: black;
+      color: white;
       border: 1px solid white;
 
-      box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+      box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
       @include chooseLinks;
 
       &:hover {
@@ -974,6 +1043,17 @@
   &-username {
     @include chooseUsername;
     color: white;
+  }
+
+  &-occupate {
+    @include occupateColor;
+    color: white;
+    background-color: brown;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: #e0e0e0;
   }
 
   &-links {
@@ -1029,6 +1109,17 @@
     color: white;
   }
 
+  &-occupate {
+    @include occupateColor;
+    color: green;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+    color: #ededed;
+  }
+
   &-links {
     margin: 10px 0;
 
@@ -1079,6 +1170,18 @@
 
   &-username {
     @include chooseUsername;
+    color: white;
+  }
+
+  &-occupate {
+    @include occupateColor;
+    color: black;
+    background-color: white;
+  }
+
+  &-biography {
+    @include biographyPhone;
+
     color: white;
   }
 

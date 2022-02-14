@@ -124,6 +124,20 @@ import {
   bioInput,
   occupateInput,
   currentOccupate,
+  afrospecstyleOccupate,
+  afrospecstyleBiography,
+  greenstyleOccupate,
+  greenstyleBiography,
+  brownstyleOccupate,
+  brownstyleBiography,
+  blackstyleOccupate,
+  blackstyleBiography,
+  pinkstyleOccupate,
+  pinkstyleBiography,
+  graystyleOccupate,
+  graystyleBiography,
+  yellowstyleOccupate,
+  yellowstyleBiography,
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
@@ -1040,6 +1054,10 @@ const DashboardPage = () => {
       case "geel":
         document.getElementById("iphone-username").className =
           yellowstyleUsername
+        document.getElementById("iphone-occupate").className =
+          yellowstyleOccupate
+        document.getElementById("iphone-biography").className =
+          yellowstyleBiography
         document.getElementById("iphone-iconlook").className = yellowstyleIcons
         document.getElementById("iphone-bg").className = yellowstyle
         for (i = 0; i < c.length; i++) {
@@ -1048,6 +1066,9 @@ const DashboardPage = () => {
         break
       case "grijs":
         document.getElementById("iphone-username").className = graystyleUsername
+        document.getElementById("iphone-occupate").className = graystyleOccupate
+        document.getElementById("iphone-biography").className =
+          graystyleBiography
         document.getElementById("iphone-iconlook").className = graystyleIcons
         document.getElementById("iphone-bg").className = graystyle
         for (i = 0; i < c.length; i++) {
@@ -1056,6 +1077,9 @@ const DashboardPage = () => {
         break
       case "roze":
         document.getElementById("iphone-username").className = pinkstyleUsername
+        document.getElementById("iphone-occupate").className = pinkstyleOccupate
+        document.getElementById("iphone-biography").className =
+          pinkstyleBiography
         document.getElementById("iphone-iconlook").className = pinkstyleIcons
         document.getElementById("iphone-bg").className = pinkstyle
         for (i = 0; i < c.length; i++) {
@@ -1065,6 +1089,10 @@ const DashboardPage = () => {
       case "zwart":
         document.getElementById("iphone-username").className =
           blackstyleUsername
+        document.getElementById("iphone-occupate").className =
+          blackstyleOccupate
+        document.getElementById("iphone-biography").className =
+          blackstyleBiography
         document.getElementById("iphone-iconlook").className = blackstyleIcons
         document.getElementById("iphone-bg").className = blackstyle
         for (i = 0; i < c.length; i++) {
@@ -1074,6 +1102,10 @@ const DashboardPage = () => {
       case "bruin":
         document.getElementById("iphone-username").className =
           brownstyleUsername
+        document.getElementById("iphone-occupate").className =
+          brownstyleOccupate
+        document.getElementById("iphone-biography").className =
+          brownstyleBiography
         document.getElementById("iphone-iconlook").className = brownstyleIcons
         document.getElementById("iphone-bg").className = brownstyle
         for (i = 0; i < c.length; i++) {
@@ -1083,6 +1115,10 @@ const DashboardPage = () => {
       case "groen":
         document.getElementById("iphone-username").className =
           greenstyleUsername
+        document.getElementById("iphone-occupate").className =
+          greenstyleOccupate
+        document.getElementById("iphone-biography").className =
+          greenstyleBiography
         document.getElementById("iphone-iconlook").className = greenstyleIcons
         document.getElementById("iphone-bg").className = greenstyle
         for (i = 0; i < c.length; i++) {
@@ -1092,6 +1128,10 @@ const DashboardPage = () => {
       case "afrotheme":
         document.getElementById("iphone-username").className =
           afrospecstyleUsername
+        document.getElementById("iphone-occupate").className =
+          afrospecstyleOccupate
+        document.getElementById("iphone-biography").className =
+          afrospecstyleBiography
         document.getElementById("iphone-iconlook").className =
           afrospecstyleIcons
         document.getElementById("iphone-bg").className = afrospecstyle
@@ -1152,7 +1192,7 @@ const DashboardPage = () => {
 
     getColor()
     changeHeadingBg()
-  }, [token, color])
+  }, [token, color, links])
 
   return (
     <>
@@ -1221,12 +1261,9 @@ const DashboardPage = () => {
               id="iphone-avatar"
               style={{ border: "3px solid white" }}
             />
-            <p
-              id="iphone-username"
-              // className={iphoneUsername}
-            >
-              {profile ? profile : null}
-            </p>
+            <p id="iphone-username">{profile}</p>
+            <p id="iphone-occupate">{occupate}</p>
+            <p id="iphone-biography">{biography}</p>
             <div
               id="iphone-bg"
               className={iphoneBackground}
@@ -1239,7 +1276,7 @@ const DashboardPage = () => {
             />
             <div>
               <ul className={iphoneLinks} id="iphone-linklook">
-                {links.slice(0, 5).map(link => (
+                {links.slice(0, 3).map(link => (
                   <li
                     key={link.id}
                     id={`link${link.id}`}
@@ -1633,7 +1670,7 @@ const DashboardPage = () => {
                 onChange={setBiografieHandler}
                 value={biography || ""}
                 type="text"
-                // maxLength="35"
+                maxLength="140"
                 name="text"
                 id="biografie"
                 className={bioInput}

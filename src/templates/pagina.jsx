@@ -1,23 +1,24 @@
 import React, { useLayoutEffect, useState, useEffect } from "react"
 import { Link } from "gatsby"
-// import Reactmarkdown from "react-markdown"
 import axios from "axios"
+
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 import Seo from "../components/seo"
 
 import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa"
 import { SiTiktok } from "react-icons/si"
 
-// NEGO TEMPLATE
 import ProfLayout from "../components/proflayout"
 
 import { profCenter, imgavatar } from "../styles/modules/profStyles.module.scss"
 
 import "../styles/themes.scss"
 
-import afroLogo from "../images/afrodiasphere-logo.png"
-
 import noavatar from "../images/noavatar.png"
+
+import afroLogo from "../images/afrodiasphere-logo.png"
 
 // import { getUser } from "../services/auth"
 
@@ -38,6 +39,8 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
   const [color, setColor] = useState("")
   const [avatar, setAvatar] = useState(null)
   const [username, setUsername] = useState("")
+  const [occupate, setOccupate] = useState("")
+  const [biography, setBiography] = useState("")
   const [links, setLinks] = useState([])
 
   const [fbLink, setFbLink] = useState("")
@@ -58,6 +61,8 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
       setLinks(sortedLinks)
       setColor(res.data.data.attributes.bgfree)
       setUsername(res.data.data.attributes.profiel)
+      setOccupate(res.data.data.attributes.occupate)
+      setBiography(res.data.data.attributes.biografie)
       setFbLink(res.data.data.attributes.facebooklink)
       setTwLink(res.data.data.attributes.twitterlink)
       setIgLink(res.data.data.attributes.instagramlink)
@@ -137,11 +142,15 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
           />
 
           <h1>{username}</h1>
-          {/* <Reactmarkdown
-            source={data.strapiInstantie.biografie}
-            className={profStyles.profielContent}
-            escapeHtml={false}
-          /> */}
+
+          <p>{occupate}</p>
+
+          <ReactMarkdown
+            as="p"
+            children={biography}
+            remarkPlugins={[remarkGfm]}
+            // escapeHtml={false}
+          />
 
           <ul>
             {links.slice(0, 20).map(link => (
@@ -207,32 +216,16 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
               <SiTiktok size="2em" />
             </a>
           </div>
-
-          {/* <p></p>
-            by{" "}
-            <Link to={`/gebruiker/User_${data.strapiAfrosite.website.id}`}>
-              {data.strapiAfrosite.website.username}
-            </Link>
-          </p> */}
+          <Link to="/">
+            <img
+              src={afroLogo}
+              alt=""
+              style={{
+                width: "100px",
+              }}
+            />
+          </Link>
         </div>
-        <Link
-          to="/"
-          style={{
-            position: "absolute",
-            bottom: "0",
-            width: "100%",
-            textAlign: "center",
-          }}
-        >
-          <img
-            src={afroLogo}
-            alt=""
-            style={{
-              width: "100px",
-              margin: "50px",
-            }}
-          ></img>
-        </Link>
       </div>
     </ProfLayout>
   )

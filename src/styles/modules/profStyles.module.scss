@@ -4,7 +4,7 @@
 .prof-center {
   padding-top: 10rem;
   text-align: center !important;
-  margin-bottom: -58px;
+  // height: 100vh;
 }
 
 .imgavatar {
@@ -26,7 +26,6 @@
 @media (max-width: 767.98px) {
   .prof-center {
     padding-top: 5rem;
-    padding-bottom: 7rem;
   }
 
   .imgavatar {

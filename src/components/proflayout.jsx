@@ -22,10 +22,8 @@ const ProfLayout = ({ children }) => {
 
   return (
     <>
-      <div>
-        <div>
-          <main>{children}</main>
-        </div>
+      <div style={{ height: "100vh", marginBottom: "-58px" }}>
+        <main>{children}</main>
       </div>
     </>
   )

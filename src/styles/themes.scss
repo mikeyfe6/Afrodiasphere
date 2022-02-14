@@ -1,11 +1,10 @@
 @mixin fullBG {
-  height: 100vh;
-  margin-bottom: -58px;
+  height: 100%;
+  min-height: 100vh;
 }
 
 @mixin profileLinks {
   display: inline-block;
-
   padding: 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -17,10 +16,24 @@
   }
 }
 
+@mixin occupateIcon {
+  padding: 7.5px 5px;
+  width: 8.25em;
+  margin: 10px auto 50px;
+  border-radius: 7.5px;
+  font-size: 0.8em;
+}
+
+@mixin biographyText {
+  max-width: 40ch;
+  text-align: center;
+  margin: 25px auto 50px;
+}
+
 @mixin iconCenter {
   display: flex;
   justify-content: center;
-  margin: 75px 0px;
+  margin: 75px 0px 125px;
 }
 
 .theme {
@@ -31,18 +44,29 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: black;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: #dddddd;
+      @include biographyText;
     }
 
     &-links {
       margin: 15px 0;
 
       a {
-        background: #5e5d0d;
-        color: white;
-        border: 1px solid white;
+        background: white;
+        color: black;
+        border: 1px solid yellow;
         border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
         @include profileLinks;
       }
     }
@@ -68,7 +92,18 @@
 
     h1 {
       color: #595959;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: black;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: white;
+      @include biographyText;
     }
 
     &-links {
@@ -105,16 +140,27 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: black;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: white;
+      @include biographyText;
     }
 
     &-links {
       margin: 15px 0;
 
       a {
-        background: #878787;
+        background: #a8a8a8;
         color: white;
-        border: 1px solid #878787;
+        border: 1px solid white;
         border-radius: 3px;
         box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
         @include profileLinks;
@@ -142,7 +188,18 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: black;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: white;
+      @include biographyText;
     }
 
     &-links {
@@ -150,10 +207,10 @@
 
       a {
         background: #878787;
-        color: black;
+        color: white;
         border: 2px solid white;
         border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+        box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
         @include profileLinks;
       }
     }
@@ -179,7 +236,18 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: white;
+      background-color: brown;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: #e0e0e0;
+      @include biographyText;
     }
 
     &-links {
@@ -217,7 +285,18 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: green;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: #ededed;
+      @include biographyText;
     }
 
     &-links {
@@ -255,7 +334,18 @@
 
     h1 {
       color: white;
-      margin: 25px 0 75px;
+      margin: 25px 0 10px;
+    }
+
+    p:nth-of-type(1) {
+      color: black;
+      background-color: white;
+      @include occupateIcon;
+    }
+
+    p:nth-of-type(2) {
+      color: #e0e0e0;
+      @include biographyText;
     }
 
     &-links {
@@ -294,6 +384,10 @@
 
 // small devices
 @media (max-width: 40em) {
+  p:nth-of-type(2) {
+    max-width: 30ch !important;
+    font-size: 0.9em;
+  }
 }
 
 // large devices
