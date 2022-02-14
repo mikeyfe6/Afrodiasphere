@@ -4,13 +4,23 @@ import { Link } from "gatsby"
 import axios from "axios"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-// import { Carousel } from "react-bootstrap"
+
+import { A11y, Autoplay } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
+// import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js"
 
 import Layout from "../components/layout"
 
 import Seo from "../components/seo"
 
+import "swiper/css/bundle"
+
+// import "swiper/swiper.scss"
+import "swiper/css/effect-fade"
+import "swiper/css/autoplay"
+
 import {
+  carouselUberCont,
   carouselCont,
   carouselRow,
   homeAdsBio,
@@ -74,10 +84,41 @@ const IndexPage = () => {
             </p>
           </div>
           <img src={servImage} alt="" className={imgHide} />
+        </div>
 
-          <ul className={carouselCont}>
+        <div className={carouselUberCont}>
+          <Swiper
+            modules={[A11y, Autoplay]}
+            className={carouselCont}
+            spaceBetween={50}
+            slidesPerView={3}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={swiper => console.log(swiper)}
+            // modules={[EffectFade]}
+            // effect="fade"
+            loop
+            autoplay={{ delay: 7000 }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 25,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+              900: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+            }}
+          >
             {carousel.map(ads => (
-              <li
+              <SwiperSlide
                 key={ads.id}
                 // className={`theme-${color}-links`}
                 className={carouselRow}
@@ -88,13 +129,12 @@ const IndexPage = () => {
                   style={{
                     transform: "scale(0.7)",
                     border: "5px solid white",
-                    maxWidth: "200px",
-                    minWidth: "50px",
+                    // maxWidth: "200px",
+                    // minWidth: "50px",
                   }}
                   alt="avatar"
                 />
 
-                <br />
                 <div className={lead} style={{ color: "white" }}>
                   {ads.profiel}
                 </div>
@@ -106,20 +146,17 @@ const IndexPage = () => {
                     color: "#2eb4e9",
                   }}
                 >
-                  {ads.occupate}
+                  {ads.occupate || ".."}
                 </div>
-                <br />
+
                 <ReactMarkdown
                   className={homeAdsBio}
-                  children={ads.biografie}
+                  children={ads.biografie || ".."}
                   remarkPlugins={[remarkGfm]}
                   // escapeHtml={false}
                 />
-                <br />
 
-                <br />
                 {/* {ads.createdAt} */}
-                <br />
 
                 <div>
                   {" "}
@@ -127,9 +164,9 @@ const IndexPage = () => {
                     ✨../{`${ads.slug}`}
                   </Link>
                 </div>
-              </li>
+              </SwiperSlide>
             ))}
-          </ul>
+          </Swiper>
         </div>
       </section>
     </Layout>
