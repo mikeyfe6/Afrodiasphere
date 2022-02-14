@@ -88,18 +88,22 @@
     .imgHide {
       // display: none;
       width: 22.5%;
-      margin-top: -15em;
+      margin-top: -12.5em;
       margin-right: -25px;
     }
 
     h1 {
       font-size: 2em;
     }
+
+    p.lead {
+      font-size: 0.9em;
+    }
   }
 
   .carouselCont {
     max-width: 250px !important;
     margin-top: 0em !important;
-    transform: scale(0.85);
+    transform: scale(0.8);
   }
 }

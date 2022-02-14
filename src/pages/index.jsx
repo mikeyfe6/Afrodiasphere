@@ -70,8 +70,7 @@ const IndexPage = () => {
                   className={btn}
                   type="button"
                   style={{
-                    padding: "2.5px 20px",
-                    float: "none",
+                    padding: "1.5px 17.5px 0px 17.5px",
                     color: "#0e0e0e",
                     backgroundColor: "#cc9932",
                   }}
