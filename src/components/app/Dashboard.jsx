@@ -278,12 +278,12 @@ const DashboardPage = () => {
       imgData.append("refId", userId) // optional, you need it if you want to link the image to an entry
       imgData.append("field", "avatar") // optional, you need it if you want to link the image to an entry
 
-      const res = await axios.post(`${apiURL}/api/upload/`, imgData, {
+      await axios.post(`${apiURL}/api/upload/`, imgData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      console.log("Geupload!", res)
+      // console.log("Geupload!", res)
       setTimeout(() => setLoading(false), 5000)
     } catch (error) {
       console.log("Niet gelukt!", error)
@@ -1405,7 +1405,7 @@ const DashboardPage = () => {
                   ref={fileInputRef}
                   onChange={event => {
                     const file = event.target.files[0]
-                    console.log(event.target.files[0])
+                    // console.log(event.target.files[0])
 
                     if (file && file.type.substring(0, 5) === "image") {
                       setImage(file)
