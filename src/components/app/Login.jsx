@@ -338,7 +338,7 @@ const LoginPage = () => {
                   <br />
                   Nog <u>geen</u> account? <strong>Klik hieronder..</strong>
                 </p>
-                <br />
+
                 <button
                   style={{ cursor: "pointer" }}
                   className={ghost}
