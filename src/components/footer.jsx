@@ -2,6 +2,8 @@ import React from "react"
 
 import "../styles/modules/footerStyles.module.scss"
 
+import menefexLogo from "../images/menefex-icon.png"
+
 const Footer = () => (
   <footer>
     Copyright {new Date().getFullYear()} © ・ Powered by{" "}
@@ -9,11 +11,7 @@ const Footer = () => (
       {""}
       <b> Menefex </b>
     </a>
-    <img
-      src="https://i.postimg.cc/rsf0PJv0/Gx-FAVICON-X.png"
-      alt=""
-      style={{ width: "25px" }}
-    />
+    <img src={menefexLogo} alt="menefex logo" style={{ width: "25px" }} />
   </footer>
 )
 
