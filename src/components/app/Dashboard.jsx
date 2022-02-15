@@ -141,7 +141,7 @@ import {
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
-const instURL = process.env.GATSBY_CURR_URL
+// const instURL = process.env.GATSBY_CURR_URL
 
 const ErrorMessage = ({ text }) => {
   return (
@@ -2271,10 +2271,7 @@ const DashboardPage = () => {
             </div>
 
             <div className={usLinkSite}>
-              <Link
-                className={userLink}
-                to={`/${slug}`}
-              >{`${instURL}/${slug}`}</Link>
+              <Link className={userLink} to={`/${slug}`}>{`✨../${slug}`}</Link>
             </div>
           </div>
         </aside>
