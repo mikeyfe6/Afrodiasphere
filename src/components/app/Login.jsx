@@ -332,8 +332,8 @@ const LoginPage = () => {
                   Maak optimaal gebruik van de webapp! <br />
                   <br />
                   Deze kan je downloaden en plaatsen op het beginscherm van jouw
-                  favoriete toestel. Zo ben je altijd up-to-date met de nieuwste
-                  ontwikkelingen.
+                  favoriete toestel. Zo blijf je altijd up-to-date met de
+                  nieuwste ontwikkelingen.
                   <br />
                   <br />
                   Nog <u>geen</u> account? <strong>Klik hieronder..</strong>
