@@ -1349,6 +1349,12 @@
         }
       }
 
+      .link-cont {
+        .linksOnline {
+          flex: 1;
+        }
+      }
+
       .pickColor {
         .chooseColor {
           transform: scale(0.8);
