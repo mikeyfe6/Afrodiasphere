@@ -37,8 +37,6 @@ import {
 
 import servImage from "../../images/mamafrica.png"
 
-// import afroLogo from ""
-
 const apiURL = process.env.GATSBY_BASE_URL
 
 const ErrorMessage = ({ text }) => {
@@ -111,7 +109,6 @@ const LoginPage = () => {
         identifier: usernameRef.current.value.toLowerCase(),
         password: passwordRef.current.value,
       })
-
       setUser(data)
       setLoading("Aan het laden")
       setError(null)

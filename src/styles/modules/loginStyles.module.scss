@@ -6,7 +6,7 @@
   margin: 1.5em 1em 0;
 
   span {
-    font-size: 12px;
+    font-size: 10px;
     margin: 15px 0;
   }
 
@@ -221,28 +221,31 @@
 // }
 
 .logerror {
-  position: absolute;
-  bottom: 75px;
-  background-color: #ff0102;
+  // position: absolute;
+  font-size: 0.3em;
+  bottom: 37.5px;
+  background-color: #c60319;
   font-weight: bold;
   color: $white-color;
-  padding: 0.1rem 0.7rem;
+  padding: 0.5em 1em;
   display: table;
   margin: 0 auto;
   text-align: center;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .loadingmsg {
-  background-color: green;
+  position: absolute;
+  font-size: 0.3em;
+  bottom: 37.5px;
+  background-color: #57a55f;
   font-weight: bold;
   color: $white-color;
-  padding: 0.3rem 0.7rem;
+  padding: 0.5em 1em;
   display: table;
   margin: 0 auto;
   text-align: center;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  border-radius: 2px;
 }
 
 .link {
@@ -259,29 +262,15 @@
 @media only screen and (min-device-width: 480px) and (max-device-width: 991.98px) and (orientation: landscape) {
 }
 
-// SMALL devices
-@media (max-width: 40em) {
-  .docs-head {
-    text-align: center;
-    padding: 2rem 0 0 0 !important;
-
-    .imgHide {
-      justify-self: center;
-      display: none;
-    }
-
-    h1 {
-      display: none;
-    }
-  }
-}
-
 // LARGE devices
 @media (max-width: 64em) {
   .logerror {
-    position: absolute;
-    bottom: 80px;
-    font-size: 9px;
+    bottom: 45px;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .loadingmsg {
+    bottom: 45px;
     padding: 0.1rem 0.3rem;
   }
 
@@ -315,6 +304,33 @@
       &-panel {
         padding: 0 15px;
       }
+    }
+  }
+}
+
+// SMALL devices
+@media (max-width: 40em) {
+  .logerror {
+    bottom: 25px;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .loadingmsg {
+    bottom: 25px;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .docs-head {
+    text-align: center;
+    padding: 2rem 0 0 0 !important;
+
+    .imgHide {
+      justify-self: center;
+      display: none;
+    }
+
+    h1 {
+      display: none;
     }
   }
 }

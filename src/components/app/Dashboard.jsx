@@ -178,7 +178,7 @@ const DashboardPage = () => {
   const [preview, setPreview] = useState()
   const fileInputRef = useRef()
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(null)
   const [error, setError] = useState(null)
 
   const [linkError, setLinkError] = useState(null)
@@ -1378,9 +1378,6 @@ const DashboardPage = () => {
                   id="avatar-image"
                   style={{ border: "3px solid white" }}
                 />{" "}
-                {loading && (
-                  <div className={loadingComplete}>Profielfoto Geupload</div>
-                )}
               </div>
 
               <div className={buttonsenzo}>
@@ -1583,8 +1580,12 @@ const DashboardPage = () => {
                 </button>
               </form>
             </div>
-            {error && <ErrorMessage text={error} />}
           </div>
+
+          {loading && (
+            <div className={loadingComplete}>Profielfoto Geupload</div>
+          )}
+          {error && <ErrorMessage text={error} />}
 
           <div className={bioAndOccupateCont}>
             <form>
