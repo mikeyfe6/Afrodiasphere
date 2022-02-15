@@ -1490,7 +1490,7 @@ const DashboardPage = () => {
               </form>
 
               <form onSubmit={submitEmail}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">E-mailadres</label>
                 <input
                   onChange={setEmailHandler}
                   value={email || ""}
@@ -1518,7 +1518,7 @@ const DashboardPage = () => {
               </form>
 
               <form onSubmit={submitPassword}>
-                <label htmlFor="password"> Password </label>
+                <label htmlFor="password"> Wachtwoord </label>
                 <input
                   onChange={setPasswordHandler}
                   value={password || ""}

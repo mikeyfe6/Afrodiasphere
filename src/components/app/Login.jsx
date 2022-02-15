@@ -197,7 +197,7 @@ const LoginPage = () => {
               }}
             /> */}
             <form onSubmit={handleSubmitRegister}>
-              <h1 style={{ fontSize: "1.5em" }}> Maak een account aan</h1>
+              <h1 style={{ fontSize: "1.5em" }}>Maak een account aan</h1>
               {/* <div className={loginStyles.socialContainer}>
                 <a href="" className="social">
                   <i>icon</i>
@@ -209,7 +209,10 @@ const LoginPage = () => {
                   <i>icon</i>
                 </a>
               </div> */}
-              <span>vul je email/adress in en kies een wachtwoord</span>
+              <span>
+                voer hieronder jouw e-mailadres in, kies een gebruikersnaam en
+                een wachtwoord
+              </span>
               <input
                 ref={usernameRegRef}
                 type="text"
@@ -222,7 +225,7 @@ const LoginPage = () => {
                 ref={emailRegRef}
                 type="email"
                 name="emailReg"
-                placeholder="email"
+                placeholder="e-mailadres"
                 style={{ textTransform: "lowercase" }}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               />
@@ -230,7 +233,7 @@ const LoginPage = () => {
                 ref={passwordRegRef}
                 type="password"
                 name="passwordreg"
-                placeholder="wachtwoord"
+                placeholder="nieuw wachtwoord"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
               />
@@ -276,12 +279,12 @@ const LoginPage = () => {
                   <i>icon</i>
                 </a>
               </div> */}
-              <span>met jouw account</span>
+              <span>met jouw ADS-account</span>
               <input
                 ref={usernameRef}
                 type="text"
                 name="username"
-                placeholder="email / gebruikersnaam"
+                placeholder="e-mailadres / gebruikersnaam"
                 style={{ textTransform: "lowercase" }}
                 required
               />
@@ -306,11 +309,12 @@ const LoginPage = () => {
               <div className={`${overlayPanel} ${overlayLeft}`}>
                 <h1 className={signUpTitle}>Welkom</h1>
                 <p className={signUpText}>
-                  Hier kan je je registeren <br />
-                  <br /> Lorem ipsum dolor, sit amet consectetur adipisicing
-                  elit. Maiores nihil corporis dolores eaque delectus. <br />
+                  <b>Hi!</b> Join the movement! <br />
+                  <br /> Registreer hier jouw eigen "ADS-account" en voeg jouw
+                  bedrijf binnen no-time toe aan het
+                  Afrodiasphere-netwerkendomein. <br />
                   <br />
-                  Al een account? klik hieronder..
+                  Al een account? <strong>Klik hieronder..</strong>
                 </p>
 
                 <button
@@ -325,13 +329,16 @@ const LoginPage = () => {
               <div className={`${overlayPanel} ${overlayRight}`}>
                 <h1 className={signUpTitle}>Welkom Terug</h1>
                 <p className={signUpText}>
-                  Hier kan je inloggen <br />
+                  Maak optimaal gebruik van de webapp! <br />
                   <br />
-                  Lorem ipsum dolor sit amet consectetur apersonal info Lorem,
-                  ipsum dolor sit amet consectetur adipisicing elit. <br />
+                  Deze kan je downloaden en plaatsen op het beginscherm van jouw
+                  favoriete toestel. Zo ben je altijd up-to-date met de nieuwste
+                  ontwikkelingen.
                   <br />
-                  Nog geen account? Klik hieronder..
+                  <br />
+                  Nog <u>geen</u> account? <strong>Klik hieronder..</strong>
                 </p>
+                <br />
                 <button
                   style={{ cursor: "pointer" }}
                   className={ghost}
