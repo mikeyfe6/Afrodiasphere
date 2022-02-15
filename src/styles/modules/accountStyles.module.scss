@@ -1253,8 +1253,8 @@
 // small devices
 @media (max-width: 40em) {
   .grid-container {
-    margin: 5px !important;
-    padding: 2.5px !important;
+    margin: 2.5px !important;
+    padding: 0px !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: 1fr;
     gap: 0px 0px;
