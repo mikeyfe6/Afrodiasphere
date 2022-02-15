@@ -328,11 +328,7 @@
       gap: 1em;
 
       .occupateInput {
-        background: linear-gradient(
-          135deg,
-          rgb(255, 255, 255, 0.05),
-          $black-color
-        );
+        background: linear-gradient(135deg, #0e0e0e02, $black-color);
         text-align: center;
         min-width: 75px;
         padding: 10px 7.5px;
@@ -388,12 +384,7 @@
         // overflow:hidden;
         padding: 17.5px;
 
-        background: linear-gradient(
-          135deg,
-          rgb(255, 255, 255, 0.05),
-          $black-color
-        );
-        // background-color: rgb(255, 255, 255, 0.05);
+        background: linear-gradient(135deg, #0e0e0e02, $black-color);
         border: 1px $primary-color solid;
         border-radius: 10px;
         @include smoothtrans;
