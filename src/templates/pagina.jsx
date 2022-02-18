@@ -172,7 +172,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
           <div className={`theme-${color}-icons`}>
             <a
-              href={`https://${fbLink}`}
+              href={`https://www.facebook.com/${fbLink}`}
               rel="noopener noreferrer"
               target="_blank"
               id="fbhidesm"
@@ -181,7 +181,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
             </a>
 
             <a
-              href={`https://${twLink}`}
+              href={`https://twitter.com/${twLink}`}
               rel="noopener noreferrer"
               target="_blank"
               id="twhidesm"
@@ -190,7 +190,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
             </a>
 
             <a
-              href={`https://${igLink}`}
+              href={`https://www.instagram.com/${igLink}`}
               rel="noopener noreferrer"
               target="_blank"
               id="ighidesm"
@@ -208,7 +208,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
             </a>
 
             <a
-              href={`https://${tkLink}`}
+              href={`https://www.tiktok.com/@${tkLink}`}
               rel="noopener noreferrer"
               target="_blank"
               id="tkhidesm"
