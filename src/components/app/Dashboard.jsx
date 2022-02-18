@@ -1297,7 +1297,7 @@ const DashboardPage = () => {
             </div>
             <div className={iphoneSocials} id="iphone-iconlook">
               <a
-                href={`https://${fbLink}`}
+                href={`https://www.facebook.com/${fbLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="fbhide"
@@ -1306,7 +1306,7 @@ const DashboardPage = () => {
               </a>
 
               <a
-                href={`https://${twLink}`}
+                href={`https://twitter.com/${twLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="twhide"
@@ -1315,7 +1315,7 @@ const DashboardPage = () => {
               </a>
 
               <a
-                href={`https://${igLink}`}
+                href={`https://www.instagram.com/${igLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="ighide"
@@ -1333,7 +1333,7 @@ const DashboardPage = () => {
               </a>
 
               <a
-                href={`https://${tkLink}`}
+                href={`https://www.tiktok.com/@${tkLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="tkhide"
@@ -1737,7 +1737,7 @@ const DashboardPage = () => {
                 type="text"
                 name="fblink"
                 id="fblink"
-                placeholder="facebook.com/jouwprofiel"
+                placeholder="jouwprofiel"
                 className={socialInput}
               />
               <button
@@ -1771,7 +1771,7 @@ const DashboardPage = () => {
                 type="text"
                 name="twlink"
                 id="twlink"
-                placeholder="twitter.com/jouwprofiel"
+                placeholder="jouwprofiel"
                 className={socialInput}
               />
               <button
@@ -1806,7 +1806,7 @@ const DashboardPage = () => {
                 type="text"
                 name="iglink"
                 id="iglink"
-                placeholder="instagram.com/jouwprofiel"
+                placeholder="jouwprofiel"
                 className={socialInput}
               />
 
@@ -1842,7 +1842,7 @@ const DashboardPage = () => {
                 name="walink"
                 id="walink"
                 maxLength="15"
-                placeholder="bijv.: 31601234567"
+                placeholder="bijv.: 31612345678"
                 className={socialInput}
               />
               <button
@@ -1876,7 +1876,7 @@ const DashboardPage = () => {
                 type="text"
                 name="tklink"
                 id="tklink"
-                placeholder="tiktok.com/jouwprofiel"
+                placeholder="jouwprofiel"
                 className={socialInput}
               />
               <button
@@ -2017,9 +2017,7 @@ const DashboardPage = () => {
                 </div>
                 <div className={updateHyperLinkcont}>
                   <div>
-                    <b>
-                      <p className={updateHyperLinkShow}>{link.hyperlink}</p>{" "}
-                    </b>
+                    <p className={updateHyperLinkShow}>{link.hyperlink}</p>
                     <input
                       className={editInput}
                       id={`hyperlink${link.id}`}

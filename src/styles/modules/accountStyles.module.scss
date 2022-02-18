@@ -587,6 +587,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     color: $black-color;
+    font-weight: bold;
   }
 
   .updateHyperLinkShow {
@@ -595,7 +596,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $black-color;
+    color: $secondary-color;
+    font-weight: bold;
   }
 
   button {
