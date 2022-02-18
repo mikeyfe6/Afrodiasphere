@@ -96,7 +96,7 @@ const IndexPage = () => {
             // modules={[EffectFade]}
             // effect="fade"
             loop
-            autoplay={{ delay: 7000 }}
+            autoplay={{ delay: 5000 }}
             breakpoints={{
               320: {
                 slidesPerView: 1,
