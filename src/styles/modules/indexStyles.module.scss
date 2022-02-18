@@ -61,7 +61,7 @@
     transform: scale(0.7);
     .carouselCont {
       // max-width: 535px !important;
-      margin-top: 1em !important;
+      margin-top: 0em !important;
 
       .carouselRow {
         max-width: 225px;
@@ -99,6 +99,5 @@
 
   .carouselCont {
     max-width: 250px !important;
-    margin-top: 0em !important;
   }
 }
