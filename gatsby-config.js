@@ -55,7 +55,20 @@ module.exports = {
         // showSpinner: false,
       },
     },
-    `gatsby-plugin-netlify`,
+    // `gatsby-plugin-netlify`,
+    {
+      resolve: "gatsby-plugin-netlify",
+      options: {
+        headers: {
+          "/*": [
+            "X-XSS-Protection: 1; mode=block",
+            "X-Content-Type-Options: nosniff",
+            "Referrer-Policy: same-origin",
+            `Content-Security-Policy: frame-ancestors 'self' http://techsini.com`,
+          ],
+        },
+      },
+    },
     // `gatsby-plugin-image`,
     // `gatsby-plugin-sharp`,
     {
