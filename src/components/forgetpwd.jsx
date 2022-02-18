@@ -57,10 +57,12 @@ const ForgetPwd = () => {
           ref={emailResetRef}
           type="email"
           name="emailRes"
-          placeholder="email"
+          placeholder="info@voorbeeld.nl"
           style={{ textTransform: "lowercase" }}
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
         />
+        {error && <ErrorMessage text={error} />}
+        {loading && <LoadingMessage text={loading} />}
         <button
           className={btn}
           style={{
@@ -71,8 +73,7 @@ const ForgetPwd = () => {
         >
           Verstuur
         </button>
-        {error && <ErrorMessage text={error} />}
-        {loading && <LoadingMessage text={loading} />}
+        <div style={{ clear: "both" }} />
       </form>
     </>
   )

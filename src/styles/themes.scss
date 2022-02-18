@@ -29,12 +29,16 @@
   max-width: 40ch;
   text-align: center;
   margin: 25px auto 50px;
+
+  @media (max-width: 40em) {
+    max-width: 30ch;
+  }
 }
 
 @mixin iconCenter {
   display: flex;
   justify-content: center;
-  margin: 75px 0px 125px;
+  margin: 75px 0px;
 }
 
 .theme {
@@ -328,7 +332,7 @@
       }
     }
   }
-  // ---------------------------------------------------------------------------------------- // NEGO THEME NEGO THEME
+  // ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
   &-afrotheme {
     background: linear-gradient(to bottom, #e6541b, black);
     @include fullBG;

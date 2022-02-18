@@ -82,6 +82,8 @@ const ResetPwd = () => {
           placeholder="Voer jouw nieuwe wachtwoord opnieuw in"
         />{" "}
         <br />
+        {error && <ErrorMessage text={error} />}
+        {loading && <LoadingMessage text={loading} />}
         <button
           className={btn}
           style={{
@@ -92,8 +94,7 @@ const ResetPwd = () => {
         >
           Verstuur
         </button>
-        {error && <ErrorMessage text={error} />}
-        {loading && <LoadingMessage text={loading} />}
+        <div style={{ clear: "both" }} />
       </form>
     </>
   )

@@ -13,10 +13,10 @@ import {
   grid,
   md,
   lead,
-  forgetImg,
+  // forgetImg,
 } from "../styles/modules/forgetStyles.module.scss"
 
-import servImage from "../images/mamafrica.png"
+// import servImage from "../images/mamafrica.png"
 
 import ForgetPassword from "../components/forgetpwd"
 
@@ -27,12 +27,16 @@ const IndexPage = () => (
       <div className={`${container} ${grid}`}>
         <div>
           <h1 className={md}>Wachtwoord vergeten</h1>
-          <p className={lead} style={{ color: "#cc9932" }}>
-            Voer hier je emailadress in
+          <p
+            className={lead}
+            style={{ color: "#cc9932", fontSize: "0.8em", margin: "0 0 1em" }}
+          >
+            Voer hieronder jouw e-mailadres in & je ontvangt een e-mail met
+            daarin de verificatiecode voor het resetten van jouw wachtwoord
           </p>
           <ForgetPassword />
         </div>
-        <img src={servImage} alt="" className={forgetImg} />
+        {/* <img src={servImage} alt="" className={forgetImg} /> */}
       </div>
     </section>
   </Layout>

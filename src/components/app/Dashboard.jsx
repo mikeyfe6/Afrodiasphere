@@ -1218,7 +1218,7 @@ const DashboardPage = () => {
             Welkom{" "}
             <span
               style={{
-                color: "#ababab",
+                color: "#9A9A9A",
               }}
             >
               {gatsbyUser.user.username}
@@ -1232,7 +1232,9 @@ const DashboardPage = () => {
               bottom: "10px",
               right: "10px",
               color: "white",
-              backgroundColor: "#ababab",
+              padding: "7px 12.5px",
+              backgroundColor: "#9A9A9A",
+              border: "3px #333 solid",
             }}
             className={btn}
             href="#"
@@ -1241,7 +1243,7 @@ const DashboardPage = () => {
               logout(() => navigate("/app/login"))
             }}
           >
-            Logout
+            <b>Log uit</b>
           </button>
         </aside>
 

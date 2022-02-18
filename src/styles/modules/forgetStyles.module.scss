@@ -2,13 +2,11 @@
 @import "../customs/utilities";
 
 .inputRes {
-  text-align: left;
-
   input {
     background: #eee;
     border: none;
     padding: 10px 15px;
-    margin: 12.5px 0;
+    margin: 10px 0;
     width: 100%;
     border-radius: 3px;
     font-size: 16px;
@@ -21,28 +19,20 @@
   button {
     margin-top: 3%;
     padding: 3.5px 20px 2.5px 20px;
-    float: none;
+    float: right;
     color: black;
     background-color: #cc9932;
   }
 }
 
-.forgetImg {
-  width: 200px;
-}
-
 .logerror {
-  position: absolute;
-  top: 72.5px;
-  right: 0px;
   background-color: #ff0102;
   font-weight: bold;
   color: white;
   padding: 0.1rem 0.7rem;
-  display: table;
-  margin: 0 auto;
-  text-align: center;
   border-radius: 3px;
+  margin-top: 1em;
+  text-align: center;
   font-size: 0.6em;
 }
 
@@ -51,9 +41,6 @@
   font-weight: bold;
   color: white;
   padding: 0.3rem 0.7rem;
-  display: table;
-  margin: 0 auto;
-  text-align: center;
   border-radius: 10px;
   margin-bottom: 1rem;
 }
@@ -62,44 +49,10 @@
 @media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
 }
 
-// Small devices
-@media (max-width: 575.98px) {
-  .logerror {
-    top: 67.5px;
-    left: 0px;
-    font-size: 0.45em;
-  }
-
-  .forgetImg {
-    display: none;
-  }
-
-  .indexBg {
-    height: 412.5px;
-  }
+// small devices
+@media (max-width: 40em) {
 }
 
-.navbar {
-  height: 125px;
-
-  .flex {
-    flex-direction: column;
-  }
-
-  ul {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-}
-
-// Normal devices
-@media (max-width: 767.98px) {
-}
-
-// Medium devices
-@media (max-width: 991.98px) {
-}
-
-// Large devices
-@media (max-width: 1199.98px) {
+// large devices
+@media (max-width: 64em) {
 }
