@@ -57,13 +57,15 @@
 
 // large devices
 @media (max-width: 64em) {
-  .carouselCont {
-    // max-width: 535px !important;
-    margin-top: 1em !important;
+  .carouselUberCont {
     transform: scale(0.7);
+    .carouselCont {
+      // max-width: 535px !important;
+      margin-top: 1em !important;
 
-    .carouselRow {
-      max-width: 225px;
+      .carouselRow {
+        max-width: 225px;
+      }
     }
   }
 }
@@ -71,7 +73,6 @@
 @media (max-width: 55em) {
   .carouselCont {
     width: 810px !important;
-    transform: scale(0.7);
   }
 }
 
@@ -99,6 +100,5 @@
   .carouselCont {
     max-width: 250px !important;
     margin-top: 0em !important;
-    transform: scale(0.8);
   }
 }
