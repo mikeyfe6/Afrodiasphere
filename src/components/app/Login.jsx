@@ -197,7 +197,7 @@ const LoginPage = () => {
               }}
             /> */}
             <form onSubmit={handleSubmitRegister}>
-              <h1 style={{ fontSize: "1.5em" }}>Maak een account aan</h1>
+              <h1 style={{ fontSize: "1.5em" }}>Maak een profiel aan</h1>
               {/* <div className={loginStyles.socialContainer}>
                 <a href="" className="social">
                   <i>icon</i>
@@ -279,7 +279,7 @@ const LoginPage = () => {
                   <i>icon</i>
                 </a>
               </div> */}
-              <span>met jouw ADS-account</span>
+              <span>met jouw ADS-profiel</span>
               <input
                 ref={usernameRef}
                 type="text"
@@ -310,11 +310,11 @@ const LoginPage = () => {
                 <h1 className={signUpTitle}>Welkom</h1>
                 <p className={signUpText}>
                   <b>Hi!</b> Join the movement! <br />
-                  <br /> Registreer hier jouw eigen "ADS-account" en voeg jouw
+                  <br /> Registreer hier jouw eigen "ADS-profiel" en voeg jouw
                   bedrijf binnen no-time toe aan het
                   Afrodiasphere-netwerkendomein. <br />
                   <br />
-                  Al een account? <strong>Klik hieronder..</strong>
+                  Al een profiel? <strong>Klik hieronder..</strong>
                 </p>
 
                 <button
@@ -336,7 +336,7 @@ const LoginPage = () => {
                   nieuwste ontwikkelingen.
                   <br />
                   <br />
-                  Nog <u>geen</u> account? <strong>Klik hieronder..</strong>
+                  Nog <u>geen</u> profiel? <strong>Klik hieronder..</strong>
                 </p>
 
                 <button
