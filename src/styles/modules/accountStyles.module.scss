@@ -574,15 +574,10 @@
   align-items: center;
   align-content: center;
   border: 2.5px $primary-color solid;
-  // flex-wrap: wrap;
-
-  // & > * {
-  //   flex-basis: 100%;
-  // }
 
   .updateLinkShow {
     width: 200px;
-    font-size: 0.7em;
+    font-size: 0.75em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -591,7 +586,7 @@
   }
 
   .updateHyperLinkShow {
-    font-size: 0.7em;
+    font-size: 0.75em;
     width: 200px;
     white-space: nowrap;
     overflow: hidden;
