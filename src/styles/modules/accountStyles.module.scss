@@ -11,7 +11,7 @@
   height: 200px;
   border: solid 5px #424242;
   cursor: pointer;
-  transition: border 0.5s ease-in-out;
+  @include smoothtrans;
 
   &:hover {
     border: solid 5px $secondary-color;
@@ -366,8 +366,8 @@
       }
 
       button {
-        min-width: 100px;
-        max-width: 125px;
+        min-width: 150px;
+        max-width: 200px;
         height: 35px;
         align-self: flex-end;
       }
@@ -593,6 +593,10 @@
     text-overflow: ellipsis;
     color: $secondary-color;
     font-weight: bold;
+
+    a {
+      color: $secondary-color;
+    }
   }
 
   button {

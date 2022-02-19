@@ -178,7 +178,7 @@ const LoginPage = () => {
       <section className={`${docsHead} ${bgPrimary} ${py3}`}>
         <div className={`${container} ${grid}`}>
           <div>
-            <h1 className={xl}>Login / Register</h1>
+            <h1 className={xl}>Log in / Registeer</h1>
           </div>
           <img src={servImage} alt="" className={imgHide} />
         </div>
@@ -220,6 +220,7 @@ const LoginPage = () => {
                 pattern="[^\s]+"
                 style={{ textTransform: "lowercase" }}
                 placeholder="gebruikersnaam"
+                title="Kies een gebruikersnaam"
               />
               <input
                 ref={emailRegRef}
@@ -228,12 +229,13 @@ const LoginPage = () => {
                 placeholder="e-mailadres"
                 style={{ textTransform: "lowercase" }}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Voer je e-mailadres in"
               />
               <input
                 ref={passwordRegRef}
                 type="password"
                 name="passwordreg"
-                placeholder="kies wachtwoord"
+                placeholder="wachtwoord"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
               />
@@ -262,7 +264,9 @@ const LoginPage = () => {
               </pre> */}
               {error && <ErrorMessage text={error} />}
               {loading && <LoadingMessage text={loading} />}
-              <button style={{ cursor: "pointer" }}>Sign Up</button>
+              <button style={{ cursor: "pointer" }} title="Registreer">
+                Registeer
+              </button>
             </form>
           </div>
           <div className={`${formContainer} ${signInContainer}`}>
@@ -286,6 +290,7 @@ const LoginPage = () => {
                 name="username"
                 placeholder="e-mailadres / gebruikersnaam"
                 style={{ textTransform: "lowercase" }}
+                title="Log in met jouw e-mailadres of gebruikersnaam"
                 required
               />
               <input
@@ -293,14 +298,21 @@ const LoginPage = () => {
                 type="password"
                 name="password"
                 placeholder="wachtwoord"
+                title="Voer jouw wachtwoord in"
                 required
               />
               {error && <ErrorMessage text={error} />}
               {loading && <LoadingMessage text={loading} />}
-              <Link to="/forget-password" className={forgetLink}>
+              <Link
+                to="/forget-password"
+                className={forgetLink}
+                title="Ik ben mijn wachtwoord vergeten"
+              >
                 Wachtwoord vergeten
               </Link>
-              <button style={{ cursor: "pointer" }}>Log in</button>
+              <button style={{ cursor: "pointer" }} title="Inloggen">
+                Inloggen
+              </button>
               <br />
             </form>
           </div>
@@ -322,6 +334,7 @@ const LoginPage = () => {
                   className={ghost}
                   id="signIn"
                   onClick={signInHandler}
+                  title="Open tablad voor inloggen"
                 >
                   Naar 'Inloggen'
                 </button>
@@ -344,6 +357,7 @@ const LoginPage = () => {
                   className={ghost}
                   id="signUp"
                   onClick={signUpHandler}
+                  title="Open tablad voor registreren"
                 >
                   Naar 'Registreren'
                 </button>

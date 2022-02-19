@@ -6,7 +6,11 @@ import menefexLogo from "../images/menefex-icon.png"
 
 const Footer = () => (
   <footer>
-    Copyright {new Date().getFullYear()} © ・ Powered by{" "}
+    Copyright {new Date().getFullYear()} © ・{" "}
+    <a href="mailto:feedback@menefex.nl" title="Stuur feedback naar Menefex">
+      Feedback
+    </a>{" "}
+    ・Powered by{" "}
     <a href="https://menefex.nl" rel="noopener noreferrer" target="_blank">
       {""}
       <b> Menefex </b>

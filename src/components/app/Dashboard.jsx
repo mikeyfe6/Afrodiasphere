@@ -141,7 +141,7 @@ import {
 } from "../../styles/modules/accountStyles.module.scss"
 
 const apiURL = process.env.GATSBY_BASE_URL
-// const instURL = process.env.GATSBY_CURR_URL
+const instURL = process.env.GATSBY_CURR_URL
 
 const ErrorMessage = ({ text }) => {
   return (
@@ -1215,7 +1215,7 @@ const DashboardPage = () => {
               color: "white",
             }}
           >
-            Welkom{" "}
+            Hi{" "}
             <span
               style={{
                 color: "#9A9A9A",
@@ -1231,19 +1231,21 @@ const DashboardPage = () => {
               position: "absolute",
               bottom: "10px",
               right: "10px",
-              color: "white",
-              padding: "7px 12.5px",
-              backgroundColor: "#9A9A9A",
+              // color: "black",
+              padding: "5px 20px",
+              // backgroundColor: "white",
               border: "3px #333 solid",
+              fontWeight: "600",
             }}
             className={btn}
             href="#"
+            title="Uitloggen"
             onClick={e => {
               e.preventDefault()
               logout(() => navigate("/app/login"))
             }}
           >
-            <b>Log uit</b>
+            Log uit
           </button>
         </aside>
 
@@ -1288,6 +1290,7 @@ const DashboardPage = () => {
                       href={`https://${link.hyperlink}`}
                       rel="noopener noreferrer"
                       target="_blank"
+                      title={`https://${link.hyperlink}`}
                     >
                       {link.title}
                     </a>
@@ -1298,6 +1301,7 @@ const DashboardPage = () => {
             <div className={iphoneSocials} id="iphone-iconlook">
               <a
                 href={`https://www.facebook.com/${fbLink}`}
+                title={`https://www.facebook.com/${fbLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="fbhide"
@@ -1307,6 +1311,7 @@ const DashboardPage = () => {
 
               <a
                 href={`https://twitter.com/${twLink}`}
+                title={`https://twitter.com/${twLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="twhide"
@@ -1316,6 +1321,7 @@ const DashboardPage = () => {
 
               <a
                 href={`https://www.instagram.com/${igLink}`}
+                title={`https://www.instagram.com/${igLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="ighide"
@@ -1325,6 +1331,7 @@ const DashboardPage = () => {
 
               <a
                 href={`https://wa.me/${waLink}`}
+                title={`https://wa.me/${waLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="wahide"
@@ -1334,6 +1341,7 @@ const DashboardPage = () => {
 
               <a
                 href={`https://www.tiktok.com/@${tkLink}`}
+                title={`https://www.tiktok.com/@${tkLink}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 id="tkhide"
@@ -1363,7 +1371,7 @@ const DashboardPage = () => {
                   textDecorationColor: "grey",
                 }}
               >
-                Profile Info
+                Profiel Info
               </u>
             </b>
           </h2>
@@ -1389,16 +1397,18 @@ const DashboardPage = () => {
                     event.preventDefault()
                     fileInputRef.current.click()
                   }}
+                  title="Kies een avatar"
                 >
                   {" "}
-                  Add image
+                  Avatar
                 </button>
                 <button
                   className={`${btn} ${btnLight} ${resetBtn}`}
                   type="reset"
                   onClick={removeHeading}
+                  title="Verwijder jouw avatar"
                 >
-                  Reset
+                  Verwijder
                 </button>
                 <input
                   type="file"
@@ -1419,8 +1429,9 @@ const DashboardPage = () => {
                 <button
                   className={`${btn} ${btnSecondary} ${submitBtn}`}
                   type="submit"
+                  title="Sla jouw avatar op"
                 >
-                  Submit
+                  Opslaan
                 </button>
               </div>
             </form>
@@ -1454,12 +1465,13 @@ const DashboardPage = () => {
                 <button
                   className={btn}
                   type="submit"
+                  title="Sla profielnaam op"
                   style={{
                     paddingTop: "5px",
                     paddingBottom: "5px",
                   }}
                 >
-                  Save
+                  Opslaan
                 </button>
               </form>
 
@@ -1482,12 +1494,13 @@ const DashboardPage = () => {
                 <button
                   className={btn}
                   type="submit"
+                  title="Sla gebruikersnaam op"
                   style={{
                     paddingTop: "5px",
                     paddingBottom: "5px",
                   }}
                 >
-                  Save
+                  Opslaan
                 </button>
               </form>
 
@@ -1510,12 +1523,13 @@ const DashboardPage = () => {
                 <button
                   className={btn}
                   type="submit"
+                  title="Sla e-mailadres op"
                   style={{
                     paddingTop: "5px",
                     paddingBottom: "5px",
                   }}
                 >
-                  Save
+                  Opslaan
                 </button>
               </form>
 
@@ -1540,6 +1554,7 @@ const DashboardPage = () => {
                 <button
                   className={`${btn} ${btnSecondary} ${submitBtn}`}
                   type="submit"
+                  title="Sla nieuw wachtwoord op"
                   style={{
                     paddingTop: "5px",
                     paddingBottom: "5px",
@@ -1584,6 +1599,8 @@ const DashboardPage = () => {
             </div>
           </div>
 
+          {/* ! Deze comp gebruiken voor loading mesasges... ! */}
+
           {loading && (
             <div className={loadingComplete}>Profielfoto Geupload</div>
           )}
@@ -1602,6 +1619,7 @@ const DashboardPage = () => {
                 htmlFor="bedrijf"
                 className={occupateInput}
                 id="currentBedrijf"
+                title="Ik ben een bedrijf"
               >
                 Bedrijf
               </label>
@@ -1617,6 +1635,7 @@ const DashboardPage = () => {
                 htmlFor="zelfstandig"
                 className={occupateInput}
                 id="currentZelfstandig"
+                title="Ik ben zzp-er / eenmanszaak"
               >
                 Zelfstandig
               </label>
@@ -1632,6 +1651,7 @@ const DashboardPage = () => {
                 htmlFor="hobbyist"
                 className={occupateInput}
                 id="currentHobbyist"
+                title="Ik ben een hobbyist"
               >
                 Hobbyist
               </label>
@@ -1647,6 +1667,7 @@ const DashboardPage = () => {
                 htmlFor="stichting"
                 className={occupateInput}
                 id="currentStichting"
+                title="Ik ben een stichting"
               >
                 Stichting
               </label>
@@ -1662,6 +1683,7 @@ const DashboardPage = () => {
                 htmlFor="artist"
                 className={occupateInput}
                 id="currentArtist"
+                title="Ik ben een artiest"
               >
                 Artist
               </label>
@@ -1677,17 +1699,20 @@ const DashboardPage = () => {
                 name="text"
                 id="biografie"
                 className={bioInput}
+                title="Maximaal 120 karakters"
+                placeholder="Voer hier een korte beschrijving in"
               />
 
               <button
                 className={btn}
                 type="submit"
+                title="Sla biografie op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  padding: "5px 0",
+                  textAlign: "center",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
           </div>
@@ -1743,12 +1768,13 @@ const DashboardPage = () => {
               <button
                 className={btn}
                 type="submit"
+                title="Sla Facebook-profiel op"
                 style={{
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
 
@@ -1777,12 +1803,13 @@ const DashboardPage = () => {
               <button
                 className={btn}
                 type="submit"
+                title="Sla Twitter-profiel op"
                 style={{
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
 
@@ -1813,12 +1840,13 @@ const DashboardPage = () => {
               <button
                 className={btn}
                 type="submit"
+                title="Sla Instagram-profiel op"
                 style={{
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
 
@@ -1848,12 +1876,13 @@ const DashboardPage = () => {
               <button
                 className={btn}
                 type="submit"
+                title="Sla Whatsapp-profiel op"
                 style={{
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
 
@@ -1882,12 +1911,13 @@ const DashboardPage = () => {
               <button
                 className={btn}
                 type="submit"
+                title="Sla TikTok-profiel op"
                 style={{
                   paddingTop: "5px",
                   paddingBottom: "5px",
                 }}
               >
-                Save
+                Opslaan
               </button>
             </form>
           </div>
@@ -1949,6 +1979,7 @@ const DashboardPage = () => {
                 ref={hyperLink}
                 style={{ textTransform: "lowercase" }}
                 minLength="5"
+                title="Let op: 'http(s)://' niet nodig !"
                 required
               />
             </div>
@@ -2017,7 +2048,14 @@ const DashboardPage = () => {
                 </div>
                 <div className={updateHyperLinkcont}>
                   <div>
-                    <p className={updateHyperLinkShow}>{link.hyperlink}</p>
+                    <p className={updateHyperLinkShow}>
+                      <a
+                        href={`https://${link.hyperlink}`}
+                        title={`https://${link.hyperlink}`}
+                      >
+                        {link.hyperlink}
+                      </a>
+                    </p>
                     <input
                       className={editInput}
                       id={`hyperlink${link.id}`}
@@ -2050,6 +2088,7 @@ const DashboardPage = () => {
                     color="black"
                     style={{ cursor: "pointer" }}
                     className={trashBtn}
+                    title="Verwijder deze link"
                     onClick={event => {
                       deleteLink(link)
                       event.preventDefault()
@@ -2059,6 +2098,7 @@ const DashboardPage = () => {
                   </FaTrash>
                   <div className={inputCont}>
                     <input
+                      title="Maak link (ont)zichtbaar"
                       type="checkbox"
                       id={`checkbox${link.id}`}
                       checked={link.visible}
@@ -2102,7 +2142,7 @@ const DashboardPage = () => {
 
           <ul className={pickColor}>
             <li className={chooseColor}>
-              <label>
+              <label title="Geel / Zwart">
                 <input
                   type="radio"
                   value="geel"
@@ -2123,7 +2163,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Grijs / Wit">
                 <input
                   type="radio"
                   value="grijs"
@@ -2144,7 +2184,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Roze / Grijs">
                 <input
                   type="radio"
                   value="roze"
@@ -2165,7 +2205,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Zwart / Grijs">
                 <input
                   type="radio"
                   value="zwart"
@@ -2186,7 +2226,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Rood / Wit">
                 <input
                   type="radio"
                   value="bruin"
@@ -2207,7 +2247,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Groen / Wit">
                 <input
                   type="radio"
                   value="groen"
@@ -2228,7 +2268,7 @@ const DashboardPage = () => {
             </li>
 
             <li className={chooseColor}>
-              <label>
+              <label title="Koperbruin / Zwart">
                 <input
                   type="radio"
                   value="afrotheme"
@@ -2271,7 +2311,11 @@ const DashboardPage = () => {
             </div>
 
             <div className={usLinkSite}>
-              <Link className={userLink} to={`/${slug}`}>{`✨../${slug}`}</Link>
+              <Link
+                className={userLink}
+                to={`/${slug}`}
+                title={`${instURL}/${slug}`}
+              >{`✨../${slug}`}</Link>
             </div>
           </div>
         </aside>

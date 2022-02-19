@@ -17,8 +17,7 @@
     @include smoothtrans;
 
     &:hover {
-      @include smoothtrans;
-      color: $primary-color;
+      color: #f5dba7;
     }
   }
 

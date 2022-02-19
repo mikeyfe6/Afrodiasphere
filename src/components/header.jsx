@@ -23,10 +23,14 @@ const Header = () => (
             <Link to="/">Home</Link>
           </li> */}
           <li>
-            <Link to="/app/login">Login</Link>
+            <Link to="/app/login" activeStyle={{ color: "#cc9932" }}>
+              Log in / Registreer
+            </Link>
           </li>
           <li>
-            <Link to="/app/dashboard">Dashboard</Link>
+            <Link to="/app/dashboard" activeStyle={{ color: "#cc9932" }}>
+              Dashboard
+            </Link>
           </li>
           <li>
             <a

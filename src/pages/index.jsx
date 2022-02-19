@@ -42,6 +42,7 @@ import servImage from "../images/mamafrica.png"
 import noavatar from "../images/noavatar.png"
 
 const apiURL = process.env.GATSBY_BASE_URL
+const instURL = process.env.GATSBY_CURR_URL
 
 const IndexPage = () => {
   const [carousel, setCarousel] = useState([])
@@ -68,6 +69,7 @@ const IndexPage = () => {
               <Link to="/app/login">
                 <button
                   className={btn}
+                  title="Ga naar inloggen / registreren"
                   type="button"
                   style={{
                     padding: "1.5px 17.5px 0px 17.5px",
@@ -152,7 +154,11 @@ const IndexPage = () => {
 
                 <div>
                   {" "}
-                  <Link to={`/${ads.slug}`} style={{ color: "#cc9932" }}>
+                  <Link
+                    to={`/${ads.slug}`}
+                    style={{ color: "#cc9932" }}
+                    title={`${instURL}/${ads.slug}`}
+                  >
                     ✨../{`${ads.slug}`}
                   </Link>
                 </div>
