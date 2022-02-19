@@ -100,19 +100,12 @@ const IndexPage = () => {
             breakpoints={{
               320: {
                 slidesPerView: 1,
-                spaceBetween: 25,
               },
               640: {
                 slidesPerView: 2,
-                spaceBetween: 20,
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 30,
-              },
-              900: {
-                slidesPerView: 3,
-                spaceBetween: 50,
               },
             }}
           >
@@ -129,7 +122,7 @@ const IndexPage = () => {
                     transform: "scale(0.7)",
                     border: "5px solid white",
                     // maxWidth: "200px",
-                    // minWidth: "50px",
+                    minWidth: "150px",
                   }}
                   alt="avatar"
                 />
