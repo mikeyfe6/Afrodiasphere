@@ -24,7 +24,7 @@ const Header = () => (
           </li> */}
           <li>
             <Link to="/app/login" activeStyle={{ color: "#cc9932" }}>
-              Log in / Registreer
+              Log In
             </Link>
           </li>
           <li>
