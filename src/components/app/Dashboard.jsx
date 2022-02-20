@@ -1218,7 +1218,7 @@ const DashboardPage = () => {
             Hi{" "}
             <span
               style={{
-                color: "#9A9A9A",
+                color: "#2eb4e9",
               }}
             >
               {gatsbyUser.user.username}
@@ -1230,12 +1230,15 @@ const DashboardPage = () => {
             style={{
               position: "absolute",
               bottom: "10px",
+              width: "87.5px",
               right: "10px",
-              // color: "black",
-              padding: "5px 20px",
-              // backgroundColor: "white",
-              border: "3px #333 solid",
-              fontWeight: "600",
+              fontSize: "0.75rem",
+              color: "white",
+              padding: "7.5px 20px",
+              // backgroundColor: "#0e0e0e",
+              background: "linear-gradient(135deg, #1a1a1a, #0e0e0e)",
+              border: "3px #cc9932 solid",
+              // fontWeight: "600",
             }}
             className={btn}
             href="#"

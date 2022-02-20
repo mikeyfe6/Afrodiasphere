@@ -1416,7 +1416,7 @@
     }
 
     .Sidebar {
-      background: linear-gradient(to right, $primary-color, $black-color);
+      background: linear-gradient(to right, $black-color, $primary-color);
       // background: linear-gradient(to bottom, black, white, white, white) no-repeat
       //   0 0 / cover;
     }
@@ -1458,7 +1458,7 @@
       "Link";
 
     .Sidebar {
-      background: linear-gradient(to right, $primary-color, $black-color);
+      background: linear-gradient(to right, $black-color, $primary-color);
 
       h5 {
         text-align: left !important;
