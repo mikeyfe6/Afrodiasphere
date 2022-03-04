@@ -141,7 +141,6 @@ const LoginPage = () => {
 
       const params = {
         profiel: usernameRegRef.current.value,
-        slug: usernameRegRef.current.value,
       }
 
       await axios.post(
