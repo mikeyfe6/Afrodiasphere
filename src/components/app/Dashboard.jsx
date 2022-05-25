@@ -2055,6 +2055,8 @@ const DashboardPage = () => {
                       <a
                         href={`https://${link.hyperlink}`}
                         title={`https://${link.hyperlink}`}
+                        rel="noopener noreferrer"
+                        target="_blank"
                       >
                         {link.hyperlink}
                       </a>
