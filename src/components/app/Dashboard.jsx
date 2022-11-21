@@ -212,6 +212,19 @@ const DashboardPage = () => {
   const gatsbyUser = getUser()
   const token = gatsbyUser.jwt
 
+  // check if there's a user logged in with usefull data
+  axios.interceptors.response.use(
+    response => {
+      return response
+    },
+    error => {
+      if (error.response.status === 401) {
+        logout()
+      }
+      return error
+    }
+  )
+
   const getUserId = useCallback(async () => {
     const res = await axios.get(`${apiURL}/api/instanties`, {
       headers: {
