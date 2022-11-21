@@ -4,6 +4,7 @@ export const getUser = () =>
   isBrowser() && window.localStorage.getItem("gatsbyUser")
     ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
     : {}
+
 export const setUser = user =>
   window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
 
