@@ -2,6 +2,8 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Link } from "gatsby"
 
+import { isLoggedIn } from "../services/auth"
+
 import {
   navbar,
   flex,
@@ -23,9 +25,13 @@ const Header = () => (
             <Link to="/">Home</Link>
           </li> */}
           <li>
-            <Link to="/app/login" activeStyle={{ color: "#cc9932" }}>
-              Log In
-            </Link>
+            {isLoggedIn() ? (
+              <Link to="/app/login" activeStyle={{ color: "#cc9932" }}>
+                Log Out
+              </Link>
+            ) : (
+              <Link to="/app/login">Log In</Link>
+            )}
           </li>
           <li>
             <Link to="/app/dashboard" activeStyle={{ color: "#cc9932" }}>

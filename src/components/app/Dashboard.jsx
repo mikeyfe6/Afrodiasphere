@@ -563,11 +563,9 @@ const DashboardPage = () => {
 
   useEffect(() => {
     var fbhideme = document.getElementById("fbhide")
-    if (fbLink < 1) {
-      fbhideme.style.display = "none"
-    } else {
-      fbhideme.style.display = "block"
-    }
+    !fbLink
+      ? (fbhideme.style.display = "none")
+      : (fbhideme.style.display = "block")
   }, [fbLink])
 
   const submitFB = async e => {
@@ -614,11 +612,9 @@ const DashboardPage = () => {
 
   useEffect(() => {
     var twhideme = document.getElementById("twhide")
-    if (twLink < 1) {
-      twhideme.style.display = "none"
-    } else {
-      twhideme.style.display = "block"
-    }
+    !twLink
+      ? (twhideme.style.display = "none")
+      : (twhideme.style.display = "block")
   }, [twLink])
 
   const submitTW = async e => {
@@ -664,11 +660,9 @@ const DashboardPage = () => {
 
   useEffect(() => {
     var ighideme = document.getElementById("ighide")
-    if (igLink < 1) {
-      ighideme.style.display = "none"
-    } else {
-      ighideme.style.display = "block"
-    }
+    !igLink
+      ? (ighideme.style.display = "none")
+      : (ighideme.style.display = "block")
   }, [igLink])
 
   const submitIG = async e => {
@@ -714,11 +708,9 @@ const DashboardPage = () => {
 
   useEffect(() => {
     var wahideme = document.getElementById("wahide")
-    if (waLink < 1) {
-      wahideme.style.display = "none"
-    } else {
-      wahideme.style.display = "block"
-    }
+    !waLink
+      ? (wahideme.style.display = "none")
+      : (wahideme.style.display = "block")
   }, [waLink])
 
   const submitWA = async e => {
@@ -764,11 +756,9 @@ const DashboardPage = () => {
 
   useEffect(() => {
     var tkhideme = document.getElementById("tkhide")
-    if (tkLink < 1) {
-      tkhideme.style.display = "none"
-    } else {
-      tkhideme.style.display = "block"
-    }
+    !tkLink
+      ? (tkhideme.style.display = "none")
+      : (tkhideme.style.display = "block")
   }, [tkLink])
 
   const submitTK = async e => {
