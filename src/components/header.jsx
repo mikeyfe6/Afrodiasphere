@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Link, navigate } from "gatsby"
 
-import { isLoggedIn, logout } from "../services/auth"
+import { isLoggedIn, logout, isBrowser } from "../services/auth"
 
 import {
   navbar,
@@ -29,7 +29,7 @@ const Header = () => (
             <Link to="/">Home</Link>
           </li> */}
           <li>
-            {isLoggedIn() ? (
+            {isLoggedIn() && isBrowser() ? (
               <button
                 activeStyle={{ color: "#cc9932" }}
                 onClick={e => {
