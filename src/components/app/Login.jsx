@@ -109,10 +109,11 @@ const LoginPage = () => {
         identifier: usernameRef.current.value.toLowerCase(),
         password: passwordRef.current.value,
       })
+
       setUser(data)
       setLoading("Aan het laden")
       setError(null)
-      navigate("/app/dashboard")
+      navigate("/app/dashboard/")
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -160,7 +161,7 @@ const LoginPage = () => {
       console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
       setError(null)
-      navigate("/app/dashboard")
+      navigate("/app/dashboard/")
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -303,7 +304,7 @@ const LoginPage = () => {
               {error && <ErrorMessage text={error} />}
               {loading && <LoadingMessage text={loading} />}
               <Link
-                to="/forget-password"
+                to="/forget-password/"
                 className={forgetLink}
                 title="Ik ben mijn wachtwoord vergeten"
               >

@@ -1256,6 +1256,7 @@ const DashboardPage = () => {
         </aside>
 
         {/* NAVIGATION NAVIGATION NAVIGATION NAVIGATION <--------------------------------------------------------------------------------> NAVIGATION NAVIGATION NAVIGATION NAVIGATION */}
+
         {/* <div
         className={`${accountStyles.Navigation} ${accountStyles.card}`}
       ></div> */}
@@ -1312,7 +1313,7 @@ const DashboardPage = () => {
                 target="_blank"
                 id="fbhide"
               >
-                <FaFacebookF size="1.75em" />
+                <FaFacebookF size="1.25em" />
               </a>
 
               <a
@@ -1322,7 +1323,7 @@ const DashboardPage = () => {
                 target="_blank"
                 id="twhide"
               >
-                <FaTwitter size="1.75em" />
+                <FaTwitter size="1.25em" />
               </a>
 
               <a
@@ -1332,7 +1333,7 @@ const DashboardPage = () => {
                 target="_blank"
                 id="ighide"
               >
-                <FaInstagram size="1.75em" />
+                <FaInstagram size="1.25em" />
               </a>
 
               <a
@@ -1342,7 +1343,7 @@ const DashboardPage = () => {
                 target="_blank"
                 id="wahide"
               >
-                <FaWhatsapp size="1.75em" />
+                <FaWhatsapp size="1.25em" />
               </a>
 
               <a
@@ -1352,7 +1353,7 @@ const DashboardPage = () => {
                 target="_blank"
                 id="tkhide"
               >
-                <SiTiktok size="1.75em" />
+                <SiTiktok size="1.25em" />
               </a>
             </div>
             {/* <img
@@ -1985,7 +1986,7 @@ const DashboardPage = () => {
                 ref={hyperLink}
                 style={{ textTransform: "lowercase" }}
                 minLength="5"
-                title="Let op: 'http(s)://' niet nodig !"
+                title="Let op: 'http(s)://' NIET nodig !"
                 required
               />
             </div>
@@ -2040,6 +2041,7 @@ const DashboardPage = () => {
                   </div>
                   <button
                     className={btn}
+                    title="Sla nieuwe titel op"
                     onClick={event => {
                       editTheLink({
                         id: link.id,
@@ -2079,6 +2081,7 @@ const DashboardPage = () => {
                   </div>
                   <button
                     className={btn}
+                    title="Sla nieuwe hyperlink op"
                     onClick={event => {
                       editTheHyperLink({
                         id: link.id,
@@ -2319,11 +2322,15 @@ const DashboardPage = () => {
             </div>
 
             <div className={usLinkSite}>
-              <Link
-                className={userLink}
-                to={`/${slug}`}
-                title={`${instURL}/${slug}`}
-              >{`✨../${slug}`}</Link>
+              {slug ? (
+                <Link
+                  className={userLink}
+                  to={`/${slug}/`}
+                  title={`${instURL}/${slug}/`}
+                >{`✨../${slug}`}</Link>
+              ) : (
+                <p>Link wordt gemaakt...</p>
+              )}
             </div>
           </div>
         </aside>

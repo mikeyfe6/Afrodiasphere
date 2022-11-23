@@ -66,7 +66,7 @@ const IndexPage = () => {
             <p className={lead}>
               <small style={{ color: "#ababab" }}>JOIN THE MOVEMENT !</small>{" "}
               <br /> Klik{" "}
-              <Link to="/app/login">
+              <Link to="/app/login/">
                 <button
                   className={btn}
                   title="Ga naar inloggen / registreren"

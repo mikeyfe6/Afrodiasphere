@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
 import React from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 
-import { isLoggedIn } from "../services/auth"
+import { isLoggedIn, logout } from "../services/auth"
 
 import {
   navbar,
@@ -12,10 +12,12 @@ import {
 
 import AfroLogo from "../assets/Afrodiasphere-logo.svg"
 
+// console.log(localStorage.getItem("gatsbyUser"))
+
 const Header = () => (
   <header className={navbar}>
     <div className={`${container} ${flex}`}>
-      <Link to="/">
+      <Link to="/" title="Ga naar homepagina">
         <AfroLogo fill="#cc9932" width="75" />
       </Link>
 
@@ -26,15 +28,34 @@ const Header = () => (
           </li> */}
           <li>
             {isLoggedIn() ? (
-              <Link to="/app/login" activeStyle={{ color: "#cc9932" }}>
-                Log Out
-              </Link>
+              <button
+                activeStyle={{ color: "#cc9932" }}
+                onClick={e => {
+                  e.preventDefault()
+                  // e.stopPropagation()
+                  logout(() => navigate("/app/login"))
+                }}
+                href="#"
+                title="Uitloggen"
+              >
+                Log uit
+              </button>
             ) : (
-              <Link to="/app/login">Log In</Link>
+              <Link
+                to="/app/login/"
+                title="Inloggen"
+                activeStyle={{ color: "#cc9932" }}
+              >
+                Inloggen
+              </Link>
             )}
           </li>
           <li>
-            <Link to="/app/dashboard" activeStyle={{ color: "#cc9932" }}>
+            <Link
+              to="/app/dashboard/"
+              activeStyle={{ color: "#cc9932" }}
+              title="Dashboard"
+            >
               Dashboard
             </Link>
           </li>
@@ -43,6 +64,7 @@ const Header = () => (
               href="https://menefex.nl"
               rel="noopener noreferrer"
               target="_blank"
+              title="MenefexWMB"
             >
               <strong>
                 <i>MF</i>

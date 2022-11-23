@@ -8,17 +8,32 @@
 
   ul {
     display: flex;
-  }
 
-  a {
-    color: $white-color;
-    padding: 10px;
-    margin: 0 5px;
-    @include smoothtrans;
+    li button {
+      color: $white-color;
+      padding: 0 10px;
+      font-size: 16px;
+      font-family: "Poppins", sans-serif;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      @include smoothtrans;
 
-    &:hover {
-      // color: #f5dba7;
-      color: #787878;
+      &:hover {
+        color: #787878;
+      }
+    }
+
+    a {
+      color: $white-color;
+      padding: 10px;
+      margin: 0 5px;
+      @include smoothtrans;
+
+      &:hover {
+        // color: #f5dba7;
+        color: #787878;
+      }
     }
   }
 
