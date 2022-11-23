@@ -14,6 +14,8 @@ import AfroLogo from "../assets/Afrodiasphere-logo.svg"
 
 // console.log(localStorage.getItem("gatsbyUser"))
 
+// console.log(getUser().user.username)
+
 const Header = () => (
   <header className={navbar}>
     <div className={`${container} ${flex}`}>

@@ -1287,22 +1287,25 @@ const DashboardPage = () => {
             />
             <div>
               <ul className={iphoneLinks} id="iphone-linklook">
-                {links.slice(0, 3).map(link => (
-                  <li
-                    key={link.id}
-                    id={`link${link.id}`}
-                    hidden={!link.visible}
-                  >
-                    <a
-                      href={`https://${link.hyperlink}`}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                      title={`https://${link.hyperlink}`}
+                {links
+                  .filter(link => link.visible)
+                  .slice(0, 4)
+                  .map(link => (
+                    <li
+                      key={link.id}
+                      id={`link${link.id}`}
+                      // hidden={!link.visible}
                     >
-                      {link.title}
-                    </a>
-                  </li>
-                ))}
+                      <a
+                        href={`https://${link.hyperlink}`}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        title={`https://${link.hyperlink}`}
+                      >
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
             <div className={iphoneSocials} id="iphone-iconlook">
@@ -1707,7 +1710,7 @@ const DashboardPage = () => {
                 id="biografie"
                 className={bioInput}
                 title="Maximaal 120 karakters"
-                placeholder="Voer hier een korte beschrijving in"
+                placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
               />
 
               <button
