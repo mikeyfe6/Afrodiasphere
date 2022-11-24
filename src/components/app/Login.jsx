@@ -146,7 +146,7 @@ const LoginPage = () => {
 
       const params = {
         slug: correctSlug,
-        profiel: usernameRegRef.current.value,
+        profiel: usernameRegRef.current.value.toLowerCase().replace(/\s+/g, ""),
       }
 
       await axios.post(

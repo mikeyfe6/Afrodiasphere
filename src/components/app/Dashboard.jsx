@@ -188,6 +188,7 @@ const DashboardPage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [slug, setSlug] = useState("")
+  const [deleteAds, setDeleteAds] = useState("")
 
   const [occupate, setOccupate] = useState()
   const [biography, setBiography] = useState("")
@@ -219,11 +220,15 @@ const DashboardPage = () => {
     },
     error => {
       if (error.response.status === 401) {
-        logout()
+        logout(() => navigate("/app/login"))
       }
       return error
     }
   )
+
+  if (!gatsbyUser) {
+    logout(() => navigate("/app/login"))
+  }
 
   const getUserId = useCallback(async () => {
     const res = await axios.get(`${apiURL}/api/instanties`, {
@@ -874,6 +879,36 @@ const DashboardPage = () => {
     getSlug()
   }, [token])
 
+  // DELETE PROFILE <--------------------------------------------------------------------------------> DELETE PROFILE //
+  const setDeleteHandler = e => {
+    setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ""))
+  }
+
+  const submitDeleteAds = async e => {
+    e.preventDefault()
+
+    try {
+      const jwtTokens = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+
+      if (deleteAds === username) {
+        await axios.all([
+          axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
+          axios.delete(`${apiURL}/api/users/${gatsbyUser.user.id}`, jwtTokens),
+        ])
+      } else {
+        throw new setError()
+      }
+      setError(null)
+    } catch (err) {
+      setError("Er is iets misgegaan, probeer het opnieuw!")
+      setTimeout(() => setError(null), 5000)
+    }
+  }
+
   // CREATE LINKS <--------------------------------------------------------------------------------> CREATE LINKS //
   const createLink = async () => {
     if (
@@ -1521,6 +1556,7 @@ const DashboardPage = () => {
                   name="email"
                   maxLength="35"
                   id="email"
+                  placeholder="voorbeeld@email.nl"
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   className={profileInput}
                   style={{
@@ -1602,6 +1638,37 @@ const DashboardPage = () => {
                   }}
                 >
                   Update
+                </button>
+              </form>
+
+              <form onSubmit={submitDeleteAds}>
+                <label htmlFor="deleteAds">Verwijder profiel</label>
+                <input
+                  onChange={setDeleteHandler}
+                  value={deleteAds}
+                  type="text"
+                  name="deleteAds"
+                  id="deleteAds"
+                  // readOnly
+                  // disabled
+                  placeholder="voer je profielnaam in !!"
+                  maxLength="25"
+                  className={profileInput}
+                  // pattern="[^\s]+"
+                  // title="geen spaties, alleen '-'"
+                />
+
+                <button
+                  className={btn}
+                  type="submit"
+                  style={{
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                    background: "red",
+                    color: "white",
+                  }}
+                >
+                  Wis Profiel
                 </button>
               </form>
             </div>
