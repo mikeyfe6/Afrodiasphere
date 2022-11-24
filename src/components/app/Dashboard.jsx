@@ -415,7 +415,7 @@ const DashboardPage = () => {
       setUsername(res.data.username)
     }
     getUsername()
-  }, [gatsbyUser.user.id, token])
+  }, [token])
 
   // UPDATE EMAIL <--------------------------------------------------------------------------------> UPDATE EMAIL //
   const setEmailHandler = e => {
@@ -904,6 +904,7 @@ const DashboardPage = () => {
       } else {
         throw new setError()
       }
+      navigate("/app/login")
       setError(null)
     } catch (err) {
       setError("Er is iets misgegaan, probeer het opnieuw!")
