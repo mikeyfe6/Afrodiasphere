@@ -3,7 +3,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import {
   docsHead,
@@ -43,5 +43,5 @@ const IndexPage = () => (
 export default IndexPage
 
 export const Head = () => {
-  return <SEO title="Reset wachtwoord" />
+  return <Seo title="Reset wachtwoord" />
 }

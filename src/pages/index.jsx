@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 
 import Layout from "../components/layout"
 
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import "swiper/css/bundle"
 
@@ -173,5 +173,5 @@ const IndexPage = () => {
 export default IndexPage
 
 export const Head = () => {
-  return <SEO title="Home" />
+  return <Seo title="Home" />
 }

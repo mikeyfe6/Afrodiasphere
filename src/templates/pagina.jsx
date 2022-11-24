@@ -5,7 +5,7 @@ import axios from "axios"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa"
 import { SiTiktok } from "react-icons/si"
@@ -255,5 +255,5 @@ export const Head = ({ pageContext: { persoon } }) => {
   // const searchUN = parseUN.user.username
   // const seoUN = searchUN[0].toUpperCase() + searchUN.substring(1)
 
-  return <SEO title={persoon.username} />
+  return <Seo title={persoon.username} />
 }

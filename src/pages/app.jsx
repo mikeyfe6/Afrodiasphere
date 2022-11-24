@@ -1,7 +1,7 @@
 import React from "react"
 import { Router } from "@reach/router"
 
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 import Layout from "../components/layout"
 import PrivateRoute from "../components/app/PrivateRoute"
@@ -19,5 +19,5 @@ const App = () => (
 export default App
 
 export const Head = () => {
-  return <SEO title="Login / Registreer" />
+  return <Seo title="Login / Registreer" />
 }

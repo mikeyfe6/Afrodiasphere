@@ -18,7 +18,7 @@ import {
 
 import { SiTiktok } from "react-icons/si"
 
-import SEO from "../seo"
+import Seo from "../seo"
 
 import { navigate } from "@reach/router"
 import { getUser, logout } from "../../services/auth"
@@ -2343,5 +2343,5 @@ const DashboardPage = () => {
 export default DashboardPage
 
 export const Head = () => {
-  return <SEO title="Dashboard" />
+  return <Seo title="Dashboard" />
 }

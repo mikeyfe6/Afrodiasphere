@@ -11,7 +11,6 @@ module.exports = {
     description: `Een efficiente oplossing voor het delen van contactinformatie`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
