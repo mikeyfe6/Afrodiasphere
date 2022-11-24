@@ -1427,7 +1427,6 @@ const DashboardPage = () => {
                   ref={fileInputRef}
                   onChange={event => {
                     const file = event.target.files[0]
-                    // console.log(event.target.files[0])
 
                     if (file && file.type.substring(0, 5) === "image") {
                       setImage(file)

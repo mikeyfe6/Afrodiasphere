@@ -140,7 +140,13 @@ const LoginPage = () => {
 
       setUser(data)
 
+      const str = usernameRegRef.current.value
+      const correctSlug = str
+        .normalize("NFD")
+        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "-")
+
       const params = {
+        slug: correctSlug,
         profiel: usernameRegRef.current.value,
       }
 
@@ -154,9 +160,10 @@ const LoginPage = () => {
         }
       )
 
-      await axios.post(
-        `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
-      )
+      process.env.NODE_ENV !== "development" ??
+        (await axios.post(
+          `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
+        ))
 
       console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
@@ -286,6 +293,7 @@ const LoginPage = () => {
               <span>met jouw ADS-profiel</span>
               <input
                 ref={usernameRef}
+                pattern="[^\s]+"
                 type="text"
                 name="username"
                 placeholder="e-mailadres / gebruikersnaam"
