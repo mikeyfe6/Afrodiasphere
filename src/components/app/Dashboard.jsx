@@ -221,6 +221,7 @@ const DashboardPage = () => {
     error => {
       if (error.response.status === 401) {
         logout(() => navigate("/app/login"))
+        console.log("unauthorized, logging out ...")
       }
       return error
     }
@@ -228,6 +229,7 @@ const DashboardPage = () => {
 
   if (!gatsbyUser) {
     logout(() => navigate("/app/login"))
+    console.log("unauthorized, logging out ...")
   }
 
   const getUserId = useCallback(async () => {
@@ -237,7 +239,7 @@ const DashboardPage = () => {
       },
     })
 
-    setUserId(res.data.id)
+    setUserId(res.data.id || "")
   }, [token])
 
   useEffect(() => {
