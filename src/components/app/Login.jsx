@@ -160,10 +160,11 @@ const LoginPage = () => {
         }
       )
 
-      process.env.NODE_ENV !== "development" ??
-        (await axios.post(
+      if (process.env.NODE_ENV === "production") {
+        await axios.post(
           `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
-        ))
+        )
+      }
 
       console.log("Welkom bij Afrodiasphere!")
       setLoading("Aan het laden")
