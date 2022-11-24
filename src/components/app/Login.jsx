@@ -5,7 +5,6 @@ import { navigate } from "@reach/router"
 
 // import useDigitInput from "react-digit-input"
 
-// import SEO from "../seo"
 import { setUser } from "../../services/auth"
 
 import {

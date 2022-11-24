@@ -18,7 +18,7 @@ import {
 
 import { SiTiktok } from "react-icons/si"
 
-import Seo from "../seo"
+import SEO from "../seo"
 
 import { navigate } from "@reach/router"
 import { getUser, logout } from "../../services/auth"
@@ -1199,7 +1199,6 @@ const DashboardPage = () => {
 
   return (
     <>
-      <Seo title="Dashboard" />
       <div className={`${gridContainer} ${card}`}>
         {/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
@@ -2342,3 +2341,7 @@ const DashboardPage = () => {
 }
 
 export default DashboardPage
+
+export const Head = () => {
+  return <SEO title="Dashboard" />
+}

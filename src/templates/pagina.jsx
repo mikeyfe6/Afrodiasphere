@@ -5,7 +5,7 @@ import axios from "axios"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 
 import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa"
 import { SiTiktok } from "react-icons/si"
@@ -113,7 +113,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
   return (
     <ProfLayout>
-      <Seo title={username} />
       {/* <Img
         fluid={data.strapiInstantie.background.childImageSharp.fluid}
         style={{
@@ -249,3 +248,14 @@ export default AdsTemplate
 // `
 
 // (slug: { eq: $slug })
+
+export const Head = () => {
+  if (localStorage.getItem("gatsbyUser")) {
+    const username = localStorage.getItem("gatsbyUser")
+    const parseUN = JSON.parse(username)
+    const searchUN = parseUN.user.username
+    const seoUN = searchUN[0].toUpperCase() + searchUN.substring(1)
+
+    return <SEO title={seoUN} />
+  }
+}

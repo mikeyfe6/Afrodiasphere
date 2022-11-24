@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 
 import Layout from "../components/layout"
 
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 
 import "swiper/css/bundle"
 
@@ -58,7 +58,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Seo title="Home" />
       <section className={`${docsHead} ${bgPrimary} ${py3}`}>
         <div className={`${container} ${grid}`}>
           <div style={{ textAlign: "left" }}>
@@ -171,8 +170,8 @@ const IndexPage = () => {
   )
 }
 
-export const Head = () => {
-  return <Seo title="home" />
-}
-
 export default IndexPage
+
+export const Head = () => {
+  return <SEO title="Home" />
+}

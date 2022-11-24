@@ -3,7 +3,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 
 import {
   docsHead,
@@ -22,7 +22,6 @@ import ForgetPassword from "../components/forgetpwd"
 
 const IndexPage = () => (
   <Layout>
-    <Seo title="Wachtwoord vergeten" />
     <section className={`${docsHead} ${bgPrimary} ${py3}`}>
       <div className={`${container} ${grid}`}>
         <div>
@@ -43,3 +42,7 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+export const Head = () => {
+  return <SEO title="Wachtwoord vergeten" />
+}
