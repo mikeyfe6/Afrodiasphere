@@ -249,13 +249,11 @@ export default AdsTemplate
 
 // (slug: { eq: $slug })
 
-export const Head = () => {
-  if (localStorage.getItem("gatsbyUser")) {
-    const username = localStorage.getItem("gatsbyUser")
-    const parseUN = JSON.parse(username)
-    const searchUN = parseUN.user.username
-    const seoUN = searchUN[0].toUpperCase() + searchUN.substring(1)
+export const Head = ({ pageContext: { persoon } }) => {
+  // const username = localStorage.getItem("gatsbyUser")
+  // const parseUN = JSON.parse(username)
+  // const searchUN = parseUN.user.username
+  // const seoUN = searchUN[0].toUpperCase() + searchUN.substring(1)
 
-    return <SEO title={seoUN} />
-  }
+  return <SEO title={persoon.username} />
 }
