@@ -240,7 +240,7 @@ const DashboardPage = () => {
     })
 
     setUserId(res.data.id || "")
-  }, [gatsbyUser.user.id, token])
+  }, [token])
 
   useEffect(() => {
     getUserId()
@@ -415,7 +415,7 @@ const DashboardPage = () => {
       setUsername(res.data.username)
     }
     getUsername()
-  }, [token])
+  }, [gatsbyUser.user.id, token])
 
   // UPDATE EMAIL <--------------------------------------------------------------------------------> UPDATE EMAIL //
   const setEmailHandler = e => {
