@@ -420,7 +420,7 @@ const DashboardPage = () => {
             Authorization: `Bearer ${token}`,
           },
         })
-        setUsername(res.data.username)
+        setUsername(res.data.username || "")
       }
       getUsername()
     } catch {
@@ -561,16 +561,18 @@ const DashboardPage = () => {
 
       function deleteInstantie() {
         console.log("delete instantie")
+        console.log("jwtokens deleteInstantie", jwtTokens)
         return axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens)
       }
 
       function deleteUser() {
         console.log("delete user")
+        console.log("jwtokens deleteUser", jwtTokens)
         return axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens)
       }
 
       if (deleteAds === username) {
-        await Promise.all([deleteInstantie(), deleteUser()]).then(function (
+        await Promise.all([deleteInstantie() && deleteUser()]).then(function (
           results
         ) {
           const delUserId = results[0]
