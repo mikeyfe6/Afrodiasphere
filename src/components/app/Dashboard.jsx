@@ -569,7 +569,6 @@ const DashboardPage = () => {
       }
 
       setError(null)
-      logout(() => navigate("/app/login"))
     } catch {
       setError("Verwijderen van je account mislukt")
       setTimeout(() => setError(null), 5000)
