@@ -173,14 +173,15 @@ const DashboardPage = () => {
   // )
 
   const [userId, setUserId] = useState("")
+  const [gatsbyId, setGatsbyId] = useState("")
 
   const [image, setImage] = useState(null)
   const [preview, setPreview] = useState()
   const fileInputRef = useRef()
 
   const [loading, setLoading] = useState(null)
-  const [error, setError] = useState(null)
 
+  const [error, setError] = useState(null)
   const [linkError, setLinkError] = useState(null)
 
   const [profile, setProfile] = useState("")
@@ -190,7 +191,7 @@ const DashboardPage = () => {
   const [slug, setSlug] = useState("")
   const [deleteAds, setDeleteAds] = useState("")
 
-  const [occupate, setOccupate] = useState()
+  const [occupate, setOccupate] = useState("")
   const [biography, setBiography] = useState("")
 
   const [avatarId, setAvatarID] = useState()
@@ -227,20 +228,28 @@ const DashboardPage = () => {
     }
   )
 
-  if (!gatsbyUser) {
-    logout(() => navigate("/app/login"))
-    console.log("unauthorized, logging out ...")
-  }
-
   const getUserId = useCallback(async () => {
-    const res = await axios.get(`${apiURL}/api/instanties`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    try {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
-    setUserId(res.data.id || "")
-  }, [token])
+      if (typeof gatsbyUser === "undefined") {
+        console.log("uitgelogd motherfucker")
+        logout(() => navigate("/app/login"))
+      } else {
+        setGatsbyId(gatsbyUser.user.id)
+      }
+
+      setUserId(res.data.id)
+    } catch {
+      setError("Er gaat iets mis met het ophalen van je gegevens")
+    }
+  }, [gatsbyUser, token])
+
+  console.log(gatsbyId, "gatsbyId")
 
   useEffect(() => {
     getUserId()
@@ -279,8 +288,8 @@ const DashboardPage = () => {
 
       // setPreview(res.data.data.attributes[0].url)
       setTimeout(() => setLoading(false), 5000)
-    } catch (error) {
-      console.log("Niet gelukt!", error)
+    } catch {
+      setError("Avatar verwijderen lukt niet, probeer het nog 's")
     }
   }
 
@@ -340,7 +349,7 @@ const DashboardPage = () => {
 
   // UPDATE PROFILENAME <--------------------------------------------------------------------------------> UPDATE PROFILENAME //
   const setProfileHandler = e => {
-    setProfile(e.target.value)
+    setProfile(e.target.value || "")
   }
 
   const submitProfile = async e => {
@@ -361,9 +370,8 @@ const DashboardPage = () => {
       )
 
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Updaten van profielnaam lukt niet, probeer het nog 's")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -399,22 +407,30 @@ const DashboardPage = () => {
         },
       })
       setError(null)
-    } catch (err) {
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Updaten van gebruikersnaam lukt niet, probeer het nog 's")
       setTimeout(() => setError(null), 5000)
     }
   }
 
   useEffect(() => {
-    const getUsername = async () => {
-      const res = await axios.get(`${apiURL}/api/users/${gatsbyUser.user.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      setUsername(res.data.username)
+    try {
+      const getUsername = async () => {
+        const res = await axios.get(
+          `${apiURL}/api/users/${gatsbyUser.user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        setUsername(res.data.username)
+      }
+      getUsername()
+    } catch {
+      console.log("Gaat iets mis met het ophalen van je gebruikersnaam")
+      logout(() => navigate("/app/login"))
     }
-    getUsername()
   }, [gatsbyUser.user.id, token])
 
   // UPDATE EMAIL <--------------------------------------------------------------------------------> UPDATE EMAIL //
@@ -435,23 +451,29 @@ const DashboardPage = () => {
         },
       })
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Updaten van emailadres lukt niet, probeer het nog 's")
       setTimeout(() => setError(null), 5000)
     }
   }
 
   useEffect(() => {
-    const getEmail = async () => {
-      const res = await axios.get(`${apiURL}/api/users/${gatsbyUser.user.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      setEmail(res.data.email)
+    try {
+      const getEmail = async () => {
+        const res = await axios.get(
+          `${apiURL}/api/users/${gatsbyUser.user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        setEmail(res.data.email)
+      }
+      getEmail()
+    } catch {
+      setError("Gaat iets mis met het ophalen van je emailadres")
     }
-    getEmail()
   }, [gatsbyUser.user.id, token])
 
   // UPDATE BIOGRAFIE <--------------------------------------------------------------------------------> UPDATE BIOGRAFIE //
@@ -477,9 +499,8 @@ const DashboardPage = () => {
       )
 
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Updaten van biografie lukt niet, probeer het nog 's")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -491,7 +512,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setBiography(res.data.biografie)
+      setBiography(res.data.biografie || "")
     }
     getBiography()
   }, [token])
@@ -521,7 +542,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setOccupate(res.data.occupate)
+      setOccupate(res.data.occupate || "")
     }
 
     if (occupate === "bedrijf") {
@@ -592,9 +613,8 @@ const DashboardPage = () => {
         }
       )
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat iets mis met het updaten van je facebooklink")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -607,7 +627,7 @@ const DashboardPage = () => {
         },
       })
 
-      setFbLink(res.data.facebooklink)
+      setFbLink(res.data.facebooklink || "")
     }
     getFbLink()
   }, [token])
@@ -641,9 +661,8 @@ const DashboardPage = () => {
         }
       )
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat iets mis met het updaten van je twitterlink")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -655,7 +674,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTwLink(res.data.twitterlink)
+      setTwLink(res.data.twitterlink || "")
     }
     getTwLink()
   }, [token])
@@ -689,9 +708,8 @@ const DashboardPage = () => {
         }
       )
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat iets mis met het updaten van je instagramlink")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -703,7 +721,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setIgLink(res.data.instagramlink)
+      setIgLink(res.data.instagramlink || "")
     }
     getIgLink()
   }, [token])
@@ -737,9 +755,8 @@ const DashboardPage = () => {
         }
       )
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat iets mis met het updaten van je whatsapplink")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -751,7 +768,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setWaLink(res.data.whatsapplink)
+      setWaLink(res.data.whatsapplink || "")
     }
     getWaLink()
   }, [token])
@@ -785,9 +802,8 @@ const DashboardPage = () => {
         }
       )
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat iets mis met het updaten van je tiktoklink")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -799,7 +815,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTkLink(res.data.tiktoklink)
+      setTkLink(res.data.tiktoklink || "")
     }
     getTkLink()
   }, [token])
@@ -822,9 +838,8 @@ const DashboardPage = () => {
         },
       })
       setError(null)
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat er iets mis met het updaten van je wachtwoord")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -861,9 +876,8 @@ const DashboardPage = () => {
       //     },
       //   }
       // )
-    } catch (err) {
-      console.log(err.message)
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Gaat et iets mis met het updaten van je slug")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -901,13 +915,14 @@ const DashboardPage = () => {
           axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
           axios.delete(`${apiURL}/api/users/${gatsbyUser.user.id}`, jwtTokens),
         ])
+        logout(() => navigate("/app/login"))
       } else {
         throw new setError()
       }
-      navigate("/app/login")
+
       setError(null)
-    } catch (err) {
-      setError("Er is iets misgegaan, probeer het opnieuw!")
+    } catch {
+      setError("Verwijderen van je account mislukt")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -1498,7 +1513,7 @@ const DashboardPage = () => {
                 <label htmlFor="profile">Profielnaam</label>
                 <input
                   onChange={setProfileHandler}
-                  value={profile || ""}
+                  value={profile}
                   type="text"
                   maxLength="35"
                   name="text"
@@ -1525,7 +1540,7 @@ const DashboardPage = () => {
                 <label htmlFor="username">Gebruikersnaam</label>
                 <input
                   onChange={setUsernameHandler}
-                  value={username || ""}
+                  value={username}
                   type="text"
                   maxLength="25"
                   name="username"
@@ -1554,7 +1569,7 @@ const DashboardPage = () => {
                 <label htmlFor="email">E-mailadres</label>
                 <input
                   onChange={setEmailHandler}
-                  value={email || ""}
+                  value={email}
                   type="email"
                   name="email"
                   maxLength="35"
@@ -1584,7 +1599,7 @@ const DashboardPage = () => {
                 <label htmlFor="password"> Wachtwoord </label>
                 <input
                   onChange={setPasswordHandler}
-                  value={password || ""}
+                  value={password}
                   placeholder="*********"
                   type="password"
                   when
@@ -1771,7 +1786,7 @@ const DashboardPage = () => {
               <label htmlFor="biografie">Biografie</label>
               <textarea
                 onChange={setBiografieHandler}
-                value={biography || ""}
+                value={biography}
                 type="text"
                 maxLength="140"
                 name="text"
