@@ -581,13 +581,13 @@ const DashboardPage = () => {
           setGatsbyId(delGatsbyId.data.id)
           console.log("userId", userId)
           console.log("gatsbyId", gatsbyId)
-          logout(() => navigate("/app/login"))
         })
 
         // const res = await axios.all([
         //   axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
         //   axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens),
         // ])
+        logout(() => navigate("/app/login"))
       } else {
         throw new setError()
       }
