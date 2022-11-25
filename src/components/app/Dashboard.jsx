@@ -236,11 +236,12 @@ const DashboardPage = () => {
         },
       })
 
-      if (typeof gatsbyUser === "undefined") {
-        console.log("uitgelogd motherfucker")
-        logout(() => navigate("/app/login"))
-      } else {
+      if (typeof gatsbyUser.user.id !== "undefined") {
         setGatsbyId(gatsbyUser.user.id)
+        console.log("gatsby id", gatsbyUser.user.id)
+      } else {
+        console.log("no gatsby id")
+        logout(() => navigate("/app/login"))
       }
 
       setUserId(res.data.id)
@@ -248,8 +249,6 @@ const DashboardPage = () => {
       setError("Er gaat iets mis met het ophalen van je gegevens")
     }
   }, [gatsbyUser, token])
-
-  console.log(gatsbyId, "gatsbyId")
 
   useEffect(() => {
     getUserId()
@@ -401,7 +400,7 @@ const DashboardPage = () => {
       username: username,
     }
     try {
-      await axios.put(`${apiURL}/api/users/${gatsbyUser.user.id}`, params, {
+      await axios.put(`${apiURL}/api/users/${gatsbyId}`, params, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -416,14 +415,11 @@ const DashboardPage = () => {
   useEffect(() => {
     try {
       const getUsername = async () => {
-        const res = await axios.get(
-          `${apiURL}/api/users/${gatsbyUser.user.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         setUsername(res.data.username)
       }
       getUsername()
@@ -431,7 +427,7 @@ const DashboardPage = () => {
       console.log("Gaat iets mis met het ophalen van je gebruikersnaam")
       logout(() => navigate("/app/login"))
     }
-  }, [gatsbyUser.user.id, token])
+  }, [gatsbyId, token])
 
   // UPDATE EMAIL <--------------------------------------------------------------------------------> UPDATE EMAIL //
   const setEmailHandler = e => {
@@ -445,7 +441,7 @@ const DashboardPage = () => {
       email: email,
     }
     try {
-      await axios.put(`${apiURL}/api/users/${gatsbyUser.user.id}`, params, {
+      await axios.put(`${apiURL}/api/users/${gatsbyId}`, params, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -460,21 +456,125 @@ const DashboardPage = () => {
   useEffect(() => {
     try {
       const getEmail = async () => {
-        const res = await axios.get(
-          `${apiURL}/api/users/${gatsbyUser.user.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         setEmail(res.data.email)
       }
       getEmail()
     } catch {
       setError("Gaat iets mis met het ophalen van je emailadres")
     }
-  }, [gatsbyUser.user.id, token])
+  }, [gatsbyId, token])
+
+  // UPDATE PASSWORD <--------------------------------------------------------------------------------> UPDATE PASSWORD //
+  const setPasswordHandler = e => {
+    setPassword(e.target.value)
+  }
+
+  const submitPassword = async e => {
+    e.preventDefault()
+
+    const params = {
+      password: password,
+    }
+    try {
+      await axios.put(`${apiURL}/api/users/${gatsbyId}`, params, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      setError(null)
+    } catch {
+      setError("Gaat er iets mis met het updaten van je wachtwoord")
+      setTimeout(() => setError(null), 5000)
+    }
+  }
+
+  // UPDATE SLUG <--------------------------------------------------------------------------------> UPDATE SLUG //
+  const setSlugHandler = e => {
+    setSlug(e.target.value.toLowerCase())
+  }
+
+  const submitSlug = async e => {
+    e.preventDefault()
+
+    const params = {
+      slug: slug,
+    }
+    try {
+      await axios.put(
+        `${apiURL}/api/instanties/${userId}`,
+        { data: params },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+
+      setError(null)
+
+      // axios.post(
+      //   "https://api.netlify.com/build_hooks/5fa20c6490bf4b2b591bf2e1",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // )
+    } catch {
+      setError("Gaat et iets mis met het updaten van je slug")
+      setTimeout(() => setError(null), 5000)
+    }
+  }
+
+  useEffect(() => {
+    const getSlug = async () => {
+      const res = await axios.get(`${apiURL}/api/instanties`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      setSlug(res.data.slug)
+    }
+    getSlug()
+  }, [token])
+
+  // DELETE PROFILE <--------------------------------------------------------------------------------> DELETE PROFILE //
+  const setDeleteHandler = e => {
+    setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ""))
+  }
+
+  const submitDeleteAds = async e => {
+    e.preventDefault()
+
+    try {
+      const jwtTokens = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+
+      if (deleteAds === username) {
+        await axios.all([
+          axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
+          axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens),
+        ])
+      } else {
+        throw new setError()
+      }
+
+      setError(null)
+      logout(() => navigate("/app/login"))
+    } catch {
+      setError("Verwijderen van je account mislukt")
+      setTimeout(() => setError(null), 5000)
+    }
+  }
 
   // UPDATE BIOGRAFIE <--------------------------------------------------------------------------------> UPDATE BIOGRAFIE //
   const setBiografieHandler = e => {
@@ -819,113 +919,6 @@ const DashboardPage = () => {
     }
     getTkLink()
   }, [token])
-
-  // UPDATE PASSWORD <--------------------------------------------------------------------------------> UPDATE PASSWORD //
-  const setPasswordHandler = e => {
-    setPassword(e.target.value)
-  }
-
-  const submitPassword = async e => {
-    e.preventDefault()
-
-    const params = {
-      password: password,
-    }
-    try {
-      await axios.put(`${apiURL}/api/users/${gatsbyUser.user.id}`, params, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      setError(null)
-    } catch {
-      setError("Gaat er iets mis met het updaten van je wachtwoord")
-      setTimeout(() => setError(null), 5000)
-    }
-  }
-
-  // UPDATE SLUG <--------------------------------------------------------------------------------> UPDATE SLUG //
-  const setSlugHandler = e => {
-    setSlug(e.target.value.toLowerCase())
-  }
-
-  const submitSlug = async e => {
-    e.preventDefault()
-
-    const params = {
-      slug: slug,
-    }
-    try {
-      await axios.put(
-        `${apiURL}/api/instanties/${userId}`,
-        { data: params },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-
-      setError(null)
-
-      // axios.post(
-      //   "https://api.netlify.com/build_hooks/5fa20c6490bf4b2b591bf2e1",
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   }
-      // )
-    } catch {
-      setError("Gaat et iets mis met het updaten van je slug")
-      setTimeout(() => setError(null), 5000)
-    }
-  }
-
-  useEffect(() => {
-    const getSlug = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      setSlug(res.data.slug)
-    }
-    getSlug()
-  }, [token])
-
-  // DELETE PROFILE <--------------------------------------------------------------------------------> DELETE PROFILE //
-  const setDeleteHandler = e => {
-    setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ""))
-  }
-
-  const submitDeleteAds = async e => {
-    e.preventDefault()
-
-    try {
-      const jwtTokens = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-
-      if (deleteAds === username) {
-        await axios.all([
-          axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
-          axios.delete(`${apiURL}/api/users/${gatsbyUser.user.id}`, jwtTokens),
-        ])
-        logout(() => navigate("/app/login"))
-      } else {
-        throw new setError()
-      }
-
-      setError(null)
-    } catch {
-      setError("Verwijderen van je account mislukt")
-      setTimeout(() => setError(null), 5000)
-    }
-  }
 
   // CREATE LINKS <--------------------------------------------------------------------------------> CREATE LINKS //
   const createLink = async () => {
