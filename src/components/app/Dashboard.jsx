@@ -560,12 +560,12 @@ const DashboardPage = () => {
       }
 
       function deleteInstantie() {
-        console.log("deletegetUserAccount")
+        console.log("delete instantie")
         return axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens)
       }
 
       function deleteUser() {
-        console.log("delete permissions")
+        console.log("delete user")
         return axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens)
       }
 
@@ -573,12 +573,12 @@ const DashboardPage = () => {
         await Promise.all([deleteInstantie(), deleteUser()]).then(function (
           results
         ) {
-          const acct = results[0]
-          const perm = results[1]
-          console.log(acct, "acct")
-          console.log(perm, "perm")
-          setUserId(acct.data.data.id)
-          setGatsbyId(perm.data.id)
+          const delUserId = results[0]
+          const delGatsbyId = results[1]
+          console.log(delUserId, "delUserId")
+          console.log(delGatsbyId, "delGatsbyId")
+          setUserId(delUserId.data.data.id)
+          setGatsbyId(delGatsbyId.data.id)
           console.log("userId", userId)
           console.log("gatsbyId", gatsbyId)
           logout(() => navigate("/app/login"))
