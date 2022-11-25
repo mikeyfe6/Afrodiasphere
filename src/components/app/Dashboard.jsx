@@ -570,7 +570,9 @@ const DashboardPage = () => {
       }
 
       if (deleteAds === username) {
-        Promise.all([deleteInstantie(), deleteUser()]).then(function (results) {
+        await Promise.all([deleteInstantie(), deleteUser()]).then(function (
+          results
+        ) {
           const acct = results[0]
           const perm = results[1]
           console.log(acct, "acct")
