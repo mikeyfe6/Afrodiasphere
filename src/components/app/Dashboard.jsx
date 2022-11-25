@@ -240,7 +240,7 @@ const DashboardPage = () => {
     })
 
     setUserId(res.data.id || "")
-  }, [token])
+  }, [gatsbyUser.user.id, token])
 
   useEffect(() => {
     getUserId()
