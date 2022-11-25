@@ -1214,6 +1214,7 @@ const DashboardPage = () => {
         }
         break
       default:
+        color = ""
     }
   }
 
@@ -1687,7 +1688,7 @@ const DashboardPage = () => {
                   id="deleteAds"
                   // readOnly
                   // disabled
-                  placeholder="voer je profielnaam in !!"
+                  placeholder="controle: profielnaam?"
                   maxLength="25"
                   className={profileInput}
                   // pattern="[^\s]+"
