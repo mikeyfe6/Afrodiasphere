@@ -215,18 +215,18 @@ const DashboardPage = () => {
   const token = gatsbyUser.jwt
 
   // check if there's a user logged in with usefull data
-  // axios.interceptors.response.use(
-  //   response => {
-  //     return response
-  //   },
-  //   error => {
-  //     if (error.response.status === 401) {
-  //       logout(() => navigate("/app/login"))
-  //       console.log("unauthorized, logging out ...")
-  //     }
-  //     return error
-  //   }
-  // )
+  axios.interceptors.response.use(
+    response => {
+      return response
+    },
+    error => {
+      if (error.response.status === 401) {
+        logout(() => navigate("/app/login"))
+        console.log("unauthorized, logging out ...")
+      }
+      return error
+    }
+  )
 
   const getUserId = useCallback(async () => {
     try {
