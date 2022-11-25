@@ -559,11 +559,33 @@ const DashboardPage = () => {
         },
       }
 
+      function deleteInstantie() {
+        console.log("deletegetUserAccount")
+        return axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens)
+      }
+
+      function deleteUser() {
+        console.log("delete permissions")
+        return axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens)
+      }
+
       if (deleteAds === username) {
-        await axios.all([
-          axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
-          axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens),
-        ])
+        Promise.all([deleteInstantie(), deleteUser()]).then(function (results) {
+          const acct = results[0]
+          const perm = results[1]
+          console.log(acct, "acct")
+          console.log(perm, "perm")
+          setUserId(acct.data.data.id)
+          setGatsbyId(perm.data.id)
+          console.log("userId", userId)
+          console.log("gatsbyId", gatsbyId)
+          logout(() => navigate("/app/login"))
+        })
+
+        // const res = await axios.all([
+        //   axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
+        //   axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens),
+        // ])
       } else {
         throw new setError()
       }
@@ -1268,7 +1290,7 @@ const DashboardPage = () => {
                 color: "#2eb4e9",
               }}
             >
-              {gatsbyUser.user.username}
+              {username}
             </span>{" "}
             !
           </h5>
