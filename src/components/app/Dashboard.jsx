@@ -172,8 +172,8 @@ const DashboardPage = () => {
   //   `
   // )
 
-  const [userId, setUserId] = useState("")
-  const [gatsbyId, setGatsbyId] = useState("")
+  const [userId, setUserId] = useState(0)
+  const [gatsbyId, setGatsbyId] = useState(0)
 
   const [image, setImage] = useState(null)
   const [preview, setPreview] = useState()
@@ -194,7 +194,7 @@ const DashboardPage = () => {
   const [occupate, setOccupate] = useState("")
   const [biography, setBiography] = useState("")
 
-  const [avatarId, setAvatarID] = useState()
+  const [avatarId, setAvatarID] = useState(0)
 
   const [fbLink, setFbLink] = useState("")
   const [twLink, setTwLink] = useState("")
@@ -209,7 +209,7 @@ const DashboardPage = () => {
   const [editLink, setEditLink] = useState("")
   const [editHyperLink, setEditHyperLink] = useState("")
 
-  const [color, setColor] = useState()
+  const [color, setColor] = useState("")
 
   const gatsbyUser = getUser()
   const token = gatsbyUser.jwt
@@ -236,19 +236,27 @@ const DashboardPage = () => {
         },
       })
 
-      if (typeof gatsbyUser.user.id !== "undefined") {
-        setGatsbyId(gatsbyUser.user.id)
-        console.log("gatsby id", gatsbyUser.user.id)
-      } else {
-        console.log("no gatsby id")
-        logout(() => navigate("/app/login"))
-      }
-
       setUserId(res.data.id)
     } catch {
       setError("Er gaat iets mis met het ophalen van je gegevens")
     }
-  }, [gatsbyUser, token])
+  }, [token])
+
+  useEffect(() => {
+    if (typeof gatsbyUser.user.id !== "undefined") {
+      if (typeof gatsbyUser.user.id !== "undefined") {
+        setGatsbyId(gatsbyUser.user.id)
+        if (typeof gatsbyUser.user.id !== "undefined") {
+          setGatsbyId(gatsbyUser.user.id)
+          // console.log("gatsby id", gatsbyUser.user.id)
+          return setGatsbyId(gatsbyUser.user.id)
+        } else {
+          // console.log("no gatsby id")
+          return logout(() => navigate("/app/login"))
+        }
+      }
+    }
+  }, [gatsbyUser.user.id])
 
   useEffect(() => {
     getUserId()
@@ -526,7 +534,7 @@ const DashboardPage = () => {
       //   }
       // )
     } catch {
-      setError("Gaat et iets mis met het updaten van je slug")
+      setError("Er gaat iets mis met het updaten van je slug")
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -560,14 +568,14 @@ const DashboardPage = () => {
       }
 
       function deleteInstantie() {
-        console.log("delete instantie")
-        console.log("jwtokens deleteInstantie", jwtTokens)
+        // console.log("delete instantie")
+        // console.log("jwtokens deleteInstantie", jwtTokens)
         return axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens)
       }
 
       function deleteUser() {
-        console.log("delete user")
-        console.log("jwtokens deleteUser", jwtTokens)
+        // console.log("delete user")
+        // console.log("jwtokens deleteUser", jwtTokens)
         return axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens)
       }
 
@@ -577,12 +585,12 @@ const DashboardPage = () => {
         ) {
           const delUserId = results[0]
           const delGatsbyId = results[1]
-          console.log(delUserId, "delUserId")
-          console.log(delGatsbyId, "delGatsbyId")
+          // console.log(delUserId, "delUserId")
+          // console.log(delGatsbyId, "delGatsbyId")
           setUserId(delUserId.data.data.id)
           setGatsbyId(delGatsbyId.data.id)
-          console.log("userId", userId)
-          console.log("gatsbyId", gatsbyId)
+          // console.log("userId", userId)
+          // console.log("gatsbyId", gatsbyId)
         })
 
         // const res = await axios.all([
@@ -591,7 +599,10 @@ const DashboardPage = () => {
         // ])
         logout(() => navigate("/app/login"))
       } else {
-        throw new setError()
+        setError(
+          "Er gaat iets mis met het verwijderen van jouw account, probeer het nog 's"
+        )
+        setTimeout(() => setError(null), 5000)
       }
 
       setError(null)
@@ -715,7 +726,7 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    var fbhideme = document.getElementById("fbhide")
+    let fbhideme = document.getElementById("fbhide")
     !fbLink
       ? (fbhideme.style.display = "none")
       : (fbhideme.style.display = "block")
@@ -763,7 +774,7 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    var twhideme = document.getElementById("twhide")
+    let twhideme = document.getElementById("twhide")
     !twLink
       ? (twhideme.style.display = "none")
       : (twhideme.style.display = "block")
@@ -810,7 +821,7 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    var ighideme = document.getElementById("ighide")
+    let ighideme = document.getElementById("ighide")
     !igLink
       ? (ighideme.style.display = "none")
       : (ighideme.style.display = "block")
@@ -857,7 +868,7 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    var wahideme = document.getElementById("wahide")
+    let wahideme = document.getElementById("wahide")
     !waLink
       ? (wahideme.style.display = "none")
       : (wahideme.style.display = "block")
@@ -904,7 +915,7 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    var tkhideme = document.getElementById("tkhide")
+    let tkhideme = document.getElementById("tkhide")
     !tkLink
       ? (tkhideme.style.display = "none")
       : (tkhideme.style.display = "block")
@@ -1121,100 +1132,116 @@ const DashboardPage = () => {
   }
 
   const changeHeadingBg = color => {
-    var c = document.getElementById("iphone-linklook").children
-    var i
+    const iphonePreviewStyle = (
+      username,
+      occupate,
+      biography,
+      icons,
+      bg,
+      links
+    ) => {
+      const iphoneUsernameStyle = document.getElementById("iphone-username")
+      const iphoneOccupateStyle = document.getElementById("iphone-occupate")
+      const iphoneBiographyStyle = document.getElementById("iphone-biography")
+      const iphoneIconLookStyle = document.getElementById("iphone-iconlook")
+      const iphoneBgStyle = document.getElementById("iphone-bg")
+
+      const iphoneLinkStyle = className => {
+        for (i = 0; i < c.length; i++) {
+          c[i].className = className
+        }
+      }
+
+      let c = document.getElementById("iphone-linklook").children
+      let i
+
+      iphoneUsernameStyle.className = username
+      iphoneOccupateStyle.className = occupate
+      iphoneBiographyStyle.className = biography
+      iphoneIconLookStyle.className = icons
+      iphoneBgStyle.className = bg
+      iphoneLinkStyle(links)
+    }
 
     switch (color) {
       case "geel":
-        document.getElementById("iphone-username").className =
-          yellowstyleUsername
-        document.getElementById("iphone-occupate").className =
-          yellowstyleOccupate
-        document.getElementById("iphone-biography").className =
-          yellowstyleBiography
-        document.getElementById("iphone-iconlook").className = yellowstyleIcons
-        document.getElementById("iphone-bg").className = yellowstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = yellowstyleLinks
-        }
+        iphonePreviewStyle(
+          yellowstyleUsername,
+          yellowstyleOccupate,
+          yellowstyleBiography,
+          yellowstyleIcons,
+          yellowstyle,
+          yellowstyleLinks
+        )
+
         break
       case "grijs":
-        document.getElementById("iphone-username").className = graystyleUsername
-        document.getElementById("iphone-occupate").className = graystyleOccupate
-        document.getElementById("iphone-biography").className =
-          graystyleBiography
-        document.getElementById("iphone-iconlook").className = graystyleIcons
-        document.getElementById("iphone-bg").className = graystyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = graystyleLinks
-        }
+        iphonePreviewStyle(
+          graystyleUsername,
+          graystyleOccupate,
+          graystyleBiography,
+          graystyleIcons,
+          graystyle,
+          graystyleLinks
+        )
+
         break
       case "roze":
-        document.getElementById("iphone-username").className = pinkstyleUsername
-        document.getElementById("iphone-occupate").className = pinkstyleOccupate
-        document.getElementById("iphone-biography").className =
-          pinkstyleBiography
-        document.getElementById("iphone-iconlook").className = pinkstyleIcons
-        document.getElementById("iphone-bg").className = pinkstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = pinkstyleLinks
-        }
+        iphonePreviewStyle(
+          pinkstyleUsername,
+          pinkstyleOccupate,
+          pinkstyleBiography,
+          pinkstyleIcons,
+          pinkstyle,
+          pinkstyleLinks
+        )
+
         break
       case "zwart":
-        document.getElementById("iphone-username").className =
-          blackstyleUsername
-        document.getElementById("iphone-occupate").className =
-          blackstyleOccupate
-        document.getElementById("iphone-biography").className =
-          blackstyleBiography
-        document.getElementById("iphone-iconlook").className = blackstyleIcons
-        document.getElementById("iphone-bg").className = blackstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = blackstyleLinks
-        }
+        iphonePreviewStyle(
+          blackstyleUsername,
+          blackstyleOccupate,
+          blackstyleBiography,
+          blackstyleIcons,
+          blackstyle,
+          blackstyleLinks
+        )
+
         break
       case "bruin":
-        document.getElementById("iphone-username").className =
-          brownstyleUsername
-        document.getElementById("iphone-occupate").className =
-          brownstyleOccupate
-        document.getElementById("iphone-biography").className =
-          brownstyleBiography
-        document.getElementById("iphone-iconlook").className = brownstyleIcons
-        document.getElementById("iphone-bg").className = brownstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = brownstyleLinks
-        }
+        iphonePreviewStyle(
+          brownstyleUsername,
+          brownstyleOccupate,
+          brownstyleBiography,
+          brownstyleIcons,
+          brownstyle,
+          brownstyleLinks
+        )
+
         break
       case "groen":
-        document.getElementById("iphone-username").className =
-          greenstyleUsername
-        document.getElementById("iphone-occupate").className =
-          greenstyleOccupate
-        document.getElementById("iphone-biography").className =
-          greenstyleBiography
-        document.getElementById("iphone-iconlook").className = greenstyleIcons
-        document.getElementById("iphone-bg").className = greenstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = greenstyleLinks
-        }
+        iphonePreviewStyle(
+          greenstyleUsername,
+          greenstyleOccupate,
+          greenstyleBiography,
+          greenstyleIcons,
+          greenstyle,
+          greenstyleLinks
+        )
+
         break
       case "afrotheme":
-        document.getElementById("iphone-username").className =
-          afrospecstyleUsername
-        document.getElementById("iphone-occupate").className =
-          afrospecstyleOccupate
-        document.getElementById("iphone-biography").className =
-          afrospecstyleBiography
-        document.getElementById("iphone-iconlook").className =
-          afrospecstyleIcons
-        document.getElementById("iphone-bg").className = afrospecstyle
-        for (i = 0; i < c.length; i++) {
-          c[i].className = afrospecstyleLinks
-        }
+        iphonePreviewStyle(
+          afrospecstyleUsername,
+          afrospecstyleOccupate,
+          afrospecstyleBiography,
+          afrospecstyleIcons,
+          afrospecstyle,
+          afrospecstyleLinks
+        )
         break
       default:
-        color = ""
+        color = "afrotheme"
     }
   }
 
