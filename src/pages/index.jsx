@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 
 import { Link } from 'gatsby'
 import axios from 'axios'
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+// import ReactMarkdown from 'react-markdown'
+// import remarkGfm from 'remark-gfm'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { A11y, Autoplay } from 'swiper/modules'
@@ -124,11 +124,9 @@ const IndexPage = () => {
                   }}
                   alt="avatar"
                 />
-
                 <div className={lead} style={{ color: 'white' }}>
                   {ads.profiel}
                 </div>
-
                 <div
                   style={{
                     fontStyle: 'italic',
@@ -138,16 +136,10 @@ const IndexPage = () => {
                 >
                   {ads.occupate || '..'}
                 </div>
-
-                <ReactMarkdown
+                <div
                   className={homeAdsBio}
-                  children={ads.biografie || '..'}
-                  remarkPlugins={[remarkGfm]}
-                  // escapeHtml={false}
+                  dangerouslySetInnerHTML={{ __html: ads.biografie }}
                 />
-
-                {/* {ads.createdAt} */}
-
                 <div>
                   {' '}
                   <Link

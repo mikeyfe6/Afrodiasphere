@@ -1,24 +1,22 @@
-import React, { useLayoutEffect, useState, useEffect } from "react"
-import { Link } from "gatsby"
-import axios from "axios"
+import React, { useLayoutEffect, useState, useEffect } from 'react'
 
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { Link } from 'gatsby'
+import axios from 'axios'
 
-import Seo from "../components/seo"
+import Seo from '../components/seo'
 
-import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa"
-import { SiTiktok } from "react-icons/si"
+import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
+import { SiTiktok } from 'react-icons/si'
 
-import ProfLayout from "../components/proflayout"
+import ProfLayout from '../components/proflayout'
 
-import { profCenter, imgavatar } from "../styles/modules/profStyles.module.scss"
+import { profCenter, imgavatar } from '../styles/modules/profStyles.module.scss'
 
-import "../styles/themes.scss"
+import '../styles/themes.scss'
 
-import noavatar from "../images/noavatar.png"
+import noavatar from '../images/noavatar.png'
 
-import afroLogo from "../images/afrodiasphere-logo.png"
+import afroLogo from '../images/afrodiasphere-logo.png'
 
 // import { getUser } from "../services/auth"
 
@@ -36,18 +34,18 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
   //   hideDiv()
   // }, [])
 
-  const [color, setColor] = useState("")
+  const [color, setColor] = useState('')
   const [avatar, setAvatar] = useState(null)
-  const [username, setUsername] = useState("")
-  const [occupate, setOccupate] = useState("")
-  const [biography, setBiography] = useState("")
+  const [username, setUsername] = useState('')
+  const [occupate, setOccupate] = useState('')
+  const [biography, setBiography] = useState('')
   const [links, setLinks] = useState([])
 
-  const [fbLink, setFbLink] = useState("")
-  const [twLink, setTwLink] = useState("")
-  const [igLink, setIgLink] = useState("")
-  const [waLink, setWaLink] = useState("")
-  const [tkLink, setTkLink] = useState("")
+  const [fbLink, setFbLink] = useState('')
+  const [twLink, setTwLink] = useState('')
+  const [igLink, setIgLink] = useState('')
+  const [waLink, setWaLink] = useState('')
+  const [tkLink, setTkLink] = useState('')
 
   useLayoutEffect(() => {
     const getLinks = async () => {
@@ -55,7 +53,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
       const reslinks = await axios.get(`${apiURL}/api/connections?populate=*`)
       var allLinks = reslinks.data
       var sortedLinks = allLinks.filter(
-        element => element.links.username === persoon.username
+        element => element.links.username === persoon.username,
       )
 
       setLinks(sortedLinks)
@@ -79,35 +77,35 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
   }, [id, slug, persoon.username])
 
   useEffect(() => {
-    var fbhideman = document.getElementById("fbhidesm")
+    var fbhideman = document.getElementById('fbhidesm')
     if (fbLink < 9) {
-      fbhideman.style.display = "none"
+      fbhideman.style.display = 'none'
     } else {
-      fbhideman.style.display = "block"
+      fbhideman.style.display = 'block'
     }
-    var twhideman = document.getElementById("twhidesm")
+    var twhideman = document.getElementById('twhidesm')
     if (twLink < 9) {
-      twhideman.style.display = "none"
+      twhideman.style.display = 'none'
     } else {
-      twhideman.style.display = "block"
+      twhideman.style.display = 'block'
     }
-    var ighideman = document.getElementById("ighidesm")
+    var ighideman = document.getElementById('ighidesm')
     if (igLink < 9) {
-      ighideman.style.display = "none"
+      ighideman.style.display = 'none'
     } else {
-      ighideman.style.display = "block"
+      ighideman.style.display = 'block'
     }
-    var wahideman = document.getElementById("wahidesm")
+    var wahideman = document.getElementById('wahidesm')
     if (waLink < 9) {
-      wahideman.style.display = "none"
+      wahideman.style.display = 'none'
     } else {
-      wahideman.style.display = "block"
+      wahideman.style.display = 'block'
     }
-    var tkhideman = document.getElementById("tkhidesm")
+    var tkhideman = document.getElementById('tkhidesm')
     if (tkLink < 9) {
-      tkhideman.style.display = "none"
+      tkhideman.style.display = 'none'
     } else {
-      tkhideman.style.display = "block"
+      tkhideman.style.display = 'block'
     }
   }, [fbLink, twLink, igLink, waLink, tkLink])
 
@@ -137,19 +135,14 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
             src={avatar}
             className={imgavatar}
             alt="avatar"
-            style={{ border: "3px solid white" }}
+            style={{ border: '3px solid white' }}
           />
 
           <h1>{username}</h1>
 
           <p>{occupate}</p>
 
-          <ReactMarkdown
-            as="p"
-            children={biography}
-            remarkPlugins={[remarkGfm]}
-            // escapeHtml={false}
-          />
+          <p>{biography}</p>
 
           <ul>
             {links.slice(0, 20).map(link => (
@@ -220,7 +213,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
               src={afroLogo}
               alt=""
               style={{
-                width: "100px",
+                width: '100px',
               }}
             />
           </Link>
