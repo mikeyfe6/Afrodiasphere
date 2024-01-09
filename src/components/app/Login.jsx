@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react"
-import { Link } from "gatsby"
-import axios from "axios"
-import { navigate } from "@reach/router"
+import React, { useState, useRef } from 'react'
+import { Link } from 'gatsby'
+import axios from 'axios'
+import { navigate } from '@reach/router'
 
 // import useDigitInput from "react-digit-input"
 
-import { setUser } from "../../services/auth"
+import { setUser } from '../../services/auth'
 
 import {
   logerror,
@@ -32,9 +32,9 @@ import {
   overlayRight,
   imgHide,
   forgetLink,
-} from "../../styles/modules/loginStyles.module.scss"
+} from '../../styles/modules/loginStyles.module.scss'
 
-import servImage from "../../images/mamafrica.png"
+import servImage from '../../images/mamafrica.png'
 
 const apiURL = process.env.GATSBY_BASE_URL
 
@@ -89,13 +89,13 @@ const LoginPage = () => {
   // const signInButton = document.getElementById("signIn")
 
   const signUpHandler = e => {
-    const container = document.getElementById("container")
+    const container = document.getElementById('container')
     container.classList.add(rightPanelActive)
     e.preventDefault()
   }
 
   const signInHandler = e => {
-    const container = document.getElementById("container")
+    const container = document.getElementById('container')
     container.classList.remove(rightPanelActive)
     e.preventDefault()
   }
@@ -110,9 +110,9 @@ const LoginPage = () => {
       })
 
       setUser(data)
-      setLoading("Aan het laden")
+      setLoading('Aan het laden')
       setError(null)
-      navigate("/app/dashboard/")
+      navigate('/dashboard/')
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -132,8 +132,8 @@ const LoginPage = () => {
       const { data } = await axios.post(`${apiURL}/api/auth/local/register`, {
         username: usernameRegRef.current.value
           .toLowerCase()
-          .replace(/\s+/g, ""),
-        email: emailRegRef.current.value.toLowerCase().replace(/\s+/g, ""),
+          .replace(/\s+/g, ''),
+        email: emailRegRef.current.value.toLowerCase().replace(/\s+/g, ''),
         password: passwordRegRef.current.value,
       })
 
@@ -141,12 +141,12 @@ const LoginPage = () => {
 
       const str = usernameRegRef.current.value
       const correctSlug = str
-        .normalize("NFD")
-        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, "-")
+        .normalize('NFD')
+        .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '-')
 
       const params = {
         slug: correctSlug,
-        profiel: usernameRegRef.current.value.toLowerCase().replace(/\s+/g, ""),
+        profiel: usernameRegRef.current.value.toLowerCase().replace(/\s+/g, ''),
       }
 
       await axios.post(
@@ -156,19 +156,19 @@ const LoginPage = () => {
           headers: {
             Authorization: `Bearer ${data.jwt}`,
           },
-        }
+        },
       )
 
-      if (process.env.NODE_ENV === "production") {
+      if (process.env.NODE_ENV === 'production') {
         await axios.post(
-          `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`
+          `https://api.netlify.com/build_hooks/61fd35548a7a1a15735fd2b8`,
         )
       }
 
-      console.log("Welkom bij Afrodiasphere!")
-      setLoading("Aan het laden")
+      console.log('Welkom bij Afrodiasphere!')
+      setLoading('Aan het laden')
       setError(null)
-      navigate("/app/dashboard/")
+      navigate('/dashboard/')
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -204,7 +204,7 @@ const LoginPage = () => {
               }}
             /> */}
             <form onSubmit={handleSubmitRegister}>
-              <h1 style={{ fontSize: "1.5em" }}>Maak een profiel aan</h1>
+              <h1 style={{ fontSize: '1.5em' }}>Maak een profiel aan</h1>
               {/* <div className={loginStyles.socialContainer}>
                 <a href="" className="social">
                   <i>icon</i>
@@ -225,7 +225,7 @@ const LoginPage = () => {
                 type="text"
                 name="usernameReg"
                 pattern="[^\s]+"
-                style={{ textTransform: "lowercase" }}
+                style={{ textTransform: 'lowercase' }}
                 placeholder="gebruikersnaam"
                 title="Kies een gebruikersnaam"
               />
@@ -234,7 +234,7 @@ const LoginPage = () => {
                 type="email"
                 name="emailReg"
                 placeholder="e-mailadres"
-                style={{ textTransform: "lowercase" }}
+                style={{ textTransform: 'lowercase' }}
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Voer je e-mailadres in"
               />
@@ -271,7 +271,7 @@ const LoginPage = () => {
               </pre> */}
               {error && <ErrorMessage text={error} />}
               {loading && <LoadingMessage text={loading} />}
-              <button style={{ cursor: "pointer" }} title="Registreer">
+              <button style={{ cursor: 'pointer' }} title="Registreer">
                 Registeer
               </button>
             </form>
@@ -297,7 +297,7 @@ const LoginPage = () => {
                 type="text"
                 name="username"
                 placeholder="e-mailadres / gebruikersnaam"
-                style={{ textTransform: "lowercase" }}
+                style={{ textTransform: 'lowercase' }}
                 title="Log in met jouw e-mailadres of gebruikersnaam"
                 required
               />
@@ -318,7 +318,7 @@ const LoginPage = () => {
               >
                 Wachtwoord vergeten
               </Link>
-              <button style={{ cursor: "pointer" }} title="Inloggen">
+              <button style={{ cursor: 'pointer' }} title="Inloggen">
                 Inloggen
               </button>
               <br />
@@ -338,7 +338,7 @@ const LoginPage = () => {
                 </p>
 
                 <button
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                   className={ghost}
                   id="signIn"
                   onClick={signInHandler}
@@ -361,7 +361,7 @@ const LoginPage = () => {
                 </p>
 
                 <button
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                   className={ghost}
                   id="signUp"
                   onClick={signUpHandler}

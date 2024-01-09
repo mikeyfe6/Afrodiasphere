@@ -1,16 +1,16 @@
-import PropTypes from "prop-types"
-import React from "react"
-import { Link, navigate } from "gatsby"
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Link, navigate } from 'gatsby'
 
-import { isLoggedIn, logout, isBrowser } from "../services/auth"
+import { isLoggedIn, logout, isBrowser } from '../services/auth'
 
 import {
   navbar,
   flex,
   container,
-} from "../styles/modules/headerStyles.module.scss"
+} from '../styles/modules/headerStyles.module.scss'
 
-import AfroLogo from "../assets/Afrodiasphere-logo.svg"
+import AfroLogo from '../assets/Afrodiasphere-logo.svg'
 
 const Header = () => (
   <header className={navbar}>
@@ -27,11 +27,11 @@ const Header = () => (
           <li>
             {isLoggedIn() && isBrowser() ? (
               <button
-                activeStyle={{ color: "#cc9932" }}
+                activeStyle={{ color: '#cc9932' }}
                 onClick={e => {
                   e.preventDefault()
                   // e.stopPropagation()
-                  logout(() => navigate("/app/login"))
+                  logout(() => navigate('/login'))
                 }}
                 href="#"
                 title="Uitloggen"
@@ -40,9 +40,9 @@ const Header = () => (
               </button>
             ) : (
               <Link
-                to="/app/login/"
+                to="/login/"
                 title="Inloggen"
-                activeStyle={{ color: "#cc9932" }}
+                activeStyle={{ color: '#cc9932' }}
               >
                 Inloggen
               </Link>
@@ -50,8 +50,8 @@ const Header = () => (
           </li>
           <li>
             <Link
-              to="/app/dashboard/"
-              activeStyle={{ color: "#cc9932" }}
+              to="/dashboard/"
+              activeStyle={{ color: '#cc9932' }}
               title="Dashboard"
             >
               Dashboard

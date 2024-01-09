@@ -4,9 +4,9 @@ import React, {
   useEffect,
   useLayoutEffect,
   useCallback,
-} from "react"
-import { Link } from "gatsby"
-import axios from "axios"
+} from 'react'
+import { Link } from 'gatsby'
+import axios from 'axios'
 
 import {
   FaFacebookF,
@@ -14,16 +14,16 @@ import {
   FaTwitter,
   FaTrash,
   FaWhatsapp,
-} from "react-icons/fa"
+} from 'react-icons/fa'
 
-import { SiTiktok } from "react-icons/si"
+import { SiTiktok } from 'react-icons/si'
 
-import Seo from "../seo"
+import Seo from '../seo'
 
-import { navigate } from "@reach/router"
-import { getUser, logout } from "../../services/auth"
+import { navigate } from '@reach/router'
+import { getUser, logout, isLoggedIn } from '../../services/auth'
 
-import noavatar from "../../images/noavatar.png"
+import noavatar from '../../images/noavatar.png'
 
 import {
   logerror,
@@ -138,7 +138,7 @@ import {
   graystyleBiography,
   yellowstyleOccupate,
   yellowstyleBiography,
-} from "../../styles/modules/accountStyles.module.scss"
+} from '../../styles/modules/accountStyles.module.scss'
 
 const apiURL = process.env.GATSBY_BASE_URL
 const instURL = process.env.GATSBY_CURR_URL
@@ -160,17 +160,11 @@ const DoThis = ({ text }) => {
 }
 
 const DashboardPage = () => {
-  // const { site } = useStaticQuery(
-  //   graphql`
-  //     query {
-  //       site {
-  //         siteMetadata {
-  //           siteUrl
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      navigate('/login')
+    }
+  }, [])
 
   const [userId, setUserId] = useState(0)
   const [gatsbyId, setGatsbyId] = useState(0)
@@ -184,32 +178,32 @@ const DashboardPage = () => {
   const [error, setError] = useState(null)
   const [linkError, setLinkError] = useState(null)
 
-  const [profile, setProfile] = useState("")
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [slug, setSlug] = useState("")
-  const [deleteAds, setDeleteAds] = useState("")
+  const [profile, setProfile] = useState('')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [slug, setSlug] = useState('')
+  const [deleteAds, setDeleteAds] = useState('')
 
-  const [occupate, setOccupate] = useState("")
-  const [biography, setBiography] = useState("")
+  const [occupate, setOccupate] = useState('')
+  const [biography, setBiography] = useState('')
 
   const [avatarId, setAvatarID] = useState(0)
 
-  const [fbLink, setFbLink] = useState("")
-  const [twLink, setTwLink] = useState("")
-  const [igLink, setIgLink] = useState("")
-  const [waLink, setWaLink] = useState("")
-  const [tkLink, setTkLink] = useState("")
+  const [fbLink, setFbLink] = useState('')
+  const [twLink, setTwLink] = useState('')
+  const [igLink, setIgLink] = useState('')
+  const [waLink, setWaLink] = useState('')
+  const [tkLink, setTkLink] = useState('')
 
   const linkTitle = useRef()
   const hyperLink = useRef()
   const [links, setLinks] = useState([])
 
-  const [editLink, setEditLink] = useState("")
-  const [editHyperLink, setEditHyperLink] = useState("")
+  const [editLink, setEditLink] = useState('')
+  const [editHyperLink, setEditHyperLink] = useState('')
 
-  const [color, setColor] = useState("")
+  const [color, setColor] = useState('')
 
   const gatsbyUser = getUser()
   const token = gatsbyUser.jwt
@@ -221,11 +215,11 @@ const DashboardPage = () => {
     },
     error => {
       if (error.response.status === 401) {
-        logout(() => navigate("/app/login"))
-        console.log("unauthorized, logging out ...")
+        logout(() => navigate('/login'))
+        console.log('unauthorized, logging out ...')
       }
       return error
-    }
+    },
   )
 
   const getUserId = useCallback(async () => {
@@ -238,21 +232,21 @@ const DashboardPage = () => {
 
       setUserId(res.data.id)
     } catch {
-      setError("Er gaat iets mis met het ophalen van je gegevens")
+      setError('Er gaat iets mis met het ophalen van je gegevens')
     }
   }, [token])
 
   useEffect(() => {
-    if (typeof gatsbyUser.user.id !== "undefined") {
-      if (typeof gatsbyUser.user.id !== "undefined") {
+    if (typeof gatsbyUser.user.id !== 'undefined') {
+      if (typeof gatsbyUser.user.id !== 'undefined') {
         setGatsbyId(gatsbyUser.user.id)
-        if (typeof gatsbyUser.user.id !== "undefined") {
+        if (typeof gatsbyUser.user.id !== 'undefined') {
           setGatsbyId(gatsbyUser.user.id)
           // console.log("gatsby id", gatsbyUser.user.id)
           return setGatsbyId(gatsbyUser.user.id)
         } else {
           // console.log("no gatsby id")
-          return logout(() => navigate("/app/login"))
+          return logout(() => navigate('/login'))
         }
       }
     }
@@ -309,10 +303,10 @@ const DashboardPage = () => {
       setImage(image)
 
       const imgData = new FormData()
-      imgData.append("files", image)
-      imgData.append("ref", "api::instantie.instantie") // optional, you need it if you want to link the image to an entry
-      imgData.append("refId", userId) // optional, you need it if you want to link the image to an entry
-      imgData.append("field", "avatar") // optional, you need it if you want to link the image to an entry
+      imgData.append('files', image)
+      imgData.append('ref', 'api::instantie.instantie') // optional, you need it if you want to link the image to an entry
+      imgData.append('refId', userId) // optional, you need it if you want to link the image to an entry
+      imgData.append('field', 'avatar') // optional, you need it if you want to link the image to an entry
 
       await axios.post(`${apiURL}/api/upload/`, imgData, {
         headers: {
@@ -322,7 +316,7 @@ const DashboardPage = () => {
       // console.log("Geupload!", res)
       setTimeout(() => setLoading(false), 5000)
     } catch (error) {
-      console.log("Niet gelukt!", error)
+      console.log('Niet gelukt!', error)
     }
   }
 
@@ -356,7 +350,7 @@ const DashboardPage = () => {
 
   // UPDATE PROFILENAME <--------------------------------------------------------------------------------> UPDATE PROFILENAME //
   const setProfileHandler = e => {
-    setProfile(e.target.value || "")
+    setProfile(e.target.value || '')
   }
 
   const submitProfile = async e => {
@@ -373,7 +367,7 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
 
       setError(null)
@@ -398,7 +392,7 @@ const DashboardPage = () => {
   // UPDATE USERNAME <--------------------------------------------------------------------------------> UPDATE USERNAME //
 
   const setUsernameHandler = e => {
-    setUsername(e.target.value.toLowerCase().replace(/\s+/g, ""))
+    setUsername(e.target.value.toLowerCase().replace(/\s+/g, ''))
   }
 
   const submitUsername = async e => {
@@ -428,12 +422,12 @@ const DashboardPage = () => {
             Authorization: `Bearer ${token}`,
           },
         })
-        setUsername(res.data.username || "")
+        setUsername(res.data.username || '')
       }
       getUsername()
     } catch {
-      console.log("Gaat iets mis met het ophalen van je gebruikersnaam")
-      logout(() => navigate("/app/login"))
+      console.log('Gaat iets mis met het ophalen van je gebruikersnaam')
+      logout(() => navigate('/login'))
     }
   }, [gatsbyId, token])
 
@@ -473,7 +467,7 @@ const DashboardPage = () => {
       }
       getEmail()
     } catch {
-      setError("Gaat iets mis met het ophalen van je emailadres")
+      setError('Gaat iets mis met het ophalen van je emailadres')
     }
   }, [gatsbyId, token])
 
@@ -496,7 +490,7 @@ const DashboardPage = () => {
       })
       setError(null)
     } catch {
-      setError("Gaat er iets mis met het updaten van je wachtwoord")
+      setError('Gaat er iets mis met het updaten van je wachtwoord')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -520,7 +514,7 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
 
       setError(null)
@@ -534,7 +528,7 @@ const DashboardPage = () => {
       //   }
       // )
     } catch {
-      setError("Er gaat iets mis met het updaten van je slug")
+      setError('Er gaat iets mis met het updaten van je slug')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -554,7 +548,7 @@ const DashboardPage = () => {
 
   // DELETE PROFILE <--------------------------------------------------------------------------------> DELETE PROFILE //
   const setDeleteHandler = e => {
-    setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ""))
+    setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ''))
   }
 
   const submitDeleteAds = async e => {
@@ -580,34 +574,34 @@ const DashboardPage = () => {
       }
 
       if (deleteAds === username) {
-        await Promise.all([deleteInstantie() && deleteUser()]).then(function (
-          results
-        ) {
-          const delUserId = results[0]
-          const delGatsbyId = results[1]
-          // console.log(delUserId, "delUserId")
-          // console.log(delGatsbyId, "delGatsbyId")
-          setUserId(delUserId.data.data.id)
-          setGatsbyId(delGatsbyId.data.id)
-          // console.log("userId", userId)
-          // console.log("gatsbyId", gatsbyId)
-        })
+        await Promise.all([deleteInstantie() && deleteUser()]).then(
+          function (results) {
+            const delUserId = results[0]
+            const delGatsbyId = results[1]
+            // console.log(delUserId, "delUserId")
+            // console.log(delGatsbyId, "delGatsbyId")
+            setUserId(delUserId.data.data.id)
+            setGatsbyId(delGatsbyId.data.id)
+            // console.log("userId", userId)
+            // console.log("gatsbyId", gatsbyId)
+          },
+        )
 
         // const res = await axios.all([
         //   axios.delete(`${apiURL}/api/instanties/${userId}`, jwtTokens),
         //   axios.delete(`${apiURL}/api/users/${gatsbyId}`, jwtTokens),
         // ])
-        logout(() => navigate("/app/login"))
+        logout(() => navigate('/login'))
       } else {
         setError(
-          "Er gaat iets mis met het verwijderen van jouw account, probeer het nog 's"
+          "Er gaat iets mis met het verwijderen van jouw account, probeer het nog 's",
         )
         setTimeout(() => setError(null), 5000)
       }
 
       setError(null)
     } catch {
-      setError("Verwijderen van je account mislukt")
+      setError('Verwijderen van je account mislukt')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -631,7 +625,7 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
 
       setError(null)
@@ -648,7 +642,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setBiography(res.data.biografie || "")
+      setBiography(res.data.biografie || '')
     }
     getBiography()
   }, [token])
@@ -667,7 +661,7 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
   }
 
@@ -678,43 +672,43 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setOccupate(res.data.occupate || "")
+      setOccupate(res.data.occupate || '')
     }
 
-    if (occupate === "bedrijf") {
-      document.getElementById("currentBedrijf").classList.add(currentOccupate)
+    if (occupate === 'bedrijf') {
+      document.getElementById('currentBedrijf').classList.add(currentOccupate)
     } else {
       document
-        .getElementById("currentBedrijf")
+        .getElementById('currentBedrijf')
         .classList.remove(currentOccupate)
     }
-    if (occupate === "zelfstandig") {
+    if (occupate === 'zelfstandig') {
       document
-        .getElementById("currentZelfstandig")
+        .getElementById('currentZelfstandig')
         .classList.add(currentOccupate)
     } else {
       document
-        .getElementById("currentZelfstandig")
+        .getElementById('currentZelfstandig')
         .classList.remove(currentOccupate)
     }
-    if (occupate === "hobbyist") {
-      document.getElementById("currentHobbyist").classList.add(currentOccupate)
+    if (occupate === 'hobbyist') {
+      document.getElementById('currentHobbyist').classList.add(currentOccupate)
     } else {
       document
-        .getElementById("currentHobbyist")
+        .getElementById('currentHobbyist')
         .classList.remove(currentOccupate)
     }
-    if (occupate === "stichting") {
-      document.getElementById("currentStichting").classList.add(currentOccupate)
+    if (occupate === 'stichting') {
+      document.getElementById('currentStichting').classList.add(currentOccupate)
     } else {
       document
-        .getElementById("currentStichting")
+        .getElementById('currentStichting')
         .classList.remove(currentOccupate)
     }
-    if (occupate === "artist") {
-      document.getElementById("currentArtist").classList.add(currentOccupate)
+    if (occupate === 'artist') {
+      document.getElementById('currentArtist').classList.add(currentOccupate)
     } else {
-      document.getElementById("currentArtist").classList.remove(currentOccupate)
+      document.getElementById('currentArtist').classList.remove(currentOccupate)
     }
 
     getOccupate()
@@ -726,10 +720,10 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    let fbhideme = document.getElementById("fbhide")
+    let fbhideme = document.getElementById('fbhide')
     !fbLink
-      ? (fbhideme.style.display = "none")
-      : (fbhideme.style.display = "block")
+      ? (fbhideme.style.display = 'none')
+      : (fbhideme.style.display = 'block')
   }, [fbLink])
 
   const submitFB = async e => {
@@ -746,11 +740,11 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       setError(null)
     } catch {
-      setError("Gaat iets mis met het updaten van je facebooklink")
+      setError('Gaat iets mis met het updaten van je facebooklink')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -763,7 +757,7 @@ const DashboardPage = () => {
         },
       })
 
-      setFbLink(res.data.facebooklink || "")
+      setFbLink(res.data.facebooklink || '')
     }
     getFbLink()
   }, [token])
@@ -774,10 +768,10 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    let twhideme = document.getElementById("twhide")
+    let twhideme = document.getElementById('twhide')
     !twLink
-      ? (twhideme.style.display = "none")
-      : (twhideme.style.display = "block")
+      ? (twhideme.style.display = 'none')
+      : (twhideme.style.display = 'block')
   }, [twLink])
 
   const submitTW = async e => {
@@ -794,11 +788,11 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       setError(null)
     } catch {
-      setError("Gaat iets mis met het updaten van je twitterlink")
+      setError('Gaat iets mis met het updaten van je twitterlink')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -810,7 +804,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTwLink(res.data.twitterlink || "")
+      setTwLink(res.data.twitterlink || '')
     }
     getTwLink()
   }, [token])
@@ -821,10 +815,10 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    let ighideme = document.getElementById("ighide")
+    let ighideme = document.getElementById('ighide')
     !igLink
-      ? (ighideme.style.display = "none")
-      : (ighideme.style.display = "block")
+      ? (ighideme.style.display = 'none')
+      : (ighideme.style.display = 'block')
   }, [igLink])
 
   const submitIG = async e => {
@@ -841,11 +835,11 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       setError(null)
     } catch {
-      setError("Gaat iets mis met het updaten van je instagramlink")
+      setError('Gaat iets mis met het updaten van je instagramlink')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -857,7 +851,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setIgLink(res.data.instagramlink || "")
+      setIgLink(res.data.instagramlink || '')
     }
     getIgLink()
   }, [token])
@@ -868,10 +862,10 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    let wahideme = document.getElementById("wahide")
+    let wahideme = document.getElementById('wahide')
     !waLink
-      ? (wahideme.style.display = "none")
-      : (wahideme.style.display = "block")
+      ? (wahideme.style.display = 'none')
+      : (wahideme.style.display = 'block')
   }, [waLink])
 
   const submitWA = async e => {
@@ -888,11 +882,11 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       setError(null)
     } catch {
-      setError("Gaat iets mis met het updaten van je whatsapplink")
+      setError('Gaat iets mis met het updaten van je whatsapplink')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -904,7 +898,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setWaLink(res.data.whatsapplink || "")
+      setWaLink(res.data.whatsapplink || '')
     }
     getWaLink()
   }, [token])
@@ -915,10 +909,10 @@ const DashboardPage = () => {
   }
 
   useEffect(() => {
-    let tkhideme = document.getElementById("tkhide")
+    let tkhideme = document.getElementById('tkhide')
     !tkLink
-      ? (tkhideme.style.display = "none")
-      : (tkhideme.style.display = "block")
+      ? (tkhideme.style.display = 'none')
+      : (tkhideme.style.display = 'block')
   }, [tkLink])
 
   const submitTK = async e => {
@@ -935,11 +929,11 @@ const DashboardPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       )
       setError(null)
     } catch {
-      setError("Gaat iets mis met het updaten van je tiktoklink")
+      setError('Gaat iets mis met het updaten van je tiktoklink')
       setTimeout(() => setError(null), 5000)
     }
   }
@@ -951,7 +945,7 @@ const DashboardPage = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      setTkLink(res.data.tiktoklink || "")
+      setTkLink(res.data.tiktoklink || '')
     }
     getTkLink()
   }, [token])
@@ -963,7 +957,7 @@ const DashboardPage = () => {
       /^\s*$/.test(linkTitle.current.value && hyperLink.current.value)
     ) {
       return [
-        setLinkError("Posten mislukt, voer de titel of link correct door.."),
+        setLinkError('Posten mislukt, voer de titel of link correct door..'),
         setTimeout(() => setLinkError(null), 7500),
       ]
     }
@@ -979,15 +973,15 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
 
     const newLinks = [...links, res.data.data.attributes]
     setLinks(newLinks)
 
     getLinks()
-    linkTitle.current.value = ""
-    hyperLink.current.value = ""
+    linkTitle.current.value = ''
+    hyperLink.current.value = ''
   }
 
   // TOGGLE LINKS <--------------------------------------------------------------------------------> TOGGLE LINKS //
@@ -1002,7 +996,7 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
 
     const newLinks = links.map(el => {
@@ -1037,7 +1031,7 @@ const DashboardPage = () => {
   const editTheLink = async link => {
     if (!editLink || /^\s*$/.test(editLink)) {
       return [
-        setLinkError("Updaten mislukt, voer de titel correct door.."),
+        setLinkError('Updaten mislukt, voer de titel correct door..'),
         setTimeout(() => setLinkError(null), 7500),
       ]
     }
@@ -1052,7 +1046,7 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
 
     const newLinks = links.map(el => {
@@ -1069,7 +1063,7 @@ const DashboardPage = () => {
   const editTheHyperLink = async link => {
     if (!editHyperLink || /^\s*$/.test(editHyperLink)) {
       return [
-        setLinkError("Updaten mislukt, voer de link correct door.."),
+        setLinkError('Updaten mislukt, voer de link correct door..'),
         setTimeout(() => setLinkError(null), 5000),
       ]
     }
@@ -1084,7 +1078,7 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
 
     const newLinks = links.map(el => {
@@ -1094,7 +1088,7 @@ const DashboardPage = () => {
       return el
     })
     setLinks(newLinks)
-    setEditHyperLink("")
+    setEditHyperLink('')
     getLinks()
   }
 
@@ -1127,7 +1121,7 @@ const DashboardPage = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
   }
 
@@ -1138,13 +1132,13 @@ const DashboardPage = () => {
       biography,
       icons,
       bg,
-      links
+      links,
     ) => {
-      const iphoneUsernameStyle = document.getElementById("iphone-username")
-      const iphoneOccupateStyle = document.getElementById("iphone-occupate")
-      const iphoneBiographyStyle = document.getElementById("iphone-biography")
-      const iphoneIconLookStyle = document.getElementById("iphone-iconlook")
-      const iphoneBgStyle = document.getElementById("iphone-bg")
+      const iphoneUsernameStyle = document.getElementById('iphone-username')
+      const iphoneOccupateStyle = document.getElementById('iphone-occupate')
+      const iphoneBiographyStyle = document.getElementById('iphone-biography')
+      const iphoneIconLookStyle = document.getElementById('iphone-iconlook')
+      const iphoneBgStyle = document.getElementById('iphone-bg')
 
       const iphoneLinkStyle = className => {
         for (i = 0; i < c.length; i++) {
@@ -1152,7 +1146,7 @@ const DashboardPage = () => {
         }
       }
 
-      let c = document.getElementById("iphone-linklook").children
+      let c = document.getElementById('iphone-linklook').children
       let i
 
       iphoneUsernameStyle.className = username
@@ -1164,84 +1158,84 @@ const DashboardPage = () => {
     }
 
     switch (color) {
-      case "geel":
+      case 'geel':
         iphonePreviewStyle(
           yellowstyleUsername,
           yellowstyleOccupate,
           yellowstyleBiography,
           yellowstyleIcons,
           yellowstyle,
-          yellowstyleLinks
+          yellowstyleLinks,
         )
 
         break
-      case "grijs":
+      case 'grijs':
         iphonePreviewStyle(
           graystyleUsername,
           graystyleOccupate,
           graystyleBiography,
           graystyleIcons,
           graystyle,
-          graystyleLinks
+          graystyleLinks,
         )
 
         break
-      case "roze":
+      case 'roze':
         iphonePreviewStyle(
           pinkstyleUsername,
           pinkstyleOccupate,
           pinkstyleBiography,
           pinkstyleIcons,
           pinkstyle,
-          pinkstyleLinks
+          pinkstyleLinks,
         )
 
         break
-      case "zwart":
+      case 'zwart':
         iphonePreviewStyle(
           blackstyleUsername,
           blackstyleOccupate,
           blackstyleBiography,
           blackstyleIcons,
           blackstyle,
-          blackstyleLinks
+          blackstyleLinks,
         )
 
         break
-      case "bruin":
+      case 'bruin':
         iphonePreviewStyle(
           brownstyleUsername,
           brownstyleOccupate,
           brownstyleBiography,
           brownstyleIcons,
           brownstyle,
-          brownstyleLinks
+          brownstyleLinks,
         )
 
         break
-      case "groen":
+      case 'groen':
         iphonePreviewStyle(
           greenstyleUsername,
           greenstyleOccupate,
           greenstyleBiography,
           greenstyleIcons,
           greenstyle,
-          greenstyleLinks
+          greenstyleLinks,
         )
 
         break
-      case "afrotheme":
+      case 'afrotheme':
         iphonePreviewStyle(
           afrospecstyleUsername,
           afrospecstyleOccupate,
           afrospecstyleBiography,
           afrospecstyleIcons,
           afrospecstyle,
-          afrospecstyleLinks
+          afrospecstyleLinks,
         )
         break
       default:
-        color = "afrotheme"
+        color = 'afrotheme'
     }
   }
 
@@ -1256,40 +1250,40 @@ const DashboardPage = () => {
       changeHeadingBg(res.data.bgfree)
     }
 
-    if (color === "geel") {
-      document.getElementById("currentYellow").classList.add(currentStyle)
+    if (color === 'geel') {
+      document.getElementById('currentYellow').classList.add(currentStyle)
     } else {
-      document.getElementById("currentYellow").classList.remove(currentStyle)
+      document.getElementById('currentYellow').classList.remove(currentStyle)
     }
-    if (color === "grijs") {
-      document.getElementById("currentGrey").classList.add(currentStyle)
+    if (color === 'grijs') {
+      document.getElementById('currentGrey').classList.add(currentStyle)
     } else {
-      document.getElementById("currentGrey").classList.remove(currentStyle)
+      document.getElementById('currentGrey').classList.remove(currentStyle)
     }
-    if (color === "roze") {
-      document.getElementById("currentPink").classList.add(currentStyle)
+    if (color === 'roze') {
+      document.getElementById('currentPink').classList.add(currentStyle)
     } else {
-      document.getElementById("currentPink").classList.remove(currentStyle)
+      document.getElementById('currentPink').classList.remove(currentStyle)
     }
-    if (color === "zwart") {
-      document.getElementById("currentBlack").classList.add(currentStyle)
+    if (color === 'zwart') {
+      document.getElementById('currentBlack').classList.add(currentStyle)
     } else {
-      document.getElementById("currentBlack").classList.remove(currentStyle)
+      document.getElementById('currentBlack').classList.remove(currentStyle)
     }
-    if (color === "bruin") {
-      document.getElementById("currentBrown").classList.add(currentStyle)
+    if (color === 'bruin') {
+      document.getElementById('currentBrown').classList.add(currentStyle)
     } else {
-      document.getElementById("currentBrown").classList.remove(currentStyle)
+      document.getElementById('currentBrown').classList.remove(currentStyle)
     }
-    if (color === "groen") {
-      document.getElementById("currentGreen").classList.add(currentStyle)
+    if (color === 'groen') {
+      document.getElementById('currentGreen').classList.add(currentStyle)
     } else {
-      document.getElementById("currentGreen").classList.remove(currentStyle)
+      document.getElementById('currentGreen').classList.remove(currentStyle)
     }
-    if (color === "afrotheme") {
-      document.getElementById("currentAfro").classList.add(currentStyle)
+    if (color === 'afrotheme') {
+      document.getElementById('currentAfro').classList.add(currentStyle)
     } else {
-      document.getElementById("currentAfro").classList.remove(currentStyle)
+      document.getElementById('currentAfro').classList.remove(currentStyle)
     }
 
     getColor()
@@ -1305,40 +1299,40 @@ const DashboardPage = () => {
           id="ads-side"
           className={`${Sidebar} ${card}`}
           style={{
-            position: "relative",
+            position: 'relative',
           }}
         >
           <h5
             // className={userTitle}
             style={{
-              textAlign: "center",
-              fontSize: "0.75em",
-              color: "white",
+              textAlign: 'center',
+              fontSize: '0.75em',
+              color: 'white',
             }}
           >
-            Hi{" "}
+            Hi{' '}
             <span
               style={{
-                color: "#2eb4e9",
+                color: '#2eb4e9',
               }}
             >
               {username}
-            </span>{" "}
+            </span>{' '}
             !
           </h5>
 
           <button
             style={{
-              position: "absolute",
-              bottom: "10px",
-              width: "87.5px",
-              right: "10px",
-              fontSize: "0.75rem",
-              color: "white",
-              padding: "7.5px 20px",
+              position: 'absolute',
+              bottom: '10px',
+              width: '87.5px',
+              right: '10px',
+              fontSize: '0.75rem',
+              color: 'white',
+              padding: '7.5px 20px',
               // backgroundColor: "#0e0e0e",
-              background: "linear-gradient(135deg, #1a1a1a, #0e0e0e)",
-              border: "3px #cc9932 solid",
+              background: 'linear-gradient(135deg, #1a1a1a, #0e0e0e)',
+              border: '3px #cc9932 solid',
               // fontWeight: "600",
             }}
             className={btn}
@@ -1346,7 +1340,7 @@ const DashboardPage = () => {
             title="Uitloggen"
             onClick={e => {
               e.preventDefault()
-              logout(() => navigate("/app/login"))
+              logout(() => navigate('/login'))
             }}
           >
             Log uit
@@ -1362,13 +1356,13 @@ const DashboardPage = () => {
         {/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
         <section id="ads-preview" className={`${Preview} ${card}`}>
           <div className={iphoneFrame}>
-            {" "}
+            {' '}
             <img
               src={preview}
               alt=""
               className={iphoneAvatar}
               id="iphone-avatar"
-              style={{ border: "3px solid white" }}
+              style={{ border: '3px solid white' }}
             />
             <p id="iphone-username">{profile}</p>
             <p id="iphone-occupate">{occupate}</p>
@@ -1377,9 +1371,9 @@ const DashboardPage = () => {
               id="iphone-bg"
               className={iphoneBackground}
               style={{
-                position: "relative",
+                position: 'relative',
                 // width: "100vh",
-                height: "100%",
+                height: '100%',
                 zindex: 1,
               }}
             />
@@ -1470,13 +1464,13 @@ const DashboardPage = () => {
         <section id="ads-dashboard" className={`${Dashboard} ${p3} ${card}`}>
           <br />
 
-          <h2 style={{ textAlign: "center" }}>
+          <h2 style={{ textAlign: 'center' }}>
             <b>
               <u
                 style={{
-                  color: "white",
-                  textDecoration: "underline",
-                  textDecorationColor: "grey",
+                  color: 'white',
+                  textDecoration: 'underline',
+                  textDecorationColor: 'grey',
                 }}
               >
                 Profiel Info
@@ -1494,8 +1488,8 @@ const DashboardPage = () => {
                   alt=""
                   className={avatarImage}
                   id="avatar-image"
-                  style={{ border: "3px solid white" }}
-                />{" "}
+                  style={{ border: '3px solid white' }}
+                />{' '}
               </div>
 
               <div className={buttonsenzo}>
@@ -1507,7 +1501,7 @@ const DashboardPage = () => {
                   }}
                   title="Kies een avatar"
                 >
-                  {" "}
+                  {' '}
                   Avatar
                 </button>
                 <button
@@ -1521,12 +1515,12 @@ const DashboardPage = () => {
                 <input
                   type="file"
                   accept="image/*"
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                   ref={fileInputRef}
                   onChange={event => {
                     const file = event.target.files[0]
 
-                    if (file && file.type.substring(0, 5) === "image") {
+                    if (file && file.type.substring(0, 5) === 'image') {
                       setImage(file)
                     } else {
                       setImage(null)
@@ -1566,7 +1560,7 @@ const DashboardPage = () => {
                   id="profile"
                   className={profileInput}
                   style={{
-                    cursor: "pointer",
+                    cursor: 'pointer',
                   }}
                 />
                 <button
@@ -1574,8 +1568,8 @@ const DashboardPage = () => {
                   type="submit"
                   title="Sla profielnaam op"
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
                   }}
                 >
                   Opslaan
@@ -1595,7 +1589,7 @@ const DashboardPage = () => {
                   title="Geen spaties"
                   className={profileInput}
                   style={{
-                    cursor: "pointer",
+                    cursor: 'pointer',
                   }}
                 />
                 <button
@@ -1603,8 +1597,8 @@ const DashboardPage = () => {
                   type="submit"
                   title="Sla gebruikersnaam op"
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
                   }}
                 >
                   Opslaan
@@ -1624,7 +1618,7 @@ const DashboardPage = () => {
                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   className={profileInput}
                   style={{
-                    cursor: "pointer",
+                    cursor: 'pointer',
                   }}
                 />
 
@@ -1633,8 +1627,8 @@ const DashboardPage = () => {
                   type="submit"
                   title="Sla e-mailadres op"
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
                   }}
                 >
                   Opslaan
@@ -1655,7 +1649,7 @@ const DashboardPage = () => {
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
                   style={{
-                    cursor: "pointer",
+                    cursor: 'pointer',
                   }}
                 />
 
@@ -1664,15 +1658,15 @@ const DashboardPage = () => {
                   type="submit"
                   title="Sla nieuw wachtwoord op"
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
                   }}
                 >
                   Update
                 </button>
               </form>
 
-              <form onSubmit={submitSlug} style={{ display: "none" }}>
+              <form onSubmit={submitSlug} style={{ display: 'none' }}>
                 <label htmlFor="slug">Slug</label>
                 <input
                   onChange={setSlugHandler}
@@ -1695,10 +1689,10 @@ const DashboardPage = () => {
                   type="submit"
                   disabled
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                    background: "red",
-                    opacity: "0.3",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
+                    background: 'red',
+                    opacity: '0.3',
                   }}
                 >
                   Update
@@ -1726,10 +1720,10 @@ const DashboardPage = () => {
                   className={btn}
                   type="submit"
                   style={{
-                    paddingTop: "5px",
-                    paddingBottom: "5px",
-                    background: "red",
-                    color: "white",
+                    paddingTop: '5px',
+                    paddingBottom: '5px',
+                    background: 'red',
+                    color: 'white',
                   }}
                 >
                   Wis Profiel
@@ -1751,7 +1745,7 @@ const DashboardPage = () => {
                 id="bedrijf"
                 type="radio"
                 value="bedrijf"
-                checked={occupate === "bedrijf"}
+                checked={occupate === 'bedrijf'}
                 onChange={onOccupateChange}
               />
               <label
@@ -1767,7 +1761,7 @@ const DashboardPage = () => {
                 id="zelfstandig"
                 type="radio"
                 value="zelfstandig"
-                checked={occupate === "zelfstandig"}
+                checked={occupate === 'zelfstandig'}
                 onChange={onOccupateChange}
               />
               <label
@@ -1783,7 +1777,7 @@ const DashboardPage = () => {
                 id="hobbyist"
                 type="radio"
                 value="hobbyist"
-                checked={occupate === "hobbyist"}
+                checked={occupate === 'hobbyist'}
                 onChange={onOccupateChange}
               />
               <label
@@ -1799,7 +1793,7 @@ const DashboardPage = () => {
                 id="stichting"
                 type="radio"
                 value="stichting"
-                checked={occupate === "stichting"}
+                checked={occupate === 'stichting'}
                 onChange={onOccupateChange}
               />
               <label
@@ -1815,7 +1809,7 @@ const DashboardPage = () => {
                 id="artist"
                 type="radio"
                 value="artist"
-                checked={occupate === "artist"}
+                checked={occupate === 'artist'}
                 onChange={onOccupateChange}
               />
               <label
@@ -1847,8 +1841,8 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla biografie op"
                 style={{
-                  padding: "5px 0",
-                  textAlign: "center",
+                  padding: '5px 0',
+                  textAlign: 'center',
                 }}
               >
                 Opslaan
@@ -1858,23 +1852,23 @@ const DashboardPage = () => {
 
           <hr
             style={{
-              border: "1px solid white",
-              opacity: "0.025",
-              width: "50%",
-              margin: "50px auto",
+              border: '1px solid white',
+              opacity: '0.025',
+              width: '50%',
+              margin: '50px auto',
             }}
             className={mobileHr}
           />
 
           {/* SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT <--------------------------------------------------------------------------------> SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT */}
 
-          <h2 style={{ textAlign: "center" }}>
+          <h2 style={{ textAlign: 'center' }}>
             <b>
               <u
                 style={{
-                  color: "white",
-                  textDecoration: "underline",
-                  textDecorationColor: "grey",
+                  color: 'white',
+                  textDecoration: 'underline',
+                  textDecorationColor: 'grey',
                 }}
               >
                 Social Links
@@ -1909,15 +1903,15 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla Facebook-profiel op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  paddingTop: '5px',
+                  paddingBottom: '5px',
                 }}
               >
                 Opslaan
               </button>
             </form>
 
-            <div style={{ position: "relative" }}>
+            <div style={{ position: 'relative' }}>
               <div className={vl}></div>
             </div>
 
@@ -1944,15 +1938,15 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla Twitter-profiel op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  paddingTop: '5px',
+                  paddingBottom: '5px',
                 }}
               >
                 Opslaan
               </button>
             </form>
 
-            <div style={{ position: "relative" }}>
+            <div style={{ position: 'relative' }}>
               <div className={vl}></div>
             </div>
 
@@ -1981,15 +1975,15 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla Instagram-profiel op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  paddingTop: '5px',
+                  paddingBottom: '5px',
                 }}
               >
                 Opslaan
               </button>
             </form>
 
-            <div style={{ position: "relative" }}>
+            <div style={{ position: 'relative' }}>
               <div className={vl}></div>
             </div>
 
@@ -2017,15 +2011,15 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla Whatsapp-profiel op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  paddingTop: '5px',
+                  paddingBottom: '5px',
                 }}
               >
                 Opslaan
               </button>
             </form>
 
-            <div style={{ position: "relative" }}>
+            <div style={{ position: 'relative' }}>
               <div className={vl}></div>
             </div>
 
@@ -2052,8 +2046,8 @@ const DashboardPage = () => {
                 type="submit"
                 title="Sla TikTok-profiel op"
                 style={{
-                  paddingTop: "5px",
-                  paddingBottom: "5px",
+                  paddingTop: '5px',
+                  paddingBottom: '5px',
                 }}
               >
                 Opslaan
@@ -2063,23 +2057,23 @@ const DashboardPage = () => {
 
           <hr
             style={{
-              border: "1px solid white",
-              opacity: "0.025",
-              width: "50%",
-              margin: "50px auto",
+              border: '1px solid white',
+              opacity: '0.025',
+              width: '50%',
+              margin: '50px auto',
             }}
             className={mobileHr}
           />
 
           {/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
 
-          <h2 style={{ textAlign: "center" }}>
+          <h2 style={{ textAlign: 'center' }}>
             <b>
               <u
                 style={{
-                  color: "white",
-                  textDecoration: "underline",
-                  textDecorationColor: "grey",
+                  color: 'white',
+                  textDecoration: 'underline',
+                  textDecorationColor: 'grey',
                 }}
               >
                 Link List
@@ -2092,8 +2086,8 @@ const DashboardPage = () => {
           <div className={linkCont}>
             <div className={linksOnline}>
               <label htmlFor="newlink">
-                <h4 style={{ color: "white" }}>
-                  Titel<span style={{ color: "#cc9932" }}>:</span>
+                <h4 style={{ color: 'white' }}>
+                  Titel<span style={{ color: '#cc9932' }}>:</span>
                 </h4>
               </label>
               <input
@@ -2107,8 +2101,8 @@ const DashboardPage = () => {
             </div>
             <div className={linksOnline}>
               <label htmlFor="newhyperlink">
-                <h4 style={{ color: "white" }}>
-                  Hyperlink<span style={{ color: "#cc9932" }}>:</span>
+                <h4 style={{ color: 'white' }}>
+                  Hyperlink<span style={{ color: '#cc9932' }}>:</span>
                 </h4>
               </label>
               <input
@@ -2116,7 +2110,7 @@ const DashboardPage = () => {
                 type="url"
                 placeholder="voer hyperlink in, bijv: voorbeeld.nl"
                 ref={hyperLink}
-                style={{ textTransform: "lowercase" }}
+                style={{ textTransform: 'lowercase' }}
                 minLength="5"
                 title="Let op: 'http(s)://' NIET nodig !"
                 required
@@ -2135,10 +2129,10 @@ const DashboardPage = () => {
               </button>
               <button
                 className={btn}
-                style={{ background: "#d9534f", color: "white" }}
+                style={{ background: '#d9534f', color: 'white' }}
                 onClick={event => {
-                  linkTitle.current.value = ""
-                  hyperLink.current.value = ""
+                  linkTitle.current.value = ''
+                  hyperLink.current.value = ''
                   event.preventDefault()
                 }}
               >
@@ -2203,7 +2197,7 @@ const DashboardPage = () => {
                       id={`hyperlink${link.id}`}
                       type="url"
                       size="25"
-                      style={{ textTransform: "lowercase" }}
+                      style={{ textTransform: 'lowercase' }}
                       value={editHyperLink[link]}
                       onChange={handleEditHyperLink}
                       placeholder="bewerk hyperlink"
@@ -2229,7 +2223,7 @@ const DashboardPage = () => {
                 <div className={deleteShowcont}>
                   <FaTrash
                     color="black"
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     className={trashBtn}
                     title="Verwijder deze link"
                     onClick={event => {
@@ -2258,23 +2252,23 @@ const DashboardPage = () => {
 
           <hr
             style={{
-              border: "1px solid white",
-              opacity: "0.025",
-              width: "50%",
-              margin: "50px auto",
+              border: '1px solid white',
+              opacity: '0.025',
+              width: '50%',
+              margin: '50px auto',
             }}
             className={mobileHr}
           />
 
           {/* CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR <-------------------------------------------------------------------------------->  CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR*/}
 
-          <h2 style={{ textAlign: "center" }}>
+          <h2 style={{ textAlign: 'center' }}>
             <b>
               <u
                 style={{
-                  color: "white",
-                  textDecoration: "underline",
-                  textDecorationColor: "grey",
+                  color: 'white',
+                  textDecoration: 'underline',
+                  textDecorationColor: 'grey',
                 }}
               >
                 Thema's
@@ -2289,13 +2283,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="geel"
-                  checked={color === "geel"}
+                  checked={color === 'geel'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("geel")
+                    changeHeadingBg('geel')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentYellow" className={yellowtheme}>
                   <div className={yellowlinks} />
@@ -2310,13 +2304,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="grijs"
-                  checked={color === "grijs"}
+                  checked={color === 'grijs'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("grijs")
+                    changeHeadingBg('grijs')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentGrey" className={graytheme}>
                   <div className={graylinks} />
@@ -2331,13 +2325,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="roze"
-                  checked={color === "roze"}
+                  checked={color === 'roze'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("roze")
+                    changeHeadingBg('roze')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentPink" className={pinktheme}>
                   <div className={pinklinks} />
@@ -2352,13 +2346,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="zwart"
-                  checked={color === "zwart"}
+                  checked={color === 'zwart'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("zwart")
+                    changeHeadingBg('zwart')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentBlack" className={blacktheme}>
                   <div className={blacklinks} />
@@ -2373,13 +2367,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="bruin"
-                  checked={color === "bruin"}
+                  checked={color === 'bruin'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("bruin")
+                    changeHeadingBg('bruin')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentBrown" className={browntheme}>
                   <div className={brownlinks} />
@@ -2394,13 +2388,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="groen"
-                  checked={color === "groen"}
+                  checked={color === 'groen'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("groen")
+                    changeHeadingBg('groen')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentGreen" className={greentheme}>
                   <div className={greenlinks} />
@@ -2415,13 +2409,13 @@ const DashboardPage = () => {
                 <input
                   type="radio"
                   value="afrotheme"
-                  checked={color === "afrotheme"}
+                  checked={color === 'afrotheme'}
                   onChange={onRadioChange}
                   onClick={event => {
-                    changeHeadingBg("afrotheme")
+                    changeHeadingBg('afrotheme')
                     event.preventDefault()
                   }}
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                 />
                 <div id="currentAfro" className={afrospectheme}>
                   <div className={afrospeclinks} />
@@ -2440,13 +2434,13 @@ const DashboardPage = () => {
         <aside
           className={`${Adslink}`}
           style={{
-            margin: "10px",
+            margin: '10px',
           }}
         >
           <div
             style={{
-              textAlign: "center",
-              fontSize: "0.7em",
+              textAlign: 'center',
+              fontSize: '0.7em',
             }}
           >
             <div className={usLinkAfro}>

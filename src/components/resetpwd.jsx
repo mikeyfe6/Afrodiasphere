@@ -1,13 +1,13 @@
-import React, { useState, useRef } from "react"
-import axios from "axios"
-import { navigate } from "@reach/router"
+import React, { useState, useRef } from 'react'
+import axios from 'axios'
+import { navigate } from '@reach/router'
 
 import {
   logerror,
   inputRes,
   btn,
   loadingmsg,
-} from "../styles/modules/resetStyles.module.scss"
+} from '../styles/modules/resetStyles.module.scss'
 
 const apiURL = process.env.GATSBY_BASE_URL
 
@@ -44,9 +44,9 @@ const ResetPwd = () => {
         password: passwordResetRef.current.value,
         passwordConfirmation: confPasswordResetRef.current.value,
       })
-      setLoading("Aan het laden")
+      setLoading('Aan het laden')
       setError(null)
-      navigate("/app/login")
+      navigate('/login')
     } catch {
       setLoading(null)
       setError("Verkeerde invoer, probeer 't opnieuw")
@@ -62,7 +62,7 @@ const ResetPwd = () => {
           type="text"
           name="code"
           placeholder="Verificatiecode"
-        />{" "}
+        />{' '}
         <br />
         <input
           ref={passwordResetRef}
@@ -72,7 +72,7 @@ const ResetPwd = () => {
           placeholder="Voer een nieuw wachtwoord in"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
-        />{" "}
+        />{' '}
         <br />
         <input
           ref={confPasswordResetRef}
@@ -80,21 +80,21 @@ const ResetPwd = () => {
           type="password"
           name="confirmpassword"
           placeholder="Voer jouw nieuwe wachtwoord opnieuw in"
-        />{" "}
+        />{' '}
         <br />
         {error && <ErrorMessage text={error} />}
         {loading && <LoadingMessage text={loading} />}
         <button
           className={btn}
           style={{
-            cursor: "pointer",
-            paddingTop: "3px",
-            paddingBottom: "3px",
+            cursor: 'pointer',
+            paddingTop: '3px',
+            paddingBottom: '3px',
           }}
         >
           Verstuur
         </button>
-        <div style={{ clear: "both" }} />
+        <div style={{ clear: 'both' }} />
       </form>
     </>
   )
