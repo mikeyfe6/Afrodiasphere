@@ -1,0 +1,35 @@
+@mixin mobile {
+	@media only screen and (width <= 40em) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media only screen and (40.063em <= width <= 64em) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media only screen and (64.063em <= width <= 90em) {
+		@content;
+	}
+}
+
+@mixin xlarge {
+	@media only screen and (90.063em <= width <= 120em) {
+		@content;
+	}
+}
+
+@mixin xxlarge {
+	@media only screen and (width >= 120.063em) {
+		@content;
+	}
+}
+
+@mixin landscape {
+	@media only screen and (width >= 480px) and (width <= 640px) and (orientation: landscape) {
+		@content;
+	}
+}

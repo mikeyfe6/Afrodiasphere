@@ -71,3 +71,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+## typescript
+src/gatsby-types.d.ts
