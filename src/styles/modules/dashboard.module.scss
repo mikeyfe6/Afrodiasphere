@@ -1,0 +1,346 @@
+@import '../../styles/configs/globals';
+
+.grid-container {
+	display: grid;
+	min-height: calc(100vh - 290px);
+	grid-template-columns: 0.3fr 1.3fr 1fr;
+	grid-template-rows: 0fr 2.8fr;
+	gap: 0px 0px;
+	grid-template-areas:
+		'Sidebar Dashboard Dashboard Slug'
+		'Sidebar Dashboard Dashboard Preview'
+		'Sidebar Dashboard Dashboard Preview';
+
+	background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), $primaryColor);
+}
+
+// SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR  <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR
+.sidebar {
+	grid-area: Sidebar;
+	border: 3px solid $primaryColor;
+	background-color: $blackColor;
+
+	.btn {
+		@include smoothtrans;
+		&:hover {
+			border-color: $secondaryColor !important;
+		}
+	}
+}
+
+// NAVIGATION
+// .Navigation {
+//   grid-area: Navigation;
+//   // background: linear-gradient(to bottom, white, #ededed);
+//   background: linear-gradient(to left, white, $primaryColor) no-repeat 0 0 /
+//     cover;
+// }
+
+// PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW  <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW
+.preview {
+	grid-area: Preview;
+	background-color: $blackColor;
+	border: 3px solid $primaryColor;
+	display: flex;
+	justify-content: center;
+
+	.iphone {
+		&-frame {
+			position: -webkit-sticky;
+			position: sticky;
+			overflow: hidden;
+			height: 675px;
+			margin: 5% 1%;
+			width: 325px;
+			border-radius: 50px;
+			border: solid #333 10px;
+			top: 150px;
+		}
+
+		// &-bg {
+		//   position: relative;
+		//   width: 100vh;
+		//   height: 100%;
+		//   z-index: 1;
+		// }
+
+		&-background {
+			position: relative;
+			height: 100%;
+			z-index: 1;
+		}
+
+		&-avatar {
+			position: absolute;
+			top: 10%;
+			left: 30%;
+			width: 125px;
+			height: 125px;
+			z-index: 2;
+			border-radius: 50%;
+			display: inline-block;
+			object-fit: cover;
+			//
+		}
+
+		&-links {
+			position: absolute;
+			top: 69%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 250px;
+			font-size: 0.875em;
+
+			a {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: center;
+			}
+		}
+
+		&-socials {
+			display: flex;
+			position: absolute;
+		}
+	}
+}
+
+// DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD  <--------------------------------------------------------------------------------> DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD
+.dashboard {
+	grid-area: Dashboard;
+	background-color: $blackColor;
+	border: 3px solid $primaryColor;
+
+	.loading-complete {
+		color: white;
+		background-color: #57a55f;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		margin: 1em auto 0;
+		padding: 1px 7.5px;
+		border-radius: 2.5px;
+	}
+
+	.progress {
+		margin: 1rem 0;
+		background-color: red;
+
+		&-seek {
+			background-color: green;
+			height: 3px;
+		}
+	}
+
+	.avatar-profile-info {
+		display: flex;
+		justify-content: space-evenly;
+
+		> :nth-child(1) {
+			flex: 45%;
+		}
+
+		> :nth-child(2) {
+			flex: 55%;
+		}
+	}
+
+	.profile-info {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.bioAndOccupateCont {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 2.5em 0;
+		flex-wrap: wrap;
+		gap: 2em;
+
+		label {
+			color: $primaryColor;
+			font-size: 0.625em;
+		}
+	}
+}
+
+// ----------- //
+
+/* Hide the browser's default checkbox */
+
+// ----------- //
+
+// ---------------------------------------------------------------------------------------- // COLORS
+
+// LINK LINK LINK LINK LINK LINK LINK LINK LINK <--------------------------------------------------------------------------------> LINK LINK LINK LINK LINK LINK LINK LINK
+.slug {
+	grid-area: Slug;
+
+	.usLinkAfro {
+		border: 3px solid $primaryColor;
+		float: left;
+		width: 40%;
+		color: white;
+		background: $primaryColor;
+		padding: 10px 10px;
+		border-radius: 10px 0 0px 10px;
+	}
+
+	.usLinkSite {
+		border: 3px solid $primaryColor;
+		float: right;
+		width: 60%;
+		background-color: $blackColor;
+		padding: 10px 10px;
+		border-radius: 0 10px 10px 0;
+		color: white;
+
+		.userLink {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			width: 200px;
+			color: $primaryColor;
+
+			&:hover {
+				color: $secondaryColor;
+			}
+		}
+	}
+}
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
+}
+
+@media (max-width: 40em) {
+	.grid-container {
+		margin: 2.5px !important;
+		padding: 0px !important;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-rows: 1fr;
+		gap: 0px 0px;
+		grid-template-areas:
+			'Sidebar'
+			'Dashboard'
+			'Preview'
+			'Link';
+
+		.dashboard {
+			padding: 1rem;
+
+			.bioAndOccupateCont {
+				margin: 1.5em 0;
+
+				:first-child {
+					gap: 0 !important;
+
+					label {
+						transform: scale(0.75);
+					}
+				}
+
+				.bioInput {
+					width: 22.5em;
+					height: 7.5em;
+					padding: 17.5px;
+				}
+			}
+
+			.social-cont {
+				form {
+					padding-bottom: 1.5em;
+					border-bottom: 3px rgba(255, 255, 255, 0.2) solid;
+
+					button {
+						width: 75%;
+					}
+				}
+			}
+
+			.mobileHr {
+				margin: 50px auto !important;
+			}
+
+			.vl {
+				display: none;
+			}
+
+			.avatarformcont {
+				flex-direction: column;
+			}
+
+			.pickColor {
+				.chooseColor {
+					transform: scale(0.8);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 64em) {
+	.grid-container {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-rows: 1fr;
+		gap: 0px 0px;
+		grid-template-areas:
+			'Sidebar '
+			'Dashboard'
+			'Preview'
+			'Link';
+
+		.dashboard {
+			.avatarformcont {
+				flex-direction: column;
+			}
+		}
+
+		.sidebar {
+			background: linear-gradient(to right, $blackColor, $primaryColor);
+		}
+
+		.slug {
+			.usLinkAfro {
+				color: black;
+				background: white;
+			}
+
+			.usLinkSite {
+				background: black;
+				color: white;
+			}
+
+			.userLink {
+				color: $primaryColor;
+				width: 100% !important;
+
+				&:hover {
+					color: $secondaryColor;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 90em) {
+	.grid-container {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-rows: 1fr;
+		gap: 0px 0px;
+		grid-template-areas:
+			'Sidebar'
+			'Dashboard'
+			'Preview'
+			'Link';
+
+		.sidebar {
+			background: linear-gradient(to right, $blackColor, $primaryColor);
+
+			h5 {
+				text-align: left;
+			}
+		}
+	}
+}

@@ -1,0 +1,44 @@
+@import '../../styles/configs/globals';
+
+.inputRes {
+	input {
+		background: #eee;
+		border: none;
+		padding: 12px 15px;
+		margin: 10px 0;
+		width: 100%;
+		border-radius: 3px;
+	}
+
+	button {
+		float: right;
+		margin-top: 3%;
+		padding: 3.5px 20px 2.5px;
+		color: black;
+		background-color: #cc9932;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+.logerror {
+	background-color: #ff0102;
+	font-weight: bold;
+	color: white;
+	padding: 0.1rem 0.7rem;
+	margin-top: 1em;
+	border-radius: 3px;
+	font-size: 0.6em;
+	text-align: center;
+}
+
+.loadingmsg {
+	background-color: green;
+	font-weight: bold;
+	color: white;
+	padding: 0.3rem 0.7rem;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+}

@@ -1,0 +1,14 @@
+@import '../../styles/configs/globals';
+
+.ads-page {
+	padding-top: 10rem;
+	text-align: center;
+
+	.avatar {
+		width: 175px;
+		height: 175px;
+		border-radius: 50%;
+		object-fit: cover;
+		overflow: hidden;
+	}
+}

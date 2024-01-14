@@ -1,0 +1,32 @@
+@import '../../configs/globals';
+
+.occupation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+
+	input {
+		display: none;
+	}
+}
+
+.occupate-input {
+	background: linear-gradient(135deg, #1a1a1a, $blackColor);
+	text-align: center;
+	min-width: 75px;
+	padding: 10px 7.5px;
+	border: 1px $primaryColor solid;
+	border-radius: 2.5px;
+	cursor: pointer;
+
+	&:hover {
+		border: 1px $secondaryColor solid;
+		color: rgba(255, 255, 255, 0.8);
+	}
+}
+
+.current-occupate {
+	border: 1px $whiteColor solid !important;
+	color: $whiteColor !important;
+}

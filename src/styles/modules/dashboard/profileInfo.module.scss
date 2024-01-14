@@ -1,0 +1,43 @@
+@import '../../configs/globals';
+
+.profile {
+	&-input {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		label {
+			color: $primaryColor;
+			font-size: 0.65em;
+		}
+
+		input {
+			color: $whiteColor;
+			font-size: 16px;
+			background: transparent;
+			outline: none;
+			border: none;
+			border-radius: 1px;
+
+			@include smoothtrans;
+		}
+
+		input:focus {
+			color: $secondaryColor;
+		}
+
+		input:hover {
+			@include smoothtrans;
+		}
+
+		input[type='password']:focus::placeholder {
+			opacity: 0;
+		}
+
+		button {
+			min-width: 75px;
+			max-width: 125px;
+			height: 35px;
+		}
+	}
+}

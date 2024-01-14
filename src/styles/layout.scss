@@ -1,0 +1,40 @@
+// FONTS
+@import 'https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap';
+
+@import './configs/globals';
+@import './configs/resets';
+
+body {
+	line-height: 1.6;
+	font-size: 16px;
+	font-family: Poppins, sans-serif;
+	background: linear-gradient(135deg, $thirdColor, #0e0e0e);
+	position: relative;
+	padding-bottom: 58px;
+	min-height: 100vh;
+
+	@include mobile {
+		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+	}
+}
+
+input {
+	font-family: Poppins, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+h1,
+h2 {
+	font-weight: 300;
+	line-height: 1.2;
+	padding: 10px 0;
+}

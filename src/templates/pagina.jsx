@@ -5,12 +5,9 @@ import axios from 'axios'
 
 import Seo from '../components/seo'
 
-import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
-import { SiTiktok } from 'react-icons/si'
+import AdsLayout from '../components/adslayout'
 
-import ProfLayout from '../components/proflayout'
-
-import { profCenter, imgavatar } from '../styles/modules/profStyles.module.scss'
+import * as styles from '../styles/modules/pages.module.scss'
 
 import '../styles/themes.scss'
 
@@ -22,96 +19,87 @@ import afroLogo from '../images/afrodiasphere-logo.png'
 
 // const gatsbyUser = getUser()
 
-const apiURL = process.env.GATSBY_BASE_URL
+const apiURL = process.env.GATSBY_BACKEND_URL
 
 const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
-  // useEffect(() => {
-  //   function hideDiv(elem) {
-  //     if (elem.href === "")
-  //       document.getElementById("hideDiv").style.display = "none"
-  //     else document.getElementById("hideDiv").style.display = "block"
-  //   }
-  //   hideDiv()
-  // }, [])
+	const [color, setColor] = useState('')
+	const [avatar, setAvatar] = useState(null)
+	const [username, setUsername] = useState('')
+	const [occupate, setOccupate] = useState('')
+	const [biography, setBiography] = useState('')
+	const [links, setLinks] = useState([])
 
-  const [color, setColor] = useState('')
-  const [avatar, setAvatar] = useState(null)
-  const [username, setUsername] = useState('')
-  const [occupate, setOccupate] = useState('')
-  const [biography, setBiography] = useState('')
-  const [links, setLinks] = useState([])
+	const [fbLink, setFbLink] = useState('')
+	const [twLink, setTwLink] = useState('')
+	const [igLink, setIgLink] = useState('')
+	const [waLink, setWaLink] = useState('')
+	const [tkLink, setTkLink] = useState('')
 
-  const [fbLink, setFbLink] = useState('')
-  const [twLink, setTwLink] = useState('')
-  const [igLink, setIgLink] = useState('')
-  const [waLink, setWaLink] = useState('')
-  const [tkLink, setTkLink] = useState('')
+	useLayoutEffect(() => {
+		const getLinks = async () => {
+			const res = await axios.get(`${apiURL}/api/instanties/${id}/?populate=*`)
+			const reslinks = await axios.get(`${apiURL}/api/connections?populate=*`)
+			var allLinks = reslinks.data
+			var sortedLinks = allLinks.filter(
+				element => element.links.username === persoon.username
+			)
 
-  useLayoutEffect(() => {
-    const getLinks = async () => {
-      const res = await axios.get(`${apiURL}/api/instanties/${id}/?populate=*`)
-      const reslinks = await axios.get(`${apiURL}/api/connections?populate=*`)
-      var allLinks = reslinks.data
-      var sortedLinks = allLinks.filter(
-        element => element.links.username === persoon.username,
-      )
+			setLinks(sortedLinks)
+			setColor(res.data.data.attributes.bgfree)
+			setUsername(res.data.data.attributes.profiel)
+			setOccupate(res.data.data.attributes.occupate)
+			setBiography(res.data.data.attributes.biografie)
+			setFbLink(res.data.data.attributes.facebooklink)
+			setTwLink(res.data.data.attributes.twitterlink)
+			setIgLink(res.data.data.attributes.instagramlink)
+			setWaLink(res.data.data.attributes.whatsapplink)
+			setTkLink(res.data.data.attributes.tiktoklink)
 
-      setLinks(sortedLinks)
-      setColor(res.data.data.attributes.bgfree)
-      setUsername(res.data.data.attributes.profiel)
-      setOccupate(res.data.data.attributes.occupate)
-      setBiography(res.data.data.attributes.biografie)
-      setFbLink(res.data.data.attributes.facebooklink)
-      setTwLink(res.data.data.attributes.twitterlink)
-      setIgLink(res.data.data.attributes.instagramlink)
-      setWaLink(res.data.data.attributes.whatsapplink)
-      setTkLink(res.data.data.attributes.tiktoklink)
+			if (!res.data.data.attributes.avatar.data) {
+				return setAvatar(noavatar)
+			} else {
+				setAvatar(res.data.data.attributes.avatar.data.attributes?.url)
+			}
+		}
+		getLinks()
+	}, [id, slug, persoon.username])
 
-      if (!res.data.data.attributes.avatar.data) {
-        return setAvatar(noavatar)
-      } else {
-        setAvatar(res.data.data.attributes.avatar.data.attributes?.url)
-      }
-    }
-    getLinks()
-  }, [id, slug, persoon.username])
+	useEffect(() => {
+		var fbhideman = document.getElementById('fbhidesm')
+		if (fbLink < 9) {
+			fbhideman.style.display = 'none'
+		} else {
+			fbhideman.style.display = 'block'
+		}
+		var twhideman = document.getElementById('twhidesm')
+		if (twLink < 9) {
+			twhideman.style.display = 'none'
+		} else {
+			twhideman.style.display = 'block'
+		}
+		var ighideman = document.getElementById('ighidesm')
+		if (igLink < 9) {
+			ighideman.style.display = 'none'
+		} else {
+			ighideman.style.display = 'block'
+		}
+		var wahideman = document.getElementById('wahidesm')
+		if (waLink < 9) {
+			wahideman.style.display = 'none'
+		} else {
+			wahideman.style.display = 'block'
+		}
+		var tkhideman = document.getElementById('tkhidesm')
+		if (tkLink < 9) {
+			tkhideman.style.display = 'none'
+		} else {
+			tkhideman.style.display = 'block'
+		}
+	}, [fbLink, twLink, igLink, waLink, tkLink])
 
-  useEffect(() => {
-    var fbhideman = document.getElementById('fbhidesm')
-    if (fbLink < 9) {
-      fbhideman.style.display = 'none'
-    } else {
-      fbhideman.style.display = 'block'
-    }
-    var twhideman = document.getElementById('twhidesm')
-    if (twLink < 9) {
-      twhideman.style.display = 'none'
-    } else {
-      twhideman.style.display = 'block'
-    }
-    var ighideman = document.getElementById('ighidesm')
-    if (igLink < 9) {
-      ighideman.style.display = 'none'
-    } else {
-      ighideman.style.display = 'block'
-    }
-    var wahideman = document.getElementById('wahidesm')
-    if (waLink < 9) {
-      wahideman.style.display = 'none'
-    } else {
-      wahideman.style.display = 'block'
-    }
-    var tkhideman = document.getElementById('tkhidesm')
-    if (tkLink < 9) {
-      tkhideman.style.display = 'none'
-    } else {
-      tkhideman.style.display = 'block'
-    }
-  }, [fbLink, twLink, igLink, waLink, tkLink])
-
-  return (
-    <ProfLayout>
-      {/* <Img
+	return (
+		<AdsLayout>
+			{/* <Img
         fluid={data.strapiInstantie.background.childImageSharp.fluid}
         style={{
           width: "100vw",
@@ -129,119 +117,102 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
         }}
       /> */}
 
-      <div className={`theme-${color}`}>
-        <div className={profCenter} style={{ zIndex: 2 }}>
-          <img
-            src={avatar}
-            className={imgavatar}
-            alt="avatar"
-            style={{ border: '3px solid white' }}
-          />
+			<div className={`theme-${color}`}>
+				<div className={styles.adsPage} style={{ zIndex: 2 }}>
+					<img
+						src={avatar}
+						className={styles.avatar}
+						alt="avatar"
+						style={{ border: '3px solid white' }}
+					/>
 
-          <h1>{username}</h1>
+					<h1>{username}</h1>
 
-          <p>{occupate}</p>
+					<p>{occupate}</p>
 
-          <p>{biography}</p>
+					<p>{biography}</p>
 
-          <ul>
-            {links.slice(0, 20).map(link => (
-              <li
-                key={link.id}
-                className={`theme-${color}-links`}
-                hidden={!link.visible}
-              >
-                <a
-                  href={`https://${link.hyperlink}`}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {link.title}
-                </a>
-              </li>
-            ))}
-          </ul>
+					<ul>
+						{links.slice(0, 20).map(link => (
+							<li
+								key={link.id}
+								className={`theme-${color}-links`}
+								hidden={!link.visible}
+							>
+								<a
+									href={`https://${link.hyperlink}`}
+									rel="noopener noreferrer"
+									target="_blank"
+								>
+									{link.title}
+								</a>
+							</li>
+						))}
+					</ul>
 
-          <div className={`theme-${color}-icons`}>
-            <a
-              href={`https://www.facebook.com/${fbLink}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              id="fbhidesm"
-            >
-              <FaFacebookF size="2em" />
-            </a>
+					<div className={`theme-${color}-icons`}>
+						<a
+							href={`https://www.facebook.com/${fbLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="fbhidesm"
+						>
+							{/* <FaFacebookF size="2em" /> */}
+						</a>
 
-            <a
-              href={`https://twitter.com/${twLink}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              id="twhidesm"
-            >
-              <FaTwitter size="2em" />
-            </a>
+						<a
+							href={`https://twitter.com/${twLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="twhidesm"
+						>
+							{/* <FaTwitter size="2em" /> */}
+						</a>
 
-            <a
-              href={`https://www.instagram.com/${igLink}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              id="ighidesm"
-            >
-              <FaInstagram size="2em" />
-            </a>
+						<a
+							href={`https://www.instagram.com/${igLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="ighidesm"
+						>
+							{/* <FaInstagram size="2em" /> */}
+						</a>
 
-            <a
-              href={`https://wa.me/${waLink}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              id="wahidesm"
-            >
-              <FaWhatsapp size="2em" />
-            </a>
+						<a
+							href={`https://wa.me/${waLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="wahidesm"
+						>
+							{/* <FaWhatsapp size="2em" /> */}
+						</a>
 
-            <a
-              href={`https://www.tiktok.com/@${tkLink}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              id="tkhidesm"
-            >
-              <SiTiktok size="2em" />
-            </a>
-          </div>
-          <Link to="/">
-            <img
-              src={afroLogo}
-              alt=""
-              style={{
-                width: '100px',
-              }}
-            />
-          </Link>
-        </div>
-      </div>
-    </ProfLayout>
-  )
+						<a
+							href={`https://www.tiktok.com/@${tkLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="tkhidesm"
+						>
+							{/* <SiTiktok size="2em" /> */}
+						</a>
+					</div>
+					<Link to="/">
+						<img
+							src={afroLogo}
+							alt=""
+							style={{
+								width: '100px'
+							}}
+						/>
+					</Link>
+				</div>
+			</div>
+		</AdsLayout>
+	)
 }
 
 export default AdsTemplate
 
-// export const query = graphql`
-//   query InstantieTemplate($slug: String!) {
-//     instantie {
-//       instanties(filters: { slug: { eq: $slug } }) {
-//         data {
-//           id
-//           attributes {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
-
-// (slug: { eq: $slug })
-
 export const Head = ({ pageContext: { persoon } }) => {
-  return <Seo title={persoon.username} />
+	return <Seo title={persoon.username} />
 }

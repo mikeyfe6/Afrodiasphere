@@ -1,396 +1,384 @@
 @mixin fullBG {
-  height: 100%;
-  min-height: 100vh;
+	height: 100%;
+	min-height: 100vh;
 }
 
 @mixin profileLinks {
-  display: inline-block;
-  padding: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 750px;
+	display: inline-block;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 750px;
 
-  &:hover {
-    opacity: 0.875;
-  }
+	&:hover {
+		opacity: 0.875;
+	}
 }
 
 @mixin occupateIcon {
-  padding: 5px 2.5px;
-  width: 8.25em;
-  margin: 10px auto 50px;
-  border-radius: 7.5px;
-  font-size: 0.8em;
-  opacity: 0.75;
+	padding: 5px 2.5px;
+	width: 8.25em;
+	margin: 10px auto 50px;
+	border-radius: 7.5px;
+	font-size: 0.8em;
+	opacity: 0.75;
 }
 
 @mixin biographyText {
-  max-width: 40ch;
-  text-align: center;
-  margin: 25px auto 50px;
+	max-width: 40ch;
+	text-align: center;
+	margin: 25px auto 50px;
 
-  @media (max-width: 40em) {
-    max-width: 30ch;
-  }
+	@media (max-width: 40em) {
+		max-width: 30ch;
+	}
 }
 
 @mixin iconCenter {
-  display: flex;
-  justify-content: center;
-  margin: 75px 0px;
+	display: flex;
+	justify-content: center;
+	margin: 75px 0px;
 }
 
 .theme {
-  // ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
-  &-geel {
-    background: linear-gradient(to bottom, yellow, black);
-    @include fullBG;
+	// ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
+	&-geel {
+		background: linear-gradient(to bottom, yellow, black);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: black;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: black;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: #dddddd;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: #dddddd;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: white;
-        color: black;
-        border: 1px solid yellow;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
-        @include profileLinks;
-      }
-    }
+			a {
+				background: white;
+				color: black;
+				border: 1px solid yellow;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: yellow;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: yellow;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
-  &-grijs {
-    background: linear-gradient(to bottom, grey, white);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
+	&-grijs {
+		background: linear-gradient(to bottom, grey, white);
+		@include fullBG;
 
-    h1 {
-      color: #595959;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: #595959;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: #595959;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: #595959;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: white;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: white;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: rgba(255, 255, 255, 0.797);
-        color: #878787;
-        border: 1px solid #878787;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-        @include profileLinks;
-      }
-    }
+			a {
+				background: rgba(255, 255, 255, 0.797);
+				color: #878787;
+				border: 1px solid #878787;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: grey;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: grey;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // PINK PINK PINK
-  &-roze {
-    background: linear-gradient(to bottom, pink, grey);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // PINK PINK PINK
+	&-roze {
+		background: linear-gradient(to bottom, pink, grey);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: grey;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: grey;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: white;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: white;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: #a8a8a8;
-        color: white;
-        border: 1px solid white;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-        @include profileLinks;
-      }
-    }
+			a {
+				background: #a8a8a8;
+				color: white;
+				border: 1px solid white;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: pink;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: pink;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
-  &-zwart {
-    background: linear-gradient(to bottom, black, grey);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
+	&-zwart {
+		background: linear-gradient(to bottom, black, grey);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: black;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: black;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: white;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: white;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: #878787;
-        color: white;
-        border: 2px solid white;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
-        @include profileLinks;
-      }
-    }
+			a {
+				background: #878787;
+				color: white;
+				border: 2px solid white;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: white;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: white;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
-  &-bruin {
-    background: linear-gradient(to bottom, brown, white);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
+	&-bruin {
+		background: linear-gradient(to bottom, brown, white);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: white;
-      background-color: brown;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: white;
+			background-color: brown;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: #e0e0e0;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: #e0e0e0;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: white;
+			a {
+				background: white;
 
-        color: brown;
-        border: 1px solid brown;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-        @include profileLinks;
-      }
-    }
+				color: brown;
+				border: 1px solid brown;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: brown;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: brown;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
-  &-groen {
-    background: linear-gradient(to bottom, green, white);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
+	&-groen {
+		background: linear-gradient(to bottom, green, white);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: green;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: green;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: #ededed;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: #ededed;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: white;
+			a {
+				background: white;
 
-        color: green;
-        border: 1px solid green;
-        border-radius: 3px;
-        box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-        @include profileLinks;
-      }
-    }
+				color: green;
+				border: 1px solid green;
+				border-radius: 3px;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: green;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: green;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-  // ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
-  &-afrotheme {
-    background: linear-gradient(to bottom, #e6541b, black);
-    @include fullBG;
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+	// ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
+	&-afrotheme {
+		background: linear-gradient(to bottom, #e6541b, black);
+		@include fullBG;
 
-    h1 {
-      color: white;
-      margin: 25px 0 10px;
-    }
+		h1 {
+			color: white;
+			margin: 25px 0 10px;
+		}
 
-    p:nth-of-type(1) {
-      color: black;
-      background-color: white;
-      @include occupateIcon;
-    }
+		p:nth-of-type(1) {
+			color: black;
+			background-color: white;
+			@include occupateIcon;
+		}
 
-    p:nth-of-type(2) {
-      color: #e0e0e0;
-      @include biographyText;
-    }
+		p:nth-of-type(2) {
+			color: #e0e0e0;
+			@include biographyText;
+		}
 
-    &-links {
-      margin: 15px 0;
+		&-links {
+			margin: 15px 0;
 
-      a {
-        background: white;
+			a {
+				background: white;
 
-        color: black;
-        border: 1px solid #e6541b;
-        border-radius: 3px;
+				color: black;
+				border: 1px solid #e6541b;
+				border-radius: 3px;
 
-        @include profileLinks;
-      }
-    }
+				@include profileLinks;
+			}
+		}
 
-    &-icons {
-      @include iconCenter;
+		&-icons {
+			@include iconCenter;
 
-      a {
-        margin: 0 15px;
-        bottom: 10px;
-        color: #e6541b;
+			a {
+				margin: 0 15px;
+				bottom: 10px;
+				color: #e6541b;
 
-        &:hover {
-          opacity: 0.75;
-        }
-      }
-    }
-  }
-}
-
-// Landscape view
-@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
-}
-
-// small devices
-@media (max-width: 40em) {
-}
-
-// large devices
-@media (max-width: 64em) {
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
 }

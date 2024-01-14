@@ -1,0 +1,78 @@
+@import '../../configs/globals';
+
+.social-container {
+	display: flex;
+	flex-wrap: wrap;
+	// background: linear-gradient(to left, #cd9c32, black) no-repeat 0 0 / cover;
+	background: $primaryColor;
+
+	justify-content: space-evenly;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+
+	gap: 1em;
+	border-radius: 12.5px;
+	padding: 25px;
+	margin: 15px 0;
+
+	form {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		gap: 1em;
+		flex: 1;
+		flex-direction: column;
+
+		// &:nth-child(-n + 2) {
+		//   padding-right: 50px;
+		//   border-right: 1px solid rgba(128, 128, 128, 0.404);
+		// }
+
+		.social-icons {
+			margin-right: 0.75em;
+		}
+
+		label {
+			font-size: 0.75em;
+		}
+
+		.social-input {
+			font-size: 16px !important;
+			padding: 10px;
+			color: rgba(255, 255, 255, 0.5);
+
+			opacity: 0.75;
+			background: transparent;
+			outline: none;
+			border: none;
+			text-align: center;
+			border-radius: 3px;
+			@include smoothtrans;
+		}
+
+		input:focus {
+			color: $whiteColor;
+		}
+
+		input:hover {
+			@include smoothtrans;
+		}
+
+		input::placeholder {
+			font-size: 0.75em;
+			color: rgba(255, 255, 255, 0.5);
+		}
+
+		button {
+			width: 100px;
+		}
+	}
+
+	.vl {
+		border-left: 3px solid black;
+		height: 75%;
+		position: absolute;
+		left: 50%;
+		top: 12.5%;
+		opacity: 0.1;
+	}
+}

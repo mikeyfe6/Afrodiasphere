@@ -1,0 +1,40 @@
+@import '../../configs/globals';
+
+.avatar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2em;
+
+	&-image {
+		width: 150px;
+		min-width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		object-fit: cover;
+		background: $whiteColor;
+	}
+
+	&-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+
+		.add-btn {
+			margin: 5px;
+			width: 100px;
+		}
+
+		.reset-btn {
+			margin: 5px;
+			width: 100px;
+			background-color: $errorColor;
+			color: $whiteColor;
+		}
+
+		.submit-btn {
+			margin: 5px;
+			width: 100px;
+		}
+	}
+}

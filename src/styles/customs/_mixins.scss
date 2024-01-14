@@ -1,0 +1,132 @@
+@import '../customs/colors';
+
+@mixin chooseDisplay {
+	border-radius: 12.5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 125px;
+	height: 200px;
+	border: solid 5px #424242;
+	cursor: pointer;
+	@include smoothtrans;
+
+	&:hover {
+		border: solid 5px $secondaryColor;
+	}
+}
+
+@mixin chooseUsername {
+	position: absolute;
+	top: 33%;
+	left: 34%;
+	z-index: 2;
+	font-weight: bold;
+	margin: 0 auto;
+	text-align: center;
+	width: 99.5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@mixin occupateColor {
+	position: absolute;
+	top: 38%;
+	left: 38%;
+	z-index: 2;
+	margin: 0 auto;
+	text-align: center;
+	width: 75px;
+	border-radius: 7.5px;
+	font-size: 0.5em;
+	padding: 2.5px 2.5px;
+}
+
+@mixin biographyPhone {
+	position: absolute;
+	top: 44%;
+	left: 15%;
+	z-index: 2;
+	text-align: center;
+	max-width: 35ch;
+	overflow-wrap: break-word;
+	width: 250px;
+	margin: 0 auto;
+	font-size: 0.6em;
+}
+
+@mixin chooseIcon {
+	display: flex;
+	position: absolute;
+	gap: 17.5px;
+	top: 90%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin chooseLinks {
+	display: inline-block;
+	border-radius: 3px;
+	width: 100%;
+	padding: 2.5px 25px;
+	font-size: 0.9em;
+}
+
+@mixin chooseStrokes {
+	width: 50px;
+	height: 12.5px;
+	margin: 10px 0;
+}
+
+@mixin fullBG {
+	height: 100%;
+	min-height: 100vh;
+}
+
+@mixin profileLinks {
+	display: inline-block;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 750px;
+
+	&:hover {
+		opacity: 0.875;
+	}
+}
+
+@mixin occupateIcon {
+	padding: 5px 2.5px;
+	width: 8.25em;
+	margin: 10px auto 50px;
+	border-radius: 7.5px;
+	font-size: 0.8em;
+	opacity: 0.75;
+}
+
+@mixin biographyText {
+	max-width: 40ch;
+	text-align: center;
+	margin: 25px auto 50px;
+
+	@media (max-width: 40em) {
+		max-width: 30ch;
+	}
+}
+
+@mixin iconCenter {
+	display: flex;
+	justify-content: center;
+	margin: 75px 0px;
+}
+
+@mixin smoothtrans {
+	transition: all 0.5s ease-out;
+}
+
+@mixin boxshadow {
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+}
