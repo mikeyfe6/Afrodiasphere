@@ -1,45 +1,79 @@
 @import '../../styles/configs/globals';
 
-.inputRes {
-	input {
-		background: #eee;
-		border: none;
-		padding: 10px 15px;
-		margin: 10px 0;
+.forget-pwd {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5em;
+	margin-top: 5em;
+
+	> div {
+		max-width: 500px;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+
+		> p {
+			color: $primaryColor;
+			font-size: 0.925rem;
+			margin: 0 0 1em;
+		}
+	}
+
+	> img {
 		width: 100%;
-		border-radius: 3px;
-		font-size: 16px;
+		height: 100%;
+		object-fit: cover;
+		max-width: 300px;
 	}
 
-	button:focus {
-		outline: none;
+	&-form {
+		input {
+			background: #eee;
+			border: none;
+			padding: 10px 15px;
+			margin: 10px 0;
+			width: 100%;
+			max-width: 350px;
+			border-radius: 3px;
+			font-size: 16px;
+			color: $blackColor;
+
+			&::placeholder {
+				font-size: 0.95rem;
+				color: $thirdColor;
+			}
+
+			&:focus {
+				&::placeholder {
+					color: transparent;
+				}
+			}
+		}
+
+		button {
+			@include button;
+			margin-left: 1em;
+		}
+
+		.logerror {
+			background-color: #ff0102;
+			font-weight: bold;
+			color: white;
+			padding: 0.1rem 0.7rem;
+			border-radius: 3px;
+			margin-top: 1em;
+			text-align: center;
+			font-size: 0.6em;
+		}
+
+		.loadingmsg {
+			background-color: green;
+			font-weight: bold;
+			color: white;
+			padding: 0.3rem 0.7rem;
+			border-radius: 10px;
+			margin-bottom: 1rem;
+		}
 	}
-
-	button {
-		margin-top: 3%;
-		padding: 3.5px 20px 2.5px 20px;
-		float: right;
-		color: black;
-		background-color: #cc9932;
-	}
-}
-
-.logerror {
-	background-color: #ff0102;
-	font-weight: bold;
-	color: white;
-	padding: 0.1rem 0.7rem;
-	border-radius: 3px;
-	margin-top: 1em;
-	text-align: center;
-	font-size: 0.6em;
-}
-
-.loadingmsg {
-	background-color: green;
-	font-weight: bold;
-	color: white;
-	padding: 0.3rem 0.7rem;
-	border-radius: 10px;
-	margin-bottom: 1rem;
 }

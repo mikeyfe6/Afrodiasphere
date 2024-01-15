@@ -35,7 +35,7 @@ const Header = () => {
 							<li className={styles.loggedUser}>
 								<Link
 									to={`/${AdsUser.user.username}/`}
-									title="Ga naar ADS page"
+									title="Ga naar jouw ADS page"
 									activeStyle={{ color: '#cc9932' }}
 								>
 									{AdsUser.user.username}{' '}

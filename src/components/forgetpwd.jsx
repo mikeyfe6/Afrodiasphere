@@ -2,18 +2,13 @@ import React, { useState, useRef } from 'react'
 import axios from 'axios'
 import { navigate } from '@reach/router'
 
-import {
-	logerror,
-	inputRes,
-	btn,
-	loadingmsg
-} from '../styles/modules/forgetPwd.module.scss'
+import * as styles from '../styles/modules/forgetPwd.module.scss'
 
 const apiURL = process.env.GATSBY_BACKEND_URL
 
 const ErrorMessage = ({ text }) => {
 	return (
-		<div className={logerror}>
+		<div className={styles.logerror}>
 			<span>{text}</span>
 		</div>
 	)
@@ -21,7 +16,7 @@ const ErrorMessage = ({ text }) => {
 
 const LoadingMessage = ({ text }) => {
 	return (
-		<div className={loadingmsg}>
+		<div className={styles.loadingmsg}>
 			<span>{text}</span>
 		</div>
 	)
@@ -51,7 +46,7 @@ const ForgetPwd = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmitRegister} className={inputRes}>
+		<form onSubmit={handleSubmitRegister} className={styles.forgetPwdForm}>
 			<input
 				ref={emailResetRef}
 				type="email"
@@ -60,19 +55,10 @@ const ForgetPwd = () => {
 				style={{ textTransform: 'lowercase' }}
 				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 			/>
+			<button>Verstuur</button>
+
 			{error && <ErrorMessage text={error} />}
 			{loading && <LoadingMessage text={loading} />}
-			<button
-				className={btn}
-				style={{
-					cursor: 'pointer',
-					paddingTop: '3px',
-					paddingBottom: '3px'
-				}}
-			>
-				Verstuur
-			</button>
-			<div style={{ clear: 'both' }} />
 		</form>
 	)
 }

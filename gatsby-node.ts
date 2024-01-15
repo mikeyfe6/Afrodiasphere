@@ -36,7 +36,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
 			getPageInstanties.map(async ({ slug, persoon, id }) => {
 				createPage({
 					path: `/${slug}`,
-					component: path.resolve('./src/templates/pagina.jsx'),
+					component: path.resolve('./src/templates/page.jsx'),
 					context: {
 						slug,
 						persoon,

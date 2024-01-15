@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import '../../styles/configs/globals';
 
 .carousel {
@@ -40,7 +42,7 @@
 		:nth-child(4) {
 			min-height: 175px;
 			margin-bottom: 1em;
-			color: $whiteColor;
+			color: color.adjust($whiteColor, $lightness: -25%);
 		}
 
 		:nth-child(5) {
