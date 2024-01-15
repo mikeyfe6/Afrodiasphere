@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Link } from 'gatsby'
 
-import * as styles from '../styles/modules/home.module.scss'
+import * as styles from '../styles/modules/intro.module.scss'
 
-import servImage from '../images/mamafrica.png'
+import mamaAfrica from '../images/mamafrica.png'
 
 const Intro = () => (
-	<section className={`${styles.container} ${styles.grid}`}>
+	<section className={styles.intro}>
 		<div>
 			<h1 className={styles.xl}>Afrodiasphere</h1>
 			<p className={styles.lead}>
@@ -18,11 +18,6 @@ const Intro = () => (
 						className={styles.btn}
 						title="Ga naar inloggen / registreren"
 						type="button"
-						style={{
-							padding: '1.5px 17.5px 0px 17.5px',
-							color: '#0e0e0e',
-							backgroundColor: '#cc9932'
-						}}
 					>
 						hier
 					</button>
@@ -31,7 +26,7 @@ const Intro = () => (
 				registreren..
 			</p>
 		</div>
-		<img src={servImage} alt="" />
+		<img src={mamaAfrica} alt="" />
 	</section>
 )
 

@@ -8,7 +8,7 @@ import { useLocation } from '@reach/router'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { A11y, Autoplay } from 'swiper/modules'
 
-import * as styles from '../styles/modules/home.module.scss'
+import * as styles from '../styles/modules/slider.module.scss'
 
 import noavatar from '../images/noavatar.png'
 
@@ -27,17 +27,16 @@ const Slider = () => {
 				setCarousel(res.data)
 			} catch (error) {
 				console.error('Error fetching carousel data:', error)
-				// Handle the error, show a message to the user, etc.
 			}
 		}
 		getCarousel()
 	}, [])
 
 	return (
-		<section className={styles.carouselUberCont}>
+		<section className={styles.carousel}>
 			<Swiper
 				modules={[A11y, Autoplay]}
-				className={styles.carouselCont}
+				className={styles.carouselContainer}
 				spaceBetween={50}
 				slidesPerView={3}
 				loop
@@ -58,7 +57,7 @@ const Slider = () => {
 					<SwiperSlide
 						key={ads.id}
 						// className={`theme-${color}-links`}
-						className={styles.carouselRow}
+						className={styles.carouselSlide}
 					>
 						<img
 							src={!ads.avatar?.url ? noavatar : ads.avatar?.url}

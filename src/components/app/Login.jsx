@@ -1,46 +1,19 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'gatsby'
 import axios from 'axios'
 import { navigate } from '@reach/router'
 
-// import useDigitInput from "react-digit-input"
-
 import { setUser } from '../../services/auth'
 
-import {
-	logerror,
-	loadingmsg,
-	rightPanelActive,
-	docsHead,
-	bgPrimary,
-	py3,
-	container,
-	grid,
-	xl,
-	superContainer,
-	formContainer,
-	signInContainer,
-	signUpContainer,
-	// storeCode,
-	overlayContainer,
-	overlay,
-	overlayPanel,
-	overlayLeft,
-	signUpTitle,
-	signUpText,
-	ghost,
-	overlayRight,
-	imgHide,
-	forgetLink
-} from '../../styles/modules/login.module.scss'
+import * as styles from '../../styles/modules/login.module.scss'
 
-import servImage from '../../images/mamafrica.png'
+import mamaAfrica from '../../images/mamafrica.png'
 
 const apiURL = process.env.GATSBY_BACKEND_URL
 
 const ErrorMessage = ({ text }) => {
 	return (
-		<div className={logerror}>
+		<div className={styles.logerror}>
 			<span>{text}</span>
 		</div>
 	)
@@ -48,57 +21,38 @@ const ErrorMessage = ({ text }) => {
 
 const LoadingMessage = ({ text }) => {
 	return (
-		<div className={loadingmsg}>
+		<div className={styles.loadingmsg}>
 			<span>{text}</span>
 		</div>
 	)
 }
 
 const LoginPage = () => {
-	// const vericode = useStaticQuery(graphql`
-	//   query Yooo {
-	//     allStrapiYooo {
-	//       edges {
-	//         node {
-	//           storecode
-	//         }
-	//       }
-	//     }
-	//   }
-	// `)
-
 	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(null)
 
-	const usernameRef = useRef()
-	const passwordRef = useRef()
+	const usernameRef = useRef(null)
+	const passwordRef = useRef(null)
 
-	const usernameRegRef = useRef()
-	const emailRegRef = useRef()
-	const passwordRegRef = useRef()
-
-	// const [value, onChange] = useState("")
-	// const digits = useDigitInput({
-	//   acceptedCharacters: /^[0-9]$/,
-	//   length: 7,
-	//   value,
-	//   onChange,
-	// })
-
-	// const signUpButton = document.getElementById("signUp")
-	// const signInButton = document.getElementById("signIn")
+	const usernameRegRef = useRef(null)
+	const emailRegRef = useRef(null)
+	const passwordRegRef = useRef(null)
 
 	const signUpHandler = e => {
-		const container = document.getElementById('container')
-		container.classList.add(rightPanelActive)
+		const container = document.getElementById('ads-form')
+		container.classList.add(styles.rightPanelActive)
 		e.preventDefault()
 	}
 
 	const signInHandler = e => {
-		const container = document.getElementById('container')
-		container.classList.remove(rightPanelActive)
+		const container = document.getElementById('ads-form')
+		container.classList.remove(styles.rightPanelActive)
 		e.preventDefault()
 	}
+
+	React.useEffect(() => {
+		console.log(usernameRef.current?.value)
+	}, [])
 
 	const handleSubmitLogin = async e => {
 		e.preventDefault()
@@ -113,9 +67,18 @@ const LoginPage = () => {
 			setLoading('Aan het laden')
 			setError(null)
 			navigate('/dashboard/')
-		} catch {
+		} catch (error) {
+			console.error('Login error:', error)
+
 			setLoading(null)
 			setError("Verkeerde invoer, probeer 't opnieuw")
+
+			const errorMessage = error.response?.data?.message
+
+			if (errorMessage) {
+				setError(errorMessage)
+			}
+
 			setTimeout(() => setError(null), 5000)
 		}
 	}
@@ -172,21 +135,17 @@ const LoginPage = () => {
 	}
 
 	return (
-		<>
-			<section>
-				<div className={`${container} ${grid}`}>
-					<div>
-						<h1 className={xl}>Log in / Registeer</h1>
-					</div>
-					<img src={servImage} alt="" className={imgHide} />
-				</div>
-			</section>
+		<section className={styles.login}>
+			<div className={styles.header}>
+				<h1 className={styles.xl}>Log in / Registeer</h1>
+				<img src={mamaAfrica} alt="" />
+			</div>
 
-			<div className={superContainer}>
-				<div className={container} id="container">
-					<div className={`${formContainer} ${signUpContainer}`}>
-						<form onSubmit={handleSubmitRegister}>
-							<h1 style={{ fontSize: '1.5em' }}>Maak een profiel aan</h1>
+			<div className={styles.superContainer}>
+				<div className={styles.container} id="ads-form">
+					<div className={`${styles.formContainer} ${styles.signUpContainer}`}>
+						<form onSubmit={handleSubmitRegister} noValidate>
+							<h3>Maak een ADS-profiel aan</h3>
 							<span>
 								voer hieronder jouw e-mailadres in, kies een gebruikersnaam en
 								een wachtwoord
@@ -220,15 +179,13 @@ const LoginPage = () => {
 
 							{error && <ErrorMessage text={error} />}
 							{loading && <LoadingMessage text={loading} />}
-							<button style={{ cursor: 'pointer' }} title="Registreer">
-								Registeer
-							</button>
+							<button title="Registreer">Registeer</button>
 						</form>
 					</div>
-					<div className={`${formContainer} ${signInContainer}`}>
-						<form onSubmit={handleSubmitLogin}>
-							<h1> Inloggen</h1>
-							<span>met jouw ADS-profiel</span>
+					<div className={`${styles.formContainer} ${styles.signInContainer}`}>
+						<form onSubmit={handleSubmitLogin} noValidate>
+							<h3>Inloggen</h3>
+							<span>.. met jouw ADS-profiel</span>
 							<input
 								ref={usernameRef}
 								pattern="[^\s]+"
@@ -250,23 +207,21 @@ const LoginPage = () => {
 							{error && <ErrorMessage text={error} />}
 							{loading && <LoadingMessage text={loading} />}
 							<Link
-								to="/forget-password/"
-								className={forgetLink}
+								to="/wachtwoord-vergeten/"
+								className={styles.forgetLink}
 								title="Ik ben mijn wachtwoord vergeten"
 							>
 								Wachtwoord vergeten
 							</Link>
-							<button style={{ cursor: 'pointer' }} title="Inloggen">
-								Inloggen
-							</button>
-							<br />
+
+							<button title="Inloggen">Inloggen</button>
 						</form>
 					</div>
-					<div className={overlayContainer}>
-						<div className={overlay}>
-							<div className={`${overlayPanel} ${overlayLeft}`}>
-								<h1 className={signUpTitle}>Welkom</h1>
-								<p className={signUpText}>
+					<div className={styles.overlayContainer}>
+						<div className={styles.overlay}>
+							<div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
+								<h2 className={styles.overlayTitle}>Welkom</h2>
+								<p className={styles.overlayText}>
 									<b>Hi!</b> Join the movement! <br />
 									<br /> Registreer hier jouw eigen "ADS-profiel" en voeg jouw
 									bedrijf binnen no-time toe aan het
@@ -276,18 +231,16 @@ const LoginPage = () => {
 								</p>
 
 								<button
-									style={{ cursor: 'pointer' }}
-									className={ghost}
-									id="signIn"
 									onClick={signInHandler}
+									className={styles.mirror}
 									title="Open tablad voor inloggen"
 								>
 									Naar 'Inloggen'
 								</button>
 							</div>
-							<div className={`${overlayPanel} ${overlayRight}`}>
-								<h1 className={signUpTitle}>Welkom Terug</h1>
-								<p className={signUpText}>
+							<div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
+								<h2 className={styles.overlayTitle}>Welkom Terug</h2>
+								<p className={styles.overlayText}>
 									Maak optimaal gebruik van de webapp! <br />
 									<br />
 									Deze kan je downloaden en plaatsen op het beginscherm van jouw
@@ -299,9 +252,7 @@ const LoginPage = () => {
 								</p>
 
 								<button
-									style={{ cursor: 'pointer' }}
-									className={ghost}
-									id="signUp"
+									className={styles.mirror}
 									onClick={signUpHandler}
 									title="Open tablad voor registreren"
 								>
@@ -312,7 +263,7 @@ const LoginPage = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</section>
 	)
 }
 

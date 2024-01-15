@@ -20,19 +20,16 @@
 }
 
 .bio-input {
-	// max-width: 25em;
 	width: 30em;
 	height: 10em;
-	font-family: Poppins, sans-serif;
 	color: $whiteColor;
-	font-size: 16px !important;
 	outline: none;
 	resize: none;
 	padding: 17.5px;
 	background: linear-gradient(135deg, #1a1a1a, $blackColor);
 	border: 1px $primaryColor solid;
 	border-radius: 10px;
-	@include smoothtrans;
+	@include smoothTrans;
 
 	&:focus {
 		border: 1px $secondaryColor solid;

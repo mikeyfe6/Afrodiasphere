@@ -4,25 +4,25 @@
 	}
 }
 
-@mixin medium {
+@mixin tablet {
 	@media only screen and (40.063em <= width <= 64em) {
 		@content;
 	}
 }
 
-@mixin large {
+@mixin desktop {
 	@media only screen and (64.063em <= width <= 90em) {
 		@content;
 	}
 }
 
-@mixin xlarge {
+@mixin wide {
 	@media only screen and (90.063em <= width <= 120em) {
 		@content;
 	}
 }
 
-@mixin xxlarge {
+@mixin massive {
 	@media only screen and (width >= 120.063em) {
 		@content;
 	}

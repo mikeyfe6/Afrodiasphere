@@ -10,7 +10,7 @@ import 'swiper/scss'
 import 'swiper/scss/effect-fade'
 import 'swiper/scss/autoplay'
 
-const IndexPage = props => {
+const IndexPage = () => {
 	return (
 		<Layout>
 			<Intro />

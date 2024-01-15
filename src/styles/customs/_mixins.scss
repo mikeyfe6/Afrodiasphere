@@ -1,5 +1,35 @@
 @import '../customs/colors';
 
+// overall mixins ---------------------------- // overall mixins
+@mixin smoothTrans {
+	transition: all 0.5s ease-out;
+}
+
+@mixin boxShadow {
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+@mixin container($yAxis: 0) {
+	width: 100%;
+	max-width: 1200px;
+	margin: $yAxis auto;
+}
+
+@mixin button {
+	background: #cc9932;
+	color: #343434;
+	padding: 0.25em 1em;
+	font-size: 1rem;
+	font-weight: 500;
+	border-radius: 5px;
+	transition: all 0.3s ease-out;
+
+	&:hover {
+		transform: scale(0.97);
+	}
+}
+
+// dashboard mixins ---------------------------- // dashboard mixins
 @mixin chooseDisplay {
 	border-radius: 12.5px;
 	display: flex;
@@ -10,7 +40,8 @@
 	height: 200px;
 	border: solid 5px #424242;
 	cursor: pointer;
-	@include smoothtrans;
+
+	@include smoothTrans;
 
 	&:hover {
 		border: solid 5px $secondaryColor;
@@ -80,12 +111,24 @@
 	margin: 10px 0;
 }
 
-@mixin fullBG {
+// page mixins ---------------------------- // page mixins
+
+@mixin pageTheme {
 	height: 100%;
 	min-height: 100vh;
+	padding-top: 10rem;
+	text-align: center;
+
+	img {
+		width: 175px;
+		height: 175px;
+		border-radius: 50%;
+		object-fit: cover;
+		overflow: hidden;
+	}
 }
 
-@mixin profileLinks {
+@mixin pageLinks {
 	display: inline-block;
 	padding: 10px;
 	white-space: nowrap;
@@ -98,7 +141,7 @@
 	}
 }
 
-@mixin occupateIcon {
+@mixin pageOccupation {
 	padding: 5px 2.5px;
 	width: 8.25em;
 	margin: 10px auto 50px;
@@ -107,7 +150,7 @@
 	opacity: 0.75;
 }
 
-@mixin biographyText {
+@mixin pageBiography {
 	max-width: 40ch;
 	text-align: center;
 	margin: 25px auto 50px;
@@ -117,16 +160,8 @@
 	}
 }
 
-@mixin iconCenter {
+@mixin pageSocials {
 	display: flex;
 	justify-content: center;
 	margin: 75px 0px;
-}
-
-@mixin smoothtrans {
-	transition: all 0.5s ease-out;
-}
-
-@mixin boxshadow {
-	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
 }

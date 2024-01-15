@@ -6,23 +6,43 @@ import { isLoggedIn, logout, isBrowser, getUser } from '../services/auth'
 
 import * as styles from '../styles/modules/header.module.scss'
 
-import AfroLogo from '../assets/Afrodiasphere-logo.svg'
+// import AfroLogo from '../assets/Afrodiasphere-logo.svg'
+import afroLogo from '../images/afrodiasphere-logo.png'
 
 const Header = () => {
 	const AdsUser = getUser()
 
 	return (
 		<header className={styles.navbar}>
-			<div className={styles.container}>
-				<Link to="/" title="Ga naar homepagina">
+			<div>
+				{/* <Link to="/" title="Ga naar homepagina">
 					<AfroLogo fill="#cc9932" width="75" />
-				</Link>
+				</Link> */}
 
-				{isLoggedIn() && isBrowser() && <span>{AdsUser.user.username}</span>}
+				<Link to="/">
+					<img
+						src={afroLogo}
+						alt=""
+						style={{
+							width: '75px'
+						}}
+					/>
+				</Link>
 
 				<nav>
 					<ul>
-						<li className={styles.user}>
+						{isLoggedIn() && isBrowser() && (
+							<li className={styles.loggedUser}>
+								<Link
+									to={`/${AdsUser.user.username}/`}
+									title="Ga naar ADS page"
+									activeStyle={{ color: '#cc9932' }}
+								>
+									{AdsUser.user.username}{' '}
+								</Link>
+							</li>
+						)}
+						<li>
 							{isLoggedIn() && isBrowser() ? (
 								<button
 									onClick={e => {

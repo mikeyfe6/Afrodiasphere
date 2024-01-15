@@ -19,7 +19,7 @@
 			border: none;
 			border-radius: 1px;
 
-			@include smoothtrans;
+			@include smoothTrans;
 		}
 
 		input:focus {
@@ -27,7 +27,7 @@
 		}
 
 		input:hover {
-			@include smoothtrans;
+			@include smoothTrans;
 		}
 
 		input[type='password']:focus::placeholder {

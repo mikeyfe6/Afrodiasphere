@@ -1,0 +1,21 @@
+@import '../../styles/configs/globals';
+
+.intro {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	@include container(1em);
+
+	button {
+		@include button;
+		vertical-align: text-bottom;
+	}
+
+	> img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		max-width: 250px;
+	}
+}

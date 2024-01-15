@@ -42,7 +42,7 @@ const ForgetPwd = () => {
 			})
 			setLoading('Aan het laden')
 			setError(null)
-			navigate('/reset-password')
+			navigate('/wachtwoord-reset')
 		} catch {
 			setLoading(null)
 			setError("Verkeerde invoer, probeer 't opnieuw")
@@ -51,31 +51,29 @@ const ForgetPwd = () => {
 	}
 
 	return (
-		<>
-			<form onSubmit={handleSubmitRegister} className={inputRes}>
-				<input
-					ref={emailResetRef}
-					type="email"
-					name="emailRes"
-					placeholder="info@voorbeeld.nl"
-					style={{ textTransform: 'lowercase' }}
-					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-				/>
-				{error && <ErrorMessage text={error} />}
-				{loading && <LoadingMessage text={loading} />}
-				<button
-					className={btn}
-					style={{
-						cursor: 'pointer',
-						paddingTop: '3px',
-						paddingBottom: '3px'
-					}}
-				>
-					Verstuur
-				</button>
-				<div style={{ clear: 'both' }} />
-			</form>
-		</>
+		<form onSubmit={handleSubmitRegister} className={inputRes}>
+			<input
+				ref={emailResetRef}
+				type="email"
+				name="emailRes"
+				placeholder="info@voorbeeld.nl"
+				style={{ textTransform: 'lowercase' }}
+				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+			/>
+			{error && <ErrorMessage text={error} />}
+			{loading && <LoadingMessage text={loading} />}
+			<button
+				className={btn}
+				style={{
+					cursor: 'pointer',
+					paddingTop: '3px',
+					paddingBottom: '3px'
+				}}
+			>
+				Verstuur
+			</button>
+			<div style={{ clear: 'both' }} />
+		</form>
 	)
 }
 

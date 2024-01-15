@@ -5,12 +5,7 @@ import Layout from '../components/layout'
 
 import Seo from '../components/seo'
 
-import {
-	container,
-	grid,
-	md,
-	lead
-} from '../styles/modules/forgetPwd.module.scss'
+import { container, md, lead } from '../styles/modules/forgetPwd.module.scss'
 
 // import servImage from "../images/mamafrica.png"
 
@@ -19,7 +14,7 @@ import ForgetPassword from '../components/forgetpwd'
 const IndexPage = () => (
 	<Layout>
 		<section>
-			<div className={`${container} ${grid}`}>
+			<div className={container}>
 				<div>
 					<h1 className={md}>Wachtwoord vergeten</h1>
 					<p

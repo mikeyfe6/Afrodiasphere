@@ -1,51 +1,11 @@
-@mixin fullBG {
-	height: 100%;
-	min-height: 100vh;
-}
-
-@mixin profileLinks {
-	display: inline-block;
-	padding: 10px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	width: 750px;
-
-	&:hover {
-		opacity: 0.875;
-	}
-}
-
-@mixin occupateIcon {
-	padding: 5px 2.5px;
-	width: 8.25em;
-	margin: 10px auto 50px;
-	border-radius: 7.5px;
-	font-size: 0.8em;
-	opacity: 0.75;
-}
-
-@mixin biographyText {
-	max-width: 40ch;
-	text-align: center;
-	margin: 25px auto 50px;
-
-	@media (max-width: 40em) {
-		max-width: 30ch;
-	}
-}
-
-@mixin iconCenter {
-	display: flex;
-	justify-content: center;
-	margin: 75px 0px;
-}
+@import './configs/globals';
 
 .theme {
 	// ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
 	&-geel {
 		background: linear-gradient(to bottom, yellow, black);
-		@include fullBG;
+
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -55,12 +15,14 @@
 		p:nth-of-type(1) {
 			color: black;
 			background-color: white;
-			@include occupateIcon;
+
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: #dddddd;
-			@include biographyText;
+
+			@include pageBiography;
 		}
 
 		&-links {
@@ -72,16 +34,15 @@
 				border: 1px solid yellow;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
-				@include profileLinks;
+
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: yellow;
 
 				&:hover {
@@ -93,7 +54,7 @@
 	// ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
 	&-grijs {
 		background: linear-gradient(to bottom, grey, white);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: #595959;
@@ -103,12 +64,12 @@
 		p:nth-of-type(1) {
 			color: #595959;
 			background-color: white;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: white;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -120,12 +81,12 @@
 				border: 1px solid #878787;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
 				margin: 0 15px;
@@ -141,7 +102,7 @@
 	// ---------------------------------------------------------------------------------------- // PINK PINK PINK
 	&-roze {
 		background: linear-gradient(to bottom, pink, grey);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -151,12 +112,12 @@
 		p:nth-of-type(1) {
 			color: grey;
 			background-color: white;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: white;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -168,12 +129,12 @@
 				border: 1px solid white;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
 				margin: 0 15px;
@@ -189,7 +150,7 @@
 	// ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
 	&-zwart {
 		background: linear-gradient(to bottom, black, grey);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -199,12 +160,12 @@
 		p:nth-of-type(1) {
 			color: black;
 			background-color: white;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: white;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -216,12 +177,12 @@
 				border: 2px solid white;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
 				margin: 0 15px;
@@ -237,7 +198,7 @@
 	// ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
 	&-bruin {
 		background: linear-gradient(to bottom, brown, white);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -247,12 +208,12 @@
 		p:nth-of-type(1) {
 			color: white;
 			background-color: brown;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: #e0e0e0;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -265,16 +226,14 @@
 				border: 1px solid brown;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: brown;
 
 				&:hover {
@@ -286,7 +245,7 @@
 	// ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
 	&-groen {
 		background: linear-gradient(to bottom, green, white);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -296,12 +255,12 @@
 		p:nth-of-type(1) {
 			color: green;
 			background-color: white;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: #ededed;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -314,16 +273,14 @@
 				border: 1px solid green;
 				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: green;
 
 				&:hover {
@@ -335,7 +292,7 @@
 	// ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
 	&-afrotheme {
 		background: linear-gradient(to bottom, #e6541b, black);
-		@include fullBG;
+		@include pageTheme;
 
 		h1 {
 			color: white;
@@ -345,12 +302,12 @@
 		p:nth-of-type(1) {
 			color: black;
 			background-color: white;
-			@include occupateIcon;
+			@include pageOccupation;
 		}
 
 		p:nth-of-type(2) {
 			color: #e0e0e0;
-			@include biographyText;
+			@include pageBiography;
 		}
 
 		&-links {
@@ -363,12 +320,12 @@
 				border: 1px solid #e6541b;
 				border-radius: 3px;
 
-				@include profileLinks;
+				@include pageLinks;
 			}
 		}
 
 		&-icons {
-			@include iconCenter;
+			@include pageSocials;
 
 			a {
 				margin: 0 15px;

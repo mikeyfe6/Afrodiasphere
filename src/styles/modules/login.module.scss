@@ -1,335 +1,266 @@
 @import '../../styles/configs/globals';
 
-.superContainer {
-	font-family: 'Montserrat', 'sans-serif';
-	margin: 1.5em 1em 0;
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 3em;
 
-	span {
-		font-size: 0.7rem;
-		margin: 15px 0;
-	}
+	.header {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
 
-	a {
-		color: #333;
-		font-size: 14px;
-		text-decoration: none;
-		margin: 10px 0;
-	}
+		@include container(1em);
 
-	button {
-		// border-radius: 20px;
-		border: 1px solid $blackColor;
-		background: $whiteColor;
-		color: $blackColor;
-
-		font-weight: bold;
-		padding: 12px 45px;
-		letter-spacing: 1px;
-		text-transform: uppercase;
-		margin-top: 5%;
-		transition: transform 80ms ease-in;
-	}
-
-	button {
-		transform: scale(0.75);
-
-		&:hover {
-			transform: scale(0.775);
-		}
-	}
-
-	button:focus {
-		outline: none;
-	}
-
-	button.ghost {
-		background: transparent;
-		border-color: $primaryColor;
-		color: $blackColor;
-	}
-
-	.container {
-		background: $primaryColor;
-		border-radius: 10px;
-		box-shadow:
-			0 14px 28px rgba(0, 0, 0, 0.25),
-			0 10px 10px rgba(0, 0, 0, 0.22);
-		position: relative;
-		overflow: hidden;
-		width: 768px;
-		max-width: 100%;
-		min-height: 480px;
-
-		.formContainer {
-			position: absolute;
-			top: 0;
+		> img {
+			width: 100%;
 			height: 100%;
-			@include smoothtrans;
-
-			.forgetLink {
-				margin: 1em 0 1em;
-				font-size: 0.75rem;
-				@include smoothtrans;
-
-				&:hover {
-					color: $whiteColor;
-				}
-			}
-
-			form {
-				display: flex;
-				flex-direction: column;
-				padding: 0 50px;
-				height: 100%;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
-			}
-
-			input {
-				background: #eee;
-				border: none;
-				padding: 10px 15px;
-				margin: 12.5px 0;
-				width: 100%;
-				border-radius: 3px;
-				font-size: 16px;
-				@include boxshadow;
-
-				&::placeholder {
-					font-size: 0.75rem;
-				}
-			}
-
-			.socialContainer {
-				margin: 20px 0;
-
-				a {
-					border: 1px solid #333;
-					border-radius: 50%;
-					display: inline-flex;
-					justify-content: center;
-					align-items: center;
-					margin: 0 5px;
-					height: 40px;
-					width: 40px;
-				}
-			}
-
-			&.signUpContainer {
-				left: 0;
-				width: 50%;
-				opacity: 0;
-				z-index: 1;
-				background: $primaryColor;
-			}
-
-			&.signInContainer {
-				left: 0;
-				width: 50%;
-				z-index: 2;
-			}
-		}
-
-		&.rightPanelActive .signInContainer {
-			transform: translateX(100%);
-		}
-
-		&.rightPanelActive .overlayContainer {
-			transform: translateX(-100%);
-		}
-
-		&.rightPanelActive .signUpContainer {
-			transform: translateX(100%);
-			opacity: 1;
-			z-index: 5;
-		}
-
-		&.rightPanelActive .overlay {
-			transform: translateX(50%);
-		}
-
-		&.rightPanelActive .overlay-left {
-			transform: translateX(0);
-		}
-
-		&.rightPanelActive .overlay-right {
-			transform: translateX(20%);
+			object-fit: cover;
+			max-width: 250px;
 		}
 	}
 
-	.overlayContainer {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		width: 50%;
-		height: 100%;
-		overflow: hidden;
-		transition: transform 0.6s ease-in-out;
-		z-index: 100;
-	}
-
-	.overlay {
-		// background: linear-gradient(to left, gray, white) no-repeat 0 0 / cover;
-		background: linear-gradient(to left, rgba(255, 255, 255, 1), $whiteColor)
-			no-repeat 0 0 / cover;
-		color: $blackColor;
-		position: relative;
-		left: -100%;
-		height: 100%;
-		width: 200%;
-		transform: translateX(0);
-		transition: transform 0.6s ease-in-out;
-
-		&-panel {
-			position: absolute;
-			top: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			padding: 0 40px;
-			height: 100%;
-			width: 50%;
-			text-align: center;
-			transform: translateX(0);
-			transition: transform 0.6s ease-in-out;
-		}
-
-		&-right {
-			right: 0;
-			transform: translateX(0);
-		}
-
-		&-left {
-			transform: translateX(-20%);
-		}
-	}
-}
-
-.signUpTitle {
-	font-weight: bold;
-	margin: 0;
-}
-
-.signUpText {
-	font-size: 13px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
-}
-
-// .storeCode input {
-//   padding: 10px 12.5px !important;
-//   font-weight: bold;
-//   color: $secondaryColor;
-// }
-
-.logerror {
-	font-size: 0.2rem;
-	background-color: #c60319;
-	font-weight: bold;
-	color: $whiteColor;
-	padding: 0.5em 3em;
-	margin: 1em 0 0;
-	text-align: center;
-	border-radius: 2px;
-}
-
-.loadingmsg {
-	position: absolute;
-	font-size: 0.3em;
-	bottom: 37.5px;
-	background-color: #57a55f;
-	font-weight: bold;
-	color: $whiteColor;
-	padding: 0.5em 1em;
-	display: table;
-	margin: 0 auto;
-	text-align: center;
-	border-radius: 2px;
-}
-
-.link {
-	color: $darkColor !important;
-	font-weight: bold;
-
-	:hover {
-		color: #333 !important;
-		transition: all 0.6s ease-in-out;
-	}
-}
-
-// Landscape view
-@media only screen and (min-device-width: 480px) and (max-device-width: 991.98px) and (orientation: landscape) {
-}
-
-// LARGE devices
-@media (max-width: 64em) {
-	.logerror {
-		padding: 0.1rem 0.3rem;
-	}
-
-	.loadingmsg {
-		padding: 0.1rem 0.3rem;
-	}
-
-	// .storeCode input {
-	//   padding: 7.5px 7.5px !important;
-	//   margin: 8px 1px !important;
-	//   font-size: 0.7em;
-	// }
-
-	.superContainer {
-		font-size: 0.8em;
-		p,
-		a {
-			font-size: 0.9em;
-		}
+	.super-container {
+		font-family: Montserrat, sans-serif;
+		display: flex;
+		justify-content: center;
 
 		.container {
-			.formContainer {
+			background: $primaryColor;
+			border-radius: 10px;
+			box-shadow:
+				0 14px 28px rgba(0, 0, 0, 0.25),
+				0 10px 10px rgba(0, 0, 0, 0.22);
+			position: relative;
+			overflow: hidden;
+			width: 768px;
+			max-width: 100%;
+			min-height: 480px;
+
+			.form-container {
+				position: absolute;
+				top: 0;
+				height: 100%;
+				color: $blackColor;
+
 				form {
-					padding: 0 15px;
+					display: flex;
+					flex-direction: column;
+					padding: 0 50px;
+					gap: 1.5em;
+					height: 100%;
+					justify-content: center;
+					align-items: center;
+					text-align: center;
+					transition: all 0.5s ease;
+					position: relative;
+
+					h3 {
+						font-weight: bold;
+						font-size: 1.25rem;
+					}
+
+					span {
+						font-size: 0.85rem;
+					}
+
+					a {
+						text-decoration: none;
+
+						&.forget-link {
+							font-size: 0.85rem;
+
+							&:hover {
+								text-decoration: underline;
+								text-underline-offset: 2px;
+								text-decoration-color: $whiteColor;
+							}
+						}
+					}
+
+					input {
+						background: #eee;
+						border: none;
+						padding: 10px 15px;
+
+						width: 100%;
+						border-radius: 3px;
+
+						@include boxShadow;
+
+						&::placeholder {
+							font-size: 0.75rem;
+							color: $thirdColor;
+						}
+
+						&:focus {
+							&::placeholder {
+								color: transparent;
+							}
+						}
+					}
+
+					button {
+						border: 2px solid $blackColor;
+						background: $whiteColor;
+						color: $blackColor;
+						font-weight: bold;
+						font-size: 0.75rem;
+						padding: 0.75em 3em;
+						letter-spacing: 1px;
+						text-transform: uppercase;
+						transition: transform 80ms ease-in-out;
+
+						&:hover {
+							transform: scale(1.025);
+						}
+					}
+
+					.logerror {
+						font-size: 0.2rem;
+						background-color: #c60319;
+						font-weight: bold;
+						color: $whiteColor;
+						padding: 0.5em 3em;
+
+						text-align: center;
+						border-radius: 2px;
+					}
+
+					.loadingmsg {
+						position: absolute;
+						font-size: 0.3em;
+						bottom: 37.5px;
+						background-color: #57a55f;
+						font-weight: bold;
+						color: $whiteColor;
+						padding: 0.5em 1em;
+						display: table;
+						margin: 0 auto;
+						text-align: center;
+						border-radius: 2px;
+					}
 				}
 
-				input {
-					padding: 12px 15px;
-					margin: 8px 0;
+				&.sign-up-container {
+					left: 0;
+					width: 50%;
+					opacity: 0;
+					z-index: 1;
+					background: $primaryColor;
+					transition: all 0.5s ease;
 				}
+
+				&.sign-in-container {
+					left: 0;
+					width: 50%;
+					z-index: 2;
+					transition: all 0.5s ease;
+				}
+			}
+
+			&.right-panel-active .sign-in-container {
+				transform: translateX(100%);
+			}
+
+			&.right-panel-active .overlay-container {
+				transform: translateX(-100%);
+			}
+
+			&.right-panel-active .sign-up-container {
+				transform: translateX(100%);
+
+				opacity: 1;
+				z-index: 5;
+			}
+
+			&.right-panel-active .overlay {
+				transform: translateX(50%);
+			}
+
+			&.right-panel-active .overlay-left {
+				transform: translateX(0);
+			}
+
+			&.right-panel-active .overlay-right {
+				transform: translateX(20%);
 			}
 		}
 
 		.overlay {
-			&-panel {
-				padding: 0 15px;
+			background: linear-gradient(to left, rgba(255, 255, 255, 1), $whiteColor)
+				no-repeat 0 0 / cover;
+			color: $blackColor;
+			position: relative;
+			left: -100%;
+			height: 100%;
+			width: 200%;
+			transform: translateX(0);
+			transition: transform 0.5s ease-in-out;
+
+			&-title {
+				font-size: 1.5rem;
+				font-weight: bold;
 			}
-		}
-	}
-}
 
-// SMALL devices
-@media (max-width: 40em) {
-	.logerror {
-		padding: 0.1rem 0.3rem;
-	}
+			&-text {
+				font-size: 0.875rem;
+				font-weight: 200;
+				line-height: 20px;
+				letter-spacing: 0.5px;
+			}
 
-	.loadingmsg {
-		padding: 0.1rem 0.3rem;
-	}
+			&-container {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 50%;
+				height: 100%;
+				overflow: hidden;
+				transition: transform 0.5s ease-in-out;
+				z-index: 100;
+			}
 
-	.docs-head {
-		text-align: center;
-		padding: 2rem 0 0 0 !important;
+			&-panel {
+				position: absolute;
+				top: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding: 1em 3em;
+				gap: 2em;
+				height: 100%;
+				width: 50%;
+				text-align: center;
+				transform: translateX(0);
+				transition: transform 0.5s ease-in-out;
 
-		.imgHide {
-			justify-self: center;
-			display: none;
-		}
+				> button.mirror {
+					background: transparent;
+					border: 2px solid $primaryColor;
+					color: $blackColor;
+					font-weight: bold;
+					font-size: 0.75rem;
+					padding: 0.75em 3em;
+					letter-spacing: 1px;
+					text-transform: uppercase;
 
-		h1 {
-			display: none;
+					&:hover {
+						transform: scale(1.025);
+					}
+				}
+			}
+
+			&-right {
+				right: 0;
+				transform: translateX(0);
+			}
+
+			&-left {
+				transform: translateX(-20%);
+			}
 		}
 	}
 }

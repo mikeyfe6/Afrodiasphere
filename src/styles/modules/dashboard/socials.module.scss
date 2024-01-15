@@ -46,7 +46,7 @@
 			border: none;
 			text-align: center;
 			border-radius: 3px;
-			@include smoothtrans;
+			@include smoothTrans;
 		}
 
 		input:focus {
@@ -54,7 +54,7 @@
 		}
 
 		input:hover {
-			@include smoothtrans;
+			@include smoothTrans;
 		}
 
 		input::placeholder {

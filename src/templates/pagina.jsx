@@ -7,8 +7,6 @@ import Seo from '../components/seo'
 
 import AdsLayout from '../components/adslayout'
 
-import * as styles from '../styles/modules/pages.module.scss'
-
 import '../styles/themes.scss'
 
 import noavatar from '../images/noavatar.png'
@@ -118,94 +116,96 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
       /> */}
 
 			<div className={`theme-${color}`}>
-				<div className={styles.adsPage} style={{ zIndex: 2 }}>
-					<img
-						src={avatar}
-						className={styles.avatar}
-						alt="avatar"
-						style={{ border: '3px solid white' }}
-					/>
+				<img src={avatar} alt="avatar" style={{ border: '3px solid white' }} />
 
-					<h1>{username}</h1>
+				<h1>{username}</h1>
 
-					<p>{occupate}</p>
+				<p>{occupate}</p>
 
-					<p>{biography}</p>
+				<p>{biography}</p>
 
-					<ul>
-						{links.slice(0, 20).map(link => (
-							<li
-								key={link.id}
-								className={`theme-${color}-links`}
-								hidden={!link.visible}
+				<ul>
+					{links.slice(0, 20).map(link => (
+						<li
+							key={link.id}
+							className={`theme-${color}-links`}
+							hidden={!link.visible}
+						>
+							<a
+								href={`https://${link.hyperlink}`}
+								rel="noopener noreferrer"
+								target="_blank"
 							>
-								<a
-									href={`https://${link.hyperlink}`}
-									rel="noopener noreferrer"
-									target="_blank"
-								>
-									{link.title}
-								</a>
-							</li>
-						))}
-					</ul>
+								{link.title}
+							</a>
+						</li>
+					))}
+				</ul>
 
-					<div className={`theme-${color}-icons`}>
-						<a
-							href={`https://www.facebook.com/${fbLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="fbhidesm"
-						>
-							{/* <FaFacebookF size="2em" /> */}
-						</a>
+				<div className={`theme-${color}-icons`}>
+					<a
+						href={`https://www.facebook.com/${fbLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="fbhidesm"
+					>
+						<i className="fa-brands fa-facebook-f fa-xl" />
+					</a>
 
-						<a
-							href={`https://twitter.com/${twLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="twhidesm"
-						>
-							{/* <FaTwitter size="2em" /> */}
-						</a>
+					<a
+						href={`https://twitter.com/${twLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="twhidesm"
+					>
+						<i className="fa-brands fa-x-twitter" />
+					</a>
 
-						<a
-							href={`https://www.instagram.com/${igLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="ighidesm"
-						>
-							{/* <FaInstagram size="2em" /> */}
-						</a>
+					<a
+						href={`https://www.instagram.com/${igLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="ighidesm"
+					>
+						<i className="fa-brands fa-instagram fa-xl" />
+					</a>
 
-						<a
-							href={`https://wa.me/${waLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="wahidesm"
-						>
-							{/* <FaWhatsapp size="2em" /> */}
-						</a>
+					<a
+						href={`https://wa.me/${waLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="wahidesm"
+					>
+						{/* <FaWhatsapp size="2em" /> */}
+					</a>
 
-						<a
-							href={`https://www.tiktok.com/@${tkLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="tkhidesm"
-						>
-							{/* <SiTiktok size="2em" /> */}
-						</a>
-					</div>
-					<Link to="/">
-						<img
-							src={afroLogo}
-							alt=""
-							style={{
-								width: '100px'
-							}}
-						/>
-					</Link>
+					<a
+						href={`https://www.tiktok.com/@${tkLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="tkhidesm"
+					>
+						<i className="fa-brands fa-tiktok fa-xl" />
+					</a>
+
+					{/* <a
+						href={`https://www.tiktok.com/@${tkLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+						id="tkhidesm"
+					>
+						<i className="fa-brands fa-linkedin fa-xl" />
+					</a> */}
 				</div>
+				<Link to="/">
+					<img
+						src={afroLogo}
+						alt=""
+						style={{
+							width: '100px'
+						}}
+					/>
+				</Link>
 			</div>
 		</AdsLayout>
 	)

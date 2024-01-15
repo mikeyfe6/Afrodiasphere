@@ -21,7 +21,7 @@
 	background-color: $blackColor;
 
 	.btn {
-		@include smoothtrans;
+		@include smoothTrans;
 		&:hover {
 			border-color: $secondaryColor !important;
 		}

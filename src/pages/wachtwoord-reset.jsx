@@ -20,7 +20,7 @@ import ResetPassword from '../components/resetpwd'
 const IndexPage = () => (
 	<Layout>
 		<section>
-			<div className={`${container} ${grid}`}>
+			<div className={container}>
 				<div>
 					<h1 className={md}>Nieuw wachtwoord</h1>
 					<p

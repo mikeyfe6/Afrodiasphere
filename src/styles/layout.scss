@@ -1,7 +1,6 @@
 // FONTS
-@import 'https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap';
-@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap';
-@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
 
 @import './configs/globals';
 @import './configs/resets';
@@ -10,7 +9,8 @@ body {
 	line-height: 1.6;
 	font-size: 16px;
 	font-family: Poppins, sans-serif;
-	background: linear-gradient(135deg, $thirdColor, #0e0e0e);
+	background: linear-gradient(135deg, $thirdColor, $blackColor);
+	color: $whiteColor;
 	position: relative;
 	padding-bottom: 58px;
 	min-height: 100vh;
@@ -20,8 +20,13 @@ body {
 	}
 }
 
+button {
+	cursor: pointer;
+}
+
 input {
 	font-family: Poppins, sans-serif;
+	font-size: 16px;
 }
 
 a {
@@ -32,9 +37,6 @@ ul {
 	list-style-type: none;
 }
 
-h1,
-h2 {
-	font-weight: 300;
-	line-height: 1.2;
-	padding: 10px 0;
+h1 {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
