@@ -7,7 +7,8 @@
 	gap: 3em;
 
 	@include mobile {
-		gap: 1.5em;
+		margin-top: 1em;
+		gap: 1em;
 	}
 
 	.header {
@@ -19,10 +20,16 @@
 
 		@include container(1em);
 
+		@include mobile {
+			flex-direction: column;
+			align-items: start;
+			position: static;
+		}
+
 		> img {
 			width: 100%;
 			height: 100%;
-			object-fit: cover;
+			object-fit: contain;
 			max-width: 250px;
 
 			@include tablet {
@@ -36,9 +43,9 @@
 			@include mobile {
 				position: absolute;
 				right: 0;
-				max-width: 200px;
+				top: 0;
 				z-index: -1;
-				top: 50%;
+				height: auto;
 			}
 		}
 	}
