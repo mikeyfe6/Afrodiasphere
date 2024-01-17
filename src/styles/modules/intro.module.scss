@@ -3,13 +3,28 @@
 .intro {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
+	position: relative;
 
-	@include container(1em);
+	@include container(1em, 2em);
+
+	@include tablet {
+		justify-content: flex-start;
+		margin-bottom: 5em;
+	}
+
+	@include mobile {
+		flex-direction: column;
+		align-items: start;
+
+		@include container(1em, 1em);
+	}
 
 	button {
-		@include button;
+		margin: 0 0.25em;
 		vertical-align: text-bottom;
+
+		@include button(0.25em);
 	}
 
 	> img {
@@ -17,5 +32,21 @@
 		height: 100%;
 		object-fit: cover;
 		max-width: 250px;
+
+		@include tablet {
+			position: absolute;
+			right: 0;
+			max-width: 300px;
+			z-index: -1;
+			top: 50%;
+		}
+
+		@include mobile {
+			position: absolute;
+			right: 0;
+			max-width: 300px;
+			z-index: -1;
+			top: 50%;
+		}
 	}
 }

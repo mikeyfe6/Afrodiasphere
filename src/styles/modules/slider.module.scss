@@ -3,50 +3,70 @@
 @import '../../styles/configs/globals';
 
 .carousel {
-	margin-top: 3.5em;
+	margin: 2.5em 0;
+	padding: 0 2em;
 
 	&-container {
-		max-width: 850px;
-
-		@include tablet {
-			transform: scale(0.8);
-		}
+		max-width: 1000px;
 	}
 
 	&-slide {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), $blackColor);
-		border: 2px solid $whiteColor;
-		border-radius: 10px;
-		padding: 30px;
-		text-align: center;
+		> div {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), $blackColor);
+			border: 2px solid $whiteColor;
+			border-radius: 10px;
+			padding: 1.25em;
+			text-align: center;
+			gap: 0.5em;
 
-		.imgavatar {
-			width: 175px;
-			height: 175px;
-			border-radius: 50%;
-			object-fit: cover;
-		}
+			@include mobile {
+				padding: 1em;
+			}
 
-		:nth-child(2) {
-			min-height: 35px;
-		}
+			.avatar {
+				max-width: 125px;
+				max-height: 125px;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 3px solid $whiteColor;
+				overflow: hidden;
+				margin: 1em 0;
+			}
 
-		:nth-child(3) {
-			min-height: 35px;
-			margin-bottom: 1em;
-		}
+			:nth-child(2) {
+				min-height: 30px;
+			}
 
-		:nth-child(4) {
-			min-height: 175px;
-			margin-bottom: 1em;
-			color: color.adjust($whiteColor, $lightness: -25%);
-		}
+			:nth-child(3) {
+				min-height: 20px;
+				font-style: italic;
+				font-size: 0.75rem;
+				color: #2eb4e9;
+			}
 
-		:nth-child(5) {
-			min-height: 35px;
+			:nth-child(4) {
+				min-height: 175px;
+				padding: 0.75em 0;
+				font-size: 0.875rem;
+				color: color.adjust($whiteColor, $lightness: -25%);
+			}
+
+			:nth-child(5) {
+				min-height: 20px;
+
+				> a {
+					color: #cc9932;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
 		}
 	}
 }

@@ -6,15 +6,21 @@
 	align-items: center;
 	gap: 5em;
 	margin-top: 5em;
+	position: relative;
+
+	@include container(2em);
+
+	@include tablet {
+		flex-direction: column;
+	}
 
 	> div {
-		max-width: 500px;
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
 
 		> p {
-			color: $primaryColor;
+			color: $whiteColor;
 			font-size: 0.925rem;
 			margin: 0 0 1em;
 		}
@@ -25,9 +31,22 @@
 		height: 100%;
 		object-fit: cover;
 		max-width: 300px;
+
+		@include mobile {
+			position: absolute;
+			right: 0;
+			max-width: 200px;
+			z-index: -1;
+			top: 50%;
+		}
 	}
 
 	&-form {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 0.5em;
+
 		input {
 			background: #eee;
 			border: none;
@@ -53,7 +72,6 @@
 
 		button {
 			@include button;
-			margin-left: 1em;
 		}
 
 		.logerror {

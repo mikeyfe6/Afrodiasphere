@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+
 import { Link, navigate } from 'gatsby'
 
 import { isLoggedIn, logout, isBrowser, getUser } from '../services/auth'
@@ -20,13 +21,7 @@ const Header = () => {
 				</Link> */}
 
 				<Link to="/">
-					<img
-						src={afroLogo}
-						alt=""
-						style={{
-							width: '75px'
-						}}
-					/>
+					<img src={afroLogo} alt="" />
 				</Link>
 
 				<nav>
@@ -47,7 +42,6 @@ const Header = () => {
 								<button
 									onClick={e => {
 										e.preventDefault()
-										// e.stopPropagation()
 										logout(() => navigate('/login'))
 									}}
 									href="#"

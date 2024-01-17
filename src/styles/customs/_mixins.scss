@@ -2,27 +2,28 @@
 
 // overall mixins ---------------------------- // overall mixins
 @mixin smoothTrans {
-	transition: all 0.5s ease-out;
+	transition: all 0.2s ease-out;
 }
 
 @mixin boxShadow {
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-@mixin container($yAxis: 0) {
+@mixin container($marginY: 0, $paddingX: 2em) {
 	width: 100%;
 	max-width: 1200px;
-	margin: $yAxis auto;
+	padding: 0 $paddingX;
+	margin: $marginY auto;
 }
 
-@mixin button {
-	background: #cc9932;
-	color: #343434;
-	padding: 0.5em 1.25em;
+@mixin button($yAxis: 0.5em) {
+	background: $primaryColor;
+	color: $ashColor;
+	padding: $yAxis 1.25em;
 	font-size: 1rem;
 	font-weight: 500;
 	border-radius: 5px;
-	transition: all 0.3s ease-out;
+	transition: all 0.2s ease-out;
 
 	&:hover {
 		transform: scale(0.97);
@@ -38,7 +39,7 @@
 	align-items: center;
 	width: 125px;
 	height: 200px;
-	border: solid 5px #424242;
+	border: solid 5px $ashColor;
 	cursor: pointer;
 
 	@include smoothTrans;

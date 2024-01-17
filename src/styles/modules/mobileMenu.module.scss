@@ -1,0 +1,93 @@
+@use 'sass:color';
+
+@import '../../styles/configs/globals';
+
+.mobile {
+	&-menu {
+		position: fixed;
+		bottom: -100%;
+		left: 0;
+		width: 100%;
+		background-color: color.adjust($blackColor, $lightness: 2.5%);
+		transition: bottom 0.5s ease;
+		z-index: 999;
+
+		> ul {
+			display: flex;
+			min-height: 75px;
+
+			> li {
+				flex: 1;
+				display: flex;
+				justify-content: center;
+				align-self: center;
+				height: 100%;
+
+				> a,
+				> button {
+					@include smoothTrans;
+
+					&:hover {
+						color: $thirdColor;
+					}
+				}
+
+				&:not(:last-child) {
+					border-right: 1px solid $thirdColor;
+				}
+			}
+		}
+
+		&-container {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1000;
+
+			.hamburger {
+				border: none;
+				font-size: 1.5rem;
+				cursor: pointer;
+				padding: 0.75em;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 1001;
+				background: color.adjust($blackColor, $lightness: 2.5%);
+
+				&::after {
+					content: '';
+					height: 100px;
+					width: 100px;
+					background: red;
+				}
+			}
+
+			.username {
+				position: fixed;
+				right: 15px;
+				top: 15px;
+
+				> a {
+					background: $primaryColor;
+					color: color.adjust($blackColor, $lightness: 5%);
+					padding: 0.25em 1em;
+					font-weight: 600;
+					border-radius: 5px;
+
+					&:hover {
+						background: $secondaryColor;
+						color: $blackColor;
+
+						@include smoothTrans;
+					}
+				}
+			}
+		}
+
+		&.open {
+			bottom: 0;
+		}
+	}
+}

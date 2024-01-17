@@ -37,19 +37,24 @@ const Slider = () => {
 			<Swiper
 				modules={[A11y, Autoplay]}
 				className={styles.carouselContainer}
-				spaceBetween={50}
-				slidesPerView={3}
 				loop
+				spaceBetween={15}
 				autoplay={{ delay: 5000 }}
 				breakpoints={{
 					320: {
 						slidesPerView: 1
 					},
-					640: {
+					420: {
 						slidesPerView: 2
 					},
-					768: {
+					576: {
 						slidesPerView: 3
+					},
+					768: {
+						slidesPerView: 4
+					},
+					992: {
+						slidesPerView: 5
 					}
 				}}
 			>
@@ -59,44 +64,25 @@ const Slider = () => {
 						// className={`theme-${color}-links`}
 						className={styles.carouselSlide}
 					>
-						<img
-							src={!ads.avatar?.url ? noavatar : ads.avatar?.url}
-							className={styles.imgavatar}
-							style={{
-								transform: 'scale(0.7)',
-								border: '5px solid white',
-								minWidth: '150px',
-								overflow: 'hidden'
-							}}
-							alt="avatar"
-						/>
-						<div className={styles.lead} style={{ color: 'white' }}>
-							{ads.profiel}
-						</div>
-						<div
-							style={{
-								fontStyle: 'italic',
-								fontSize: '0.75em',
-								color: '#2eb4e9'
-							}}
-						>
-							{ads.occupate || '..'}
-						</div>
-						<div
-							className={styles.homeAdsBio}
-							dangerouslySetInnerHTML={{
-								__html: ads.biografie
-							}}
-						/>
 						<div>
-							{' '}
-							<Link
-								to={`/${ads.slug}`}
-								style={{ color: '#cc9932' }}
-								title={`${baseURL}/${ads.slug}`}
-							>
-								✨../{`${ads.slug}`}
-							</Link>
+							<img
+								src={!ads.avatar?.url ? noavatar : ads.avatar?.url}
+								className={styles.avatar}
+								alt={ads.profiel}
+							/>
+							<div className={styles.lead}>{ads.profiel}</div>
+							<div>{ads.occupate || '..'}</div>
+							<div
+								className={styles.homeAdsBio}
+								dangerouslySetInnerHTML={{
+									__html: ads.biografie
+								}}
+							/>
+							<div>
+								<Link to={`/${ads.slug}`} title={`${baseURL}/${ads.slug}`}>
+									✨../{`${ads.slug}`}
+								</Link>
+							</div>
 						</div>
 					</SwiperSlide>
 				))}

@@ -6,10 +6,16 @@
 	justify-content: center;
 	gap: 3em;
 
+	@include mobile {
+		gap: 1.5em;
+	}
+
 	.header {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		align-items: center;
+
+		position: relative;
 
 		@include container(1em);
 
@@ -18,6 +24,22 @@
 			height: 100%;
 			object-fit: cover;
 			max-width: 250px;
+
+			@include tablet {
+				position: absolute;
+				right: 0;
+				max-width: 300px;
+				z-index: -1;
+				top: 75%;
+			}
+
+			@include mobile {
+				position: absolute;
+				right: 0;
+				max-width: 200px;
+				z-index: -1;
+				top: 50%;
+			}
 		}
 	}
 
@@ -38,6 +60,10 @@
 			max-width: 100%;
 			min-height: 480px;
 
+			@include mobile {
+				border-radius: 0;
+			}
+
 			.form-container {
 				position: absolute;
 				top: 0;
@@ -47,7 +73,7 @@
 				form {
 					display: flex;
 					flex-direction: column;
-					padding: 0 50px;
+					padding: 2em;
 					gap: 1.5em;
 					height: 100%;
 					justify-content: center;
@@ -55,6 +81,11 @@
 					text-align: center;
 					transition: all 0.5s ease;
 					position: relative;
+
+					@include mobile {
+						padding: 1em;
+						gap: 1.25em;
+					}
 
 					h3 {
 						font-weight: bold;
@@ -236,6 +267,11 @@
 				text-align: center;
 				transform: translateX(0);
 				transition: transform 0.5s ease-in-out;
+
+				@include mobile {
+					gap: 1em;
+					padding: 1em;
+				}
 
 				> button.mirror {
 					background: transparent;

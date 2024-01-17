@@ -18,6 +18,20 @@ body {
 	@include mobile {
 		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
 	}
+
+	@media (0 <= width <= 319px) {
+		display: none;
+	}
+}
+
+h1 {
+	color: $primaryColor;
+	line-height: 1em;
+	font-size: 4rem;
+
+	@include mobile {
+		font-size: 2.5rem;
+	}
 }
 
 button {
@@ -26,7 +40,6 @@ button {
 
 input {
 	font-family: Poppins, sans-serif;
-	font-size: 16px;
 }
 
 a {

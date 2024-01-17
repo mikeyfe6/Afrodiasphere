@@ -13,9 +13,8 @@ const Footer = () => (
 		・Powered by{' '}
 		<a href="https://menefex.nl" rel="noopener noreferrer" target="_blank">
 			{''}
-			<b> Menefex </b>
+			<b> Menefex </b> <img src={menefexLogo} alt="menefex logo" />
 		</a>
-		<img src={menefexLogo} alt="menefex logo" style={{ width: '25px' }} />
 	</footer>
 )
 

@@ -2,19 +2,25 @@
 
 .reset-pwd {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	gap: 5em;
 	margin-top: 5em;
+	position: relative;
+
+	@include container(2em);
+
+	@include tablet {
+		flex-direction: column;
+	}
 
 	> div {
-		max-width: 500px;
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
 
 		> p {
-			color: $primaryColor;
+			color: $whiteColor;
 			font-size: 0.925rem;
 			margin: 0 0 1em;
 		}
@@ -25,6 +31,14 @@
 		height: 100%;
 		object-fit: cover;
 		max-width: 300px;
+
+		@include mobile {
+			position: absolute;
+			right: 0;
+			max-width: 200px;
+			z-index: -1;
+			top: 50%;
+		}
 	}
 
 	&-form {
@@ -53,7 +67,7 @@
 		button {
 			@include button;
 			display: block;
-			margin: 1em 0 1em auto;
+			margin: 0.75em 0 0.75em auto;
 		}
 
 		.logerror {

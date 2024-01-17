@@ -13,37 +13,46 @@
 		align-items: center;
 		height: 100%;
 
-		@include container;
-	}
+		@include container(0, 1em);
 
-	ul {
-		display: flex;
-		align-items: center;
-		gap: 1.5em;
+		@include mobile {
+			@include container(0, 1em);
+		}
 
-		> li {
-			> a,
-			button {
-				@include smoothTrans;
+		> a > img {
+			width: 75px;
+			vertical-align: middle;
+		}
 
-				&:hover {
-					color: #787878;
-				}
-			}
+		> nav > ul {
+			display: flex;
+			align-items: center;
+			gap: 1.5em;
 
-			&.logged-user {
-				> a {
-					background: $primaryColor;
-					color: color.adjust($blackColor, $lightness: 15%);
-					padding: 0.25em 1em;
-					font-weight: bold;
-					border-radius: 5px;
-
+			> li {
+				> a,
+				button {
 					@include smoothTrans;
 
 					&:hover {
-						background: $secondaryColor;
-						color: $blackColor;
+						color: $thirdColor;
+					}
+				}
+
+				&.logged-user {
+					> a {
+						background: $primaryColor;
+						color: color.adjust($blackColor, $lightness: 5%);
+						padding: 0.25em 1em;
+						font-weight: 600;
+						border-radius: 5px;
+
+						&:hover {
+							background: $secondaryColor;
+							color: $blackColor;
+
+							@include smoothTrans;
+						}
 					}
 				}
 			}
