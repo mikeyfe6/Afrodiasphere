@@ -116,7 +116,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
       /> */}
 
 			<div className={`theme-${color}`}>
-				<img src={avatar} alt="avatar" style={{ border: '3px solid white' }} />
+				<img src={avatar} alt="avatar" />
 
 				<h1>{username}</h1>
 
@@ -198,13 +198,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 					</a> */}
 				</div>
 				<Link to="/">
-					<img
-						src={afroLogo}
-						alt=""
-						style={{
-							width: '100px'
-						}}
-					/>
+					<img src={afroLogo} alt="" className={`theme-footer`} />
 				</Link>
 			</div>
 		</AdsLayout>

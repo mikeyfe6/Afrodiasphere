@@ -47,17 +47,19 @@
 				font-style: italic;
 				font-size: 0.75rem;
 				color: #2eb4e9;
+				margin-top: -10px;
 			}
 
 			:nth-child(4) {
 				min-height: 175px;
 				padding: 0.75em 0;
-				font-size: 0.875rem;
+				font-size: 0.75rem;
 				color: color.adjust($whiteColor, $lightness: -25%);
 			}
 
 			:nth-child(5) {
 				min-height: 20px;
+				font-size: 0.875rem;
 
 				> a {
 					color: #cc9932;

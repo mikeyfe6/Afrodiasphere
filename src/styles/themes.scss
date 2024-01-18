@@ -9,7 +9,6 @@
 
 		h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -26,8 +25,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: white;
 				color: black;
@@ -51,6 +48,7 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
 	&-grijs {
 		background: linear-gradient(to bottom, grey, white);
@@ -58,7 +56,6 @@
 
 		h1 {
 			color: #595959;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -73,8 +70,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: rgba(255, 255, 255, 0.797);
 				color: #878787;
@@ -89,8 +84,6 @@
 			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: grey;
 
 				&:hover {
@@ -99,6 +92,7 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // PINK PINK PINK
 	&-roze {
 		background: linear-gradient(to bottom, pink, grey);
@@ -106,7 +100,6 @@
 
 		h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -121,8 +114,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: #a8a8a8;
 				color: white;
@@ -137,8 +128,6 @@
 			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: pink;
 
 				&:hover {
@@ -147,31 +136,29 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
 	&-zwart {
 		background: linear-gradient(to bottom, black, grey);
 		@include pageTheme;
 
-		h1 {
+		> h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
-		p:nth-of-type(1) {
+		> p:nth-of-type(1) {
 			color: black;
 			background-color: white;
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		> p:nth-of-type(2) {
 			color: white;
 			@include pageBiography;
 		}
 
 		&-links {
-			margin: 15px 0;
-
-			a {
+			> a {
 				background: #878787;
 				color: white;
 				border: 2px solid white;
@@ -184,9 +171,7 @@
 		&-icons {
 			@include pageSocials;
 
-			a {
-				margin: 0 15px;
-				bottom: 10px;
+			> a {
 				color: white;
 
 				&:hover {
@@ -195,6 +180,7 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
 	&-bruin {
 		background: linear-gradient(to bottom, brown, white);
@@ -202,7 +188,6 @@
 
 		h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -217,8 +202,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: white;
 
@@ -242,6 +225,7 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
 	&-groen {
 		background: linear-gradient(to bottom, green, white);
@@ -249,7 +233,6 @@
 
 		h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -264,8 +247,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: white;
 
@@ -289,6 +270,7 @@
 			}
 		}
 	}
+
 	// ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
 	&-afrotheme {
 		background: linear-gradient(to bottom, #e6541b, black);
@@ -296,7 +278,6 @@
 
 		h1 {
 			color: white;
-			margin: 25px 0 10px;
 		}
 
 		p:nth-of-type(1) {
@@ -311,8 +292,6 @@
 		}
 
 		&-links {
-			margin: 15px 0;
-
 			a {
 				background: white;
 
@@ -328,14 +307,20 @@
 			@include pageSocials;
 
 			a {
-				margin: 0 15px;
-				bottom: 10px;
 				color: #e6541b;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
+		}
+	}
+
+	&-footer {
+		max-width: 150px;
+
+		@include mobile {
+			max-width: 100px;
 		}
 	}
 }
