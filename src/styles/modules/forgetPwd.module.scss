@@ -45,6 +45,7 @@
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.5em;
 
 		input {
@@ -57,6 +58,10 @@
 			border-radius: 3px;
 			font-size: 16px;
 			color: $blackColor;
+
+			@include mobile {
+				max-width: 100%;
+			}
 
 			&::placeholder {
 				font-size: 0.95rem;
@@ -72,6 +77,10 @@
 
 		button {
 			@include button;
+
+			@include mobile {
+				margin-left: auto;
+			}
 		}
 
 		.logerror {
