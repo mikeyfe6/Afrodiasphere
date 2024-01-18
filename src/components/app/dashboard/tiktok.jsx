@@ -75,7 +75,6 @@ const TikTok = ({
 				// className={socialInput}
 			/>
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla TikTok-profiel op"
 				style={{

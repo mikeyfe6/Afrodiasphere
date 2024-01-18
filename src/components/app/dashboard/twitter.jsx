@@ -79,7 +79,6 @@ const Twitter = ({
 				// className={socialInput}
 			/>
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla Twitter-profiel op"
 				style={{

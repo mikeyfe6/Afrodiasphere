@@ -69,7 +69,6 @@ const Biography = ({
 			/>
 
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla biografie op"
 				style={{

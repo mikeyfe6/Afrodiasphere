@@ -70,10 +70,9 @@ const Slider = () => {
 								className={styles.avatar}
 								alt={ads.profiel}
 							/>
-							<div className={styles.lead}>{ads.profiel}</div>
+							<div>{ads.profiel}</div>
 							<div>{ads.occupate || '..'}</div>
 							<div
-								className={styles.homeAdsBio}
 								dangerouslySetInnerHTML={{
 									__html: ads.biografie
 								}}

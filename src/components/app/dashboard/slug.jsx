@@ -81,7 +81,6 @@ const Slug = ({
 			/>
 
 			<button
-				// className={btn}
 				type="submit"
 				disabled
 				style={{

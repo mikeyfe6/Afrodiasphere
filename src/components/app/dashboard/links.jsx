@@ -208,7 +208,6 @@ const Links = ({
 				{/* ${nextoClear} */}
 				<div className={styles.buttonsOnline}>
 					<button
-						className={`${styles.btn} ${styles.btnSecondary}`}
 						onClick={event => {
 							createLink()
 							event.preventDefault()
@@ -217,7 +216,6 @@ const Links = ({
 						Creëer link
 					</button>
 					<button
-						className={styles.btn}
 						style={{ background: '#d9534f', color: 'white' }}
 						onClick={event => {
 							linkTitle.current.value = ''
@@ -253,7 +251,6 @@ const Links = ({
 								/>
 							</div>
 							<button
-								className={styles.btn}
 								title="Sla nieuwe titel op"
 								onClick={event => {
 									editTheLink({
@@ -293,7 +290,6 @@ const Links = ({
 								/>
 							</div>
 							<button
-								className={styles.btn}
 								title="Sla nieuwe hyperlink op"
 								onClick={event => {
 									editTheHyperLink({

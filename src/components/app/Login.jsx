@@ -50,10 +50,6 @@ const LoginPage = () => {
 		e.preventDefault()
 	}
 
-	React.useEffect(() => {
-		console.log(usernameRef.current?.value)
-	}, [])
-
 	const handleSubmitLogin = async e => {
 		e.preventDefault()
 
@@ -137,7 +133,7 @@ const LoginPage = () => {
 	return (
 		<section className={styles.login}>
 			<div className={styles.header}>
-				<h1 className={styles.xl}>Log in / Registeer</h1>
+				<h1>Log in / Registeer</h1>
 				<img src={mamaAfrica} alt="" />
 			</div>
 

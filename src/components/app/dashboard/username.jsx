@@ -71,7 +71,6 @@ const Username = ({
 				}}
 			/>
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla gebruikersnaam op"
 				style={{

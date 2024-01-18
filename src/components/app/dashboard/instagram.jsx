@@ -81,7 +81,6 @@ const Instagram = ({
 			/>
 
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla Instagram-profiel op"
 				style={{

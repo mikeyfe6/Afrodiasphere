@@ -159,11 +159,9 @@ const DashboardPage = () => {
 						fontSize: '0.75rem',
 						color: 'white',
 						padding: '7.5px 20px',
-
 						background: 'linear-gradient(135deg, #1a1a1a, #0e0e0e)',
 						border: '3px #cc9932 solid'
 					}}
-					className={styles.btn}
 					href="#"
 					title="Uitloggen"
 					onClick={e => {

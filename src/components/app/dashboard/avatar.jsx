@@ -127,7 +127,7 @@ const Avatar = ({
 
 			<div className={styles.avatarButtons}>
 				<button
-					className={`${styles.btn} ${styles.addBtn}`}
+					className={styles.addBtn}
 					onClick={event => {
 						event.preventDefault()
 						fileInputRef.current.click()
@@ -138,7 +138,6 @@ const Avatar = ({
 					Avatar
 				</button>
 				<button
-					className={`${styles.btn} ${styles.btnLight} ${styles.resetBtn}`}
 					type="reset"
 					onClick={deleteAvatar}
 					title="Verwijder jouw avatar"
@@ -161,7 +160,7 @@ const Avatar = ({
 					}}
 				/>
 				<button
-					className={`${styles.btn} ${styles.btnSecondary} ${styles.submitBtn}`}
+					className={styles.submitBtn}
 					type="submit"
 					title="Sla jouw avatar op"
 				>

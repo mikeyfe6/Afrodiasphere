@@ -125,7 +125,6 @@ const Terminate = ({
 			/>
 
 			<button
-				// className={btn}
 				type="submit"
 				style={{
 					paddingTop: '5px',

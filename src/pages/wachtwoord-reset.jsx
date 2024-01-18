@@ -15,10 +15,8 @@ const ResetPwdPage = () => (
 	<Layout>
 		<section className={styles.resetPwd}>
 			<div>
-				<h1 className={styles.md}>Nieuw wachtwoord</h1>
-				<p className={styles.lead}>
-					Voer hieronder jouw verificatiecode en een nieuwe wachtwoord in
-				</p>
+				<h1>Nieuw wachtwoord</h1>
+				<p>Voer hieronder jouw verificatiecode en een nieuwe wachtwoord in</p>
 				<ResetPassword />
 			</div>
 			<img src={mamaAfrica} alt="" />

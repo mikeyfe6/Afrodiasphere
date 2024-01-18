@@ -70,7 +70,6 @@ const Email = ({
 			/>
 
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla e-mailadres op"
 				style={{

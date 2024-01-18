@@ -15,8 +15,8 @@ const ForgetPwdPage = () => (
 	<Layout>
 		<section className={styles.forgetPwd}>
 			<div>
-				<h1 className={styles.md}>Wachtwoord vergeten</h1>
-				<p className={styles.lead}>
+				<h1>Wachtwoord vergeten</h1>
+				<p>
 					Voer hieronder jouw e-mailadres in & je ontvangt een e-mail met daarin
 					de verificatiecode voor het resetten van jouw wachtwoord
 				</p>

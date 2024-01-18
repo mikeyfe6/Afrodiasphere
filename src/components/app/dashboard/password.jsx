@@ -56,7 +56,6 @@ const Password = ({
 			/>
 
 			<button
-				// className={`${btn} ${btnSecondary} ${submitBtn}`}
 				type="submit"
 				title="Sla nieuw wachtwoord op"
 				style={{

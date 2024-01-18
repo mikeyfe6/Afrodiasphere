@@ -68,7 +68,6 @@ const Profile = ({
 				}}
 			/>
 			<button
-				// className={styles.btn}
 				type="submit"
 				title="Sla profielnaam op"
 				style={{

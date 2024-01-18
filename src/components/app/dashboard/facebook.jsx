@@ -77,10 +77,8 @@ const Facebook = ({
 				name="fblink"
 				id="fblink"
 				placeholder="jouwprofiel"
-				// className={socialInput}
 			/>
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla Facebook-profiel op"
 				style={{

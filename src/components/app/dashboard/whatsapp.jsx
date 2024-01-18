@@ -80,7 +80,6 @@ const Whatsapp = ({
 				// className={socialInput}
 			/>
 			<button
-				// className={btn}
 				type="submit"
 				title="Sla Whatsapp-profiel op"
 				style={{

@@ -9,16 +9,12 @@ import mamaAfrica from '../images/mamafrica.png'
 const Intro = () => (
 	<section className={styles.intro}>
 		<div>
-			<h1 className={styles.xl}>Afrodiasphere</h1>
-			<p className={styles.lead}>
+			<h1>Afrodiasphere</h1>
+			<p>
 				<small style={{ color: '#ababab' }}>JOIN THE MOVEMENT !</small> <br />{' '}
 				Klik{' '}
 				<Link to="/login/">
-					<button
-						className={styles.btn}
-						title="Ga naar inloggen / registreren"
-						type="button"
-					>
+					<button title="Ga naar inloggen / registreren" type="button">
 						hier
 					</button>
 				</Link>{' '}
