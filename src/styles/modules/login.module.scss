@@ -250,9 +250,13 @@
 
 			&-text {
 				font-size: 0.875rem;
-				font-weight: 200;
+				font-weight: 300;
 				line-height: 20px;
 				letter-spacing: 0.5px;
+
+				@include mobile {
+					font-size: 0.75rem;
+				}
 			}
 
 			&-container {
