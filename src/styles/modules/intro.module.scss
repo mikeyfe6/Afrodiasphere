@@ -30,7 +30,7 @@
 
 	> img {
 		object-fit: contain;
-		max-width: 250px;
+		width: 250px;
 
 		@include tablet {
 			position: absolute;
