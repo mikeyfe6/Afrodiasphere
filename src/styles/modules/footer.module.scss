@@ -26,20 +26,12 @@ footer {
 	a:nth-of-type(2) {
 		filter: grayscale(100%);
 		padding-left: 2.5px;
-
 		color: $whiteColor;
 
 		img {
-			filter: grayscale(100%);
 			vertical-align: middle;
 			margin-left: 2.5px;
 			width: 25px;
-
-			@include smoothTrans;
-
-			&:hover {
-				filter: grayscale(0%);
-			}
 		}
 
 		@include smoothTrans;

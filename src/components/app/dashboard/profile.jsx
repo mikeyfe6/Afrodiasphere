@@ -54,7 +54,7 @@ const Profile = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitProfile} className={styles.profileInput}>
+		<form onSubmit={submitProfile} className={styles.profileField}>
 			<label htmlFor="profile">Profielnaam</label>
 			<input
 				onChange={setProfileHandler}
@@ -63,18 +63,8 @@ const Profile = ({
 				maxLength="35"
 				name="text"
 				id="profile"
-				style={{
-					cursor: 'pointer'
-				}}
 			/>
-			<button
-				type="submit"
-				title="Sla profielnaam op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla profielnaam op">
 				Opslaan
 			</button>
 		</form>

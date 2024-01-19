@@ -2,16 +2,68 @@
 
 .grid-container {
 	display: grid;
+	gap: 1em;
 	min-height: calc(100vh - 290px);
-	grid-template-columns: 0.3fr 1.3fr 1fr;
+	grid-template-columns: 0.5fr 1.3fr 1.2fr;
 	grid-template-rows: 0fr 2.8fr;
-	gap: 0px 0px;
 	grid-template-areas:
 		'Sidebar Dashboard Dashboard Slug'
 		'Sidebar Dashboard Dashboard Preview'
 		'Sidebar Dashboard Dashboard Preview';
 
-	background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), $primaryColor);
+	background: linear-gradient(135deg, rgba(0 0 0 / 50%), $primaryColor);
+
+	@include desktop {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:
+			'Sidebar Sidebar Slug'
+			'Dashboard Dashboard Preview'
+			'Dashboard Dashboard Preview';
+	}
+
+	@include tablet {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:
+			'Sidebar Slug '
+			'Dashboard Dashboard'
+			'Dashboard Dashboard'
+			'Preview Preview';
+	}
+
+	@include mobile {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'Sidebar'
+			'Dashboard'
+			'Dashboard'
+			'Preview';
+	}
+
+	section {
+		> h2 {
+			color: $whiteColor;
+			text-decoration: underline;
+			text-decoration-color: $blackColor;
+			text-underline-offset: 5px;
+			text-align: center;
+			margin-bottom: 1em;
+			font-size: 1.75rem;
+			background: $primaryColor;
+			border-radius: 5px;
+			outline: 3px solid $primaryColor;
+		}
+
+		> hr {
+			border: 1px solid white;
+			opacity: 0.125;
+			width: 50%;
+			margin: 3em auto 1em;
+		}
+	}
+
+	// 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+	@include card(1em, 1em);
 }
 
 // SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR  <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR
@@ -19,22 +71,28 @@
 	grid-area: Sidebar;
 	border: 3px solid $primaryColor;
 	background-color: $blackColor;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
-	.btn {
+	@include desktop {
+		flex-direction: row;
+		align-items: center;
+		padding: 0.75em 1em;
+	}
+
+	@include card(0, 1em);
+
+	button {
+		align-self: flex-end;
+
 		@include smoothTrans;
+
 		&:hover {
-			border-color: $secondaryColor !important;
+			color: $secondaryColor;
 		}
 	}
 }
-
-// NAVIGATION
-// .Navigation {
-//   grid-area: Navigation;
-//   // background: linear-gradient(to bottom, white, #ededed);
-//   background: linear-gradient(to left, white, $primaryColor) no-repeat 0 0 /
-//     cover;
-// }
 
 // PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW  <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW
 .preview {
@@ -44,9 +102,10 @@
 	display: flex;
 	justify-content: center;
 
+	@include card(0, 1em);
+
 	.iphone {
 		&-frame {
-			position: -webkit-sticky;
 			position: sticky;
 			overflow: hidden;
 			height: 675px;
@@ -111,6 +170,44 @@
 	background-color: $blackColor;
 	border: 3px solid $primaryColor;
 
+	@include card(0, 2em);
+
+	.avatar-w-profile-info {
+		display: flex;
+		justify-content: space-evenly;
+		gap: 2em;
+
+		@include desktop {
+			flex-direction: column;
+		}
+
+		.profile-info {
+			flex: 55%;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75em;
+		}
+	}
+
+	.occupation-w-bio {
+		display: flex;
+		justify-content: space-between;
+		margin: 2.5em 0;
+
+		gap: 2em;
+
+		label {
+			color: $primaryColor;
+			font-size: 0.75em;
+		}
+	}
+
+	.socials {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+		grid-gap: 1em;
+	}
+
 	.loading-complete {
 		color: white;
 		background-color: #57a55f;
@@ -131,50 +228,16 @@
 			height: 3px;
 		}
 	}
-
-	.avatar-profile-info {
-		display: flex;
-		justify-content: space-evenly;
-
-		> :nth-child(1) {
-			flex: 45%;
-		}
-
-		> :nth-child(2) {
-			flex: 55%;
-		}
-	}
-
-	.profile-info {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.bioAndOccupateCont {
-		display: flex;
-		justify-content: space-evenly;
-		margin: 2.5em 0;
-		flex-wrap: wrap;
-		gap: 2em;
-
-		label {
-			color: $primaryColor;
-			font-size: 0.625em;
-		}
-	}
 }
-
-// ----------- //
-
-/* Hide the browser's default checkbox */
-
-// ----------- //
-
-// ---------------------------------------------------------------------------------------- // COLORS
 
 // LINK LINK LINK LINK LINK LINK LINK LINK LINK <--------------------------------------------------------------------------------> LINK LINK LINK LINK LINK LINK LINK LINK
 .slug {
 	grid-area: Slug;
+
+	> div {
+		text-align: center;
+		font-size: 0.7rem;
+	}
 
 	.usLinkAfro {
 		border: 3px solid $primaryColor;
@@ -200,7 +263,7 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			width: 200px;
+			max-width: 100%;
 			color: $primaryColor;
 
 			&:hover {
@@ -208,142 +271,4 @@
 			}
 		}
 	}
-}
-
-@media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
-}
-
-@media (max-width: 40em) {
-	.grid-container {
-		margin: 2.5px !important;
-		padding: 0px !important;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		grid-template-rows: 1fr;
-		gap: 0px 0px;
-		grid-template-areas:
-			'Sidebar'
-			'Dashboard'
-			'Preview'
-			'Link';
-
-		.dashboard {
-			padding: 1rem;
-
-			.bioAndOccupateCont {
-				margin: 1.5em 0;
-
-				:first-child {
-					gap: 0 !important;
-
-					label {
-						transform: scale(0.75);
-					}
-				}
-
-				.bioInput {
-					width: 22.5em;
-					height: 7.5em;
-					padding: 17.5px;
-				}
-			}
-
-			.social-cont {
-				form {
-					padding-bottom: 1.5em;
-					border-bottom: 3px rgba(255, 255, 255, 0.2) solid;
-
-					button {
-						width: 75%;
-					}
-				}
-			}
-
-			.mobileHr {
-				margin: 50px auto !important;
-			}
-
-			.vl {
-				display: none;
-			}
-
-			.avatarformcont {
-				flex-direction: column;
-			}
-
-			.pickColor {
-				.chooseColor {
-					transform: scale(0.8);
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 64em) {
-	.grid-container {
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		grid-template-rows: 1fr;
-		gap: 0px 0px;
-		grid-template-areas:
-			'Sidebar '
-			'Dashboard'
-			'Preview'
-			'Link';
-
-		.dashboard {
-			.avatarformcont {
-				flex-direction: column;
-			}
-		}
-
-		.sidebar {
-			background: linear-gradient(to right, $blackColor, $primaryColor);
-		}
-
-		.slug {
-			.usLinkAfro {
-				color: black;
-				background: white;
-			}
-
-			.usLinkSite {
-				background: black;
-				color: white;
-			}
-
-			.userLink {
-				color: $primaryColor;
-				width: 100% !important;
-
-				&:hover {
-					color: $secondaryColor;
-				}
-			}
-		}
-	}
-}
-
-@media (max-width: 90em) {
-	.grid-container {
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		grid-template-rows: 1fr;
-		gap: 0px 0px;
-		grid-template-areas:
-			'Sidebar'
-			'Dashboard'
-			'Preview'
-			'Link';
-
-		.sidebar {
-			background: linear-gradient(to right, $blackColor, $primaryColor);
-
-			h5 {
-				text-align: left;
-			}
-		}
-	}
-}
-
-.logerror {
-	color: red;
 }

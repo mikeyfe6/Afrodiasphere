@@ -1,18 +1,24 @@
 @import '../../configs/globals';
 
 .avatar {
+	flex: 45%;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 	gap: 2em;
 
+	input {
+		display: none;
+	}
+
 	&-image {
-		width: 150px;
 		min-width: 150px;
 		height: 150px;
 		border-radius: 50%;
 		object-fit: cover;
+		overflow: hidden;
 		background: $whiteColor;
+		border: 3px solid $whiteColor;
 	}
 
 	&-buttons {
@@ -20,21 +26,25 @@
 		flex-direction: column;
 		gap: 1em;
 
-		.add-btn {
-			margin: 5px;
-			width: 100px;
-		}
+		button {
+			padding: 0.5em 1em;
+			text-align: center;
+			border-radius: 3px;
 
-		.reset-btn {
-			margin: 5px;
-			width: 100px;
-			background-color: $errorColor;
-			color: $whiteColor;
-		}
+			&.add-btn {
+				background-color: $whiteColor;
+				color: $ashColor;
+			}
 
-		.submit-btn {
-			margin: 5px;
-			width: 100px;
+			&.reset-btn {
+				background-color: $errorColor;
+				color: $whiteColor;
+			}
+
+			&.submit-btn {
+				background-color: $secondaryColor;
+				color: $whiteColor;
+			}
 		}
 	}
 }

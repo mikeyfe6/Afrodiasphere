@@ -48,7 +48,7 @@
 						border-radius: 5px;
 
 						&:hover {
-							background: $secondaryColor;
+							opacity: 0.75;
 							color: $blackColor;
 
 							@include smoothTrans;

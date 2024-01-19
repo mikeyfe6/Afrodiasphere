@@ -22,7 +22,7 @@ const Intro = () => (
 				registreren..
 			</p>
 		</div>
-		<img src={mamaAfrica} alt="" width="250"/>
+		<img src={mamaAfrica} alt="" />
 	</section>
 )
 

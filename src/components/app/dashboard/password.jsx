@@ -39,7 +39,7 @@ const Password = ({
 	}
 
 	return (
-		<form onSubmit={submitPassword} className={styles.profileInput}>
+		<form onSubmit={submitPassword} className={styles.profileField}>
 			<label htmlFor="password"> Wachtwoord </label>
 			<input
 				onChange={setPasswordHandler}
@@ -50,18 +50,13 @@ const Password = ({
 				id="password"
 				pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 				title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
-				style={{
-					cursor: 'pointer'
-				}}
+				autoComplete="new-password"
 			/>
 
 			<button
 				type="submit"
 				title="Sla nieuw wachtwoord op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
+				className={styles.updateBtn}
 			>
 				Update
 			</button>

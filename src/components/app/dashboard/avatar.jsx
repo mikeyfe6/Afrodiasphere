@@ -116,14 +116,7 @@ const Avatar = ({
 
 	return (
 		<form onSubmit={handleSubmit} className={styles.avatar}>
-			<div>
-				<img
-					src={preview}
-					alt=""
-					className={styles.avatarImage}
-					style={{ border: '3px solid white' }}
-				/>{' '}
-			</div>
+			<img src={preview} alt="" className={styles.avatarImage} />
 
 			<div className={styles.avatarButtons}>
 				<button
@@ -138,6 +131,7 @@ const Avatar = ({
 					Avatar
 				</button>
 				<button
+					className={styles.resetBtn}
 					type="reset"
 					onClick={deleteAvatar}
 					title="Verwijder jouw avatar"
@@ -147,7 +141,6 @@ const Avatar = ({
 				<input
 					type="file"
 					accept="image/*"
-					style={{ display: 'none' }}
 					ref={fileInputRef}
 					onChange={event => {
 						const file = event.target.files[0]

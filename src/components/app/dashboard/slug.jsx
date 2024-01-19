@@ -63,7 +63,7 @@ const Slug = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitSlug} className={styles.profileInput}>
+		<form onSubmit={submitSlug} className={styles.profileField} data-hidden>
 			<label htmlFor="slug">Slug</label>
 			<input
 				onChange={setSlugHandler}

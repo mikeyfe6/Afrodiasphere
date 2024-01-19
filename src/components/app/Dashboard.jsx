@@ -43,6 +43,14 @@ const DashboardPage = () => {
 		}
 	}, [])
 
+	const location = useLocation()
+
+	const apiURL = process.env.GATSBY_BACKEND_URL
+	const baseURL = location.origin
+
+	const AdsUser = getUser()
+	const token = AdsUser.jwt
+
 	const [userId, setUserId] = useState(null)
 	const [gatsbyId, setGatsbyId] = useState(null)
 
@@ -72,14 +80,6 @@ const DashboardPage = () => {
 	const [links, setLinks] = useState([])
 
 	const [color, setColor] = useState('')
-
-	const location = useLocation()
-
-	const apiURL = process.env.GATSBY_BACKEND_URL
-	const baseURL = location.origin
-
-	const AdsUser = getUser()
-	const token = AdsUser.jwt
 
 	axios.interceptors.response.use(
 		response => {
@@ -122,46 +122,15 @@ const DashboardPage = () => {
 	}, [getUserId])
 
 	return (
-		<div className={`${styles.gridContainer} ${styles.card}`}>
+		<div className={`${styles.gridContainer}`}>
 			{/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
-			<aside
-				id="ads-side"
-				className={`${styles.sidebar} ${styles.card}`}
-				style={{
-					position: 'relative'
-				}}
-			>
-				<h5
-					style={{
-						textAlign: 'center',
-						fontSize: '0.75em',
-						color: 'white'
-					}}
-				>
-					Hi{' '}
-					<span
-						style={{
-							color: '#2eb4e9'
-						}}
-					>
-						{username}
-					</span>{' '}
-					!
+			<aside id="ads-side" className={styles.sidebar}>
+				<h5>
+					Hi <span>{username}</span> !
 				</h5>
 
 				<button
-					style={{
-						position: 'absolute',
-						bottom: '10px',
-						width: '87.5px',
-						right: '10px',
-						fontSize: '0.75rem',
-						color: 'white',
-						padding: '7.5px 20px',
-						background: 'linear-gradient(135deg, #1a1a1a, #0e0e0e)',
-						border: '3px #cc9932 solid'
-					}}
 					href="#"
 					title="Uitloggen"
 					onClick={e => {
@@ -173,17 +142,10 @@ const DashboardPage = () => {
 				</button>
 			</aside>
 
-			{/* NAVIGATION NAVIGATION NAVIGATION NAVIGATION <--------------------------------------------------------------------------------> NAVIGATION NAVIGATION NAVIGATION NAVIGATION */}
-
-			{/* <div
-				className={`${accountStyles.Navigation} ${accountStyles.card}`}
-			></div> */}
-
 			{/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
 
-			<section id="ads-preview" className={`${styles.preview} ${styles.card}`}>
+			<section id="ads-preview" className={styles.preview}>
 				<div className={styles.iphoneFrame}>
-					{' '}
 					<img
 						src={preview}
 						alt=""
@@ -288,29 +250,10 @@ const DashboardPage = () => {
 
 			{/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <-------------------------------------------------------> DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD */}
 
-			<section
-				id="ads-dashboard"
-				className={`${styles.dashboard} ${styles.card}`}
-			>
-				<br />
+			<section id="ads-dashboard" className={styles.dashboard}>
+				<h2>Profiel Info</h2>
 
-				<h2 style={{ textAlign: 'center' }}>
-					<b>
-						<u
-							style={{
-								color: 'white',
-								textDecoration: 'underline',
-								textDecorationColor: 'grey'
-							}}
-						>
-							Profiel Info
-						</u>
-					</b>
-				</h2>
-
-				<br />
-
-				<div className={styles.avatarProfileInfo}>
+				<div className={styles.avatarWProfileInfo}>
 					<Avatar
 						userId={userId}
 						apiURL={apiURL}
@@ -384,7 +327,7 @@ const DashboardPage = () => {
 				)}
 				{error && <ErrorMessage text={error} />}
 
-				<div className={styles.bioAndOccupateCont}>
+				<div className={styles.occupationWBio}>
 					<Occupation
 						userId={userId}
 						apiURL={apiURL}
@@ -404,37 +347,13 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				<hr
-					style={{
-						border: '1px solid white',
-						opacity: '0.025',
-						width: '50%',
-						margin: '50px auto'
-					}}
-					className={styles.mobileHr}
-				/>
+				<hr className={styles.dashHr} />
 
 				{/* SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT <-------------------------------------------------------> SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT */}
 
-				<h2 style={{ textAlign: 'center' }}>
-					<b>
-						<u
-							style={{
-								color: 'white',
-								textDecoration: 'underline',
-								textDecorationColor: 'grey'
-							}}
-						>
-							Social Links
-						</u>
-					</b>
-				</h2>
+				<h2>Social Links</h2>
 
-				<div>
-					{/* <div style={{ position: 'relative' }}>
-						<div className={vl}></div>
-					</div> */}
-
+				<div className={styles.socials}>
 					<Facebook
 						userId={userId}
 						apiURL={apiURL}
@@ -481,31 +400,11 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				<hr
-					style={{
-						border: '1px solid white',
-						opacity: '0.025',
-						width: '50%',
-						margin: '50px auto'
-					}}
-					className={styles.mobileHr}
-				/>
+				<hr className={styles.dashHr} />
 
 				{/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
 
-				<h2 style={{ textAlign: 'center' }}>
-					<b>
-						<u
-							style={{
-								color: 'white',
-								textDecoration: 'underline',
-								textDecorationColor: 'grey'
-							}}
-						>
-							Link List
-						</u>
-					</b>
-				</h2>
+				<h2>Link List</h2>
 
 				<Links
 					userId={userId}
@@ -519,34 +418,11 @@ const DashboardPage = () => {
 					setLinkError={setLinkError}
 				/>
 
-				<br />
-
-				<hr
-					style={{
-						border: '1px solid white',
-						opacity: '0.025',
-						width: '50%',
-						margin: '50px auto'
-					}}
-					className={styles.mobileHr}
-				/>
+				<hr className={styles.dashHr} />
 
 				{/* CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR <------------------------------------------------------>  CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR*/}
 
-				<h2 style={{ textAlign: 'center' }}>
-					<b>
-						<u
-							style={{
-								color: 'white',
-								textDecoration: 'underline',
-								textDecorationColor: 'grey'
-							}}
-						>
-							Thema's
-						</u>
-					</b>
-				</h2>
-				<br />
+				<h2>Thema's</h2>
 
 				<Themes
 					userId={userId}
@@ -556,25 +432,12 @@ const DashboardPage = () => {
 					setColor={setColor}
 					links={links}
 				/>
-
-				<br />
-				<br />
 			</section>
 
 			{/* SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK <-----------------------------------------------> SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK */}
 
-			<aside
-				className={`${styles.slug}`}
-				style={{
-					margin: '10px'
-				}}
-			>
-				<div
-					style={{
-						textAlign: 'center',
-						fontSize: '0.7em'
-					}}
-				>
+			<aside className={`${styles.slug}`}>
+				<div>
 					<div className={styles.usLinkAfro}>
 						<b>Afrodiasphere URL</b>
 					</div>

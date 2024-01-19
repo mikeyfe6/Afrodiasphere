@@ -14,7 +14,7 @@
 
 		> ul {
 			display: flex;
-			min-height: 75px;
+			min-height: 87.5px;
 
 			> li {
 				flex: 1;
@@ -26,6 +26,7 @@
 				> a,
 				> button {
 					@include smoothTrans;
+					padding: 0.375em;
 
 					&:hover {
 						color: $thirdColor;
@@ -33,7 +34,7 @@
 				}
 
 				&:not(:last-child) {
-					border-right: 1px solid $thirdColor;
+					border-right: 1px solid rgba($thirdColor, 0.25);
 				}
 			}
 		}
@@ -78,7 +79,7 @@
 					border-radius: 5px;
 
 					&:hover {
-						background: $secondaryColor;
+						opacity: 0.75;
 						color: $blackColor;
 
 						@include smoothTrans;

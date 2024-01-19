@@ -91,85 +91,75 @@ const Occupation = ({
 
 	return (
 		<form className={styles.occupation}>
-			<input
-				id="bedrijf"
-				type="radio"
-				value="bedrijf"
-				checked={occupate === 'bedrijf'}
-				onChange={onOccupateChange}
-			/>
-			<label
-				htmlFor="bedrijf"
-				className={styles.occupateInput}
-				id="currentBedrijf"
-				title="Ik ben een bedrijf"
-			>
-				Bedrijf
-			</label>
+			<fieldset>
+				<legend>Soort</legend>
+				<input
+					id="bedrijf"
+					type="radio"
+					value="bedrijf"
+					checked={occupate === 'bedrijf'}
+					onChange={onOccupateChange}
+				/>
+				<label htmlFor="bedrijf" id="currentBedrijf" title="Ik ben een bedrijf">
+					Bedrijf
+				</label>
 
-			<input
-				id="zelfstandig"
-				type="radio"
-				value="zelfstandig"
-				checked={occupate === 'zelfstandig'}
-				onChange={onOccupateChange}
-			/>
-			<label
-				htmlFor="zelfstandig"
-				className={styles.occupateInput}
-				id="currentZelfstandig"
-				title="Ik ben zzp-er / eenmanszaak"
-			>
-				Zelfstandig
-			</label>
+				<input
+					id="zelfstandig"
+					type="radio"
+					value="zelfstandig"
+					checked={occupate === 'zelfstandig'}
+					onChange={onOccupateChange}
+				/>
+				<label
+					htmlFor="zelfstandig"
+					id="currentZelfstandig"
+					title="Ik ben zzp-er / eenmanszaak"
+				>
+					Zelfstandig
+				</label>
 
-			<input
-				id="hobbyist"
-				type="radio"
-				value="hobbyist"
-				checked={occupate === 'hobbyist'}
-				onChange={onOccupateChange}
-			/>
-			<label
-				htmlFor="hobbyist"
-				className={styles.occupateInput}
-				id="currentHobbyist"
-				title="Ik ben een hobbyist"
-			>
-				Hobbyist
-			</label>
+				<input
+					id="hobbyist"
+					type="radio"
+					value="hobbyist"
+					checked={occupate === 'hobbyist'}
+					onChange={onOccupateChange}
+				/>
+				<label
+					htmlFor="hobbyist"
+					id="currentHobbyist"
+					title="Ik ben een hobbyist"
+				>
+					Hobbyist
+				</label>
 
-			<input
-				id="stichting"
-				type="radio"
-				value="stichting"
-				checked={occupate === 'stichting'}
-				onChange={onOccupateChange}
-			/>
-			<label
-				htmlFor="stichting"
-				className={styles.occupateInput}
-				id="currentStichting"
-				title="Ik ben een stichting"
-			>
-				Stichting
-			</label>
+				<input
+					id="stichting"
+					type="radio"
+					value="stichting"
+					checked={occupate === 'stichting'}
+					onChange={onOccupateChange}
+				/>
+				<label
+					htmlFor="stichting"
+					id="currentStichting"
+					title="Ik ben een stichting"
+				>
+					Stichting
+				</label>
 
-			<input
-				id="artist"
-				type="radio"
-				value="artist"
-				checked={occupate === 'artist'}
-				onChange={onOccupateChange}
-			/>
-			<label
-				htmlFor="artist"
-				className={styles.occupateInput}
-				id="currentArtist"
-				title="Ik ben een artiest"
-			>
-				Artist
-			</label>
+				<input
+					id="artist"
+					type="radio"
+					value="artist"
+					checked={occupate === 'artist'}
+					onChange={onOccupateChange}
+				/>
+				<label htmlFor="artist" id="currentArtist" title="Ik ben een artiest">
+					Artist
+				</label>
+			</fieldset>
 		</form>
 	)
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-// import * as styles from '../../../styles/modules/avatarStyles.module.scss'
+import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
 
 const Whatsapp = ({
 	userId,
@@ -60,14 +60,13 @@ const Whatsapp = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitWA}>
+		<form onSubmit={submitWA} className={styles.socialField}>
 			<label htmlFor="walink">
-				{/* <FaWhatsapp
-                  size="1.1em"
-                  className={socialIcons}
-                  color="#3FD252"
-                /> */}
-				Whatsapp
+				<i
+					className="fa-brands fa-whatsapp fa-xl"
+					style={{ color: '#3FD252' }}
+				/>
+				<span>wa.me/</span>
 			</label>
 			<input
 				onChange={setWaHandler}
@@ -77,16 +76,8 @@ const Whatsapp = ({
 				id="walink"
 				maxLength="15"
 				placeholder="bijv.: 31612345678"
-				// className={socialInput}
 			/>
-			<button
-				type="submit"
-				title="Sla Whatsapp-profiel op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla Whatsapp-profiel op">
 				Opslaan
 			</button>
 		</form>

@@ -65,6 +65,7 @@ const ResetPwd = () => {
 				name="password"
 				placeholder="Voer een nieuw wachtwoord in"
 				pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+				autoComplete="new-password"
 				title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
 			/>
 			<br />

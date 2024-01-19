@@ -30,7 +30,6 @@ const Username = ({
 				}
 			})
 			setError(null)
-			setUsername('')
 		} catch {
 			setError("Updaten van gebruikersnaam lukt niet, probeer het nog 's")
 			setTimeout(() => setError(null), 5000)
@@ -55,7 +54,7 @@ const Username = ({
 	}, [gatsbyId, token])
 
 	return (
-		<form onSubmit={submitUsername} className={styles.profileInput}>
+		<form onSubmit={submitUsername} className={styles.profileField}>
 			<label htmlFor="username">Gebruikersnaam</label>
 			<input
 				onChange={setUsernameHandler}
@@ -70,14 +69,7 @@ const Username = ({
 					cursor: 'pointer'
 				}}
 			/>
-			<button
-				type="submit"
-				title="Sla gebruikersnaam op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla gebruikersnaam op">
 				Opslaan
 			</button>
 		</form>

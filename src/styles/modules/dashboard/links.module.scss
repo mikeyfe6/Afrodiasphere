@@ -1,65 +1,202 @@
 @import '../../configs/globals';
 
-.links-cont {
-	flex-direction: column;
-	margin: 0px;
-	margin-bottom: 0.5em;
-
-	gap: 1.25em;
-	padding: 1em;
-
-	.updateLinkcont {
-		margin-right: 0;
-	}
-
-	.updateHyperLinkcont {
-		margin-right: 0;
-	}
-
-	.deleteShowcont {
-		margin-top: 0.5em !important;
-	}
-
-	.edit-input {
-		width: 100%;
-	}
-}
-
-.link-cont {
+.links {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	margin-bottom: 2.5% !important;
+	margin-bottom: 1em;
 	gap: 1em;
 	flex-wrap: wrap;
 
-	.linksOnline {
+	.newlink,
+	.newhyperlink {
 		display: flex;
-		gap: 2em;
+		gap: 0.5em;
 		flex: 1;
-		justify-content: flex-end;
+		flex-wrap: wrap;
 		align-items: center;
+
+		input {
+			font-size: 16px;
+			outline: none;
+			border: none;
+
+			&::placeholder {
+				font-size: 0.75em;
+				opacity: 0.75;
+			}
+		}
 	}
 
-	.buttonsOnline {
+	.linkbuttons {
 		display: flex;
 		gap: 1em;
 		align-items: flex-end;
+
+		> :nth-child(1) {
+			@include dash-button;
+
+			background: $secondaryColor;
+			color: $whiteColor;
+		}
+
+		> :nth-child(2) {
+			@include dash-button;
+
+			background: $errorColor;
+			color: $whiteColor;
+		}
+	}
+}
+
+.link-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.link {
+	display: flex;
+	justify-content: space-between;
+	border-radius: 10px;
+
+	color: $ashColor;
+
+	background: linear-gradient(
+			to right,
+			white,
+			white,
+			white,
+			white,
+			white,
+			white,
+			rgba(128, 128, 128, 100%)
+		)
+		no-repeat 0 0 / cover;
+
+	gap: 1.25em;
+	padding: 1em 1.5em;
+
+	&-title,
+	&-url {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1em;
+
+		hr {
+			width: 100%;
+			background: $primaryColor;
+			height: 1px;
+			margin: 0.25em 0;
+		}
+
+		button {
+			@include dash-button;
+
+			background: $primaryColor;
+			color: $whiteColor;
+		}
+
+		input {
+			&::placeholder {
+				font-size: 0.75em;
+				opacity: 0.75;
+			}
+
+			&:focus {
+				&::placeholder {
+					color: transparent;
+				}
+			}
+		}
 	}
 
-	input {
-		font-size: 16px !important;
-		min-width: 5em;
-		width: 100%;
-		padding: 8.75px 10px;
-		opacity: 0.75;
-		outline: none;
-		border: none;
-		// border-bottom: 1px solid $secondaryColor !important;
-		border-radius: 3px;
+	&-url {
+		input {
+			text-transform: lowercase;
+		}
+	}
 
-		&::placeholder {
-			font-size: 0.75em;
+	&-btns {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 2em;
+
+		.trash-btn {
+			color: $errorColor;
+			cursor: pointer;
+		}
+
+		.show-btn {
+			display: block;
+			position: relative;
+			user-select: none;
+			padding-left: 20px;
+			margin-bottom: 20px;
+
+			input {
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				height: 20px;
+				width: 20px;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 4;
+			}
+
+			.checkmark {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				height: 20px;
+				width: 20px;
+				background-color: $whiteColor;
+				outline: 1px solid rgba(167, 167, 167, 1);
+
+				&:after {
+					content: '';
+					position: absolute;
+					display: none;
+					left: 6px;
+					top: 2px;
+					width: 6px;
+					height: 12px;
+					border: solid white;
+					border-width: 0 2px 2px 0;
+					transform: rotate(45deg);
+				}
+			}
+
+			/* Hover color when unchecked */
+			&:hover input ~ .checkmark {
+				background-color: $secondaryColor;
+			}
+
+			/* Hover color when checked */
+			&:hover input:checked ~ .checkmark,
+			input:checked ~ .checkmark {
+				background-color: $errorColor;
+				border-radius: 2.5px;
+			}
+
+			/* Show the checkmark when checked */
+			input:checked ~ .checkmark:after {
+				display: block;
+			}
+
+			/* Color when checked */
+			input:checked ~ .checkmark {
+				background-color: $successColor;
+				border-radius: 2.5px;
+			}
 		}
 	}
 }
@@ -91,196 +228,4 @@
 	margin: 0 auto;
 	text-align: center;
 	border-radius: 2px;
-}
-
-.links-cont {
-	// border: 3px solid rgba(128, 128, 128, 0.192);
-	// background: linear-gradient(
-	//     to right,
-	//     white,
-	//     white,
-	//     white,
-	//     white,
-	//     white,
-	//     // rgba(128, 128, 128, 0.087)
-	//     #16b7f275
-	//   )
-	//   no-repeat 0 0 / cover;
-	background: linear-gradient(
-			to right,
-			white,
-			white,
-			white,
-			white,
-			white,
-			white,
-			// rgba(128, 128, 128, 0.087)
-			$primaryColor
-		)
-		no-repeat 0 0 / cover;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	align-content: center;
-	border: 2.5px $primaryColor solid;
-
-	.updateLinkShow {
-		width: 200px;
-		font-size: 0.75em;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		color: $blackColor;
-		font-weight: bold;
-	}
-
-	.updateHyperLinkShow {
-		font-size: 0.75em;
-		width: 200px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		color: $secondaryColor;
-		font-weight: bold;
-
-		a {
-			color: $secondaryColor;
-		}
-	}
-
-	button {
-		background-color: $primaryColor;
-		border: 1px $whiteColor solid;
-		padding-top: 5px;
-		padding-bottom: 5px;
-
-		color: $whiteColor;
-		font-size: 0.7em;
-		margin-left: 1em;
-	}
-
-	.edit-input {
-		border: 0;
-		border-bottom: 1px solid #b4becb77;
-		color: $blackColor;
-		background: transparent;
-		padding: 10px 0px;
-		width: 17.5em;
-		font-size: 16px !important;
-
-		&:focus {
-			outline: none;
-		}
-		&::placeholder {
-			font-size: 0.75em;
-		}
-	}
-
-	.trashBtn:hover {
-		color: #d9534f !important;
-	}
-
-	.updateLinkcont {
-		flex: 1 1 42.5%;
-		display: flex;
-		margin-right: 1em;
-		justify-content: space-around;
-		align-items: center;
-		gap: 1em;
-	}
-
-	.updateHyperLinkcont {
-		flex: 1 1 42.5%;
-		display: flex;
-		margin-right: 1em;
-		justify-content: space-around;
-		align-items: center;
-		gap: 1em;
-	}
-
-	.deleteShowcont {
-		flex: 1 1 15%;
-		display: flex;
-
-		justify-content: space-around;
-		gap: 1em;
-	}
-
-	.inputCont {
-		display: block;
-		position: relative;
-		user-select: none;
-		padding-left: 20px;
-		margin-bottom: 17.5px;
-		font-size: 22px;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-
-		input {
-			position: absolute;
-			opacity: 0;
-			cursor: pointer;
-			height: 17.5px;
-			width: 17.5px;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			z-index: 4;
-		}
-
-		/* Create a custom checkbox */
-		.checkmark {
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			height: 17.5px;
-			width: 17.5px;
-			background-color: #eee;
-
-			&:after {
-				content: '';
-				position: absolute;
-				display: none;
-			}
-		}
-
-		/* On mouse-over, add a grey background color */
-		&:hover input ~ .checkmark {
-			background-color: $lightColor;
-		}
-
-		/* Create the checkmark/indicator (hidden when not checked) */
-		&:hover input:checked ~ .checkmark {
-			background-color: rgb(255, 81, 81);
-			border-radius: 2.5px;
-		}
-
-		/* When the checkbox is checked, add a blue background */
-		input:checked ~ .checkmark {
-			background-color: rgb(43, 169, 43);
-			border-radius: 2.5px;
-		}
-
-		/* Show the checkmark when checked */
-		input:checked ~ .checkmark:after {
-			display: block;
-		}
-
-		/* Style the checkmark/indicator */
-		.checkmark:after {
-			left: 6px;
-			top: 2.5px;
-			width: 3px;
-			height: 7.5px;
-			border: solid white;
-			border-width: 0 3px 3px 0;
-			-webkit-transform: rotate(45deg);
-			-ms-transform: rotate(45deg);
-			transform: rotate(45deg);
-		}
-	}
 }

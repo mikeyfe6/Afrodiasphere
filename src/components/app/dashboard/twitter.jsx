@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-// import * as styles from '../../../styles/modules/avatarStyles.module.scss'
+import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
 
 const Twitter = ({
 	userId,
@@ -60,14 +60,10 @@ const Twitter = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitTW}>
+		<form onSubmit={submitTW} className={styles.socialField}>
 			<label htmlFor="twlink">
-				{/* <FaTwitter
-                  size="1.1em"
-                  className={socialIcons}
-                  color="#1FA1F1"
-                /> */}
-				Twitter
+				<i className="fa-brands fa-x-twitter fa-xl" style={{ color: '#000' }} />
+				twitter.com/
 			</label>
 			<input
 				onChange={setTwHandler}
@@ -78,14 +74,7 @@ const Twitter = ({
 				placeholder="jouwprofiel"
 				// className={socialInput}
 			/>
-			<button
-				type="submit"
-				title="Sla Twitter-profiel op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla Twitter-profiel op">
 				Opslaan
 			</button>
 		</form>

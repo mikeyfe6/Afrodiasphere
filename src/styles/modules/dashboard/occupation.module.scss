@@ -1,28 +1,36 @@
 @import '../../configs/globals';
 
 .occupation {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 1em;
+	fieldset {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		flex-wrap: wrap;
+
+		legend {
+			color: $primaryColor;
+			font-size: 0.75em;
+			margin-bottom: 1em;
+		}
+	}
 
 	input {
 		display: none;
 	}
-}
 
-.occupate-input {
-	background: linear-gradient(135deg, #1a1a1a, $blackColor);
-	text-align: center;
-	min-width: 75px;
-	padding: 10px 7.5px;
-	border: 1px $primaryColor solid;
-	border-radius: 2.5px;
-	cursor: pointer;
+	label {
+		background: linear-gradient(135deg, #1a1a1a, $blackColor);
+		text-align: center;
+		min-width: 100px;
+		padding: 0.75em 1em;
+		border: 1px $primaryColor solid;
+		border-radius: 2.5px;
+		cursor: pointer;
 
-	&:hover {
-		border: 1px $secondaryColor solid;
-		color: rgba(255, 255, 255, 0.8);
+		&:hover {
+			border: 1px $secondaryColor solid;
+			color: rgba(255, 255, 255, 0.8);
+		}
 	}
 }
 

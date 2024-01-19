@@ -168,6 +168,7 @@ const LoginPage = () => {
 								ref={passwordRegRef}
 								type="password"
 								name="passwordreg"
+								autoComplete="new-password"
 								placeholder="wachtwoord"
 								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 								title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."

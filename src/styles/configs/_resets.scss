@@ -105,11 +105,6 @@ section {
 	display: block;
 }
 
-body {
-	background: white;
-	color: black;
-}
-
 blockquote,
 q {
 	quotes: none;
@@ -187,9 +182,9 @@ meter {
 	content: initial;
 }
 
-// :where([hidden]) {
-// 	display: none;
-// }
+:where([hidden], [data-hidden]) {
+	display: none !important;
+}
 
 :where([contenteditable]:not([contenteditable='false'])) {
 	-moz-user-modify: read-write;

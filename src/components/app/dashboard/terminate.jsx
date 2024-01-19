@@ -108,7 +108,7 @@ const Terminate = ({
 	}
 
 	return (
-		<form onSubmit={submitDeleteAds} className={styles.profileInput}>
+		<form onSubmit={submitDeleteAds} className={styles.profileField}>
 			<label htmlFor="deleteAds">Verwijder profiel</label>
 			<input
 				onChange={setDeleteHandler}
@@ -124,15 +124,7 @@ const Terminate = ({
 				// title="geen spaties, alleen '-'"
 			/>
 
-			<button
-				type="submit"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px',
-					background: 'red',
-					color: 'white'
-				}}
-			>
+			<button type="submit" className={styles.terminateBtn}>
 				Wis Profiel
 			</button>
 		</form>

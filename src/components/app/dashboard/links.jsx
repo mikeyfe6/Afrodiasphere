@@ -172,8 +172,8 @@ const Links = ({
 
 	return (
 		<>
-			<div className={styles.linkCont}>
-				<div className={styles.linksOnline}>
+			<div className={styles.links}>
+				<div className={styles.newlink}>
 					<label htmlFor="newlink">
 						<h4 style={{ color: 'white' }}>
 							Titel<span style={{ color: '#cc9932' }}>:</span>
@@ -188,7 +188,7 @@ const Links = ({
 						required
 					/>
 				</div>
-				<div className={styles.linksOnline}>
+				<div className={styles.newhyperlink}>
 					<label htmlFor="newhyperlink">
 						<h4 style={{ color: 'white' }}>
 							Hyperlink<span style={{ color: '#cc9932' }}>:</span>
@@ -205,8 +205,8 @@ const Links = ({
 						required
 					/>
 				</div>
-				{/* ${nextoClear} */}
-				<div className={styles.buttonsOnline}>
+
+				<div className={styles.linkbuttons}>
 					<button
 						onClick={event => {
 							createLink()
@@ -216,7 +216,6 @@ const Links = ({
 						Creëer link
 					</button>
 					<button
-						style={{ background: '#d9534f', color: 'white' }}
 						onClick={event => {
 							linkTitle.current.value = ''
 							hyperLink.current.value = ''
@@ -226,23 +225,20 @@ const Links = ({
 						Reset
 					</button>
 				</div>
-				{/* <div style={{ clear: "both" }} /> */}
+
 				{linkError && <DoThis text={linkError} />}
 			</div>
 
-			<br />
-
-			<ul>
+			<ul className={styles.linkList}>
 				{links.map((link, index) => (
-					<li key={index} className={`${styles.linksCont} ${styles.card}`}>
-						<div className={styles.updateLinkcont}>
+					<li key={index} className={styles.link}>
+						<div className={styles.linkTitle}>
 							<div>
 								<p className={styles.updateLinkShow}>{link.title}</p>
+								<hr />
 								<input
-									className={styles.editInput}
 									id={`editlink${link.id}`}
 									type="text"
-									size="25"
 									value={editLink[link]}
 									onChange={handleEditLink}
 									placeholder="bewerk titel"
@@ -260,11 +256,10 @@ const Links = ({
 									event.preventDefault()
 								}}
 							>
-								Update <br />
-								Titel
+								Update Titel
 							</button>
 						</div>
-						<div className={styles.updateHyperLinkcont}>
+						<div className={styles.linkUrl}>
 							<div>
 								<p className={styles.updateHyperLinkShow}>
 									<a
@@ -276,12 +271,10 @@ const Links = ({
 										{link.hyperlink}
 									</a>
 								</p>
+								<hr />
 								<input
-									className={styles.editInput}
 									id={`hyperlink${link.id}`}
 									type="url"
-									size="25"
-									style={{ textTransform: 'lowercase' }}
 									value={editHyperLink[link]}
 									onChange={handleEditHyperLink}
 									placeholder="bewerk hyperlink"
@@ -299,23 +292,22 @@ const Links = ({
 									event.preventDefault()
 								}}
 							>
-								Update <br /> Hyperlink
+								Update Hyperlink
 							</button>
 						</div>
 
-						<div className={styles.deleteShowcont}>
+						<div className={styles.linkBtns}>
 							<div
-								style={{ cursor: 'pointer', color: 'black' }}
-								// className={trashBtn}
+								className={styles.trashBtn}
 								title="Verwijder deze link"
 								onClick={event => {
 									deleteLink(link)
 									event.preventDefault()
 								}}
 							>
-								Delete Link
+								<i class="fa-solid fa-trash-can fa-lg" />
 							</div>
-							<div className={styles.inputCont}>
+							<div className={styles.showBtn}>
 								<input
 									title="Maak link (ont)zichtbaar"
 									type="checkbox"

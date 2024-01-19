@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-// import * as styles from '../../../styles/modules/avatarStyles.module.scss'
+import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
 
 const TikTok = ({
 	userId,
@@ -60,10 +60,10 @@ const TikTok = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitTK}>
+		<form onSubmit={submitTK} className={styles.socialField}>
 			<label htmlFor="tklink">
-				{/* <SiTiktok size="1.1em" className={socialIcons} color="#4BE1EB" /> */}
-				TikTok
+				<i className="fa-brands fa-tiktok fa-xl" style={{ color: '#4BE1EB' }} />
+				tiktok.com/
 			</label>
 			<input
 				onChange={setTkHandler}
@@ -72,16 +72,8 @@ const TikTok = ({
 				name="tklink"
 				id="tklink"
 				placeholder="jouwprofiel"
-				// className={socialInput}
 			/>
-			<button
-				type="submit"
-				title="Sla TikTok-profiel op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla TikTok-profiel op">
 				Opslaan
 			</button>
 		</form>

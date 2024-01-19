@@ -15,6 +15,12 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 			initialScrollY.current = window.scrollY
 		}
 		setMenuOpen(!isMenuOpen)
+
+		if (!isMenuOpen) {
+			setTimeout(() => {
+				setMenuOpen(false)
+			}, 6000)
+		}
 	}
 
 	useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-// import * as styles from '../../../styles/modules/avatarStyles.module.scss'
+import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
 
 const Facebook = ({
 	userId,
@@ -61,14 +61,13 @@ const Facebook = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitFB}>
+		<form onSubmit={submitFB} className={styles.socialField}>
 			<label htmlFor="fblink">
-				{/* <FaFacebookF
-                  size="1.1em"
-                  className={socialIcons}
-                  color="#4867AA"
-                /> */}
-				Facebook
+				<i
+					className="fa-brands fa-facebook-f fa-xl"
+					style={{ color: '#4867AA' }}
+				/>
+				facebook.com/
 			</label>
 			<input
 				onChange={setFbHandler}
@@ -78,14 +77,7 @@ const Facebook = ({
 				id="fblink"
 				placeholder="jouwprofiel"
 			/>
-			<button
-				type="submit"
-				title="Sla Facebook-profiel op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla Facebook-profiel op">
 				Opslaan
 			</button>
 		</form>

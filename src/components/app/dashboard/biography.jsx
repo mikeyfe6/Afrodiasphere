@@ -61,6 +61,7 @@ const Biography = ({
 				value={biography}
 				type="text"
 				maxLength="140"
+				rows="50"
 				name="text"
 				id="biografie"
 				className={styles.bioInput}
@@ -68,14 +69,7 @@ const Biography = ({
 				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
 			/>
 
-			<button
-				type="submit"
-				title="Sla biografie op"
-				style={{
-					padding: '5px 0',
-					textAlign: 'center'
-				}}
-			>
+			<button type="submit" title="Sla biografie op">
 				Opslaan
 			</button>
 		</form>

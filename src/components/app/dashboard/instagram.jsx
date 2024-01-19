@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-// import * as styles from '../../../styles/modules/avatarStyles.module.scss'
+import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
 
 const Instagram = ({
 	userId,
@@ -60,14 +60,13 @@ const Instagram = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitIG}>
+		<form onSubmit={submitIG} className={styles.socialField}>
 			<label htmlFor="iglink">
-				{/* <FaInstagram
-                  size="1.1em"
-                  className={socialIcons}
-                  color="#F81F58"
-                /> */}
-				Instagram
+				<i
+					className="fa-brands fa-instagram fa-xl"
+					style={{ color: '#F81F58' }}
+				/>
+				instagram.com/
 			</label>
 
 			<input
@@ -77,17 +76,9 @@ const Instagram = ({
 				name="iglink"
 				id="iglink"
 				placeholder="jouwprofiel"
-				// className={socialInput}
 			/>
 
-			<button
-				type="submit"
-				title="Sla Instagram-profiel op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla Instagram-profiel op">
 				Opslaan
 			</button>
 		</form>

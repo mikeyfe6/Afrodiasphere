@@ -44,7 +44,7 @@ const Email = ({
 						Authorization: `Bearer ${token}`
 					}
 				})
-				setEmail(res.data.email)
+				setEmail(res.data.email || '')
 			}
 			getEmail()
 		} catch {
@@ -53,7 +53,7 @@ const Email = ({
 	}, [gatsbyId, token])
 
 	return (
-		<form onSubmit={submitEmail} className={styles.profileInput}>
+		<form onSubmit={submitEmail} className={styles.profileField}>
 			<label htmlFor="email">E-mailadres</label>
 			<input
 				onChange={setEmailHandler}
@@ -69,14 +69,7 @@ const Email = ({
 				}}
 			/>
 
-			<button
-				type="submit"
-				title="Sla e-mailadres op"
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px'
-				}}
-			>
+			<button type="submit" title="Sla e-mailadres op">
 				Opslaan
 			</button>
 		</form>

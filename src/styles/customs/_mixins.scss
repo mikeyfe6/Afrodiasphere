@@ -16,6 +16,13 @@
 	margin: $marginY auto;
 }
 
+@mixin card($marginY: 1em, $paddingX: 1em) {
+	border-radius: 10px;
+	box-shadow: 0 3px 10px rgba(0 0 0 / 33%);
+	padding: $paddingX;
+	margin: $marginY;
+}
+
 @mixin button($yAxis: 0.5em) {
 	background: $primaryColor;
 	color: $ashColor;
@@ -24,6 +31,19 @@
 	font-weight: 500;
 	border-radius: 5px;
 	transition: all 0.2s ease-out;
+
+	&:hover {
+		transform: scale(0.97);
+	}
+}
+
+@mixin dash-button {
+	min-width: 120px;
+	background-color: $whiteColor;
+	color: $ashColor;
+	padding: 0.375em 1em;
+	text-align: center;
+	border-radius: 3px;
 
 	&:hover {
 		transform: scale(0.97);
