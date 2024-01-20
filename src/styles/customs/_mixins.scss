@@ -52,6 +52,10 @@
 	&:hover {
 		transform: scale(0.97);
 	}
+
+	@include mobile {
+		min-width: 100px;
+	}
 }
 
 // dashboard mixins ---------------------------- // dashboard mixins
@@ -85,6 +89,11 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+
+	@include mobile {
+		left: 30%;
+		max-width: 25ch;
+	}
 }
 
 @mixin chooseOccupate {
@@ -98,6 +107,11 @@
 	border-radius: 7.5px;
 	font-size: 0.5em;
 	padding: 2.5px 2.5px;
+
+	@include mobile {
+		left: 35%;
+		max-width: 25ch;
+	}
 }
 
 @mixin chooseBiography {
@@ -111,12 +125,16 @@
 	width: 250px;
 	margin: 0 auto;
 	font-size: 0.6em;
+
+	@include mobile {
+		max-width: 25ch;
+	}
 }
 
 @mixin chooseIcons {
 	display: flex;
 	position: absolute;
-	gap: 17.5px;
+	gap: 1em;
 	top: 90%;
 	left: 50%;
 	transform: translate(-50%, -50%);

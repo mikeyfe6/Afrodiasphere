@@ -2,7 +2,7 @@
 
 .links {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1em;
 	gap: 1em;
@@ -12,7 +12,6 @@
 	.newhyperlink {
 		display: flex;
 		gap: 0.5em;
-		flex: 1;
 		flex-wrap: wrap;
 		align-items: center;
 

@@ -7,6 +7,10 @@
 	justify-content: space-evenly;
 	gap: 2em;
 
+	@include mobile {
+		gap: 1em;
+	}
+
 	input {
 		display: none;
 	}
@@ -19,6 +23,11 @@
 		overflow: hidden;
 		background: $whiteColor;
 		border: 3px solid $whiteColor;
+
+		@include mobile {
+			min-width: 125px;
+			height: 125px;
+		}
 	}
 
 	&-buttons {

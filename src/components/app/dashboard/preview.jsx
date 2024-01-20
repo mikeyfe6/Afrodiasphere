@@ -69,7 +69,7 @@ const Preview = ({
 						rel="noopener noreferrer"
 						target="_blank"
 					>
-						<i className="fa-brands fa-facebook-f fa-xl" />
+						<i className="fa-brands fa-facebook-f" />
 					</a>
 				)}
 
@@ -80,7 +80,7 @@ const Preview = ({
 						rel="noopener noreferrer"
 						target="_blank"
 					>
-						<i className="fa-brands fa-x-twitter fa-xl" />
+						<i className="fa-brands fa-x-twitter" />
 					</a>
 				)}
 
@@ -91,7 +91,7 @@ const Preview = ({
 						rel="noopener noreferrer"
 						target="_blank"
 					>
-						<i className="fa-brands fa-instagram fa-xl" />
+						<i className="fa-brands fa-instagram" />
 					</a>
 				)}
 
@@ -102,7 +102,7 @@ const Preview = ({
 						rel="noopener noreferrer"
 						target="_blank"
 					>
-						<i className="fa-brands fa-whatsapp fa-xl" />
+						<i className="fa-brands fa-whatsapp" />
 					</a>
 				)}
 
@@ -114,7 +114,7 @@ const Preview = ({
 						target="_blank"
 						id="tkhide"
 					>
-						<i className="fa-brands fa-tiktok fa-xl" />
+						<i className="fa-brands fa-tiktok" />
 					</a>
 				)}
 			</div>

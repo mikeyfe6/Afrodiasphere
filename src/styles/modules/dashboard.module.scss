@@ -138,9 +138,13 @@
 			flex-direction: column;
 		}
 
-		@include mobile {
+		@include tablet {
 			flex-direction: column;
 			flex-wrap: wrap;
+		}
+
+		@include mobile {
+			flex-direction: column;
 		}
 
 		.profile-info {
