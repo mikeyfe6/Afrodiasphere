@@ -57,6 +57,7 @@ const Password = ({
 				type="submit"
 				title="Sla nieuw wachtwoord op"
 				className={styles.updateBtn}
+				disabled={setLoading || password === ''}
 			>
 				Update
 			</button>

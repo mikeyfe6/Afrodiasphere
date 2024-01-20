@@ -70,7 +70,11 @@ const Twitter = ({
 					placeholder="jouwprofiel"
 				/>
 			</div>
-			<button type="submit" title="Sla Twitter-profiel op">
+			<button
+				type="submit"
+				title="Sla Twitter-profiel op"
+				disabled={setLoading || twLink === ''}
+			>
 				Opslaan
 			</button>
 		</form>

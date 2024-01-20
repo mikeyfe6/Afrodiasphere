@@ -14,8 +14,8 @@ const Links = ({
 	linkError,
 	setLinkError
 }) => {
-	const linkTitle = useRef()
-	const hyperLink = useRef()
+	const linkTitle = useRef(null)
+	const hyperLink = useRef(null)
 
 	const [editLink, setEditLink] = useState('')
 	const [editHyperLink, setEditHyperLink] = useState('')

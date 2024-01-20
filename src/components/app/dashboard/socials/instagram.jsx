@@ -71,7 +71,11 @@ const Instagram = ({
 					placeholder="jouwprofiel"
 				/>
 			</div>
-			<button type="submit" title="Sla Instagram-profiel op">
+			<button
+				type="submit"
+				title="Sla Instagram-profiel op"
+				disabled={setLoading || igLink === ''}
+			>
 				Opslaan
 			</button>
 		</form>

@@ -116,15 +116,15 @@ const Terminate = ({
 				type="text"
 				name="deleteAds"
 				id="deleteAds"
-				// readOnly
-				// disabled
 				placeholder="controle: profielnaam?"
 				maxLength="25"
-				// pattern="[^\s]+"
-				// title="geen spaties, alleen '-'"
 			/>
 
-			<button type="submit" className={styles.terminateBtn}>
+			<button
+				type="submit"
+				className={styles.terminateBtn}
+				disabled={setLoading || deleteAds === ''}
+			>
 				Wis Profiel
 			</button>
 		</form>

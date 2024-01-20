@@ -71,7 +71,11 @@ const Facebook = ({
 					placeholder="jouwprofiel"
 				/>
 			</div>
-			<button type="submit" title="Sla Facebook-profiel op">
+			<button
+				type="submit"
+				title="Sla Facebook-profiel op"
+				disabled={setLoading || fbLink === ''}
+			>
 				Opslaan
 			</button>
 		</form>

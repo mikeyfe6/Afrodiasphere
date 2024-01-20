@@ -71,7 +71,11 @@ const Whatsapp = ({
 					placeholder="bijv.: 31612345678"
 				/>
 			</div>
-			<button type="submit" title="Sla Whatsapp-profiel op">
+			<button
+				type="submit"
+				title="Sla Whatsapp-profiel op"
+				disabled={setLoading || waLink === ''}
+			>
 				Opslaan
 			</button>
 		</form>

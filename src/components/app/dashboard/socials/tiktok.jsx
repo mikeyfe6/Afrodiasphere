@@ -70,7 +70,11 @@ const TikTok = ({
 					placeholder="jouwprofiel"
 				/>
 			</div>
-			<button type="submit" title="Sla TikTok-profiel op">
+			<button
+				type="submit"
+				title="Sla TikTok-profiel op"
+				disabled={setLoading || tkLink === ''}
+			>
 				Opslaan
 			</button>
 		</form>

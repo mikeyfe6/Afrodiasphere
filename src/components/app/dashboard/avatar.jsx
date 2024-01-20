@@ -156,6 +156,7 @@ const Avatar = ({
 					className={styles.submitBtn}
 					type="submit"
 					title="Sla jouw avatar op"
+					disabled={image === null}
 				>
 					Opslaan
 				</button>
