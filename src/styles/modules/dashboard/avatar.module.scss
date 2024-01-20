@@ -40,6 +40,11 @@
 			text-align: center;
 			border-radius: 3px;
 
+			@include mobile {
+				min-width: 100px;
+				font-size: 0.875rem;
+			}
+
 			&.add-btn {
 				background-color: $whiteColor;
 				color: $ashColor;

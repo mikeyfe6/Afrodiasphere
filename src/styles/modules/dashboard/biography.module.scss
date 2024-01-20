@@ -9,6 +9,10 @@
 	max-width: 500px;
 	width: 100%;
 
+	@include mobile {
+		max-width: 100%;
+	}
+
 	label {
 		align-self: flex-start;
 		font-size: 0.75em;

@@ -179,6 +179,7 @@
 
 		@include mobile {
 			grid-template-columns: 1fr;
+			grid-gap: 2.5em;
 		}
 	}
 
