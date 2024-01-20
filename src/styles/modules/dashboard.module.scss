@@ -30,7 +30,7 @@
 			'Preview Preview';
 	}
 
-	@include mobile {
+	@include phablet {
 		grid-template-columns: 1fr;
 		grid-template-areas:
 			'Sidebar'
