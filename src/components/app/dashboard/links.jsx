@@ -232,68 +232,72 @@ const Links = ({
 			<ul className={styles.linkList}>
 				{links.map((link, index) => (
 					<li key={index} className={styles.link}>
-						<div className={styles.linkTitle}>
-							<div>
-								<p>{link.title}</p>
-								<hr />
-								<input
-									id={`editlink${link.id}`}
-									type="text"
-									value={editLink[link]}
-									onChange={handleEditLink}
-									placeholder="bewerk titel"
-									minLength="5"
-									required
-								/>
+						<div className={styles.linkFields}>
+							<div className={styles.linkTitle}>
+								<div>
+									<span>
+										<p>{link.title}</p>
+									</span>
+									<hr />
+									<input
+										id={`editlink${link.id}`}
+										type="text"
+										value={editLink[link]}
+										onChange={handleEditLink}
+										placeholder="bewerk titel"
+										minLength="5"
+										required
+									/>
+								</div>
+								<button
+									title="Sla nieuwe titel op"
+									onClick={event => {
+										editTheLink({
+											id: link.id,
+											value: editLink
+										})
+										event.preventDefault()
+									}}
+								>
+									Update Titel
+								</button>
 							</div>
-							<button
-								title="Sla nieuwe titel op"
-								onClick={event => {
-									editTheLink({
-										id: link.id,
-										value: editLink
-									})
-									event.preventDefault()
-								}}
-							>
-								Update Titel
-							</button>
-						</div>
-						<div className={styles.linkUrl}>
-							<div>
-								<p>
-									<a
-										href={`https://${link.hyperlink}`}
-										title={`https://${link.hyperlink}`}
-										rel="noopener noreferrer"
-										target="_blank"
-									>
-										{link.hyperlink}
-									</a>
-								</p>
-								<hr />
-								<input
-									id={`hyperlink${link.id}`}
-									type="url"
-									value={editHyperLink[link]}
-									onChange={handleEditHyperLink}
-									placeholder="bewerk hyperlink"
-									minLength="5"
-									required
-								/>
+							<div className={styles.linkUrl}>
+								<div>
+									<span>
+										<a
+											href={`https://${link.hyperlink}`}
+											title={`https://${link.hyperlink}`}
+											rel="noopener noreferrer"
+											target="_blank"
+										>
+											{link.hyperlink}
+										</a>
+									</span>
+									<hr />
+									<input
+										id={`hyperlink${link.id}`}
+										type="url"
+										value={editHyperLink[link]}
+										onChange={handleEditHyperLink}
+										placeholder="bewerk hyperlink"
+										minLength="5"
+										required
+									/>
+								</div>
+								<button
+									title="Sla nieuwe hyperlink op"
+									onClick={event => {
+										editTheHyperLink({
+											id: link.id,
+											value: editHyperLink
+										})
+										event.preventDefault()
+									}}
+								>
+									Update Hyperlink
+								</button>
 							</div>
-							<button
-								title="Sla nieuwe hyperlink op"
-								onClick={event => {
-									editTheHyperLink({
-										id: link.id,
-										value: editHyperLink
-									})
-									event.preventDefault()
-								}}
-							>
-								Update Hyperlink
-							</button>
 						</div>
 
 						<div className={styles.linkBtns}>

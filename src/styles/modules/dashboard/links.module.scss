@@ -11,13 +11,20 @@
 	.new-title,
 	.new-hyperlink {
 		display: flex;
+
 		gap: 0.5em;
-		flex-wrap: wrap;
+		flex: 1;
+
 		align-items: center;
+
+		@include mobile {
+			flex-wrap: wrap;
+		}
 
 		input {
 			outline: none;
 			border: none;
+			min-width: 150px;
 
 			&:focus {
 				color: $secondaryColor;
@@ -38,6 +45,7 @@
 		display: flex;
 		gap: 1em;
 		align-items: flex-end;
+		margin-left: auto;
 
 		> :nth-child(1) {
 			@include dashButton($secondaryColor, $whiteColor);
@@ -49,75 +57,103 @@
 	}
 }
 
-.link-list {
-	display: flex;
-	flex-direction: column;
-	gap: 1em;
-}
-
 .link {
 	display: flex;
 	justify-content: space-between;
 	border-radius: 10px;
+	gap: 2em;
+	padding: 1em 1.5em;
 
 	@include mobile {
-		flex-wrap: wrap;
+		padding: 0.75em 1em;
+		gap: 1em;
 	}
 
 	color: $ashColor;
-
-	background: linear-gradient(
-			to right,
-			white,
-			white,
-			white,
-			white,
-			white,
-			white,
-			rgba(128, 128, 128, 100%)
-		)
+	background: linear-gradient(145deg, white, white, white, white, #deceae)
 		no-repeat 0 0 / cover;
 
-	gap: 1.25em;
-	padding: 1em 1.5em;
+	&-fields {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+		flex: 90%;
+
+		@include tablet {
+			flex-direction: column;
+		}
+
+		> * {
+			flex: 1;
+		}
+	}
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
 
 	&-title,
 	&-url {
 		display: flex;
-		align-items: center;
 		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
 		gap: 1em;
 
-		hr {
-			width: 100%;
-			background: $primaryColor;
-			height: 1px;
-			margin: 0.25em 0;
+		> div {
+			flex: 1;
+
+			> hr {
+				width: 100%;
+				background: $primaryColor;
+				height: 1px;
+				margin: 0.25em 0;
+			}
+
+			> span {
+				display: block;
+				min-width: 150px;
+				max-width: 50px;
+
+				> a,
+				> p {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					display: block;
+				}
+			}
+
+			> input {
+				&::placeholder {
+					font-size: 0.75em;
+					opacity: 0.75;
+				}
+
+				&:focus {
+					color: $secondaryColor;
+
+					&::placeholder {
+						color: transparent;
+					}
+				}
+			}
 		}
 
 		button {
 			@include dashButton($primaryColor, $whiteColor);
-		}
-
-		input {
-			&::placeholder {
-				font-size: 0.75em;
-				opacity: 0.75;
-			}
-
-			&:focus {
-				color: $secondaryColor;
-
-				&::placeholder {
-					color: transparent;
-				}
-			}
+			white-space: nowrap;
+			min-width: fit-content;
 		}
 	}
 
 	&-url {
-		input {
-			text-transform: lowercase;
+		> div {
+			> input {
+				text-transform: lowercase;
+			}
 		}
 	}
 
@@ -127,6 +163,10 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		gap: 2em;
+
+		flex: 10%;
+
+		margin-left: auto;
 
 		.trash-btn {
 			color: $errorColor;
