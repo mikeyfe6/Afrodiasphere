@@ -1,6 +1,6 @@
 @import '../../configs/globals';
 
-.links {
+.new-link {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -8,8 +8,8 @@
 	gap: 1em;
 	flex-wrap: wrap;
 
-	.newlink,
-	.newhyperlink {
+	.new-title,
+	.new-hyperlink {
 		display: flex;
 		gap: 0.5em;
 		flex-wrap: wrap;
@@ -34,7 +34,7 @@
 		}
 	}
 
-	.linkbuttons {
+	&-btns {
 		display: flex;
 		gap: 1em;
 		align-items: flex-end;
@@ -50,7 +50,7 @@
 }
 
 .link-list {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	gap: 1em;
 }

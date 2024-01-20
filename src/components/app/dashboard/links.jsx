@@ -172,15 +172,15 @@ const Links = ({
 
 	return (
 		<>
-			<div className={styles.links}>
-				<div className={styles.newlink}>
-					<label htmlFor="newlink">
+			<div className={styles.newLink}>
+				<div className={styles.newTitle}>
+					<label htmlFor="newtitle">
 						<h4 style={{ color: 'white' }}>
 							Titel<span style={{ color: '#cc9932' }}>:</span>
 						</h4>
 					</label>
 					<input
-						id="newlink"
+						id="newtitle"
 						type="text"
 						placeholder="voer een titel in"
 						ref={linkTitle}
@@ -188,7 +188,7 @@ const Links = ({
 						required
 					/>
 				</div>
-				<div className={styles.newhyperlink}>
+				<div className={styles.newHyperlink}>
 					<label htmlFor="newhyperlink">
 						<h4 style={{ color: 'white' }}>
 							Hyperlink<span style={{ color: '#cc9932' }}>:</span>
@@ -206,7 +206,7 @@ const Links = ({
 					/>
 				</div>
 
-				<div className={styles.linkbuttons}>
+				<div className={styles.newLinkBtns}>
 					<button
 						onClick={event => {
 							createLink()
