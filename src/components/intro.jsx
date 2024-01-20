@@ -11,8 +11,7 @@ const Intro = () => (
 		<div>
 			<h1>Afrodiasphere</h1>
 			<p>
-				<small style={{ color: '#ababab' }}>JOIN THE MOVEMENT !</small> <br />{' '}
-				Klik{' '}
+				<small style={{ color: '#ababab' }}>JOIN THE MOVEMENT !</small> Klik{' '}
 				<Link to="/login/">
 					<button title="Ga naar inloggen / registreren" type="button">
 						hier

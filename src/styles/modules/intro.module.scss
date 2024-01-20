@@ -6,6 +6,11 @@
 	justify-content: space-between;
 	position: relative;
 
+	small {
+		margin: 0.75em 0;
+		display: block;
+	}
+
 	@include container(1em, 2em);
 
 	@include mobile {
