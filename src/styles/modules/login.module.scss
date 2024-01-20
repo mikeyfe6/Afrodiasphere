@@ -30,14 +30,6 @@
 			object-fit: contain;
 			max-width: 250px;
 
-			@include tablet {
-				position: absolute;
-				right: 0;
-				max-width: 300px;
-				z-index: -1;
-				top: 75%;
-			}
-
 			@include mobile {
 				position: absolute;
 				right: 0;

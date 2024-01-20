@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @import '../../configs/globals';
 
 .new-link {
@@ -79,10 +81,6 @@
 		gap: 1em;
 		flex: 90%;
 
-		@include tablet {
-			flex-direction: column;
-		}
-
 		> * {
 			flex: 1;
 		}
@@ -97,17 +95,25 @@
 	&-title,
 	&-url {
 		display: flex;
-		flex-wrap: wrap;
+
 		align-items: center;
 		justify-content: space-between;
 		gap: 1em;
+
+		@include mobile {
+			flex-direction: column;
+
+			> * {
+				width: 100%;
+			}
+		}
 
 		> div {
 			flex: 1;
 
 			> hr {
 				width: 100%;
-				background: $primaryColor;
+				background: rgba($thirdColor, 0.5);
 				height: 1px;
 				margin: 0.25em 0;
 			}
@@ -115,7 +121,11 @@
 			> span {
 				display: block;
 				min-width: 150px;
-				max-width: 50px;
+				max-width: 165px;
+
+				@include mobile {
+					max-width: 165px;
+				}
 
 				> a,
 				> p {
@@ -167,6 +177,9 @@
 		flex: 10%;
 
 		margin-left: auto;
+
+		border-left: 1px solid rgba($thirdColor, 0.5);
+		padding-left: 1em;
 
 		.trash-btn {
 			color: $errorColor;

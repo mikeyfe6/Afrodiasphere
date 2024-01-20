@@ -15,11 +15,7 @@ body {
 	padding-bottom: 58px;
 	min-height: 100vh;
 
-	@include mobile {
-		font-size: calc(16px + 6 * ((100vw - 320px) / 680));
-	}
-
-	@media (0 <= width <= 319px) {
+	@media (width <= 319px) {
 		display: none;
 	}
 }
@@ -36,7 +32,7 @@ h1 {
 }
 
 main {
-	@include mobile {
+	@include tablet {
 		position: relative;
 	}
 }

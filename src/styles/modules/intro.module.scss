@@ -8,11 +8,6 @@
 
 	@include container(1em, 2em);
 
-	@include tablet {
-		justify-content: flex-start;
-		margin-bottom: 5em;
-	}
-
 	@include mobile {
 		flex-direction: column;
 		align-items: start;
@@ -29,13 +24,6 @@
 	> img {
 		object-fit: contain;
 		width: 250px;
-
-		@include tablet {
-			position: absolute;
-			right: 0;
-			z-index: -1;
-			top: 25%;
-		}
 
 		@include mobile {
 			position: absolute;

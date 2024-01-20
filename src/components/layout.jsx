@@ -6,6 +6,8 @@ import Header from './header'
 import Footer from './footer'
 import MobileMenu from './mobileMenu'
 
+// import ResponsiveTag from '../components/helpers/responsetag'
+
 const Layout = ({ children }) => {
 	const data = useStaticQuery(graphql`
 		query SiteTitleQuery {
@@ -42,7 +44,7 @@ const Layout = ({ children }) => {
 			{isMobile && (
 				<MobileMenu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
 			)}
-			{/* <div style={{ marginTop: isMobile ? '75px' : '0' }}> */}
+
 			<div style={{ paddingTop: isMobile ? '75px' : '0' }}>
 				<main>{children}</main>
 				<Footer />
@@ -56,3 +58,7 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+{
+	/* <ResponsiveTag /> */
+}

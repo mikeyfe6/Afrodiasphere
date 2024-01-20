@@ -1,23 +1,47 @@
+@mixin mini {
+	@media only screen and (width <= 23em) {
+		@content;
+	}
+}
+
+@mixin compact {
+	@media only screen and (width <= 30em) {
+		@content;
+	}
+}
+
 @mixin mobile {
 	@media only screen and (width <= 40em) {
 		@content;
 	}
 }
 
+@mixin phablet {
+	@media only screen and (width <= 52em) {
+		@content;
+	}
+}
+
 @mixin tablet {
-	@media only screen and (40.063em <= width <= 64em) {
+	@media only screen and (width <= 64em) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media only screen and (width <= 76em) {
 		@content;
 	}
 }
 
 @mixin desktop {
-	@media only screen and (64.063em <= width <= 90em) {
+	@media only screen and (width <= 90em) {
 		@content;
 	}
 }
 
 @mixin wide {
-	@media only screen and (90.063em <= width <= 120em) {
+	@media only screen and (width <= 120em) {
 		@content;
 	}
 }
@@ -32,4 +56,17 @@
 	@media only screen and (width >= 480px) and (width <= 640px) and (orientation: landscape) {
 		@content;
 	}
+}
+
+.responsive-tag {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #ffffff;
+	color: black;
+	padding: 10px;
+	z-index: 1000;
+	font-weight: bold;
+	text-align: center;
 }

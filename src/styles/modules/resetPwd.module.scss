@@ -10,10 +10,6 @@
 
 	@include container(1em, 2em);
 
-	@include tablet {
-		flex-direction: column;
-	}
-
 	> div {
 		display: flex;
 		flex-direction: column;
@@ -33,7 +29,7 @@
 		max-width: 250px;
 		align-self: flex-start;
 
-		@include mobile {
+		@include phablet {
 			position: absolute;
 			right: 0;
 			max-width: 250px;
