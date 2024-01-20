@@ -4,7 +4,7 @@
 	&-field {
 		justify-content: space-between;
 		align-items: center;
-		display: flex;
+		display: none;
 
 		@include mobile {
 			flex-wrap: wrap;
