@@ -54,17 +54,22 @@ const Twitter = ({
 
 	return (
 		<form onSubmit={submitTW} className={styles.socialField}>
-			<label htmlFor="twlink">
-				<i className="fa-brands fa-x-twitter fa-xl" style={{ color: '#000' }} />
-				twitter.com/
-			</label>
-			<input
-				onChange={setTwHandler}
-				value={twLink}
-				type="text"
-				name="twlink"
-				placeholder="jouwprofiel"
-			/>
+			<div>
+				<label htmlFor="twlink">
+					<i
+						className="fa-brands fa-x-twitter fa-xl"
+						style={{ color: '#000' }}
+					/>
+					twitter.com/
+				</label>
+				<input
+					onChange={setTwHandler}
+					value={twLink}
+					type="text"
+					name="twlink"
+					placeholder="jouwprofiel"
+				/>
+			</div>
 			<button type="submit" title="Sla Twitter-profiel op">
 				Opslaan
 			</button>

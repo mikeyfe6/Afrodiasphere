@@ -54,21 +54,23 @@ const Whatsapp = ({
 
 	return (
 		<form onSubmit={submitWA} className={styles.socialField}>
-			<label htmlFor="walink">
-				<i
-					className="fa-brands fa-whatsapp fa-xl"
-					style={{ color: '#3FD252' }}
+			<div>
+				<label htmlFor="walink">
+					<i
+						className="fa-brands fa-whatsapp fa-xl"
+						style={{ color: '#3FD252' }}
+					/>
+					<span>wa.me/</span>
+				</label>
+				<input
+					onChange={setWaHandler}
+					value={waLink}
+					type="text"
+					name="walink"
+					maxLength="15"
+					placeholder="bijv.: 31612345678"
 				/>
-				<span>wa.me/</span>
-			</label>
-			<input
-				onChange={setWaHandler}
-				value={waLink}
-				type="text"
-				name="walink"
-				maxLength="15"
-				placeholder="bijv.: 31612345678"
-			/>
+			</div>
 			<button type="submit" title="Sla Whatsapp-profiel op">
 				Opslaan
 			</button>

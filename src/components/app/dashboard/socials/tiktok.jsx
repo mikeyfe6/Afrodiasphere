@@ -54,17 +54,22 @@ const TikTok = ({
 
 	return (
 		<form onSubmit={submitTK} className={styles.socialField}>
-			<label htmlFor="tklink">
-				<i className="fa-brands fa-tiktok fa-xl" style={{ color: '#4BE1EB' }} />
-				tiktok.com/
-			</label>
-			<input
-				onChange={setTkHandler}
-				value={tkLink}
-				type="text"
-				name="tklink"
-				placeholder="jouwprofiel"
-			/>
+			<div>
+				<label htmlFor="tklink">
+					<i
+						className="fa-brands fa-tiktok fa-xl"
+						style={{ color: '#4BE1EB' }}
+					/>
+					tiktok.com/
+				</label>
+				<input
+					onChange={setTkHandler}
+					value={tkLink}
+					type="text"
+					name="tklink"
+					placeholder="jouwprofiel"
+				/>
+			</div>
 			<button type="submit" title="Sla TikTok-profiel op">
 				Opslaan
 			</button>

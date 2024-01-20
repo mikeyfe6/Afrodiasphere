@@ -54,22 +54,23 @@ const Instagram = ({
 
 	return (
 		<form onSubmit={submitIG} className={styles.socialField}>
-			<label htmlFor="iglink">
-				<i
-					className="fa-brands fa-instagram fa-xl"
-					style={{ color: '#F81F58' }}
+			<div>
+				<label htmlFor="iglink">
+					<i
+						className="fa-brands fa-instagram fa-xl"
+						style={{ color: '#F81F58' }}
+					/>
+					instagram.com/
+				</label>
+
+				<input
+					onChange={setIgHandler}
+					value={igLink}
+					type="text"
+					name="iglink"
+					placeholder="jouwprofiel"
 				/>
-				instagram.com/
-			</label>
-
-			<input
-				onChange={setIgHandler}
-				value={igLink}
-				type="text"
-				name="iglink"
-				placeholder="jouwprofiel"
-			/>
-
+			</div>
 			<button type="submit" title="Sla Instagram-profiel op">
 				Opslaan
 			</button>

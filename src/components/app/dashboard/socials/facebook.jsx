@@ -55,20 +55,22 @@ const Facebook = ({
 
 	return (
 		<form onSubmit={submitFB} className={styles.socialField}>
-			<label htmlFor="fblink">
-				<i
-					className="fa-brands fa-facebook-f fa-xl"
-					style={{ color: '#4867AA' }}
+			<div>
+				<label htmlFor="fblink">
+					<i
+						className="fa-brands fa-facebook-f fa-xl"
+						style={{ color: '#4867AA' }}
+					/>
+					facebook.com/
+				</label>
+				<input
+					onChange={setFbHandler}
+					value={fbLink}
+					type="text"
+					name="fblink"
+					placeholder="jouwprofiel"
 				/>
-				facebook.com/
-			</label>
-			<input
-				onChange={setFbHandler}
-				value={fbLink}
-				type="text"
-				name="fblink"
-				placeholder="jouwprofiel"
-			/>
+			</div>
 			<button type="submit" title="Sla Facebook-profiel op">
 				Opslaan
 			</button>
