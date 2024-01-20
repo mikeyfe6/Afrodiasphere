@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const Facebook = ({
 	userId,
@@ -16,13 +16,6 @@ const Facebook = ({
 	const setFbHandler = e => {
 		setFbLink(e.target.value.toLowerCase())
 	}
-
-	useEffect(() => {
-		let fbhideme = document.getElementById('fbhide')
-		!fbLink
-			? (fbhideme.style.display = 'none')
-			: (fbhideme.style.display = 'block')
-	}, [fbLink])
 
 	const submitFB = async e => {
 		e.preventDefault()
@@ -74,7 +67,6 @@ const Facebook = ({
 				value={fbLink}
 				type="text"
 				name="fblink"
-				id="fblink"
 				placeholder="jouwprofiel"
 			/>
 			<button type="submit" title="Sla Facebook-profiel op">

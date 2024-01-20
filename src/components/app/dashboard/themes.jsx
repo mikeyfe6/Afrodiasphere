@@ -16,12 +16,13 @@ const Themes = ({
 	setColor,
 	links
 }) => {
-	const onRadioChange = async e => {
-		setColor(e.target.value)
+	const onRadioChange = async ({ target: { value } }) => {
+		setColor(value)
 
 		const params = {
-			bgfree: e.target.value
+			bgfree: value
 		}
+
 		await axios.put(
 			`${apiURL}/api/instanties/${userId}`,
 			{ data: params },
@@ -68,78 +69,78 @@ const Themes = ({
 		switch (color) {
 			case 'geel':
 				iphonePreviewStyle(
-					styles.yellowstyleUsername,
-					styles.yellowstyleOccupate,
-					styles.yellowstyleBiography,
-					styles.yellowstyleIcons,
-					styles.yellowstyle,
-					styles.yellowstyleLinks
+					styles.yellowStyleUsername,
+					styles.yellowStyleOccupate,
+					styles.yellowStyleBiography,
+					styles.yellowStyleIcons,
+					styles.yellowStyle,
+					styles.yellowStyleLinks
 				)
 
 				break
 			case 'grijs':
 				iphonePreviewStyle(
-					styles.graystyleUsername,
-					styles.graystyleOccupate,
-					styles.graystyleBiography,
-					styles.graystyleIcons,
-					styles.graystyle,
-					styles.graystyleLinks
+					styles.grayStyleUsername,
+					styles.grayStyleOccupate,
+					styles.grayStyleBiography,
+					styles.grayStyleIcons,
+					styles.grayStyle,
+					styles.grayStyleLinks
 				)
 
 				break
 			case 'roze':
 				iphonePreviewStyle(
-					styles.pinkstyleUsername,
-					styles.pinkstyleOccupate,
-					styles.pinkstyleBiography,
-					styles.pinkstyleIcons,
-					styles.pinkstyle,
-					styles.pinkstyleLinks
+					styles.pinkStyleUsername,
+					styles.pinkStyleOccupate,
+					styles.pinkStyleBiography,
+					styles.pinkStyleIcons,
+					styles.pinkStyle,
+					styles.pinkStyleLinks
 				)
 
 				break
 			case 'zwart':
 				iphonePreviewStyle(
-					styles.blackstyleUsername,
-					styles.blackstyleOccupate,
-					styles.blackstyleBiography,
-					styles.blackstyleIcons,
-					styles.blackstyle,
-					styles.blackstyleLinks
+					styles.blackStyleUsername,
+					styles.blackStyleOccupate,
+					styles.blackStyleBiography,
+					styles.blackStyleIcons,
+					styles.blackStyle,
+					styles.blackStyleLinks
 				)
 
 				break
 			case 'bruin':
 				iphonePreviewStyle(
-					styles.brownstyleUsername,
-					styles.brownstyleOccupate,
-					styles.brownstyleBiography,
-					styles.brownstyleIcons,
-					styles.brownstyle,
-					styles.brownstyleLinks
+					styles.brownStyleUsername,
+					styles.brownStyleOccupate,
+					styles.brownStyleBiography,
+					styles.brownStyleIcons,
+					styles.brownStyle,
+					styles.brownStyleLinks
 				)
 
 				break
 			case 'groen':
 				iphonePreviewStyle(
-					styles.greenstyleUsername,
-					styles.greenstyleOccupate,
-					styles.greenstyleBiography,
-					styles.greenstyleIcons,
-					styles.greenstyle,
-					styles.greenstyleLinks
+					styles.greenStyleUsername,
+					styles.greenStyleOccupate,
+					styles.greenStyleBiography,
+					styles.greenStyleIcons,
+					styles.greenStyle,
+					styles.greenStyleLinks
 				)
 
 				break
 			case 'afrotheme':
 				iphonePreviewStyle(
-					styles.afrospecstyleUsername,
-					styles.afrospecstyleOccupate,
-					styles.afrospecstyleBiography,
-					styles.afrospecstyleIcons,
-					styles.afrospecstyle,
-					styles.afrospecstyleLinks
+					styles.afroStyleUsername,
+					styles.afroStyleOccupate,
+					styles.afroStyleBiography,
+					styles.afroStyleIcons,
+					styles.afroStyle,
+					styles.afroStyleLinks
 				)
 				break
 			default:
@@ -158,64 +159,12 @@ const Themes = ({
 			changeHeadingBg(res.data.bgfree)
 		}
 
-		if (color === 'geel') {
-			document
-				.getElementById('currentYellow')
-				.classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentYellow')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'grijs') {
-			document.getElementById('currentGrey').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentGrey')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'roze') {
-			document.getElementById('currentPink').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentPink')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'zwart') {
-			document.getElementById('currentBlack').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentBlack')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'bruin') {
-			document.getElementById('currentBrown').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentBrown')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'groen') {
-			document.getElementById('currentGreen').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentGreen')
-				.classList.remove(styles.currentStyle)
-		}
-		if (color === 'afrotheme') {
-			document.getElementById('currentAfro').classList.add(styles.currentStyle)
-		} else {
-			document
-				.getElementById('currentAfro')
-				.classList.remove(styles.currentStyle)
-		}
-
 		getColor()
 		changeHeadingBg()
 	}, [token, color, links])
 
 	return (
-		<ul className={styles.pickColor}>
+		<ul className={styles.chooseTheme}>
 			<li className={styles.chooseColor}>
 				<label title="Geel / Zwart">
 					<input
@@ -227,9 +176,11 @@ const Themes = ({
 							changeHeadingBg('geel')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentYellow" className={styles.yellowtheme}>
+					<div
+						id="currentYellow"
+						className={`${styles.yellowTheme} ${color === 'geel' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.yellowlinks} />
 						<div className={styles.yellowlinks} />
 						<div className={styles.yellowlinks} />
@@ -248,9 +199,11 @@ const Themes = ({
 							changeHeadingBg('grijs')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentGrey" className={styles.graytheme}>
+					<div
+						id="currentGrey"
+						className={`${styles.grayTheme} ${color === 'grijs' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.graylinks} />
 						<div className={styles.graylinks} />
 						<div className={styles.graylinks} />
@@ -269,9 +222,10 @@ const Themes = ({
 							changeHeadingBg('roze')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentPink" className={styles.pinktheme}>
+					<div
+						className={`${styles.pinkTheme} ${color === 'roze' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.pinklinks} />
 						<div className={styles.pinklinks} />
 						<div className={styles.pinklinks} />
@@ -290,9 +244,10 @@ const Themes = ({
 							changeHeadingBg('zwart')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentBlack" className={styles.blacktheme}>
+					<div
+						className={`${styles.blackTheme} ${color === 'zwart' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.blacklinks} />
 						<div className={styles.blacklinks} />
 						<div className={styles.blacklinks} />
@@ -311,9 +266,10 @@ const Themes = ({
 							changeHeadingBg('bruin')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentBrown" className={styles.browntheme}>
+					<div
+						className={`${styles.brownTheme} ${color === 'bruin' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.brownlinks} />
 						<div className={styles.brownlinks} />
 						<div className={styles.brownlinks} />
@@ -332,9 +288,10 @@ const Themes = ({
 							changeHeadingBg('groen')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentGreen" className={styles.greentheme}>
+					<div
+						className={`${styles.greenTheme} ${color === 'groen' ? styles.currentTheme : ''}`}
+					>
 						<div className={styles.greenlinks} />
 						<div className={styles.greenlinks} />
 						<div className={styles.greenlinks} />
@@ -353,12 +310,13 @@ const Themes = ({
 							changeHeadingBg('afrotheme')
 							event.preventDefault()
 						}}
-						style={{ display: 'none' }}
 					/>
-					<div id="currentAfro" className={styles.afrospectheme}>
-						<div className={styles.afrospeclinks} />
-						<div className={styles.afrospeclinks} />
-						<div className={styles.afrospeclinks} />
+					<div
+						className={`${styles.afroTheme} ${color === 'afrotheme' ? styles.currentTheme : ''}`}
+					>
+						<div className={styles.afrolinks} />
+						<div className={styles.afrolinks} />
+						<div className={styles.afrolinks} />
 					</div>
 				</label>
 			</li>

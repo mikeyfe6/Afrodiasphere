@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const Instagram = ({
 	userId,
@@ -16,13 +16,6 @@ const Instagram = ({
 	const setIgHandler = e => {
 		setIgLink(e.target.value.toLowerCase())
 	}
-
-	useEffect(() => {
-		let ighideme = document.getElementById('ighide')
-		!igLink
-			? (ighideme.style.display = 'none')
-			: (ighideme.style.display = 'block')
-	}, [igLink])
 
 	const submitIG = async e => {
 		e.preventDefault()
@@ -74,7 +67,6 @@ const Instagram = ({
 				value={igLink}
 				type="text"
 				name="iglink"
-				id="iglink"
 				placeholder="jouwprofiel"
 			/>
 

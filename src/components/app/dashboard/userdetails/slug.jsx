@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/profileInfo.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/profileInfo.module.scss'
 
 // TODO: bedenken wat ik met die slug ga doen voor end-users
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/profileInfo.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/profileInfo.module.scss'
 
 // TODO: add a doublecheck for the right password
 

@@ -1,468 +1,490 @@
 @import '../../configs/globals';
 
-.pickColor {
-	display: grid;
+.choose {
+	&-theme {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+	}
 
-	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-	grid-template-rows: auto;
-}
+	&-color {
+		align-self: center;
+		justify-self: center;
 
-.chooseColor {
-	align-self: center;
-	justify-self: center;
-}
+		input {
+			display: none;
+		}
 
-.currentStyle {
-	border: 5px $primaryColor solid !important;
+		.current-theme {
+			border: 5px $primaryColor solid !important;
+		}
+	}
 }
 
 // ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
 
-.yellowstyle {
-	background: linear-gradient(to bottom, yellow, black);
+.yellow {
+	&-style {
+		background: linear-gradient(to bottom, yellow, black);
 
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: black;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: white;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			background: white;
-			color: black;
-			border: 1px solid yellow;
-
-			box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
+		&-username {
+			@include chooseUsername;
+			color: white;
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: black;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: white;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
-				color: yellow;
+				background: white;
+				color: black;
+				border: 1px solid yellow;
+
+				box-shadow: 1px 3px 5px rgba(55 55 55 / 75%);
+
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
+
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: yellow;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
 	}
-}
 
-.yellowtheme {
-	background: linear-gradient(to bottom, yellow, black);
-	@include chooseDisplay;
+	&-theme {
+		background: linear-gradient(to bottom, yellow, black);
+		@include chooseDisplay;
 
-	.yellowlinks {
-		background: white;
-		border: 1px solid yellow;
-		border-radius: 2px;
-		@include chooseStrokes;
+		.yellowlinks {
+			background: white;
+			border: 1px solid yellow;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
+.gray {
+	&-style {
+		background: linear-gradient(to bottom, grey, white);
 
-.graystyle {
-	background: linear-gradient(to bottom, grey, white);
-
-	&-username {
-		@include chooseUsername;
-		color: #595959;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: #595959;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: white;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-			background: rgba(255, 255, 255, 0.797);
-			color: #878787;
-			border: 1px solid #878787;
-
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
+		&-username {
+			@include chooseUsername;
+			color: #595959;
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: #595959;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: white;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
-				color: grey;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				background: rgba(255, 255, 255, 0.797);
+				color: #878787;
+				border: 1px solid #878787;
+
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
-	}
-}
-.graytheme {
-	background: linear-gradient(to bottom, grey, white);
-	@include chooseDisplay;
 
-	.graylinks {
-		background: rgba(255, 255, 255, 0.797);
-		border: 1px solid #878787;
-		border-radius: 2px;
-		@include chooseStrokes;
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: grey;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
+	}
+
+	&-theme {
+		background: linear-gradient(to bottom, grey, white);
+
+		@include chooseDisplay;
+
+		.graylinks {
+			background: rgba(255, 255, 255, 0.797);
+			border: 1px solid #878787;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // PINK PINK PINK
+.pink {
+	&-style {
+		background: linear-gradient(to bottom, pink, grey);
 
-.pinkstyle {
-	background: linear-gradient(to bottom, pink, grey);
-
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: grey;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: white;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+		&-username {
+			@include chooseUsername;
 			color: white;
-			background: #a8a8a8;
-			border: 1px solid white;
-
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: grey;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: white;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
-				color: pink;
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				color: white;
+				background: #a8a8a8;
+				border: 1px solid white;
+
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
+
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: pink;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
 	}
-}
 
-.pinktheme {
-	background: linear-gradient(to bottom, pink, grey);
-	@include chooseDisplay;
+	&-theme {
+		background: linear-gradient(to bottom, pink, grey);
+		@include chooseDisplay;
 
-	.pinklinks {
-		background: #a8a8a8;
-		border: 1px solid white;
-		border-radius: 2px;
-		@include chooseStrokes;
+		.pinklinks {
+			background: #a8a8a8;
+			border: 1px solid white;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
 
-.blackstyle {
-	background: linear-gradient(to bottom, black, grey);
+.black {
+	&-style {
+		background: linear-gradient(to bottom, black, grey);
 
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: black;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: white;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			background: #878787;
+		&-username {
+			@include chooseUsername;
 			color: white;
-			border: 1px solid white;
-
-			box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: black;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: white;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
+				background: #878787;
 				color: white;
+				border: 1px solid white;
+
+				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
+
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: white;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
 	}
-}
 
-.blacktheme {
-	background: linear-gradient(to bottom, black, grey);
-	@include chooseDisplay;
+	&-theme {
+		background: linear-gradient(to bottom, black, grey);
+		@include chooseDisplay;
 
-	.blacklinks {
-		background: #878787;
-		border: 1px solid white;
-		border-radius: 2px;
-		@include chooseStrokes;
+		.blacklinks {
+			background: #878787;
+			border: 1px solid white;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // BROWN BROWN BROWN
+.brown {
+	&-style {
+		background: linear-gradient(to bottom, brown, white);
 
-.brownstyle {
-	background: linear-gradient(to bottom, brown, white);
-
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: white;
-		background-color: brown;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: #e0e0e0;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			background: white;
-			color: brown;
-			border: 1px solid brown;
-
-			box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
+		&-username {
+			@include chooseUsername;
+			color: white;
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: white;
+			background-color: brown;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: #e0e0e0;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
+				background: white;
 				color: brown;
+				border: 1px solid brown;
+
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
-	}
-}
-.browntheme {
-	background: linear-gradient(to bottom, brown, white);
-	@include chooseDisplay;
 
-	.brownlinks {
-		background: white;
-		border: 1px solid brown;
-		border-radius: 2px;
-		@include chooseStrokes;
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: brown;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
+	}
+
+	&-theme {
+		background: linear-gradient(to bottom, brown, white);
+		@include chooseDisplay;
+
+		.brownlinks {
+			background: white;
+			border: 1px solid brown;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // GREEN GREEN GREEN
 
-.greenstyle {
-	background: linear-gradient(to bottom, green, white);
+.green {
+	&-style {
+		background: linear-gradient(to bottom, green, white);
 
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: green;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-		color: #ededed;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			background: white;
-			color: green;
-			border: 1px solid green;
-
-			box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
+		&-username {
+			@include chooseUsername;
+			color: white;
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: green;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+			color: #ededed;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
+				background: white;
 				color: green;
+				border: 1px solid green;
+
+				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
-	}
-}
-.greentheme {
-	background: linear-gradient(to bottom, green, white);
-	@include chooseDisplay;
 
-	.greenlinks {
-		background: white;
-		border: 1px solid green;
-		border-radius: 2px;
-		@include chooseStrokes;
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: green;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
+	}
+
+	&-theme {
+		background: linear-gradient(to bottom, green, white);
+		@include chooseDisplay;
+
+		.greenlinks {
+			background: white;
+			border: 1px solid green;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }
 
 // ---------------------------------------------------------------------------------------- // AFRO THEME AFRO THEME AFRO THEME
 
-.afrospecstyle {
-	background: linear-gradient(to bottom, #e6541b, black);
+.afro {
+	&-style {
+		background: linear-gradient(to bottom, #e6541b, black);
 
-	&-username {
-		@include chooseUsername;
-		color: white;
-	}
-
-	&-occupate {
-		@include occupateColor;
-		color: black;
-		background-color: white;
-	}
-
-	&-biography {
-		@include biographyPhone;
-
-		color: white;
-	}
-
-	&-links {
-		margin: 10px 0;
-
-		a {
-			background: white;
-			color: black;
-			border: 1px solid #e6541b;
-
-			@include chooseLinks;
-
-			&:hover {
-				opacity: 0.75;
-			}
+		&-username {
+			@include chooseUsername;
+			color: white;
 		}
-	}
 
-	&-icons {
-		@include chooseIcon;
+		&-occupate {
+			@include chooseOccupate;
+			color: black;
+			background-color: white;
+		}
 
-		&:nth-child(n) {
+		&-biography {
+			@include chooseBiography;
+
+			color: white;
+		}
+
+		&-links {
+			margin: 10px 0;
+
 			a {
-				color: #e6541b;
+				background: white;
+				color: black;
+				border: 1px solid #e6541b;
+
+				@include chooseLinks;
 
 				&:hover {
 					opacity: 0.75;
 				}
 			}
 		}
-	}
-}
-.afrospectheme {
-	background: linear-gradient(to bottom, #e6541b, black);
-	@include chooseDisplay;
 
-	.afrospeclinks {
-		background: white;
-		border: 1px solid #e6541b;
-		border-radius: 2px;
-		@include chooseStrokes;
+		&-icons {
+			@include chooseIcons;
+
+			&:nth-child(n) {
+				a {
+					color: #e6541b;
+
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+		}
+	}
+
+	&-theme {
+		background: linear-gradient(to bottom, #e6541b, black);
+		@include chooseDisplay;
+
+		.afrolinks {
+			background: white;
+			border: 1px solid #e6541b;
+			border-radius: 2px;
+			@include chooseStrokes;
+		}
 	}
 }

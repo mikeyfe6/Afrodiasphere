@@ -6,6 +6,11 @@
 		align-items: center;
 		display: flex;
 
+		@include mobile {
+			flex-wrap: wrap;
+			gap: 1em;
+		}
+
 		label {
 			color: $ashColor;
 			font-size: 0.75em;
@@ -19,12 +24,12 @@
 			cursor: pointer;
 		}
 
-		button {
-			@include dash-button;
-		}
-
 		input {
 			padding: 0.5em 0.75em;
+
+			@include mobile {
+				width: fit-content;
+			}
 
 			@include smoothTrans;
 
@@ -38,6 +43,14 @@
 
 			&::placeholder {
 				color: rgba(255 255 255 / 50%);
+			}
+		}
+
+		button {
+			@include dashButton;
+
+			@include mobile {
+				width: 100%;
 			}
 		}
 	}

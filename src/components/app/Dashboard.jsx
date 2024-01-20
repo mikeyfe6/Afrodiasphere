@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Link } from 'gatsby'
+
 import axios from 'axios'
 
 import Seo from '../seo'
@@ -9,22 +9,25 @@ import { getUser, logout, isLoggedIn } from '../../services/auth'
 
 import noavatar from '../../images/noavatar.png'
 
+import Sidebar from './dashboard/sidebar'
 import Avatar from './dashboard/avatar'
-import Profile from './dashboard/profile'
-import Username from './dashboard/username'
-import Email from './dashboard/email'
-import Slug from './dashboard/slug'
-import Password from './dashboard/password'
-import Terminate from './dashboard/terminate'
+import Profile from './dashboard/userdetails/profile'
+import Username from './dashboard/userdetails/username'
+import Email from './dashboard/userdetails/email'
+import Slug from './dashboard/userdetails/slug'
+import Password from './dashboard/userdetails/password'
+import Terminate from './dashboard/userdetails/terminate'
 import Occupation from './dashboard/occupation'
-import Biography from './dashboard/biography'
-import Facebook from './dashboard/facebook'
-import Twitter from './dashboard/twitter'
-import Instagram from './dashboard/instagram'
-import Whatsapp from './dashboard/whatsapp'
-import TikTok from './dashboard/tiktok'
+import Biography from './dashboard/userdetails/biography'
+import Facebook from './dashboard/socials/facebook'
+import Twitter from './dashboard/socials/twitter'
+import Instagram from './dashboard/socials/instagram'
+import Whatsapp from './dashboard/socials/whatsapp'
+import TikTok from './dashboard/socials/tiktok'
 import Links from './dashboard/links'
 import Themes from './dashboard/themes'
+import Preview from './dashboard/preview'
+import AdsLink from './dashboard/adslink'
 
 import * as styles from '../../styles/modules/dashboard.module.scss'
 
@@ -125,127 +128,25 @@ const DashboardPage = () => {
 		<div className={`${styles.gridContainer}`}>
 			{/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
-			<aside id="ads-side" className={styles.sidebar}>
-				<h5>
-					Hi <span>{username}</span> !
-				</h5>
-
-				<button
-					href="#"
-					title="Uitloggen"
-					onClick={e => {
-						e.preventDefault()
-						logout(() => navigate('/login'))
-					}}
-				>
-					Log uit
-				</button>
+			<aside id="ads-sidebar" className={styles.sidebar}>
+				<Sidebar username={username} />
 			</aside>
 
 			{/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
 
 			<section id="ads-preview" className={styles.preview}>
-				<div className={styles.iphoneFrame}>
-					<img
-						src={preview}
-						alt=""
-						className={styles.iphoneAvatar}
-						id="iphone-avatar"
-						style={{ border: '3px solid white' }}
-					/>
-					<p id="iphone-username">{profile}</p>
-					<p id="iphone-occupate">{occupate}</p>
-					<p id="iphone-biography">{biography}</p>
-					<div
-						id="iphone-bg"
-						className={styles.iphoneBackground}
-						style={{
-							position: 'relative',
-							// width: "100vh",
-							height: '100%',
-							zindex: 1
-						}}
-					/>
-					<div>
-						<ul className={styles.iphoneLinks} id="iphone-linklook">
-							{links
-								.filter(link => link.visible)
-								.slice(0, 4)
-								.map(link => (
-									<li
-										key={link.id}
-										id={`link${link.id}`}
-										// hidden={!link.visible}
-									>
-										<a
-											href={`https://${link.hyperlink}`}
-											rel="noopener noreferrer"
-											target="_blank"
-											title={`https://${link.hyperlink}`}
-										>
-											{link.title}
-										</a>
-									</li>
-								))}
-						</ul>
-					</div>
-					<div className={styles.iphoneSocials} id="iphone-iconlook">
-						<a
-							href={`https://www.facebook.com/${fbLink}`}
-							title={`https://www.facebook.com/${fbLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="fbhide"
-						>
-							{/* <FaFacebookF size="1.25em" /> */}
-						</a>
-
-						<a
-							href={`https://twitter.com/${twLink}`}
-							title={`https://twitter.com/${twLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="twhide"
-						>
-							{/* <FaTwitter size="1.25em" /> */}
-						</a>
-
-						<a
-							href={`https://www.instagram.com/${igLink}`}
-							title={`https://www.instagram.com/${igLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="ighide"
-						>
-							{/* <FaInstagram size="1.25em" /> */}
-						</a>
-
-						<a
-							href={`https://wa.me/${waLink}`}
-							title={`https://wa.me/${waLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="wahide"
-						>
-							{/* <FaWhatsapp size="1.25em" /> */}
-						</a>
-
-						<a
-							href={`https://www.tiktok.com/@${tkLink}`}
-							title={`https://www.tiktok.com/@${tkLink}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							id="tkhide"
-						>
-							{/* <SiTiktok size="1.25em" /> */}
-						</a>
-					</div>
-					{/* <img
-            src={gatsbyUser.user.gebruiker.background.url}
-            alt=""
-            className={accountStyles.iphoneBg}
-          />{" "} */}
-				</div>
+				<Preview
+					preview={preview}
+					profile={profile}
+					occupate={occupate}
+					biography={biography}
+					links={links}
+					fbLink={fbLink}
+					twLink={twLink}
+					igLink={igLink}
+					waLink={waLink}
+					tkLink={tkLink}
+				/>
 			</section>
 
 			{/* DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD <-------------------------------------------------------> DASHBOARD DASHBOARD DASHBOARD DASHBOARD DASHBOARD */}
@@ -347,7 +248,7 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				<hr className={styles.dashHr} />
+				<hr />
 
 				{/* SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT <-------------------------------------------------------> SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT SOCIAL CONT */}
 
@@ -400,7 +301,7 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				<hr className={styles.dashHr} />
+				<hr />
 
 				{/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
 
@@ -418,7 +319,7 @@ const DashboardPage = () => {
 					setLinkError={setLinkError}
 				/>
 
-				<hr className={styles.dashHr} />
+				<hr />
 
 				{/* CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR <------------------------------------------------------>  CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR CHOOSE COLOR*/}
 
@@ -437,23 +338,7 @@ const DashboardPage = () => {
 			{/* SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK <-----------------------------------------------> SLUG LINK SLUG LINK SLUG LINK SLUG LINK SLUG LINK */}
 
 			<aside className={`${styles.slug}`}>
-				<div>
-					<div className={styles.usLinkAfro}>
-						<b>Afrodiasphere URL</b>
-					</div>
-
-					<div className={styles.usLinkSite}>
-						{slug ? (
-							<Link
-								className={styles.userLink}
-								to={`/${slug}/`}
-								title={`${baseURL}/${slug}/`}
-							>{`✨../${slug}`}</Link>
-						) : (
-							<p>Link wordt gemaakt...</p>
-						)}
-					</div>
-				</div>
+				<AdsLink slug={slug} baseURL={baseURL} />
 			</aside>
 		</div>
 	)

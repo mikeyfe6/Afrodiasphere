@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/biography.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/biography.module.scss'
 
 const Biography = ({
 	userId,
@@ -64,7 +64,6 @@ const Biography = ({
 				rows="50"
 				name="text"
 				id="biografie"
-				className={styles.bioInput}
 				title="Maximaal 120 karakters"
 				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
 			/>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const TikTok = ({
 	userId,
@@ -16,13 +16,6 @@ const TikTok = ({
 	const setTkHandler = e => {
 		setTkLink(e.target.value.toLowerCase())
 	}
-
-	useEffect(() => {
-		let tkhideme = document.getElementById('tkhide')
-		!tkLink
-			? (tkhideme.style.display = 'none')
-			: (tkhideme.style.display = 'block')
-	}, [tkLink])
 
 	const submitTK = async e => {
 		e.preventDefault()
@@ -70,7 +63,6 @@ const TikTok = ({
 				value={tkLink}
 				type="text"
 				name="tklink"
-				id="tklink"
 				placeholder="jouwprofiel"
 			/>
 			<button type="submit" title="Sla TikTok-profiel op">

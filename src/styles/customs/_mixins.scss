@@ -37,11 +37,15 @@
 	}
 }
 
-@mixin dash-button {
+@mixin dashButton(
+	$bgColor: $whiteColor,
+	$txtColor: $ashColor,
+	$yAxis: 0.375em
+) {
 	min-width: 120px;
-	background-color: $whiteColor;
-	color: $ashColor;
-	padding: 0.375em 1em;
+	background-color: $bgColor;
+	color: $txtColor;
+	padding: $yAxis 1em;
 	text-align: center;
 	border-radius: 3px;
 
@@ -83,7 +87,7 @@
 	text-overflow: ellipsis;
 }
 
-@mixin occupateColor {
+@mixin chooseOccupate {
 	position: absolute;
 	top: 38%;
 	left: 38%;
@@ -96,7 +100,7 @@
 	padding: 2.5px 2.5px;
 }
 
-@mixin biographyPhone {
+@mixin chooseBiography {
 	position: absolute;
 	top: 44%;
 	left: 15%;
@@ -109,7 +113,7 @@
 	font-size: 0.6em;
 }
 
-@mixin chooseIcon {
+@mixin chooseIcons {
 	display: flex;
 	position: absolute;
 	gap: 17.5px;

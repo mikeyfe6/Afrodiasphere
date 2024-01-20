@@ -1,0 +1,41 @@
+@import '../../configs/globals';
+
+.ads {
+	&-link {
+		text-align: center;
+		font-size: 0.7rem;
+	}
+
+	&-prefix {
+		border: 3px solid $primaryColor;
+		float: left;
+		width: 50%;
+		color: white;
+		background: $primaryColor;
+		padding: 10px;
+		border-radius: 10px 0 0 10px;
+	}
+
+	&-slug {
+		border: 3px solid $primaryColor;
+		float: right;
+		width: 50%;
+		background-color: $blackColor;
+		padding: 10px;
+		border-radius: 0 10px 10px 0;
+		color: white;
+
+		> a {
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+			color: $primaryColor;
+
+			&:hover {
+				color: $secondaryColor;
+			}
+		}
+	}
+}

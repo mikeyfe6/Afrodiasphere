@@ -7,7 +7,7 @@ import Seo from '../components/seo'
 
 import AdsLayout from '../components/adslayout'
 
-import '../styles/themes.scss'
+import '../styles/adspage.scss'
 
 import noavatar from '../images/noavatar.png'
 

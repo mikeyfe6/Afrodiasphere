@@ -222,7 +222,7 @@ const Links = ({
 							event.preventDefault()
 						}}
 					>
-						Reset
+						Reset invoer
 					</button>
 				</div>
 
@@ -234,7 +234,7 @@ const Links = ({
 					<li key={index} className={styles.link}>
 						<div className={styles.linkTitle}>
 							<div>
-								<p className={styles.updateLinkShow}>{link.title}</p>
+								<p>{link.title}</p>
 								<hr />
 								<input
 									id={`editlink${link.id}`}
@@ -261,7 +261,7 @@ const Links = ({
 						</div>
 						<div className={styles.linkUrl}>
 							<div>
-								<p className={styles.updateHyperLinkShow}>
+								<p>
 									<a
 										href={`https://${link.hyperlink}`}
 										title={`https://${link.hyperlink}`}
@@ -305,7 +305,7 @@ const Links = ({
 									event.preventDefault()
 								}}
 							>
-								<i class="fa-solid fa-trash-can fa-lg" />
+								<i className="fa-solid fa-trash-can fa-lg" />
 							</div>
 							<div className={styles.showBtn}>
 								<input

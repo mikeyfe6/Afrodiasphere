@@ -16,12 +16,10 @@
 
 		input {
 			color: $whiteColor;
-			font-size: 16px;
 			background: transparent;
 			outline: none;
 			border: none;
 			border-radius: 1px;
-			width: 100%;
 			max-width: 250px;
 
 			@include smoothTrans;
@@ -36,7 +34,7 @@
 		}
 
 		button {
-			@include dash-button;
+			@include dashButton;
 
 			&.terminate-btn {
 				background-color: $errorColor;

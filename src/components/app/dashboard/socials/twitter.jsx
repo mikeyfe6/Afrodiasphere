@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const Twitter = ({
 	userId,
@@ -16,13 +16,6 @@ const Twitter = ({
 	const setTwHandler = e => {
 		setTwLink(e.target.value.toLowerCase())
 	}
-
-	useEffect(() => {
-		let twhideme = document.getElementById('twhide')
-		!twLink
-			? (twhideme.style.display = 'none')
-			: (twhideme.style.display = 'block')
-	}, [twLink])
 
 	const submitTW = async e => {
 		e.preventDefault()
@@ -70,9 +63,7 @@ const Twitter = ({
 				value={twLink}
 				type="text"
 				name="twlink"
-				id="twlink"
 				placeholder="jouwprofiel"
-				// className={socialInput}
 			/>
 			<button type="submit" title="Sla Twitter-profiel op">
 				Opslaan

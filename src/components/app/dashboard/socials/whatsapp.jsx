@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/socials.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const Whatsapp = ({
 	userId,
@@ -16,13 +16,6 @@ const Whatsapp = ({
 	const setWaHandler = e => {
 		setWaLink(e.target.value.toLowerCase())
 	}
-
-	useEffect(() => {
-		let wahideme = document.getElementById('wahide')
-		!waLink
-			? (wahideme.style.display = 'none')
-			: (wahideme.style.display = 'block')
-	}, [waLink])
 
 	const submitWA = async e => {
 		e.preventDefault()
@@ -73,7 +66,6 @@ const Whatsapp = ({
 				value={waLink}
 				type="text"
 				name="walink"
-				id="walink"
 				maxLength="15"
 				placeholder="bijv.: 31612345678"
 			/>
