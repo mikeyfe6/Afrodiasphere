@@ -37,19 +37,21 @@ const Username = ({
 	}
 
 	useEffect(() => {
-		try {
-			const getUsername = async () => {
-				const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-				setUsername(res.data.username || '')
+		if (gatsbyId) {
+			try {
+				const getUsername = async () => {
+					const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					})
+					setUsername(res.data.username || '')
+				}
+				getUsername()
+			} catch {
+				console.log('Gaat iets mis met het ophalen van je gebruikersnaam')
+				logout(() => navigate('/login'))
 			}
-			getUsername()
-		} catch {
-			console.log('Gaat iets mis met het ophalen van je gebruikersnaam')
-			logout(() => navigate('/login'))
 		}
 	}, [gatsbyId, token])
 

@@ -37,18 +37,20 @@ const Email = ({
 	}
 
 	useEffect(() => {
-		try {
-			const getEmail = async () => {
-				const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-				setEmail(res.data.email || '')
+		if (gatsbyId) {
+			try {
+				const getEmail = async () => {
+					const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					})
+					setEmail(res.data.email || '')
+				}
+				getEmail()
+			} catch {
+				setError('Gaat iets mis met het ophalen van je emailadres')
 			}
-			getEmail()
-		} catch {
-			setError('Gaat iets mis met het ophalen van je emailadres')
 		}
 	}, [gatsbyId, token])
 
