@@ -177,6 +177,15 @@ const DashboardPage = () => {
 		}
 	}
 
+	const areAllLinksEmpty = () => {
+		for (const link of Object.values(smLinks)) {
+			if (link.trim() !== '') {
+				return false
+			}
+		}
+		return true
+	}
+
 	return (
 		<div className={`${styles.gridContainer}`}>
 			{/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
@@ -359,7 +368,11 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				<button className={styles.dashBtn} onClick={handleSaveSocials}>
+				<button
+					className={styles.dashBtn}
+					onClick={handleSaveSocials}
+					disabled={areAllLinksEmpty()}
+				>
 					Opslaan
 				</button>
 

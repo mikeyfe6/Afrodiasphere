@@ -65,6 +65,10 @@
 }
 
 // dashboard mixins ---------------------------- // dashboard mixins
+@mixin chooseBackground {
+	height: 100%;
+}
+
 @mixin chooseDisplay {
 	border-radius: 12.5px;
 	display: flex;
@@ -144,6 +148,12 @@
 	top: 90%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+
+	&:nth-child(n) {
+		a:hover {
+			opacity: 0.75;
+		}
+	}
 }
 
 @mixin chooseLinks {
@@ -152,12 +162,17 @@
 	width: 100%;
 	padding: 2.5px 25px;
 	font-size: 0.9em;
+
+	&:hover {
+		opacity: 0.75;
+	}
 }
 
 @mixin chooseStrokes {
 	width: 50px;
 	height: 12.5px;
 	margin: 10px 0;
+	border-radius: 2px;
 }
 
 // page mixins ---------------------------- // page mixins

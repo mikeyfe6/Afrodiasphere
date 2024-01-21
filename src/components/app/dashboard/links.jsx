@@ -17,8 +17,8 @@ const Links = ({
 	const linkTitle = useRef(null)
 	const hyperLink = useRef(null)
 
-	const [editLink, setEditLink] = useState('')
-	const [editHyperLink, setEditHyperLink] = useState('')
+	const [editLinkTitle, setEditLinkTitle] = useState('')
+	const [editLinkUrl, setEditLinkUrl] = useState('')
 
 	const createLink = async () => {
 		if (
@@ -86,16 +86,24 @@ const Links = ({
 		setLinks(links.filter(el => el.id !== link.id))
 	}
 
-	const handleEditLink = async e => {
-		setEditLink(e.target.value)
+	const handleEditLink = (event, linkId) => {
+		setEditLinkTitle({
+			...editLinkTitle,
+			[linkId]: event.target.value
+		})
 	}
 
-	const handleEditHyperLink = async e => {
-		setEditHyperLink(e.target.value)
+	const handleEditHyperLink = (event, linkId) => {
+		setEditLinkUrl({
+			...editLinkUrl,
+			[linkId]: event.target.value
+		})
 	}
 
 	const editTheLink = async link => {
-		if (!editLink || /^\s*$/.test(editLink)) {
+		const changedLinkTitle = link.value.trim()
+
+		if (!changedLinkTitle || /^\s*$/.test(changedLinkTitle)) {
 			return [
 				setLinkError('Updaten mislukt, voer de titel correct door..'),
 				setTimeout(() => setLinkError(null), 7500)
@@ -103,7 +111,7 @@ const Links = ({
 		}
 
 		const params = {
-			title: editLink
+			title: changedLinkTitle
 		}
 		const res = await axios.put(
 			`${apiURL}/api/connections/${link.id}`,
@@ -122,11 +130,14 @@ const Links = ({
 			return el
 		})
 		setLinks(newLinks)
+		setEditLinkTitle('')
 		getLinks()
 	}
 
 	const editTheHyperLink = async link => {
-		if (!editHyperLink || /^\s*$/.test(editHyperLink)) {
+		const changedLinkUrl = link.value.trim()
+
+		if (!changedLinkUrl || /^\s*$/.test(changedLinkUrl)) {
 			return [
 				setLinkError('Updaten mislukt, voer de link correct door..'),
 				setTimeout(() => setLinkError(null), 5000)
@@ -134,7 +145,7 @@ const Links = ({
 		}
 
 		const params = {
-			hyperlink: editHyperLink
+			hyperlink: changedLinkUrl
 		}
 		const res = await axios.put(
 			`${apiURL}/api/connections/${link.id}`,
@@ -153,7 +164,7 @@ const Links = ({
 			return el
 		})
 		setLinks(newLinks)
-		setEditHyperLink('')
+		setEditLinkUrl('')
 		getLinks()
 	}
 
@@ -176,7 +187,7 @@ const Links = ({
 				<div className={styles.newTitle}>
 					<label htmlFor="newtitle">
 						<h4 style={{ color: 'white' }}>
-							Titel<span style={{ color: '#cc9932' }}>:</span>
+							Titel<span>:</span>
 						</h4>
 					</label>
 					<input
@@ -191,7 +202,7 @@ const Links = ({
 				<div className={styles.newHyperlink}>
 					<label htmlFor="newhyperlink">
 						<h4 style={{ color: 'white' }}>
-							Hyperlink<span style={{ color: '#cc9932' }}>:</span>
+							Hyperlink<span>:</span>
 						</h4>
 					</label>
 					<input
@@ -242,8 +253,8 @@ const Links = ({
 									<input
 										id={`editlink${link.id}`}
 										type="text"
-										value={editLink[link]}
-										onChange={handleEditLink}
+										value={editLinkTitle[link.id] || ''}
+										onChange={event => handleEditLink(event, link.id)}
 										placeholder="bewerk titel"
 										minLength="5"
 										required
@@ -251,10 +262,14 @@ const Links = ({
 								</div>
 								<button
 									title="Sla nieuwe titel op"
+									disabled={
+										!editLinkTitle[link.id] ||
+										editLinkTitle[link.id].trim() === ''
+									}
 									onClick={event => {
 										editTheLink({
 											id: link.id,
-											value: editLink
+											value: editLinkTitle[link.id]
 										})
 										event.preventDefault()
 									}}
@@ -278,8 +293,8 @@ const Links = ({
 									<input
 										id={`hyperlink${link.id}`}
 										type="url"
-										value={editHyperLink[link]}
-										onChange={handleEditHyperLink}
+										value={editLinkUrl[link.id] || ''}
+										onChange={event => handleEditHyperLink(event, link.id)}
 										placeholder="bewerk hyperlink"
 										minLength="5"
 										required
@@ -287,10 +302,13 @@ const Links = ({
 								</div>
 								<button
 									title="Sla nieuwe hyperlink op"
+									disabled={
+										!editLinkUrl[link.id] || editLinkUrl[link.id].trim() === ''
+									}
 									onClick={event => {
 										editTheHyperLink({
 											id: link.id,
-											value: editHyperLink
+											value: editLinkUrl[link.id]
 										})
 										event.preventDefault()
 									}}

@@ -80,16 +80,7 @@ const Slug = ({
 				title="geen spaties, alleen '-'"
 			/>
 
-			<button
-				type="submit"
-				disabled
-				style={{
-					paddingTop: '5px',
-					paddingBottom: '5px',
-					background: 'red',
-					opacity: '0.3'
-				}}
-			>
+			<button type="submit" disabled>
 				Update
 			</button>
 		</form>

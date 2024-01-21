@@ -23,32 +23,18 @@ const Preview = ({
 				alt=""
 				className={styles.iphoneAvatar}
 				id="iphone-avatar"
-				style={{ border: '3px solid white' }}
 			/>
 			<p id="iphone-username">{profile}</p>
 			<p id="iphone-occupate">{occupate}</p>
 			<p id="iphone-biography">{biography}</p>
-			<div
-				id="iphone-bg"
-				className={styles.iphoneBackground}
-				style={{
-					position: 'relative',
-					// width: "100vh",
-					height: '100%',
-					zindex: 1
-				}}
-			/>
+			<div id="iphone-bg" className={styles.iphoneBackground} />
 			<div>
 				<ul className={styles.iphoneLinks} id="iphone-linklook">
 					{links
 						.filter(link => link.visible)
 						.slice(0, 4)
-						.map(link => (
-							<li
-								key={link.id}
-								id={`link${link.id}`}
-								// hidden={!link.visible}
-							>
+						.map((link, index) => (
+							<li key={index} id={`link${link.id}`} hidden={!link.visible}>
 								<a
 									href={`https://${link.hyperlink}`}
 									rel="noopener noreferrer"

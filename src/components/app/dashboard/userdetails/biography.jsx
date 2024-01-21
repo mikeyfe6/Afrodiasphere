@@ -68,7 +68,11 @@ const Biography = ({
 				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
 			/>
 
-			<button type="submit" title="Sla biografie op">
+			<button
+				type="submit"
+				title="Sla biografie op"
+				disabled={setLoading || biography === ''}
+			>
 				Opslaan
 			</button>
 		</form>

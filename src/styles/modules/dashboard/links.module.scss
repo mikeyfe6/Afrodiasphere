@@ -21,11 +21,15 @@
 		align-items: center;
 		flex: 1;
 
+		> label > h4 > span {
+			color: $primaryColor;
+		}
+
 		@include mobile {
 			flex-wrap: wrap;
 		}
 
-		input {
+		> input {
 			outline: none;
 			border: none;
 			min-width: 150px;

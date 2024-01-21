@@ -42,6 +42,7 @@
 		display: inline-block;
 		object-fit: cover;
 		overflow: hidden;
+		border: solid $whiteColor 3px;
 
 		@include mobile {
 			left: 33%;
