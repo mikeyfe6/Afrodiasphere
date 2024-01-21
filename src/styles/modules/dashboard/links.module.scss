@@ -43,7 +43,7 @@
 			}
 
 			&::placeholder {
-				font-size: 0.75em;
+				font-size: 0.75rem;
 				opacity: 0.75;
 			}
 		}
@@ -78,8 +78,8 @@
 	}
 
 	color: $ashColor;
-	background: linear-gradient(145deg, white, white, white, white, #deceae)
-		no-repeat 0 0 / cover;
+	background: linear-gradient(145deg, white, white, white, #deceae) no-repeat 0
+		0 / cover;
 
 	&-fields {
 		display: flex;
@@ -139,16 +139,18 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					display: block;
+					font-size: 0.875rem;
+					font-weight: 500;
 				}
 
-				> P {
+				> p {
 					cursor: default;
 				}
 			}
 
 			> input {
 				&::placeholder {
-					font-size: 0.75em;
+					font-size: 0.75rem;
 					opacity: 0.75;
 				}
 
@@ -191,7 +193,7 @@
 		align-items: center;
 		justify-content: center;
 		flex-wrap: wrap;
-		gap: 2em;
+		gap: 1.5em;
 
 		flex: 10%;
 
@@ -236,7 +238,7 @@
 				background-color: $whiteColor;
 				outline: 1px solid rgba(167, 167, 167, 1);
 
-				&:after {
+				&::after {
 					content: '';
 					position: absolute;
 					display: none;
@@ -244,7 +246,7 @@
 					top: 2px;
 					width: 6px;
 					height: 12px;
-					border: solid white;
+					border: solid $whiteColor;
 					border-width: 0 2px 2px 0;
 					transform: rotate(45deg);
 				}
@@ -263,7 +265,7 @@
 			}
 
 			/* Show the checkmark when checked */
-			input:checked ~ .checkmark:after {
+			input:checked ~ .checkmark::after {
 				display: block;
 			}
 
@@ -287,7 +289,7 @@
 	text-align: center;
 	border-radius: 2px;
 	width: 100%;
-	font-size: 0.7em;
+	// font-size: 0.7em;
 }
 
 .linkErrorStyle {
@@ -297,7 +299,7 @@
 	width: 95%;
 	text-align: center;
 	font-weight: bold;
-	font-size: 0.7em;
+	// font-size: 0.7em;
 	color: white;
 	padding: 0.3rem 0.5rem;
 	margin: 0 auto;
