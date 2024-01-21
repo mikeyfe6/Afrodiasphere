@@ -67,6 +67,7 @@
 // dashboard mixins ---------------------------- // dashboard mixins
 @mixin chooseBackground {
 	height: 100%;
+	position: relative;
 }
 
 @mixin chooseDisplay {

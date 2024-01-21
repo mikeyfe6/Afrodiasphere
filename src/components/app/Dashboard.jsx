@@ -177,7 +177,7 @@ const DashboardPage = () => {
 		}
 	}
 
-	const areAllLinksEmpty = () => {
+	const areAllSmLinksEmpty = () => {
 		for (const link of Object.values(smLinks)) {
 			if (link.trim() !== '') {
 				return false
@@ -371,7 +371,7 @@ const DashboardPage = () => {
 				<button
 					className={styles.dashBtn}
 					onClick={handleSaveSocials}
-					disabled={areAllLinksEmpty()}
+					disabled={areAllSmLinksEmpty()}
 				>
 					Opslaan
 				</button>
