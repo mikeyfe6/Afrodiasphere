@@ -4,40 +4,12 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Facebook = ({
-	userId,
-	apiURL,
-	token,
-	setLoading,
-	setError,
-	fbLink,
-	setFbLink
-}) => {
+const Facebook = ({ apiURL, token, fbLink, setFbLink, handleSmLinkChange }) => {
 	const setFbHandler = e => {
-		setFbLink(e.target.value.toLowerCase())
-	}
+		const newFbLink = e.target.value.toLowerCase()
+		setFbLink(newFbLink)
 
-	const submitFB = async e => {
-		e.preventDefault()
-
-		const params = {
-			facebooklink: fbLink
-		}
-		try {
-			await axios.put(
-				`${apiURL}/api/instanties/${userId}`,
-				{ data: params },
-				{
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				}
-			)
-			setError(null)
-		} catch {
-			setError('Gaat iets mis met het updaten van je facebooklink')
-			setTimeout(() => setError(null), 5000)
-		}
+		handleSmLinkChange('facebook', newFbLink)
 	}
 
 	useEffect(() => {
@@ -54,7 +26,7 @@ const Facebook = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitFB} className={styles.socialField}>
+		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="fblink">
 					<i
@@ -64,20 +36,14 @@ const Facebook = ({
 					facebook.com/
 				</label>
 				<input
-					onChange={setFbHandler}
-					value={fbLink}
-					type="text"
+					id="fblink"
 					name="fblink"
+					type="text"
 					placeholder="jouwprofiel"
+					value={fbLink}
+					onChange={setFbHandler}
 				/>
 			</div>
-			<button
-				type="submit"
-				title="Sla Facebook-profiel op"
-				disabled={setLoading || fbLink === ''}
-			>
-				Opslaan
-			</button>
 		</form>
 	)
 }

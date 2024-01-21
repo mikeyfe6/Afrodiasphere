@@ -6,7 +6,7 @@ import Header from './header'
 import Footer from './footer'
 import MobileMenu from './mobileMenu'
 
-// import ResponsiveTag from '../components/helpers/responsetag'
+import ResponsiveTag from '../components/helpers/responsetag'
 
 const Layout = ({ children }) => {
 	const data = useStaticQuery(graphql`
@@ -49,6 +49,8 @@ const Layout = ({ children }) => {
 				<main>{children}</main>
 				<Footer />
 			</div>
+
+			{process.env.NODE_ENV === 'development' && <ResponsiveTag />}
 		</>
 	)
 }
@@ -58,7 +60,3 @@ Layout.propTypes = {
 }
 
 export default Layout
-
-{
-	/* <ResponsiveTag /> */
-}

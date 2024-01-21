@@ -5,39 +5,17 @@ import axios from 'axios'
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
 const Instagram = ({
-	userId,
 	apiURL,
 	token,
-	setLoading,
-	setError,
 	igLink,
-	setIgLink
+	setIgLink,
+	handleSmLinkChange
 }) => {
 	const setIgHandler = e => {
-		setIgLink(e.target.value.toLowerCase())
-	}
+		const newIgLink = e.target.value.toLowerCase()
+		setIgLink(newIgLink)
 
-	const submitIG = async e => {
-		e.preventDefault()
-
-		const params = {
-			instagramlink: igLink
-		}
-		try {
-			await axios.put(
-				`${apiURL}/api/instanties/${userId}`,
-				{ data: params },
-				{
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				}
-			)
-			setError(null)
-		} catch {
-			setError('Gaat iets mis met het updaten van je instagramlink')
-			setTimeout(() => setError(null), 5000)
-		}
+		handleSmLinkChange('instagram', newIgLink)
 	}
 
 	useEffect(() => {
@@ -53,7 +31,7 @@ const Instagram = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitIG} className={styles.socialField}>
+		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="iglink">
 					<i
@@ -64,20 +42,14 @@ const Instagram = ({
 				</label>
 
 				<input
-					onChange={setIgHandler}
-					value={igLink}
-					type="text"
+					id="iglink"
 					name="iglink"
+					type="text"
 					placeholder="jouwprofiel"
+					value={igLink}
+					onChange={setIgHandler}
 				/>
 			</div>
-			<button
-				type="submit"
-				title="Sla Instagram-profiel op"
-				disabled={setLoading || igLink === ''}
-			>
-				Opslaan
-			</button>
 		</form>
 	)
 }

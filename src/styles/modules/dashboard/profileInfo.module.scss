@@ -11,7 +11,7 @@
 			color: $primaryColor;
 			font-size: 0.75em;
 			min-width: 100px;
-			cursor: pointer;
+			cursor: default;
 		}
 
 		input {
@@ -23,6 +23,10 @@
 			max-width: 250px;
 
 			@include smoothTrans;
+
+			&::placeholder {
+				color: rgba(255 255 255 / 50%);
+			}
 
 			&:focus {
 				color: $secondaryColor;

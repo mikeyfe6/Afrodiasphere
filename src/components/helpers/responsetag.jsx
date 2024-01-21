@@ -32,7 +32,7 @@ const ResponsiveTag = () => {
 	}, [])
 
 	return (
-		<div className="responsive-tag" hidden>
+		<div className="responsive-tag">
 			<p>{screenSize}</p>
 		</div>
 	)

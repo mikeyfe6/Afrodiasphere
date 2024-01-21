@@ -80,6 +80,16 @@ const DashboardPage = () => {
 	const [waLink, setWaLink] = useState('')
 	const [tkLink, setTkLink] = useState('')
 
+	const [smLinks, setSmLinks] = useState({
+		facebook: '',
+		twitter: '',
+		instagram: '',
+		whatsapp: '',
+		tiktok: ''
+	})
+
+	const [changedSmLinks, setSmChangedLinks] = useState({})
+
 	const [links, setLinks] = useState([])
 
 	const [color, setColor] = useState('')
@@ -123,6 +133,49 @@ const DashboardPage = () => {
 	useEffect(() => {
 		getUserId()
 	}, [getUserId])
+
+	const handleSmLinkChange = (name, value) => {
+		setSmLinks(prevLinks => ({
+			...prevLinks,
+			[name]: value
+		}))
+
+		setSmChangedLinks(prevChangedLinks => ({
+			...prevChangedLinks,
+			[name]: true
+		}))
+	}
+
+	const handleSaveSocials = async () => {
+		for (const [name, hasChanged] of Object.entries(changedSmLinks)) {
+			if (hasChanged) {
+				const params = {
+					[`${name}link`]: smLinks[name]
+				}
+
+				try {
+					await axios.put(
+						`${apiURL}/api/instanties/${userId}`,
+						{ data: params },
+						{
+							headers: {
+								Authorization: `Bearer ${token}`
+							}
+						}
+					)
+					setError(null)
+				} catch {
+					setError(`Something went wrong updating your ${name} link`)
+					setTimeout(() => setError(null), 5000)
+				}
+
+				setSmChangedLinks(prevChangedLinks => ({
+					...prevChangedLinks,
+					[name]: false
+				}))
+			}
+		}
+	}
 
 	return (
 		<div className={`${styles.gridContainer}`}>
@@ -262,6 +315,7 @@ const DashboardPage = () => {
 						setError={setError}
 						fbLink={fbLink}
 						setFbLink={setFbLink}
+						handleSmLinkChange={handleSmLinkChange}
 					/>
 
 					<Twitter
@@ -271,6 +325,7 @@ const DashboardPage = () => {
 						setError={setError}
 						twLink={twLink}
 						setTwLink={setTwLink}
+						handleSmLinkChange={handleSmLinkChange}
 					/>
 
 					<Instagram
@@ -280,6 +335,7 @@ const DashboardPage = () => {
 						setError={setError}
 						igLink={igLink}
 						setIgLink={setIgLink}
+						handleSmLinkChange={handleSmLinkChange}
 					/>
 
 					<Whatsapp
@@ -289,6 +345,7 @@ const DashboardPage = () => {
 						setError={setError}
 						waLink={waLink}
 						setWaLink={setWaLink}
+						handleSmLinkChange={handleSmLinkChange}
 					/>
 
 					<TikTok
@@ -298,8 +355,13 @@ const DashboardPage = () => {
 						setError={setError}
 						tkLink={tkLink}
 						setTkLink={setTkLink}
+						handleSmLinkChange={handleSmLinkChange}
 					/>
 				</div>
+
+				<button className={styles.dashBtn} onClick={handleSaveSocials}>
+					Opslaan
+				</button>
 
 				<hr />
 

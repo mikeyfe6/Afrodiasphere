@@ -64,12 +64,13 @@ const Email = ({
 				id="email"
 				placeholder="voorbeeld@email.nl"
 				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-				style={{
-					cursor: 'pointer'
-				}}
 			/>
 
-			<button type="submit" title="Sla e-mailadres op">
+			<button
+				type="submit"
+				title="Sla e-mailadres op"
+				disabled={setLoading || email === ''}
+			>
 				Opslaan
 			</button>
 		</form>

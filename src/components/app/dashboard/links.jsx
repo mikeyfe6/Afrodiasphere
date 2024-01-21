@@ -197,7 +197,7 @@ const Links = ({
 					<input
 						id="newhyperlink"
 						type="url"
-						placeholder="voer hyperlink in, bijv: voorbeeld.nl"
+						placeholder="voorbeeld.nl"
 						ref={hyperLink}
 						style={{ textTransform: 'lowercase' }}
 						minLength="5"
@@ -236,7 +236,7 @@ const Links = ({
 							<div className={styles.linkTitle}>
 								<div>
 									<span>
-										<p>{link.title}</p>
+										<p title={link.title}>{link.title}</p>
 									</span>
 									<hr />
 									<input

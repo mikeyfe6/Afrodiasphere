@@ -4,40 +4,12 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const TikTok = ({
-	userId,
-	apiURL,
-	token,
-	setLoading,
-	setError,
-	tkLink,
-	setTkLink
-}) => {
+const TikTok = ({ apiURL, token, tkLink, setTkLink, handleSmLinkChange }) => {
 	const setTkHandler = e => {
-		setTkLink(e.target.value.toLowerCase())
-	}
+		const newTkLink = e.target.value.toLowerCase()
+		setTkLink(newTkLink)
 
-	const submitTK = async e => {
-		e.preventDefault()
-
-		const params = {
-			tiktoklink: tkLink
-		}
-		try {
-			await axios.put(
-				`${apiURL}/api/instanties/${userId}`,
-				{ data: params },
-				{
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				}
-			)
-			setError(null)
-		} catch {
-			setError('Gaat iets mis met het updaten van je tiktoklink')
-			setTimeout(() => setError(null), 5000)
-		}
+		handleSmLinkChange('tiktok', newTkLink)
 	}
 
 	useEffect(() => {
@@ -53,7 +25,7 @@ const TikTok = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitTK} className={styles.socialField}>
+		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="tklink">
 					<i
@@ -63,20 +35,14 @@ const TikTok = ({
 					tiktok.com/
 				</label>
 				<input
-					onChange={setTkHandler}
-					value={tkLink}
-					type="text"
+					id="tklink"
 					name="tklink"
+					type="text"
 					placeholder="jouwprofiel"
+					value={tkLink}
+					onChange={setTkHandler}
 				/>
 			</div>
-			<button
-				type="submit"
-				title="Sla TikTok-profiel op"
-				disabled={setLoading || tkLink === ''}
-			>
-				Opslaan
-			</button>
 		</form>
 	)
 }

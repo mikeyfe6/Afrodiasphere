@@ -65,9 +65,6 @@ const Username = ({
 				id="username"
 				pattern="[^\s]+"
 				title="Geen spaties"
-				style={{
-					cursor: 'pointer'
-				}}
 			/>
 			<button type="submit" title="Sla gebruikersnaam op">
 				Opslaan

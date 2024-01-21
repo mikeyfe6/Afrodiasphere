@@ -40,7 +40,7 @@
 			'Slug';
 	}
 
-	section {
+	> section {
 		> h2 {
 			color: $whiteColor;
 			text-decoration: underline;
@@ -52,13 +52,14 @@
 			background: $primaryColor;
 			border-radius: 5px;
 			outline: 3px solid $primaryColor;
+			cursor: default;
 		}
 
 		> hr {
 			border: 1px solid white;
-			opacity: 0.125;
-			width: 50%;
-			margin: 3em auto 1em;
+			opacity: 0.1;
+			width: 75%;
+			margin: 3em auto 0.5em;
 		}
 	}
 
@@ -129,6 +130,13 @@
 		@include card(0, 1em);
 	}
 
+	.dash-btn {
+		margin: 2em 0 1em auto;
+		display: block;
+
+		@include dashButton;
+	}
+
 	.avatar-w-profile-info {
 		display: flex;
 		justify-content: space-evenly;
@@ -174,12 +182,11 @@
 
 	.socials {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-gap: 1em;
 
 		@include mobile {
 			grid-template-columns: 1fr;
-			grid-gap: 2.5em;
 		}
 	}
 

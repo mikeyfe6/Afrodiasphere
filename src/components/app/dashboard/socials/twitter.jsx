@@ -4,40 +4,12 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Twitter = ({
-	userId,
-	apiURL,
-	token,
-	setLoading,
-	setError,
-	twLink,
-	setTwLink
-}) => {
+const Twitter = ({ apiURL, token, twLink, setTwLink, handleSmLinkChange }) => {
 	const setTwHandler = e => {
-		setTwLink(e.target.value.toLowerCase())
-	}
+		const newTwLink = e.target.value.toLowerCase()
+		setTwLink(newTwLink)
 
-	const submitTW = async e => {
-		e.preventDefault()
-
-		const params = {
-			twitterlink: twLink
-		}
-		try {
-			await axios.put(
-				`${apiURL}/api/instanties/${userId}`,
-				{ data: params },
-				{
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				}
-			)
-			setError(null)
-		} catch {
-			setError('Gaat iets mis met het updaten van je twitterlink')
-			setTimeout(() => setError(null), 5000)
-		}
+		handleSmLinkChange('twitter', newTwLink)
 	}
 
 	useEffect(() => {
@@ -53,7 +25,7 @@ const Twitter = ({
 	}, [token])
 
 	return (
-		<form onSubmit={submitTW} className={styles.socialField}>
+		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="twlink">
 					<i
@@ -63,20 +35,14 @@ const Twitter = ({
 					twitter.com/
 				</label>
 				<input
-					onChange={setTwHandler}
-					value={twLink}
-					type="text"
+					id="twlink"
 					name="twlink"
+					type="text"
 					placeholder="jouwprofiel"
+					value={twLink}
+					onChange={setTwHandler}
 				/>
 			</div>
-			<button
-				type="submit"
-				title="Sla Twitter-profiel op"
-				disabled={setLoading || twLink === ''}
-			>
-				Opslaan
-			</button>
 		</form>
 	)
 }
