@@ -46,7 +46,7 @@ const Themes = ({
 			const iphoneUsernameStyle = document.getElementById('iphone-username')
 			const iphoneOccupateStyle = document.getElementById('iphone-occupate')
 			const iphoneBiographyStyle = document.getElementById('iphone-biography')
-			const iphoneIconLookStyle = document.getElementById('iphone-iconlook')
+			const iphoneIconsStyle = document.getElementById('iphone-icons')
 			const iphoneBgStyle = document.getElementById('iphone-bg')
 
 			const iphoneLinkStyle = className => {
@@ -55,13 +55,13 @@ const Themes = ({
 				}
 			}
 
-			let c = document.getElementById('iphone-linklook').children
+			let c = document.getElementById('iphone-links').children
 			let i
 
 			iphoneUsernameStyle.className = username
 			iphoneOccupateStyle.className = occupate
 			iphoneBiographyStyle.className = biography
-			iphoneIconLookStyle.className = icons
+			iphoneIconsStyle.className = icons
 			iphoneBgStyle.className = bg
 			iphoneLinkStyle(links)
 		}
@@ -178,7 +178,6 @@ const Themes = ({
 						}}
 					/>
 					<div
-						id="currentYellow"
 						className={`${styles.yellowTheme} ${color === 'geel' ? styles.currentTheme : ''}`}
 					>
 						<div className={styles.yellowlinks} />

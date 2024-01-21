@@ -27,9 +27,9 @@ const Preview = ({
 			<p id="iphone-username">{profile}</p>
 			<p id="iphone-occupate">{occupate}</p>
 			<p id="iphone-biography">{biography}</p>
-			<div id="iphone-bg" className={styles.iphoneBackground} />
+			<div id="iphone-bg" />
 			<div>
-				<ul className={styles.iphoneLinks} id="iphone-linklook">
+				<ul className={styles.iphoneLinks} id="iphone-links">
 					{links
 						.filter(link => link.visible)
 						.slice(0, 4)
@@ -47,7 +47,7 @@ const Preview = ({
 						))}
 				</ul>
 			</div>
-			<div className={styles.iphoneSocials} id="iphone-iconlook">
+			<div className={styles.iphoneSocials} id="iphone-icons">
 				{fbLink && fbLink.length > 2 && (
 					<a
 						href={`https://www.facebook.com/${fbLink}`}

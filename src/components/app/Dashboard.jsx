@@ -108,6 +108,7 @@ const DashboardPage = () => {
 	)
 
 	const getUserId = useCallback(async () => {
+		setLoading(true)
 		try {
 			const res = await axios.get(`${apiURL}/api/instanties`, {
 				headers: {
@@ -119,6 +120,8 @@ const DashboardPage = () => {
 		} catch (error) {
 			console.error('Error fetching user ID:', error)
 			setError('Er gaat iets mis met het ophalen van je gegevens')
+		} finally {
+			setLoading(false)
 		}
 	}, [token])
 
