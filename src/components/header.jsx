@@ -37,6 +37,29 @@ const Header = () => {
 								</Link>
 							</li>
 						)}
+
+						<li>
+							<Link
+								to="/"
+								title="Afrodiasphere"
+								activeStyle={{ color: '#cc9932' }}
+							>
+								Home
+							</Link>
+						</li>
+
+						{isLoggedIn() && isBrowser() && (
+							<li>
+								<Link
+									to="/dashboard/"
+									activeStyle={{ color: '#cc9932' }}
+									title="Dashboard"
+								>
+									Dashboard
+								</Link>
+							</li>
+						)}
+
 						<li>
 							{isLoggedIn() && isBrowser() ? (
 								<button
@@ -59,17 +82,7 @@ const Header = () => {
 								</Link>
 							)}
 						</li>
-						{isLoggedIn() && isBrowser() && (
-							<li>
-								<Link
-									to="/dashboard/"
-									activeStyle={{ color: '#cc9932' }}
-									title="Dashboard"
-								>
-									Dashboard
-								</Link>
-							</li>
-						)}
+
 						<li>
 							<a
 								href="https://menefex.nl"
