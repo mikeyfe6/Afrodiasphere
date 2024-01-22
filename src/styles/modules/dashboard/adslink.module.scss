@@ -3,7 +3,7 @@
 .ads {
 	&-link {
 		text-align: center;
-		font-size: 0.7rem;
+		font-size: 0.75rem;
 	}
 
 	&-prefix {
@@ -14,6 +14,13 @@
 		background: $primaryColor;
 		padding: 10px;
 		border-radius: 10px 0 0 10px;
+
+		@include phablet {
+			color: $ashColor;
+			background: white;
+			border-color: white;
+			padding: 7.5px;
+		}
 	}
 
 	&-slug {
@@ -23,7 +30,12 @@
 		background-color: $blackColor;
 		padding: 10px;
 		border-radius: 0 10px 10px 0;
-		color: white;
+
+		@include phablet {
+			color: $blackColor;
+			border-color: $blackColor;
+			padding: 7.5px;
+		}
 
 		> a {
 			display: block;
