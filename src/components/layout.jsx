@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -7,6 +7,8 @@ import Footer from './footer'
 import MobileMenu from './mobileMenu'
 
 import ResponsiveTag from '../components/helpers/responsetag'
+
+import '../styles/layout.scss'
 
 const Layout = ({ children }) => {
 	const data = useStaticQuery(graphql`

@@ -1,27 +1,25 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 
 import { Link } from 'gatsby'
 import axios from 'axios'
+
+import { isLoggedIn, isBrowser, getUser } from '../services/auth'
 
 import Seo from '../components/seo'
 
 import AdsLayout from '../components/adslayout'
 
-import '../styles/adspage.scss'
-
 import noavatar from '../images/noavatar.png'
 
 import afroLogo from '../images/afrodiasphere-logo.png'
 
-// import { getUser } from "../services/auth"
-
-// const gatsbyUser = getUser()
+import '../styles/adspage.scss'
 
 const apiURL = process.env.GATSBY_BACKEND_URL
 
 const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const [color, setColor] = useState('')
-	const [avatar, setAvatar] = useState(null)
+	const [avatar, setAvatar] = useState(noavatar)
 	const [username, setUsername] = useState('')
 	const [occupate, setOccupate] = useState('')
 	const [biography, setBiography] = useState('')
@@ -32,6 +30,8 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const [igLink, setIgLink] = useState('')
 	const [waLink, setWaLink] = useState('')
 	const [tkLink, setTkLink] = useState('')
+
+	const AdsUser = getUser()
 
 	useLayoutEffect(() => {
 		const getLinks = async () => {
@@ -62,39 +62,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 		getLinks()
 	}, [id, slug, persoon.username])
 
-	useEffect(() => {
-		var fbhideman = document.getElementById('fbhidesm')
-		if (fbLink < 9) {
-			fbhideman.style.display = 'none'
-		} else {
-			fbhideman.style.display = 'block'
-		}
-		var twhideman = document.getElementById('twhidesm')
-		if (twLink < 9) {
-			twhideman.style.display = 'none'
-		} else {
-			twhideman.style.display = 'block'
-		}
-		var ighideman = document.getElementById('ighidesm')
-		if (igLink < 9) {
-			ighideman.style.display = 'none'
-		} else {
-			ighideman.style.display = 'block'
-		}
-		var wahideman = document.getElementById('wahidesm')
-		if (waLink < 9) {
-			wahideman.style.display = 'none'
-		} else {
-			wahideman.style.display = 'block'
-		}
-		var tkhideman = document.getElementById('tkhidesm')
-		if (tkLink < 9) {
-			tkhideman.style.display = 'none'
-		} else {
-			tkhideman.style.display = 'block'
-		}
-	}, [fbLink, twLink, igLink, waLink, tkLink])
-
 	return (
 		<AdsLayout>
 			{/* <Img
@@ -118,19 +85,15 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 			<div className={`theme-${color}`}>
 				<img src={avatar} alt="avatar" />
 
-				<h1>{username}</h1>
+				<h1 className={`theme-${color}-username`}>{username}</h1>
 
-				<p>{occupate}</p>
+				<p className={`theme-${color}-occupate`}>{occupate}</p>
 
-				<p>{biography}</p>
+				<p className={`theme-${color}-biography`}>{biography}</p>
 
-				<ul>
+				<ul className={`theme-${color}-links`}>
 					{links.slice(0, 20).map(link => (
-						<li
-							key={link.id}
-							className={`theme-${color}-links`}
-							hidden={!link.visible}
-						>
+						<li key={link.id} hidden={!link.visible}>
 							<a
 								href={`https://${link.hyperlink}`}
 								rel="noopener noreferrer"
@@ -143,50 +106,60 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				</ul>
 
 				<div className={`theme-${color}-icons`}>
-					<a
-						href={`https://www.facebook.com/${fbLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="fbhidesm"
-					>
-						<i className="fa-brands fa-facebook-f fa-xl" />
-					</a>
+					{fbLink && (
+						<a
+							href={`https://www.facebook.com/${fbLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="fb"
+						>
+							<i className="fa-brands fa-facebook-f" />
+						</a>
+					)}
 
-					<a
-						href={`https://twitter.com/${twLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="twhidesm"
-					>
-						<i className="fa-brands fa-x-twitter" />
-					</a>
+					{twLink && (
+						<a
+							href={`https://twitter.com/${twLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="twhidesm"
+						>
+							<i className="fa-brands fa-x-twitter" />
+						</a>
+					)}
 
-					<a
-						href={`https://www.instagram.com/${igLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="ighidesm"
-					>
-						<i className="fa-brands fa-instagram fa-xl" />
-					</a>
+					{igLink && (
+						<a
+							href={`https://www.instagram.com/${igLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="ighidesm"
+						>
+							<i className="fa-brands fa-instagram" />
+						</a>
+					)}
 
-					<a
-						href={`https://wa.me/${waLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="wahidesm"
-					>
-						{/* <FaWhatsapp size="2em" /> */}
-					</a>
+					{waLink && (
+						<a
+							href={`https://wa.me/${waLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="wahidesm"
+						>
+							<i className="fa-brands fa-whatsapp" />
+						</a>
+					)}
 
-					<a
-						href={`https://www.tiktok.com/@${tkLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="tkhidesm"
-					>
-						<i className="fa-brands fa-tiktok fa-xl" />
-					</a>
+					{tkLink && (
+						<a
+							href={`https://www.tiktok.com/@${tkLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							id="tkhidesm"
+						>
+							<i className="fa-brands fa-tiktok" />
+						</a>
+					)}
 
 					{/* <a
 						href={`https://www.tiktok.com/@${tkLink}`}
@@ -197,10 +170,21 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						<i className="fa-brands fa-linkedin fa-xl" />
 					</a> */}
 				</div>
-				<Link to="/">
-					<img src={afroLogo} alt="" className={`theme-footer`} />
+				<Link to="/" className={`theme-footer`}>
+					<img src={afroLogo} alt="" />
 				</Link>
 			</div>
+			{isLoggedIn() && isBrowser() && (
+				<div className="ads-user">
+					<Link to={`/dashboard/`} title="Ga naar jouw dashboard">
+						Dashboard
+					</Link>
+
+					<Link to={`/${AdsUser.user.username}/`} title="Ga naar jouw ADS page">
+						{AdsUser.user.username}
+					</Link>
+				</div>
+			)}
 		</AdsLayout>
 	)
 }

@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import ResponsiveTag from '../components/helpers/responsetag'
+
 const AdsLayout = ({ children }) => {
 	return (
 		<>
 			<div style={{ height: '100vh', marginBottom: '-58px' }}>
 				<main>{children}</main>
 			</div>
+
+			{process.env.NODE_ENV === 'development' && <ResponsiveTag />}
 		</>
 	)
 }

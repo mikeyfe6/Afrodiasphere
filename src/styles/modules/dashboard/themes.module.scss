@@ -27,43 +27,29 @@
 	&-style {
 		background: linear-gradient(to bottom, yellow, black);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: black;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: white;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				background: white;
 				color: black;
 				border: 1px solid yellow;
 				box-shadow: 1px 3px 5px rgba(55 55 55 / 75%);
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: yellow;
@@ -90,43 +76,29 @@
 	&-style {
 		background: linear-gradient(to bottom, grey, white);
 
-		@include chooseBackground;
-
 		&-username {
 			color: #595959;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: #595959;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: white;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
 				background: rgba(255, 255, 255, 0.797);
 				color: #878787;
 				border: 1px solid #878787;
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: grey;
@@ -154,43 +126,29 @@
 	&-style {
 		background: linear-gradient(to bottom, pink, grey);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: grey;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: white;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
 				color: white;
 				background: #a8a8a8;
 				border: 1px solid white;
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: pink;
@@ -219,44 +177,30 @@
 	&-style {
 		background: linear-gradient(to bottom, black, grey);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: black;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: white;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				background: #878787;
 				color: white;
 				border: 1px solid white;
 
 				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: white;
@@ -284,44 +228,30 @@
 	&-style {
 		background: linear-gradient(to bottom, brown, white);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: white;
 			background-color: brown;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: #e0e0e0;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				background: white;
 				color: brown;
 				border: 1px solid brown;
 
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: brown;
@@ -350,44 +280,30 @@
 	&-style {
 		background: linear-gradient(to bottom, green, white);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: green;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: #ededed;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				background: white;
 				color: green;
 				border: 1px solid green;
 
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: green;
@@ -416,42 +332,28 @@
 	&-style {
 		background: linear-gradient(to bottom, #e6541b, black);
 
-		@include chooseBackground;
-
 		&-username {
 			color: white;
-
-			@include chooseUsername;
 		}
 
 		&-occupate {
 			color: black;
 			background-color: white;
-
-			@include chooseOccupate;
 		}
 
 		&-biography {
 			color: white;
-
-			@include chooseBiography;
 		}
 
 		&-links {
-			margin: 10px 0;
-
 			a {
 				background: white;
 				color: black;
 				border: 1px solid #e6541b;
-
-				@include chooseLinks;
 			}
 		}
 
 		&-icons {
-			@include chooseIcons;
-
 			&:nth-child(n) {
 				a {
 					color: #e6541b;

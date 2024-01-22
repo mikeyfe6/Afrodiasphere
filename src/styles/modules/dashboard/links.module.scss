@@ -237,6 +237,7 @@
 				width: 20px;
 				background-color: $whiteColor;
 				outline: 1px solid rgba(167, 167, 167, 1);
+				border-radius: 2.5px;
 
 				&::after {
 					content: '';
@@ -261,7 +262,6 @@
 			&:hover input:checked ~ .checkmark,
 			input:checked ~ .checkmark {
 				background-color: $errorColor;
-				border-radius: 2.5px;
 			}
 
 			/* Show the checkmark when checked */
@@ -272,7 +272,6 @@
 			/* Color when checked */
 			input:checked ~ .checkmark {
 				background-color: $successColor;
-				border-radius: 2.5px;
 			}
 		}
 	}

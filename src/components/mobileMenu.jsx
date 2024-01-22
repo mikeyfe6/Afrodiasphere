@@ -62,18 +62,6 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 							Home
 						</Link>
 					</li>
-					{/* <li>
-						<a
-							href="https://menefex.nl"
-							rel="noopener noreferrer"
-							target="_blank"
-							title="MenefexWMB"
-						>
-							<strong>
-								<i>MF</i>
-							</strong>
-						</a>
-					</li> */}
 					{isLoggedIn() && isBrowser() && (
 						<li>
 							<Link

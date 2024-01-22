@@ -17,6 +17,7 @@
         "scss/dollar-variable-pattern": "^[a-z][a-zA-Z]*$",
         "scss/dollar-variable-empty-line-before": null,
         "no-descending-specificity": null,
-        "declaration-empty-line-before": null
+        "declaration-empty-line-before": null,
+        "scss/at-mixin-pattern": "^[a-z][a-zA-Z]*$"
     }
 }

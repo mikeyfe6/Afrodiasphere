@@ -32,6 +32,8 @@
 			> li {
 				> a,
 				button {
+					cursor: pointer;
+
 					@include smoothTrans;
 
 					&:hover {

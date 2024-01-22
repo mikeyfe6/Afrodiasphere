@@ -78,7 +78,7 @@ const Header = () => {
 								title="MenefexWMB"
 							>
 								<strong>
-									<i>MF</i>
+									<i style={{ fontStyle: 'italic' }}>MNFX</i>
 								</strong>
 							</a>
 						</li>

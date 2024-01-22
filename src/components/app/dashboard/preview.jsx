@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as styles from '../../../styles/modules/dashboard/preview.module.scss'
+import '../../../styles/preview.scss'
 
 // TODO: add a doublecheck for the right password
 
@@ -17,37 +17,30 @@ const Preview = ({
 	tkLink
 }) => {
 	return (
-		<div className={styles.iphoneFrame}>
-			<img
-				src={preview}
-				alt=""
-				className={styles.iphoneAvatar}
-				id="iphone-avatar"
-			/>
+		<div id="iphone-frame">
+			<img src={preview} alt="" id="iphone-avatar" />
 			<p id="iphone-username">{profile}</p>
 			<p id="iphone-occupate">{occupate}</p>
 			<p id="iphone-biography">{biography}</p>
-			<div id="iphone-bg" />
-			<div>
-				<ul className={styles.iphoneLinks} id="iphone-links">
-					{links
-						.filter(link => link.visible)
-						.slice(0, 4)
-						.map((link, index) => (
-							<li key={index} id={`link${link.id}`} hidden={!link.visible}>
-								<a
-									href={`https://${link.hyperlink}`}
-									rel="noopener noreferrer"
-									target="_blank"
-									title={`https://${link.hyperlink}`}
-								>
-									{link.title}
-								</a>
-							</li>
-						))}
-				</ul>
-			</div>
-			<div className={styles.iphoneSocials} id="iphone-icons">
+
+			<ul id="iphone-links">
+				{links
+					.filter(link => link.visible)
+					.slice(0, 4)
+					.map((link, index) => (
+						<li key={index} id={`link${link.id}`} hidden={!link.visible}>
+							<a
+								href={`https://${link.hyperlink}`}
+								rel="noopener noreferrer"
+								target="_blank"
+								title={`https://${link.hyperlink}`}
+							>
+								{link.title}
+							</a>
+						</li>
+					))}
+			</ul>
+			<div id="iphone-icons">
 				{fbLink && fbLink.length > 2 && (
 					<a
 						href={`https://www.facebook.com/${fbLink}`}
@@ -104,6 +97,7 @@ const Preview = ({
 					</a>
 				)}
 			</div>
+			<div id="iphone-bg" />
 			{/* <img
             src={gatsbyUser.user.gebruiker.background.url}
             alt=""

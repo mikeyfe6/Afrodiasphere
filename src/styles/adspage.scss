@@ -1,4 +1,53 @@
+@use 'sass:color';
+
 @import './configs/globals';
+
+// ---------------------------------------------------------------------------------------- // USERNAME
+
+.ads-user {
+	position: absolute;
+	top: 15px;
+	right: 25%;
+
+	transform: translateX(75%);
+
+	@include phablet {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		padding: 0 1em;
+		right: initial;
+		transform: none;
+	}
+
+	> a {
+		&:nth-of-type(1) {
+			margin-right: 1em;
+
+			&:hover {
+				opacity: 0.75;
+
+				@include smoothTrans;
+			}
+		}
+
+		&:nth-of-type(2) {
+			background: $primaryColor;
+			color: color.adjust($blackColor, $lightness: 5%);
+			padding: 0.25em 1em;
+			font-weight: 600;
+			border-radius: 5px;
+
+			&:hover {
+				opacity: 0.75;
+				color: $blackColor;
+
+				@include smoothTrans;
+			}
+		}
+	}
+}
 
 .theme {
 	// ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
@@ -7,39 +56,40 @@
 
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: black;
 			background-color: white;
 
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: #dddddd;
 
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
+			@include pageLinks;
+
+			> li > a {
 				background: white;
 				color: black;
 				border: 1px solid yellow;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(55, 55, 55, 0.767);
-
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: yellow;
 
 				&:hover {
@@ -52,38 +102,43 @@
 	// ---------------------------------------------------------------------------------------- // GRAY GRAY GRAY
 	&-grijs {
 		background: linear-gradient(to bottom, grey, white);
+
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: #595959;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: #595959;
 			background-color: white;
+
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: white;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
+			@include pageLinks;
+
+			> li > a {
 				background: rgba(255, 255, 255, 0.797);
 				color: #878787;
 				border: 1px solid #878787;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: grey;
 
 				&:hover {
@@ -96,38 +151,43 @@
 	// ---------------------------------------------------------------------------------------- // PINK PINK PINK
 	&-roze {
 		background: linear-gradient(to bottom, pink, grey);
+
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: grey;
 			background-color: white;
+
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: white;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
+			@include pageLinks;
+
+			> li > a {
 				background: #a8a8a8;
 				color: white;
 				border: 1px solid white;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: pink;
 
 				&:hover {
@@ -140,31 +200,36 @@
 	// ---------------------------------------------------------------------------------------- // BLACK BLACK BLACK
 	&-zwart {
 		background: linear-gradient(to bottom, black, grey);
+
 		@include pageTheme;
 
-		> h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		> p:nth-of-type(1) {
+		&-occupate {
 			color: black;
 			background-color: white;
+
 			@include pageOccupation;
 		}
 
-		> p:nth-of-type(2) {
+		&-biography {
 			color: white;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			> a {
+			@include pageLinks;
+
+			> li > a {
 				background: #878787;
 				color: white;
 				border: 2px solid white;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
-				@include pageLinks;
 			}
 		}
 
@@ -184,39 +249,43 @@
 	// ---------------------------------------------------------------------------------------- // BRUIN BRUIN BRUIN
 	&-bruin {
 		background: linear-gradient(to bottom, brown, white);
+
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: white;
 			background-color: brown;
+
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: #e0e0e0;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
-				background: white;
+			@include pageLinks;
 
+			> li > a {
+				background: white;
 				color: brown;
 				border: 1px solid brown;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: brown;
 
 				&:hover {
@@ -229,39 +298,43 @@
 	// ---------------------------------------------------------------------------------------- // GROEN GROEN GROEN
 	&-groen {
 		background: linear-gradient(to bottom, green, white);
+
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: green;
 			background-color: white;
+
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: #ededed;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
-				background: white;
+			@include pageLinks;
 
+			> li > a {
+				background: white;
 				color: green;
 				border: 1px solid green;
-				border-radius: 3px;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: green;
 
 				&:hover {
@@ -276,37 +349,39 @@
 		background: linear-gradient(to bottom, #e6541b, black);
 		@include pageTheme;
 
-		h1 {
+		&-username {
 			color: white;
+
+			@include pageUsername;
 		}
 
-		p:nth-of-type(1) {
+		&-occupate {
 			color: black;
 			background-color: white;
+
 			@include pageOccupation;
 		}
 
-		p:nth-of-type(2) {
+		&-biography {
 			color: #e0e0e0;
+
 			@include pageBiography;
 		}
 
 		&-links {
-			a {
-				background: white;
+			@include pageLinks;
 
+			> li > a {
+				background: white;
 				color: black;
 				border: 1px solid #e6541b;
-				border-radius: 3px;
-
-				@include pageLinks;
 			}
 		}
 
 		&-icons {
 			@include pageSocials;
 
-			a {
+			> a {
 				color: #e6541b;
 
 				&:hover {
@@ -317,10 +392,16 @@
 	}
 
 	&-footer {
-		max-width: 150px;
+		> img {
+			max-width: 112.5px;
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
 
-		@include mobile {
-			max-width: 100px;
+			@include mobile {
+				max-width: 100px;
+			}
 		}
 	}
 }
