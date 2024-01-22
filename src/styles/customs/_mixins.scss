@@ -177,9 +177,13 @@
 	transform: translateX(-50%);
 	display: flex;
 	justify-content: center;
-	gap: 1.25em;
+	gap: 1.5em;
 
 	> a > i {
-		font-size: 2em;
+		font-size: 1.75em;
+
+		@include mobile {
+			font-size: 1.5em;
+		}
 	}
 }

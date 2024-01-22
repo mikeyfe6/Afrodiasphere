@@ -1,12 +1,12 @@
 @import '../../styles/configs/globals';
 
-footer {
+.ads-footer {
 	text-align: center;
 	color: #8c8c8c;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	padding: 1em;
+	padding: 0.25em 1em 1.25em 1em;
 
 	@include mobile {
 		font-size: 0.675rem;

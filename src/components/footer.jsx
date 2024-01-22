@@ -1,11 +1,11 @@
 import React from 'react'
 
-import '../styles/modules/footer.module.scss'
+import * as styles from '../styles/modules/footer.module.scss'
 
 import menefexLogo from '../images/menefex-icon.png'
 
 const Footer = () => (
-	<footer>
+	<footer className={styles.adsFooter}>
 		Copyright {new Date().getFullYear()} © ・{' '}
 		<a href="mailto:feedback@menefex.nl" title="Stuur feedback naar Menefex">
 			Feedback

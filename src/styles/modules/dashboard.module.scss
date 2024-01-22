@@ -11,7 +11,7 @@
 		'Sidebar Dashboard Dashboard Preview'
 		'Sidebar Dashboard Dashboard Preview';
 
-	background: linear-gradient(135deg, rgba(0 0 0 / 50%), $primaryColor);
+	background: linear-gradient(135deg, rgba(0 0 0 / 67.5%), $primaryColor);
 
 	@include desktop {
 		grid-template-columns: repeat(2, 1fr);
