@@ -67,11 +67,12 @@
 // dashboard mixins ---------------------------- // dashboard mixins
 
 @mixin chooseDisplay {
-	border-radius: 12.5px;
+	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 1em;
 	width: 125px;
 	height: 200px;
 	border: solid 5px $ashColor;
@@ -79,15 +80,24 @@
 
 	@include smoothTrans;
 
+	@include desktop {
+		width: 112.5px;
+		height: 175px;
+	}
+
+	@include mobile {
+		width: 100px;
+		height: 150px;
+	}
+
 	&:hover {
 		border: solid 5px $secondaryColor;
 	}
 }
 
 @mixin chooseStrokes {
-	width: 50px;
+	width: 62.5%;
 	height: 12.5px;
-	margin: 10px 0;
 	border-radius: 2px;
 }
 

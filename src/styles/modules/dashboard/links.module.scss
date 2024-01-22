@@ -81,6 +81,8 @@
 	background: linear-gradient(145deg, white, white, white, #deceae) no-repeat 0
 		0 / cover;
 
+	outline: 2px solid $primaryColor;
+
 	&-fields {
 		display: flex;
 		flex-wrap: wrap;

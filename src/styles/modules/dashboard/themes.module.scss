@@ -4,13 +4,10 @@
 	&-theme {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1em;
+		gap: 1.25em;
 	}
 
 	&-color {
-		align-self: center;
-		justify-self: center;
-
 		input {
 			display: none;
 		}
@@ -60,6 +57,7 @@
 
 	&-theme {
 		background: linear-gradient(to bottom, yellow, black);
+
 		@include chooseDisplay;
 
 		.yellowlinks {
