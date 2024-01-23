@@ -19,6 +19,8 @@
 		max-width: 150px;
 		width: 100%;
 		height: 150px;
+		min-width: 150px;
+		min-height: 150px;
 		border-radius: 50%;
 		object-fit: cover;
 		overflow: hidden;
@@ -26,6 +28,8 @@
 		border: 3px solid $whiteColor;
 
 		@include mobile {
+			min-width: 125px;
+			min-height: 125px;
 			max-width: 125px;
 			height: 125px;
 		}

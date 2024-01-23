@@ -48,6 +48,7 @@
 	padding: $yAxis 1em;
 	text-align: center;
 	border-radius: 3px;
+	white-space: nowrap;
 
 	&:hover {
 		transform: scale(0.97);

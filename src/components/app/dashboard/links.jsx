@@ -184,37 +184,40 @@ const Links = ({
 	return (
 		<>
 			<div className={styles.newLink}>
-				<div className={styles.newTitle}>
-					<label htmlFor="newtitle">
-						<h4 style={{ color: 'white' }}>
-							Titel<span>:</span>
-						</h4>
-					</label>
-					<input
-						id="newtitle"
-						type="text"
-						placeholder="voer een titel in"
-						ref={linkTitle}
-						minLength="5"
-						required
-					/>
-				</div>
-				<div className={styles.newHyperlink}>
-					<label htmlFor="newhyperlink">
-						<h4 style={{ color: 'white' }}>
-							Hyperlink<span>:</span>
-						</h4>
-					</label>
-					<input
-						id="newhyperlink"
-						type="url"
-						placeholder="voorbeeld.nl"
-						ref={hyperLink}
-						style={{ textTransform: 'lowercase' }}
-						minLength="5"
-						title="Let op: 'http(s)://' NIET nodig !"
-						required
-					/>
+				<div className={styles.newLinkFields}>
+					<div className={styles.newTitle}>
+						<label htmlFor="newtitle">
+							<h4 style={{ color: 'white' }}>
+								Titel<span>:</span>
+							</h4>
+						</label>
+						<input
+							id="newtitle"
+							type="text"
+							placeholder="voer een titel in"
+							ref={linkTitle}
+							minLength="5"
+							required
+						/>
+					</div>
+					<hr />
+					<div className={styles.newHyperlink}>
+						<label htmlFor="newhyperlink">
+							<h4 style={{ color: 'white' }}>
+								Hyperlink<span>:</span>
+							</h4>
+						</label>
+						<input
+							id="newhyperlink"
+							type="url"
+							placeholder="voorbeeld.nl"
+							ref={hyperLink}
+							style={{ textTransform: 'lowercase' }}
+							minLength="5"
+							title="Let op: 'http(s)://' NIET nodig !"
+							required
+						/>
+					</div>
 				</div>
 
 				<div className={styles.newLinkBtns}>
@@ -274,7 +277,12 @@ const Links = ({
 										event.preventDefault()
 									}}
 								>
-									Update Titel
+									{!editLinkTitle[link.id] ||
+									editLinkTitle[link.id].trim() === '' ? (
+										<i class="fa-solid fa-ellipsis"></i>
+									) : (
+										<i class="fa-solid fa-check"></i>
+									)}
 								</button>
 							</div>
 							<div className={styles.linkUrl}>
@@ -313,7 +321,12 @@ const Links = ({
 										event.preventDefault()
 									}}
 								>
-									Update Hyperlink
+									{!editLinkUrl[link.id] ||
+									editLinkUrl[link.id].trim() === '' ? (
+										<i class="fa-solid fa-ellipsis"></i>
+									) : (
+										<i class="fa-solid fa-check"></i>
+									)}
 								</button>
 							</div>
 						</div>
@@ -336,9 +349,16 @@ const Links = ({
 									id={`checkbox${link.id}`}
 									checked={link.visible}
 									onChange={e => toggleLink(link, e.target.checked)}
+									hidden
 								/>
 
-								<span className={styles.checkmark}></span>
+								<span onClick={() => toggleLink(link, !link.visible)}>
+									{link.visible ? (
+										<i className="fa-solid fa-eye-slash" />
+									) : (
+										<i className="fa-solid fa-eye" />
+									)}
+								</span>
 							</div>
 						</div>
 					</li>

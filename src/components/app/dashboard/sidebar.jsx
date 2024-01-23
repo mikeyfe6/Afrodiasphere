@@ -8,7 +8,7 @@ const Sidebar = ({ username }) => {
 	return (
 		<>
 			<h5>
-				Hi <span>{username}</span> !
+				Hi <u>{username}</u> !
 			</h5>
 
 			<button

@@ -59,14 +59,14 @@
 			border: 1px solid white;
 			opacity: 0.1;
 			width: 75%;
-			margin: 3em auto 0.5em;
+			margin: 2em auto 0.5em;
 		}
 	}
 
 	@include card(1em, 1em);
 
 	@include mobile {
-		@include card(0.5em, 0.675em);
+		@include card(0.375em, 0.5em);
 	}
 }
 
@@ -127,7 +127,7 @@
 	@include card(0, 2em);
 
 	@include mobile {
-		@include card(0, 1em);
+		@include card(0, 0.75em);
 	}
 
 	.dash-btn {
@@ -142,16 +142,15 @@
 		justify-content: space-evenly;
 		gap: 2em;
 
-		@include desktop {
+		@include laptop {
 			flex-direction: column;
 		}
 
 		@include tablet {
-			flex-direction: column;
-			flex-wrap: wrap;
+			flex-direction: row;
 		}
 
-		@include mobile {
+		@include phablet {
 			flex-direction: column;
 		}
 

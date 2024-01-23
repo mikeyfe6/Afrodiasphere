@@ -2,20 +2,52 @@
 
 @import '../../configs/globals';
 
-.new-link {
-	display: flex;
-	align-items: center;
-	margin-bottom: 1.25em;
-	gap: 2em 1em;
-	flex-wrap: wrap;
+.new {
+	&-link {
+		display: flex;
+		align-items: center;
+		margin-bottom: 1.25em;
+		gap: 2em 1em;
 
-	@include mobile {
-		flex-direction: column;
-		align-items: flex-start;
+		&-fields {
+			width: 100%;
+
+			hr {
+				background-color: #cc9932;
+				height: 1px;
+				margin: 0.5em 0;
+				opacity: 0.5;
+			}
+		}
+
+		@include mobile {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		&-btns {
+			display: flex;
+			align-items: center;
+			gap: 1em;
+
+			@include mobile {
+				justify-content: space-between;
+				margin: 0;
+				width: 100%;
+			}
+
+			> :nth-child(1) {
+				@include dashButton($secondaryColor, $whiteColor);
+			}
+
+			> :nth-child(2) {
+				@include dashButton($errorColor, $whiteColor);
+			}
+		}
 	}
 
-	.new-title,
-	.new-hyperlink {
+	&-title,
+	&-hyperlink {
 		display: flex;
 		gap: 0.5em;
 		align-items: center;
@@ -25,14 +57,10 @@
 			color: $primaryColor;
 		}
 
-		@include mobile {
-			flex-wrap: wrap;
-		}
-
 		> input {
 			outline: none;
 			border: none;
-			min-width: 150px;
+			font-weight: 300;
 
 			&:focus {
 				color: $secondaryColor;
@@ -48,21 +76,6 @@
 			}
 		}
 	}
-
-	&-btns {
-		display: flex;
-		gap: 1em;
-		align-items: flex-end;
-		margin-left: auto;
-
-		> :nth-child(1) {
-			@include dashButton($secondaryColor, $whiteColor);
-		}
-
-		> :nth-child(2) {
-			@include dashButton($errorColor, $whiteColor);
-		}
-	}
 }
 
 .link {
@@ -70,11 +83,15 @@
 	justify-content: space-between;
 	border-radius: 10px;
 	gap: 2em;
-	padding: 1em 1.5em;
+	padding: 0.5em 1.25em;
 
 	@include mobile {
 		padding: 0.75em 1em;
 		gap: 1em;
+	}
+
+	@include compact {
+		padding: 0.75em 0.675em 0.75em 1em;
 	}
 
 	color: $ashColor;
@@ -86,8 +103,8 @@
 	&-fields {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1em;
-		flex: 90%;
+		gap: 1.5em;
+		flex: 95%;
 
 		@include laptop {
 			flex-direction: column;
@@ -112,23 +129,14 @@
 		justify-content: space-between;
 		gap: 1.25em;
 
-		@include mobile {
-			flex-direction: column;
-
-			> * {
-				width: 100%;
-			}
-		}
-
 		> div {
 			flex: 1;
-			min-width: 150px;
 
 			> hr {
 				width: 100%;
 				background: rgba($thirdColor, 0.5);
 				height: 1px;
-				margin: 0.25em 0;
+				margin: 0.375em 0 0.175em;
 			}
 
 			> span {
@@ -167,17 +175,19 @@
 		}
 
 		button {
-			@include dashButton($primaryColor, $whiteColor);
-			white-space: nowrap;
-			min-width: fit-content;
+			background-color: $primaryColor;
+			color: $whiteColor;
+			padding: 0.375em 0.75em;
+			text-align: center;
+			border-radius: 3px;
 
-			@include mobile {
-				width: fit-content;
-				margin-right: auto;
+			&:hover {
+				transform: scale(0.97);
 			}
 
-			@include mini {
-				width: 100%;
+			&:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
 			}
 		}
 	}
@@ -193,87 +203,49 @@
 	&-btns {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 1.5em;
-
-		flex: 10%;
-
-		margin-left: auto;
+		justify-content: space-evenly;
+		flex-direction: column;
+		gap: 1em;
+		flex: 5%;
 
 		border-left: 1px solid rgba($thirdColor, 0.5);
 		padding-left: 1em;
 
+		@include compact {
+			padding-left: 0.5em;
+		}
+
 		.trash-btn {
 			color: $errorColor;
 			cursor: pointer;
+
+			i {
+				border: 2px solid transparent;
+				padding: 0.825em 0.475em;
+				border-radius: 50%;
+
+				@include smoothTrans;
+
+				&:hover {
+					border-color: $errorColor;
+				}
+			}
 		}
 
 		.show-btn {
-			display: block;
-			position: relative;
-			user-select: none;
-			padding-left: 20px;
-			margin-bottom: 20px;
+			color: $ashColor;
+			cursor: pointer;
 
-			input {
-				position: absolute;
-				opacity: 0;
-				cursor: pointer;
-				height: 20px;
-				width: 20px;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				z-index: 4;
-			}
+			i {
+				border: 2px solid transparent;
+				padding: 0.55em 0.5em;
+				border-radius: 50%;
 
-			.checkmark {
-				position: absolute;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				right: 0;
-				height: 20px;
-				width: 20px;
-				background-color: $whiteColor;
-				outline: 1px solid rgba(167, 167, 167, 1);
-				border-radius: 2.5px;
+				@include smoothTrans;
 
-				&::after {
-					content: '';
-					position: absolute;
-					display: none;
-					left: 6px;
-					top: 2px;
-					width: 6px;
-					height: 12px;
-					border: solid $whiteColor;
-					border-width: 0 2px 2px 0;
-					transform: rotate(45deg);
+				&:hover {
+					border-color: $ashColor;
 				}
-			}
-
-			/* Hover color when unchecked */
-			&:hover input ~ .checkmark {
-				background-color: $secondaryColor;
-			}
-
-			/* Hover color when checked */
-			&:hover input:checked ~ .checkmark,
-			input:checked ~ .checkmark {
-				background-color: $errorColor;
-			}
-
-			/* Show the checkmark when checked */
-			input:checked ~ .checkmark::after {
-				display: block;
-			}
-
-			/* Color when checked */
-			input:checked ~ .checkmark {
-				background-color: $successColor;
 			}
 		}
 	}
