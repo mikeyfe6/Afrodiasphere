@@ -80,6 +80,13 @@
 
 				justify-self: flex-end;
 
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 100%;
+
+				text-decoration-color: darkgreen;
+
 				> a {
 					color: #cc9932;
 
