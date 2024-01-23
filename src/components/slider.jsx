@@ -52,9 +52,6 @@ const Slider = () => {
 					},
 					768: {
 						slidesPerView: 4
-					},
-					992: {
-						slidesPerView: 5
 					}
 				}}
 			>
@@ -70,14 +67,16 @@ const Slider = () => {
 								className={styles.avatar}
 								alt={ads.profiel}
 							/>
-							<div>{ads.profiel}</div>
-							<div>{ads.occupate || '..'}</div>
-							<div
-								dangerouslySetInnerHTML={{
-									__html: ads.biografie
-								}}
-							/>
-							<div>
+							<div className={styles.profile}>{ads.profiel}</div>
+							<div className={styles.occupate}>{ads.occupate || '..'}</div>
+							<div className={styles.biography}>
+								<p
+									dangerouslySetInnerHTML={{
+										__html: ads.biografie
+									}}
+								/>
+							</div>
+							<div className={styles.url}>
 								<Link to={`/${ads.slug}`} title={`${baseURL}/${ads.slug}`}>
 									✨../{`${ads.slug}`}
 								</Link>

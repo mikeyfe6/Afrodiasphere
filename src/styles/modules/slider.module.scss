@@ -7,58 +7,72 @@
 	padding: 0 2em;
 
 	&-container {
-		max-width: 1000px;
+		max-width: 900px;
 	}
 
 	&-slide {
 		> div {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);
 			border: 2px solid $whiteColor;
 			border-radius: 10px;
 			padding: 1.25em;
 			text-align: center;
-			gap: 0.5em;
+			position: relative;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
 			@include mobile {
 				padding: 1em;
 			}
 
-			.avatar {
-				max-width: 125px;
-				max-height: 125px;
+			> .avatar {
 				width: 100px;
 				height: 100px;
 				border-radius: 50%;
 				object-fit: cover;
 				border: 3px solid $whiteColor;
 				overflow: hidden;
-				margin: 1em 0;
+
+				margin: 1.5em;
 			}
 
-			:nth-child(2) {
-				min-height: 30px;
+			> .profile {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				max-width: 100%;
+
+				margin-bottom: 0.25em;
 			}
 
-			:nth-child(3) {
-				min-height: 20px;
+			> .occupate {
 				font-size: 0.75rem;
 				color: #2eb4e9;
-				margin-top: -10px;
+
+				margin-bottom: 1.75em;
 			}
 
-			:nth-child(4) {
-				min-height: 175px;
-				padding: 0.75em 0;
-				font-size: 0.75rem;
-				color: color.adjust($whiteColor, $lightness: -25%);
+			> .biography {
+				min-height: 150px;
+				margin-bottom: 1.5em;
+
+				> p {
+					font-size: 0.75rem;
+					color: color.adjust($whiteColor, $lightness: -25%);
+
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					-webkit-line-clamp: 5;
+				}
 			}
 
-			:nth-child(5) {
-				min-height: 20px;
+			> .url {
 				font-size: 0.875rem;
+
+				justify-self: flex-end;
 
 				> a {
 					color: #cc9932;
