@@ -21,7 +21,7 @@ Afrodiasphere is een sociaal netwerk webapplicatie, opgericht door [Michael Fran
 
 Die ervoor dient bedrijven, particulieren en hobbyisten meer netwerkmogelijkheden te bieden, door middel van jouw dashboard waarin je jouw belangrijke hyperlinks en andere relevante informatie als gebruiker invoert!
 
-- _Meer weten? Bekijk de webapp / check the webapp: [Afrodiasphere](https://afrodiasphere.netlify.app/)_
+- _Meer weten? Bekijk de webapp / check the webapp: [Afrodiasphere](https://afrodiasphere.com)_
 
 <br>
 
@@ -31,7 +31,7 @@ Die ervoor dient bedrijven, particulieren en hobbyisten meer netwerkmogelijkhede
 
 **Deze webapp is gebouwd met GatsbyJS, ReactJS, Strapi, GraphQl, Heroku & Netlify.**
 
-Powered by [Menefex](https://menefex.nl/) ✨
+Powered by [Menefex](https://menefex.nl) ✨
 
 <br>
 

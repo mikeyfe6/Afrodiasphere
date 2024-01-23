@@ -8,7 +8,7 @@ require('dotenv').config({
 const config: GatsbyConfig = {
 	graphqlTypegen: true,
 	siteMetadata: {
-		siteUrl: `https://afrodiasphere.netlify.app`,
+		siteUrl: `https://afrodiasphere.com`,
 		title: `Afrodiasphere`,
 		author: 'Michael Fransman',
 		description: `Een efficiente oplossing voor het delen van contactinformatie`
