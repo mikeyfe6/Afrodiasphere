@@ -66,6 +66,7 @@
 				> p {
 					font-size: 0.75rem;
 					color: color.adjust($whiteColor, $lightness: -25%);
+					padding: 0 0.25em;
 
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
