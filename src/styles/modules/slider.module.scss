@@ -28,14 +28,19 @@
 			}
 
 			> .avatar {
-				width: 100px;
-				height: 100px;
+				width: 112.5px;
+				height: 112.5px;
 				border-radius: 50%;
 				object-fit: cover;
 				border: 3px solid $whiteColor;
 				overflow: hidden;
 
-				margin: 1.5em;
+				margin: 1em 0 1.5em;
+
+				@include mobile {
+					width: 100px;
+					height: 100px;
+				}
 			}
 
 			> .profile {
@@ -56,7 +61,7 @@
 
 			> .biography {
 				min-height: 150px;
-				margin-bottom: 1.5em;
+				margin-bottom: 1.75em;
 
 				> p {
 					font-size: 0.75rem;
