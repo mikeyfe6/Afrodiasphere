@@ -41,7 +41,7 @@ const Preview = ({
 					))}
 			</ul>
 			<div id="iphone-icons">
-				{fbLink && fbLink.length > 2 && (
+				{fbLink && fbLink.length > 1 && (
 					<a
 						href={`https://www.facebook.com/${fbLink}`}
 						title={`https://www.facebook.com/${fbLink}`}
@@ -52,7 +52,7 @@ const Preview = ({
 					</a>
 				)}
 
-				{twLink && twLink.length > 2 && (
+				{twLink && twLink.length > 1 && (
 					<a
 						href={`https://twitter.com/${twLink}`}
 						title={`https://twitter.com/${twLink}`}
@@ -63,7 +63,7 @@ const Preview = ({
 					</a>
 				)}
 
-				{igLink && igLink.length > 2 && (
+				{igLink && igLink.length > 1 && (
 					<a
 						href={`https://www.instagram.com/${igLink}`}
 						title={`https://www.instagram.com/${igLink}`}
@@ -74,7 +74,7 @@ const Preview = ({
 					</a>
 				)}
 
-				{waLink && waLink.length > 2 && (
+				{waLink && waLink.length > 1 && (
 					<a
 						href={`https://wa.me/${waLink}`}
 						title={`https://wa.me/${waLink}`}
@@ -85,7 +85,7 @@ const Preview = ({
 					</a>
 				)}
 
-				{tkLink && tkLink.length > 2 && (
+				{tkLink && tkLink.length > 1 && (
 					<a
 						href={`https://www.tiktok.com/@${tkLink}`}
 						title={`https://www.tiktok.com/@${tkLink}`}

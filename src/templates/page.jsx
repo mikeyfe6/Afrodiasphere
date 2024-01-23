@@ -106,7 +106,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				</ul>
 
 				<div className={`theme-${color}-icons`}>
-					{fbLink && (
+					{fbLink && fbLink.length > 1 && (
 						<a
 							href={`https://www.facebook.com/${fbLink}`}
 							rel="noopener noreferrer"
@@ -117,7 +117,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						</a>
 					)}
 
-					{twLink && (
+					{twLink && twLink.length > 1 && (
 						<a
 							href={`https://twitter.com/${twLink}`}
 							rel="noopener noreferrer"
@@ -128,7 +128,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						</a>
 					)}
 
-					{igLink && (
+					{igLink && igLink.length > 1 && (
 						<a
 							href={`https://www.instagram.com/${igLink}`}
 							rel="noopener noreferrer"
@@ -139,7 +139,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						</a>
 					)}
 
-					{waLink && (
+					{waLink && waLink.length > 1 && (
 						<a
 							href={`https://wa.me/${waLink}`}
 							rel="noopener noreferrer"
@@ -150,7 +150,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						</a>
 					)}
 
-					{tkLink && (
+					{tkLink && tkLink.length > 1 && (
 						<a
 							href={`https://www.tiktok.com/@${tkLink}`}
 							rel="noopener noreferrer"
