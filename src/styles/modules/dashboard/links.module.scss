@@ -5,8 +5,8 @@
 .new-link {
 	display: flex;
 	align-items: center;
-	margin-bottom: 1em;
-	gap: 1em;
+	margin-bottom: 1.25em;
+	gap: 2em 1em;
 	flex-wrap: wrap;
 
 	@include mobile {
