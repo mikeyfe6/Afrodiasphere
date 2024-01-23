@@ -14,7 +14,7 @@
 		> div {
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);
 			border: 2px solid $whiteColor;
-			border-radius: 10px;
+			border-radius: 12.5px;
 			padding: 1.25em;
 			text-align: center;
 			position: relative;
@@ -70,7 +70,7 @@
 					display: -webkit-box;
 					-webkit-box-orient: vertical;
 					overflow: hidden;
-					-webkit-line-clamp: 5;
+					-webkit-line-clamp: 6;
 				}
 			}
 
