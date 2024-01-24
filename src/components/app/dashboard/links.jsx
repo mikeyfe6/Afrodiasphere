@@ -354,9 +354,15 @@ const Links = ({
 
 								<span onClick={() => toggleLink(link, !link.visible)}>
 									{link.visible ? (
-										<i className="fa-solid fa-eye-slash" />
+										<i
+											className="fa-solid fa-eye"
+											title="Maak link ontzichtbaar"
+										/>
 									) : (
-										<i className="fa-solid fa-eye" />
+										<i
+											className="fa-solid fa-eye-slash"
+											title="Maak link zichtbaar"
+										/>
 									)}
 								</span>
 							</div>
