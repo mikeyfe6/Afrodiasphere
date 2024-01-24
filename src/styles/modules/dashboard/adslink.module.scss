@@ -12,15 +12,15 @@
 		border: 3px solid $primaryColor;
 		float: left;
 		width: 50%;
-		color: white;
+		color: $whiteColor;
 		background: $primaryColor;
 		padding: 10px;
 		border-radius: 10px 0 0 10px;
 
 		@include phablet {
 			color: $ashColor;
-			background: white;
-			border-color: white;
+			background: $whiteColor;
+			border-color: $whiteColor;
 			padding: 7.5px;
 		}
 	}

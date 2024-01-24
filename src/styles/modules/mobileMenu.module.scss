@@ -57,13 +57,6 @@
 				z-index: 1001;
 				background: color.adjust($blackColor, $lightness: 2.5%);
 				border-radius: 0 0 7.5px;
-
-				&::after {
-					content: '';
-					height: 100px;
-					width: 100px;
-					background: red;
-				}
 			}
 
 			.username {

@@ -6,11 +6,21 @@
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	padding: 0.25em 1em 1.25em 1em;
+	padding: 0.25em 1em 1.25em;
 
 	@include mobile {
 		font-size: 0.675rem;
 		padding: 1.5em;
+	}
+
+	@include compact {
+		font-size: 0.55rem;
+		padding: 1.5em 1.5em 1.75em;
+	}
+
+	@include mini {
+		font-size: 0.5rem;
+		padding: 1.5em 1.5em 2em;
 	}
 
 	a:nth-of-type(1) {

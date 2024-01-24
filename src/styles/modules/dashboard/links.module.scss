@@ -41,7 +41,7 @@
 			}
 
 			> :nth-child(2) {
-				@include dashButton($errorColor, $whiteColor);
+				@include dashButton($warningColor, $whiteColor);
 			}
 		}
 	}
@@ -110,6 +110,11 @@
 
 		@include laptop {
 			flex-direction: column;
+			gap: 1.25em;
+		}
+
+		@include mobile {
+			gap: 1em;
 		}
 
 		> * {
@@ -218,7 +223,7 @@
 		}
 
 		.trash-btn {
-			color: $errorColor;
+			color: $warningColor;
 			cursor: pointer;
 
 			i {
@@ -229,7 +234,7 @@
 				@include smoothTrans;
 
 				&:hover {
-					border-color: $errorColor;
+					border-color: $warningColor;
 				}
 			}
 		}

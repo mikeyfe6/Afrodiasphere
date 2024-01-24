@@ -6,7 +6,7 @@ import menefexLogo from '../images/menefex-icon.png'
 
 const Footer = () => (
 	<footer className={styles.adsFooter}>
-		Copyright {new Date().getFullYear()} © ・{' '}
+		© 2022 - {new Date().getFullYear()} Afrodiasphere・{' '}
 		<a href="mailto:feedback@menefex.nl" title="Stuur feedback naar Menefex">
 			Feedback
 		</a>{' '}

@@ -40,7 +40,7 @@
 			@include dashButton;
 
 			&.terminate-btn {
-				background-color: $errorColor;
+				background-color: $warningColor;
 				color: $whiteColor;
 			}
 
