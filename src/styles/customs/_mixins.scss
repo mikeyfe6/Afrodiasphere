@@ -32,7 +32,7 @@
 	border-radius: 5px;
 	transition: all 0.2s ease-out;
 
-	&:hover {
+	&:not(:disabled):hover {
 		transform: scale(0.97);
 	}
 }
@@ -50,13 +50,13 @@
 	border-radius: 3px;
 	white-space: nowrap;
 
-	&:hover {
+	&:not(:disabled):hover {
 		transform: scale(0.97);
 	}
 
 	&:disabled {
 		opacity: 0.5;
-		cursor: not-allowed;
+		cursor: default;
 	}
 
 	@include mobile {

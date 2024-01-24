@@ -183,13 +183,13 @@
 			text-align: center;
 			border-radius: 3px;
 
-			&:hover {
+			&:not(:disabled):hover {
 				transform: scale(0.97);
 			}
 
 			&:disabled {
 				opacity: 0.5;
-				cursor: not-allowed;
+				cursor: default;
 			}
 		}
 	}

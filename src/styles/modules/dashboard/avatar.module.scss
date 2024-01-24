@@ -50,6 +50,10 @@
 				font-size: 0.875rem;
 			}
 
+			&:not(:disabled):hover {
+				transform: scale(0.97);
+			}
+
 			&.add-btn {
 				background-color: $whiteColor;
 				color: $ashColor;
@@ -67,7 +71,7 @@
 
 			&:disabled {
 				opacity: 0.5;
-				cursor: not-allowed;
+				cursor: default;
 			}
 		}
 	}
