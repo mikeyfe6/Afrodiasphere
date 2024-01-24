@@ -80,6 +80,7 @@
 	cursor: pointer;
 
 	@include smoothTrans;
+	@include boxShadow;
 
 	@include desktop {
 		width: 112.5px;

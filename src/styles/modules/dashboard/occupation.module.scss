@@ -28,6 +28,8 @@
 		border-radius: 2.5px;
 		cursor: pointer;
 
+		@include boxShadow;
+
 		&:hover {
 			border: 1px $secondaryColor solid;
 			color: rgba(255, 255, 255, 0.8);

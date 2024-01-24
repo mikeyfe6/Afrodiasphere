@@ -383,7 +383,7 @@ const DashboardPage = () => {
 
 				{/* ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE <--------------------------------------------------> ADD LINK SECTIE ADD LINK SECTIE ADD LINK SECTIE */}
 
-				<h2>Link List</h2>
+				<h2>Link Lijst</h2>
 
 				<Links
 					userId={userId}

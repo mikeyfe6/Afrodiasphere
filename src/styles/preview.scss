@@ -11,6 +11,8 @@
 		top: 150px;
 		margin: 1em;
 
+		@include boxShadow;
+
 		@include mobile {
 			border-radius: 37.5px;
 			width: 240px;
