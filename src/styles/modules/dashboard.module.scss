@@ -11,7 +11,7 @@
 		'Sidebar Dashboard Dashboard Preview'
 		'Sidebar Dashboard Dashboard Preview';
 
-	background: linear-gradient(135deg, rgba(0 0 0 / 67.5%), $primaryColor);
+	background: linear-gradient(135deg, rgba(0 0 0 / 67.5%), $thirdColor);
 
 	@include desktop {
 		grid-template-columns: repeat(2, 1fr);
@@ -42,16 +42,16 @@
 
 	> section {
 		> h2 {
-			color: $whiteColor;
+			color: $ashColor;
 			text-decoration: underline;
-			text-decoration-color: $thirdColor;
+			text-decoration-color: white;
 			text-underline-offset: 5px;
 			text-align: center;
 			margin-bottom: 1em;
 			font-size: 1.75rem;
-			background: $blackColor;
+			background: $primaryColor;
 			border-radius: 5px;
-			outline: 3px solid $primaryColor;
+			outline: 3px solid $ashColor;
 			cursor: default;
 		}
 
