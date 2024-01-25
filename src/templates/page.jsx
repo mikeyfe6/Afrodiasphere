@@ -18,8 +18,8 @@ import '../styles/adspage.scss'
 const apiURL = process.env.GATSBY_BACKEND_URL
 
 const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
-	const [color, setColor] = useState('')
-	const [avatar, setAvatar] = useState(null)
+	const [color, setColor] = useState('zwart')
+	const [avatar, setAvatar] = useState(noavatar)
 	const [username, setUsername] = useState('')
 	const [occupate, setOccupate] = useState('')
 	const [biography, setBiography] = useState('')
