@@ -11,7 +11,8 @@ const Username = ({
 	setLoading,
 	setError,
 	username,
-	setUsername
+	setUsername,
+	loadingData
 }) => {
 	const setUsernameHandler = e => {
 		setUsername(e.target.value.toLowerCase().replace(/\s+/g, ''))
@@ -59,14 +60,15 @@ const Username = ({
 		<form onSubmit={submitUsername} className={styles.profileField}>
 			<label htmlFor="username">Gebruikersnaam</label>
 			<input
-				onChange={setUsernameHandler}
-				value={username}
+				id="username"
 				type="text"
 				maxLength="25"
 				name="username"
-				id="username"
 				pattern="[^\s]+"
 				title="Geen spaties"
+				value={username}
+				onChange={setUsernameHandler}
+				disabled={loadingData}
 			/>
 			<button type="submit" title="Sla gebruikersnaam op">
 				Opslaan

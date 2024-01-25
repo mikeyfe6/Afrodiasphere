@@ -4,7 +4,14 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const TikTok = ({ apiURL, token, tkLink, setTkLink, handleSmLinkChange }) => {
+const TikTok = ({
+	apiURL,
+	token,
+	tkLink,
+	setTkLink,
+	handleSmLinkChange,
+	loadingData
+}) => {
 	const setTkHandler = e => {
 		const newTkLink = e.target.value.toLowerCase()
 		setTkLink(newTkLink)
@@ -41,6 +48,7 @@ const TikTok = ({ apiURL, token, tkLink, setTkLink, handleSmLinkChange }) => {
 					placeholder="jouwprofiel"
 					value={tkLink}
 					onChange={setTkHandler}
+					disabled={loadingData}
 				/>
 			</div>
 		</form>

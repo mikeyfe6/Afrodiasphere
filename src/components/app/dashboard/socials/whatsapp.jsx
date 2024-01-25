@@ -4,7 +4,14 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Whatsapp = ({ apiURL, token, waLink, setWaLink, handleSmLinkChange }) => {
+const Whatsapp = ({
+	apiURL,
+	token,
+	waLink,
+	setWaLink,
+	handleSmLinkChange,
+	loadingData
+}) => {
 	const setWaHandler = e => {
 		const newWaLink = e.target.value.toLowerCase()
 		setWaLink(newWaLink)
@@ -42,6 +49,7 @@ const Whatsapp = ({ apiURL, token, waLink, setWaLink, handleSmLinkChange }) => {
 					placeholder="bijv.: 31612345678"
 					value={waLink}
 					onChange={setWaHandler}
+					disabled={loadingData}
 				/>
 			</div>
 		</form>

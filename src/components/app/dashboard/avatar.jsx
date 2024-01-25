@@ -11,7 +11,8 @@ const Avatar = ({
 	setLoading,
 	setPreview,
 	preview,
-	noavatar
+	noavatar,
+	loadingData
 }) => {
 	const [avatarId, setAvatarID] = useState(null)
 	const [image, setImage] = useState(null)
@@ -116,7 +117,12 @@ const Avatar = ({
 
 	return (
 		<form onSubmit={handleSubmit} className={styles.avatar}>
-			<img src={preview} alt="" className={styles.avatarImage} />
+			<img
+				src={preview}
+				alt=""
+				className={styles.avatarImage}
+				style={{ filter: loadingData ? 'blur(2px)' : 'none' }}
+			/>
 
 			<div className={styles.avatarButtons}>
 				<button

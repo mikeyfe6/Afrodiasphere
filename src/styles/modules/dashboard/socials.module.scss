@@ -34,6 +34,10 @@
 
 				@include smoothTrans;
 
+				&:disabled {
+					filter: blur(2px);
+				}
+
 				&:focus {
 					color: $secondaryColor;
 

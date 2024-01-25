@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { Link } from 'gatsby'
 import axios from 'axios'
-
 import { useLocation } from '@reach/router'
 
 import { Swiper, SwiperSlide } from 'swiper/react'

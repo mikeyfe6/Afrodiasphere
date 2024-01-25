@@ -22,7 +22,7 @@ const Preview = ({
 	const getThemeClassName = element => {
 		switch (color) {
 			case 'geel':
-				return styles[`iphoneYellowStyle${element}`]
+				return styles[`yellowStyle${element}`]
 			case 'grijs':
 				return styles[`grayStyle${element}`]
 			case 'roze':
@@ -36,7 +36,7 @@ const Preview = ({
 			case 'afrotheme':
 				return styles[`afroStyle${element}`]
 			default:
-				return styles[`afroStyle${element}`]
+				return styles[`blackStyle${element}`]
 		}
 	}
 

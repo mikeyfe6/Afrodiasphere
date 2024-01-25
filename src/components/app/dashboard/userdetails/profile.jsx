@@ -11,7 +11,8 @@ const Profile = ({
 	setLoading,
 	setError,
 	profile,
-	setProfile
+	setProfile,
+	loadingData
 }) => {
 	const setProfileHandler = e => {
 		setProfile(e.target.value || '')
@@ -57,12 +58,13 @@ const Profile = ({
 		<form onSubmit={submitProfile} className={styles.profileField}>
 			<label htmlFor="profile">Profielnaam</label>
 			<input
-				onChange={setProfileHandler}
-				value={profile}
+				id="profile"
 				type="text"
 				maxLength="35"
 				name="text"
-				id="profile"
+				value={profile}
+				onChange={setProfileHandler}
+				disabled={loadingData}
 			/>
 			<button type="submit" title="Sla profielnaam op">
 				Opslaan

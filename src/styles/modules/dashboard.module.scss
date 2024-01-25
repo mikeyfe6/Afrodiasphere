@@ -82,6 +82,8 @@
 	@include desktop {
 		flex-direction: row;
 		align-items: center;
+
+		@include card(0, 0.5em);
 	}
 
 	@include tablet {

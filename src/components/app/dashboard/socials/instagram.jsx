@@ -9,7 +9,8 @@ const Instagram = ({
 	token,
 	igLink,
 	setIgLink,
-	handleSmLinkChange
+	handleSmLinkChange,
+	loadingData
 }) => {
 	const setIgHandler = e => {
 		const newIgLink = e.target.value.toLowerCase()
@@ -48,6 +49,7 @@ const Instagram = ({
 					placeholder="jouwprofiel"
 					value={igLink}
 					onChange={setIgHandler}
+					disabled={loadingData}
 				/>
 			</div>
 		</form>

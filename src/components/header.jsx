@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Link, navigate } from 'gatsby'
+import PropTypes from 'prop-types'
 
 import { isLoggedIn, logout, isBrowser, getUser } from '../services/auth'
 

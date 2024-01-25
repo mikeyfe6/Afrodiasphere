@@ -2,22 +2,14 @@ import React from 'react'
 
 // import * as styles from '../../styles/modules/dashboard/sidebar.module.scss'
 
-import Spinner from '../../spinner'
-
-// TODO: add a doublecheck for the right password
-
-const Sidebar = ({ username, loadingData }) => {
+const Sidebar = ({ profile, loadingData }) => {
 	return (
 		<>
-			{loadingData ? (
-				<Spinner />
-			) : (
-				<>
-					<h5>
-						Hi <u>{username}</u> !
-					</h5>
+			<h5 style={{ filter: loadingData ? 'blur(2px)' : 'none' }}>
+				Hallo, {profile}
+			</h5>
 
-					<button
+			{/* <button
 						href="#"
 						title="Uitloggen"
 						onClick={e => {
@@ -26,9 +18,7 @@ const Sidebar = ({ username, loadingData }) => {
 						}}
 					>
 						Log uit
-					</button>
-				</>
-			)}
+					</button> */}
 		</>
 	)
 }

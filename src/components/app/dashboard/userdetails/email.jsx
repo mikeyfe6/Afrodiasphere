@@ -11,7 +11,8 @@ const Email = ({
 	setLoading,
 	setError,
 	email,
-	setEmail
+	setEmail,
+	loadingData
 }) => {
 	const setEmailHandler = e => {
 		setEmail(e.target.value)
@@ -58,14 +59,15 @@ const Email = ({
 		<form onSubmit={submitEmail} className={styles.profileField}>
 			<label htmlFor="email">E-mailadres</label>
 			<input
-				onChange={setEmailHandler}
-				value={email}
 				type="email"
 				name="email"
 				maxLength="35"
 				id="email"
 				placeholder="voorbeeld@email.nl"
 				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+				value={email}
+				onChange={setEmailHandler}
+				disabled={loadingData}
 			/>
 
 			<button

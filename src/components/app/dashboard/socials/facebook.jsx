@@ -4,7 +4,14 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Facebook = ({ apiURL, token, fbLink, setFbLink, handleSmLinkChange }) => {
+const Facebook = ({
+	apiURL,
+	token,
+	fbLink,
+	setFbLink,
+	handleSmLinkChange,
+	loadingData
+}) => {
 	const setFbHandler = e => {
 		const newFbLink = e.target.value.toLowerCase()
 		setFbLink(newFbLink)
@@ -42,6 +49,7 @@ const Facebook = ({ apiURL, token, fbLink, setFbLink, handleSmLinkChange }) => {
 					placeholder="jouwprofiel"
 					value={fbLink}
 					onChange={setFbHandler}
+					disabled={loadingData}
 				/>
 			</div>
 		</form>

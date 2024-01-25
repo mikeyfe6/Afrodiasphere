@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
+import { navigate, useLocation } from '@reach/router'
 import axios from 'axios'
 
 import Seo from '../seo'
 
-import { navigate, useLocation } from '@reach/router'
 import { getUser, logout, isLoggedIn } from '../../services/auth'
 
 import noavatar from '../../images/noavatar.png'
@@ -65,21 +65,21 @@ const DashboardPage = () => {
 
 	const [linkError, setLinkError] = useState(null)
 
-	const [profile, setProfile] = useState('')
-	const [username, setUsername] = useState('')
-	const [email, setEmail] = useState('')
+	const [profile, setProfile] = useState('...')
+	const [username, setUsername] = useState('...')
+	const [email, setEmail] = useState('...')
 	const [password, setPassword] = useState('')
 	const [slug, setSlug] = useState('')
 	const [deleteAds, setDeleteAds] = useState('')
 
 	const [occupate, setOccupate] = useState('')
-	const [biography, setBiography] = useState('')
+	const [biography, setBiography] = useState('...')
 
-	const [fbLink, setFbLink] = useState('')
-	const [twLink, setTwLink] = useState('')
-	const [igLink, setIgLink] = useState('')
-	const [waLink, setWaLink] = useState('')
-	const [tkLink, setTkLink] = useState('')
+	const [fbLink, setFbLink] = useState('...')
+	const [twLink, setTwLink] = useState('...')
+	const [igLink, setIgLink] = useState('...')
+	const [waLink, setWaLink] = useState('...')
+	const [tkLink, setTkLink] = useState('...')
 
 	const [smLinks, setSmLinks] = useState({
 		facebook: '',
@@ -195,7 +195,7 @@ const DashboardPage = () => {
 			{/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
 			<aside id="ads-sidebar" className={styles.sidebar}>
-				<Sidebar username={username} loadingData={loadingData} />
+				<Sidebar profile={profile} loadingData={loadingData} />
 			</aside>
 
 			{/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
@@ -231,6 +231,7 @@ const DashboardPage = () => {
 						noavatar={noavatar}
 						preview={preview}
 						setPreview={setPreview}
+						loadingData={loadingData}
 					/>
 
 					{/* PROFILE INFO ROFILE INFO PROFILE INFO PROFILE INFO <-----------------------------------------------------------> PROFILE INFO PROFILE INFO PROFILE INFO PROFILE INFO */}
@@ -243,6 +244,7 @@ const DashboardPage = () => {
 							setError={setError}
 							profile={profile}
 							setProfile={setProfile}
+							loadingData={loadingData}
 						/>
 
 						<Username
@@ -252,6 +254,7 @@ const DashboardPage = () => {
 							setError={setError}
 							username={username}
 							setUsername={setUsername}
+							loadingData={loadingData}
 						/>
 
 						<Email
@@ -261,6 +264,7 @@ const DashboardPage = () => {
 							setError={setError}
 							email={email}
 							setEmail={setEmail}
+							loadingData={loadingData}
 						/>
 
 						<Slug
@@ -270,6 +274,7 @@ const DashboardPage = () => {
 							setError={setError}
 							slug={slug}
 							setSlug={setSlug}
+							loadingData={loadingData}
 						/>
 
 						<Password
@@ -279,6 +284,7 @@ const DashboardPage = () => {
 							setError={setError}
 							password={password}
 							setPassword={setPassword}
+							loadingData={loadingData}
 						/>
 
 						<Terminate
@@ -288,6 +294,7 @@ const DashboardPage = () => {
 							setError={setError}
 							deleteAds={deleteAds}
 							setDeleteAds={setDeleteAds}
+							loadingData={loadingData}
 						/>
 					</div>
 				</div>
@@ -314,6 +321,7 @@ const DashboardPage = () => {
 						setError={setError}
 						biography={biography}
 						setBiography={setBiography}
+						loadingData={loadingData}
 					/>
 				</div>
 
@@ -332,6 +340,7 @@ const DashboardPage = () => {
 						fbLink={fbLink}
 						setFbLink={setFbLink}
 						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
 					/>
 
 					<Twitter
@@ -342,6 +351,7 @@ const DashboardPage = () => {
 						twLink={twLink}
 						setTwLink={setTwLink}
 						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
 					/>
 
 					<Instagram
@@ -352,6 +362,7 @@ const DashboardPage = () => {
 						igLink={igLink}
 						setIgLink={setIgLink}
 						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
 					/>
 
 					<Whatsapp
@@ -362,6 +373,7 @@ const DashboardPage = () => {
 						waLink={waLink}
 						setWaLink={setWaLink}
 						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
 					/>
 
 					<TikTok
@@ -372,6 +384,7 @@ const DashboardPage = () => {
 						tkLink={tkLink}
 						setTkLink={setTkLink}
 						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
 					/>
 				</div>
 

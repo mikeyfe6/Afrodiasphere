@@ -11,7 +11,8 @@ const Biography = ({
 	setLoading,
 	setError,
 	biography,
-	setBiography
+	setBiography,
+	loadingData
 }) => {
 	const setBiografieHandler = e => {
 		setBiography(e.target.value)
@@ -57,15 +58,16 @@ const Biography = ({
 		<form onSubmit={submitBiography} className={styles.biography}>
 			<label htmlFor="biografie">Biografie</label>
 			<textarea
-				onChange={setBiografieHandler}
-				value={biography}
+				id="biografie"
 				type="text"
 				maxLength="140"
 				rows="50"
 				name="text"
-				id="biografie"
 				title="Maximaal 120 karakters"
 				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
+				value={biography}
+				onChange={setBiografieHandler}
+				disabled={loadingData}
 			/>
 
 			<button

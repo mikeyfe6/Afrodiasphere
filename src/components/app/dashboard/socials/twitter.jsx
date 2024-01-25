@@ -4,7 +4,14 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Twitter = ({ apiURL, token, twLink, setTwLink, handleSmLinkChange }) => {
+const Twitter = ({
+	apiURL,
+	token,
+	twLink,
+	setTwLink,
+	handleSmLinkChange,
+	loadingData
+}) => {
 	const setTwHandler = e => {
 		const newTwLink = e.target.value.toLowerCase()
 		setTwLink(newTwLink)
@@ -41,6 +48,7 @@ const Twitter = ({ apiURL, token, twLink, setTwLink, handleSmLinkChange }) => {
 					placeholder="jouwprofiel"
 					value={twLink}
 					onChange={setTwHandler}
+					disabled={loadingData}
 				/>
 			</div>
 		</form>
