@@ -13,8 +13,7 @@ const Themes = ({
 	setLoading,
 	setError,
 	color,
-	setColor,
-	links
+	setColor
 }) => {
 	const onRadioChange = async ({ target: { value } }) => {
 		setColor(value)
@@ -34,120 +33,6 @@ const Themes = ({
 		)
 	}
 
-	const changeHeadingBg = color => {
-		const iphonePreviewStyle = (
-			username,
-			occupate,
-			biography,
-			icons,
-			bg,
-			links
-		) => {
-			const iphoneUsernameStyle = document.getElementById('iphone-username')
-			const iphoneOccupateStyle = document.getElementById('iphone-occupate')
-			const iphoneBiographyStyle = document.getElementById('iphone-biography')
-			const iphoneIconsStyle = document.getElementById('iphone-icons')
-			const iphoneBgStyle = document.getElementById('iphone-bg')
-
-			const iphoneLinkStyle = className => {
-				for (i = 0; i < c.length; i++) {
-					c[i].className = className
-				}
-			}
-
-			let c = document.getElementById('iphone-links').children
-			let i
-
-			iphoneUsernameStyle.className = username
-			iphoneOccupateStyle.className = occupate
-			iphoneBiographyStyle.className = biography
-			iphoneIconsStyle.className = icons
-			iphoneBgStyle.className = bg
-			iphoneLinkStyle(links)
-		}
-
-		switch (color) {
-			case 'geel':
-				iphonePreviewStyle(
-					styles.yellowStyleUsername,
-					styles.yellowStyleOccupate,
-					styles.yellowStyleBiography,
-					styles.yellowStyleIcons,
-					styles.yellowStyle,
-					styles.yellowStyleLinks
-				)
-
-				break
-			case 'grijs':
-				iphonePreviewStyle(
-					styles.grayStyleUsername,
-					styles.grayStyleOccupate,
-					styles.grayStyleBiography,
-					styles.grayStyleIcons,
-					styles.grayStyle,
-					styles.grayStyleLinks
-				)
-
-				break
-			case 'roze':
-				iphonePreviewStyle(
-					styles.pinkStyleUsername,
-					styles.pinkStyleOccupate,
-					styles.pinkStyleBiography,
-					styles.pinkStyleIcons,
-					styles.pinkStyle,
-					styles.pinkStyleLinks
-				)
-
-				break
-			case 'zwart':
-				iphonePreviewStyle(
-					styles.blackStyleUsername,
-					styles.blackStyleOccupate,
-					styles.blackStyleBiography,
-					styles.blackStyleIcons,
-					styles.blackStyle,
-					styles.blackStyleLinks
-				)
-
-				break
-			case 'bruin':
-				iphonePreviewStyle(
-					styles.brownStyleUsername,
-					styles.brownStyleOccupate,
-					styles.brownStyleBiography,
-					styles.brownStyleIcons,
-					styles.brownStyle,
-					styles.brownStyleLinks
-				)
-
-				break
-			case 'groen':
-				iphonePreviewStyle(
-					styles.greenStyleUsername,
-					styles.greenStyleOccupate,
-					styles.greenStyleBiography,
-					styles.greenStyleIcons,
-					styles.greenStyle,
-					styles.greenStyleLinks
-				)
-
-				break
-			case 'afrotheme':
-				iphonePreviewStyle(
-					styles.afroStyleUsername,
-					styles.afroStyleOccupate,
-					styles.afroStyleBiography,
-					styles.afroStyleIcons,
-					styles.afroStyle,
-					styles.afroStyleLinks
-				)
-				break
-			default:
-				color = 'afrotheme'
-		}
-	}
-
 	useEffect(() => {
 		const getColor = async () => {
 			const res = await axios.get(`${apiURL}/api/instanties`, {
@@ -156,12 +41,10 @@ const Themes = ({
 				}
 			})
 			setColor(res.data.bgfree)
-			changeHeadingBg(res.data.bgfree)
 		}
 
 		getColor()
-		changeHeadingBg()
-	}, [token, color, links])
+	}, [token])
 
 	return (
 		<ul className={styles.chooseTheme}>
@@ -173,7 +56,6 @@ const Themes = ({
 						checked={color === 'geel'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('geel')
 							event.preventDefault()
 						}}
 					/>
@@ -195,7 +77,6 @@ const Themes = ({
 						checked={color === 'grijs'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('grijs')
 							event.preventDefault()
 						}}
 					/>
@@ -218,7 +99,6 @@ const Themes = ({
 						checked={color === 'roze'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('roze')
 							event.preventDefault()
 						}}
 					/>
@@ -240,7 +120,6 @@ const Themes = ({
 						checked={color === 'zwart'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('zwart')
 							event.preventDefault()
 						}}
 					/>
@@ -262,7 +141,6 @@ const Themes = ({
 						checked={color === 'bruin'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('bruin')
 							event.preventDefault()
 						}}
 					/>
@@ -284,7 +162,6 @@ const Themes = ({
 						checked={color === 'groen'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('groen')
 							event.preventDefault()
 						}}
 					/>
@@ -306,7 +183,6 @@ const Themes = ({
 						checked={color === 'afrotheme'}
 						onChange={onRadioChange}
 						onClick={event => {
-							changeHeadingBg('afrotheme')
 							event.preventDefault()
 						}}
 					/>

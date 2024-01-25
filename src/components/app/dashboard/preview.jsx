@@ -2,6 +2,8 @@ import React from 'react'
 
 import '../../../styles/preview.scss'
 
+import * as styles from '../../../styles/modules/dashboard/themes.module.scss'
+
 // TODO: add a doublecheck for the right password
 
 const Preview = ({
@@ -14,16 +16,45 @@ const Preview = ({
 	twLink,
 	igLink,
 	waLink,
-	tkLink
+	tkLink,
+	color
 }) => {
+	const getThemeClassName = element => {
+		switch (color) {
+			case 'geel':
+				return styles[`iphoneYellowStyle${element}`]
+			case 'grijs':
+				return styles[`grayStyle${element}`]
+			case 'roze':
+				return styles[`pinkStyle${element}`]
+			case 'zwart':
+				return styles[`blackStyle${element}`]
+			case 'bruin':
+				return styles[`brownStyle${element}`]
+			case 'groen':
+				return styles[`greenStyle${element}`]
+			case 'afrotheme':
+				return styles[`afroStyle${element}`]
+			default:
+				return styles[`afroStyle${element}`]
+		}
+	}
+
 	return (
 		<div id="iphone-frame">
 			<img src={preview} alt="" id="iphone-avatar" />
-			<p id="iphone-username">{profile}</p>
-			<p id="iphone-occupate">{occupate}</p>
-			<p id="iphone-biography">{biography}</p>
 
-			<ul id="iphone-links">
+			<p id="iphone-username" className={getThemeClassName('Username')}>
+				{profile}
+			</p>
+			<p id="iphone-occupate" className={getThemeClassName('Occupate')}>
+				{occupate}
+			</p>
+			<p id="iphone-biography" className={getThemeClassName('Biography')}>
+				{biography}
+			</p>
+
+			<ul id="iphone-links" className={getThemeClassName('Links')}>
 				{links
 					.filter(link => link.visible)
 					.slice(0, 4)
@@ -40,7 +71,7 @@ const Preview = ({
 						</li>
 					))}
 			</ul>
-			<div id="iphone-icons">
+			<div id="iphone-icons" className={getThemeClassName('Icons')}>
 				{fbLink && fbLink.length > 1 && (
 					<a
 						href={`https://www.facebook.com/${fbLink}`}
@@ -97,7 +128,7 @@ const Preview = ({
 					</a>
 				)}
 			</div>
-			<div id="iphone-bg" />
+			<div id="iphone-bg" className={getThemeClassName('')} />
 			{/* <img
             src={gatsbyUser.user.gebruiker.background.url}
             alt=""

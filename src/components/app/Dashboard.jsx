@@ -60,6 +60,7 @@ const DashboardPage = () => {
 	const [preview, setPreview] = useState(noavatar)
 
 	const [loading, setLoading] = useState(false)
+	const [loadingData, setLoadingData] = useState(false)
 	const [error, setError] = useState(false)
 
 	const [linkError, setLinkError] = useState(null)
@@ -108,7 +109,7 @@ const DashboardPage = () => {
 	)
 
 	const getUserId = useCallback(async () => {
-		setLoading(true)
+		setLoadingData(true)
 		try {
 			const res = await axios.get(`${apiURL}/api/instanties`, {
 				headers: {
@@ -121,7 +122,7 @@ const DashboardPage = () => {
 			console.error('Error fetching user ID:', error)
 			setError('Er gaat iets mis met het ophalen van je gegevens')
 		} finally {
-			setLoading(false)
+			setLoadingData(false)
 		}
 	}, [token])
 
@@ -194,7 +195,7 @@ const DashboardPage = () => {
 			{/* SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR */}
 
 			<aside id="ads-sidebar" className={styles.sidebar}>
-				<Sidebar username={username} />
+				<Sidebar username={username} loadingData={loadingData} />
 			</aside>
 
 			{/* PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW <--------------------------------------------------------------------------------> PREVIEW PREVIEW PREVIEW PREVIEW PREVIEW */}
@@ -211,6 +212,8 @@ const DashboardPage = () => {
 					igLink={igLink}
 					waLink={waLink}
 					tkLink={tkLink}
+					color={color}
+					loadingData={loadingData}
 				/>
 			</section>
 
@@ -229,6 +232,7 @@ const DashboardPage = () => {
 						preview={preview}
 						setPreview={setPreview}
 					/>
+
 					{/* PROFILE INFO ROFILE INFO PROFILE INFO PROFILE INFO <-----------------------------------------------------------> PROFILE INFO PROFILE INFO PROFILE INFO PROFILE INFO */}
 
 					<div className={styles.profileInfo}>

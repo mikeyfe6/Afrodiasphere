@@ -279,9 +279,9 @@ const Links = ({
 								>
 									{!editLinkTitle[link.id] ||
 									editLinkTitle[link.id].trim() === '' ? (
-										<i class="fa-solid fa-ellipsis"></i>
+										<i className="fa-solid fa-ellipsis" />
 									) : (
-										<i class="fa-solid fa-check"></i>
+										<i className="fa-solid fa-check" />
 									)}
 								</button>
 							</div>
@@ -323,9 +323,9 @@ const Links = ({
 								>
 									{!editLinkUrl[link.id] ||
 									editLinkUrl[link.id].trim() === '' ? (
-										<i class="fa-solid fa-ellipsis"></i>
+										<i className="fa-solid fa-ellipsis" />
 									) : (
-										<i class="fa-solid fa-check"></i>
+										<i className="fa-solid fa-check" />
 									)}
 								</button>
 							</div>

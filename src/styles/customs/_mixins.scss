@@ -2,7 +2,7 @@
 
 // overall mixins ---------------------------- // overall mixins
 @mixin smoothTrans {
-	transition: all 0.2s ease-out;
+	transition: all 0.2s ease-in-out;
 }
 
 @mixin boxShadow {
