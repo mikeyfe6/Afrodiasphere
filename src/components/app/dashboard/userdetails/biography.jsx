@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -8,18 +8,44 @@ const Biography = ({
 	userId,
 	apiURL,
 	token,
-	setLoading,
-	setError,
+	setSuccess,
 	biography,
 	setBiography,
-	loadingData
+	loadingData,
+	setValidationMessage
 }) => {
+	const [initialValue, setInitialValue] = useState(biography)
+	const [validationError, setValidationError] = useState(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
 	const setBiografieHandler = e => {
 		setBiography(e.target.value)
+		setValidationError(null)
+		setValidationMessage(null)
+	}
+
+	const validateInput = value => {
+		if (value.length > 160) {
+			const errorMessage = 'Maximaal 160 karakters'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+
+		setValidationError(null)
+		setValidationMessage(null)
+		return true
 	}
 
 	const submitBiography = async e => {
 		e.preventDefault()
+
+		if (!validateInput(biography)) {
+			return
+		}
+
+		setIsSubmitting(true)
+		setInitialValue(biography)
 
 		const params = {
 			biografie: biography
@@ -35,10 +61,12 @@ const Biography = ({
 				}
 			)
 
-			setError(null)
-		} catch {
-			setError("Updaten van biografie lukt niet, probeer het nog 's")
-			setTimeout(() => setError(null), 5000)
+			setSuccess('Biografie succesvol geüpdatet')
+			setTimeout(() => setSuccess(null), 5000)
+		} catch (error) {
+			console.error('Error updating biography:', error)
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -49,7 +77,8 @@ const Biography = ({
 					Authorization: `Bearer ${token}`
 				}
 			})
-			setBiography(res.data.biografie || '')
+			setBiography(res.data.biografie)
+			setInitialValue(res.data.biografie)
 		}
 		getBiography()
 	}, [token])
@@ -60,20 +89,18 @@ const Biography = ({
 			<textarea
 				id="biografie"
 				type="text"
-				maxLength="140"
-				rows="50"
 				name="text"
-				title="Maximaal 120 karakters"
 				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
 				value={biography}
 				onChange={setBiografieHandler}
-				disabled={loadingData}
+				disabled={loadingData || isSubmitting}
+				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-
+			<span>{biography.length} / 160</span>
 			<button
 				type="submit"
 				title="Sla biografie op"
-				disabled={setLoading || biography === ''}
+				disabled={biography === initialValue || isSubmitting}
 			>
 				Opslaan
 			</button>

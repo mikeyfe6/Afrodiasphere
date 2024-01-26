@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -8,18 +8,53 @@ const Profile = ({
 	userId,
 	apiURL,
 	token,
-	setLoading,
-	setError,
+	setSuccess,
 	profile,
 	setProfile,
-	loadingData
+	loadingData,
+	setValidationMessage
 }) => {
+	const [initialValue, setInitialValue] = useState(profile)
+	const [validationError, setValidationError] = useState(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
 	const setProfileHandler = e => {
-		setProfile(e.target.value || '')
+		setProfile(e.target.value)
+		setValidationError(null)
+		setValidationMessage(null)
+	}
+
+	const validateInput = value => {
+		if (value.length < 2) {
+			const errorMessage = 'Minstens 2 karakters'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+		const regex = /^[a-zA-Z0-9.,() ]+$/
+
+		if (!regex.test(value)) {
+			const errorMessage =
+				'Alleen letters en speciale tekens die zijn beperkt tot punt, komma, haakjes en cijfers.'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+
+		setValidationError(null)
+		setValidationMessage(null)
+		return true
 	}
 
 	const submitProfile = async e => {
 		e.preventDefault()
+
+		if (!validateInput(profile)) {
+			return
+		}
+
+		setIsSubmitting(true)
+		setInitialValue(profile)
 
 		const params = {
 			profiel: profile
@@ -35,38 +70,51 @@ const Profile = ({
 				}
 			)
 
-			setError(null)
-		} catch {
-			setError("Updaten van profielnaam lukt niet, probeer het nog 's")
-			setTimeout(() => setError(null), 5000)
+			setSuccess('Profielnaam succesvol geüpdatet')
+			setTimeout(() => setSuccess(null), 5000)
+		} catch (error) {
+			console.error('Error updating profile:', error)
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
 	useEffect(() => {
 		const getProfile = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setProfile(res.data.profiel)
+			try {
+				const res = await axios.get(`${apiURL}/api/instanties`, {
+					headers: {
+						Authorization: `Bearer ${token}`
+					}
+				})
+
+				setProfile(res.data.profiel)
+				setInitialValue(res.data.profiel)
+			} catch (error) {
+				console.error('Error fetching profile:', error)
+			}
 		}
+
 		getProfile()
 	}, [token])
 
 	return (
-		<form onSubmit={submitProfile} className={styles.profileField}>
+		<form onSubmit={submitProfile} className={styles.profileField} noValidate>
 			<label htmlFor="profile">Profielnaam</label>
 			<input
 				id="profile"
 				type="text"
-				maxLength="35"
 				name="text"
 				value={profile}
 				onChange={setProfileHandler}
-				disabled={loadingData}
+				disabled={loadingData || isSubmitting}
+				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-			<button type="submit" title="Sla profielnaam op">
+			<button
+				type="submit"
+				title="Sla profielnaam op"
+				disabled={profile === initialValue || isSubmitting}
+			>
 				Opslaan
 			</button>
 		</form>

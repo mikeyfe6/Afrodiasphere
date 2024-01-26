@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -8,18 +8,52 @@ const Email = ({
 	gatsbyId,
 	apiURL,
 	token,
-	setLoading,
-	setError,
+	setSuccess,
 	email,
 	setEmail,
-	loadingData
+	loadingData,
+	setValidationMessage
 }) => {
+	const [initialValue, setInitialValue] = useState(email)
+	const [validationError, setValidationError] = useState(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
 	const setEmailHandler = e => {
-		setEmail(e.target.value)
+		setEmail(e.target.value.toLowerCase())
+		setValidationError(null)
+		setValidationMessage(null)
+	}
+
+	const validateInput = value => {
+		if (value.length < 2) {
+			const errorMessage = 'Minstens 2 karakters'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+		if (!regex.test(value)) {
+			const errorMessage = 'Voer een geldig e-mailadres in.'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+
+		setValidationError(null)
+		setValidationMessage(null)
+		return true
 	}
 
 	const submitEmail = async e => {
 		e.preventDefault()
+
+		if (!validateInput(email)) {
+			return
+		}
+
+		setIsSubmitting(true)
+		setInitialValue(email)
 
 		const params = {
 			email: email
@@ -30,10 +64,13 @@ const Email = ({
 					Authorization: `Bearer ${token}`
 				}
 			})
-			setError(null)
-		} catch {
-			setError("Updaten van emailadres lukt niet, probeer het nog 's")
-			setTimeout(() => setError(null), 5000)
+
+			setSuccess('Emailadres succesvol geüpdatet')
+			setTimeout(() => setSuccess(null), 5000)
+		} catch (error) {
+			console.error('Error updating email:', error)
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -46,34 +83,34 @@ const Email = ({
 							Authorization: `Bearer ${token}`
 						}
 					})
-					setEmail(res.data.email || '')
+					setEmail(res.data.email)
+					setInitialValue(res.data.email)
 				}
 				getEmail()
-			} catch {
-				setError('Gaat iets mis met het ophalen van je emailadres')
+			} catch (error) {
+				console.error('Error fetching email:', error)
 			}
 		}
 	}, [gatsbyId, token])
 
 	return (
-		<form onSubmit={submitEmail} className={styles.profileField}>
+		<form onSubmit={submitEmail} className={styles.profileField} noValidate>
 			<label htmlFor="email">E-mailadres</label>
 			<input
+				id="email"
 				type="email"
 				name="email"
-				maxLength="35"
-				id="email"
 				placeholder="voorbeeld@email.nl"
-				pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 				value={email}
 				onChange={setEmailHandler}
-				disabled={loadingData}
+				disabled={loadingData || isSubmitting}
+				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
 
 			<button
 				type="submit"
 				title="Sla e-mailadres op"
-				disabled={setLoading || email === ''}
+				disabled={email === initialValue || isSubmitting}
 			>
 				Opslaan
 			</button>

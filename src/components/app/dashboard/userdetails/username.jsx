@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -8,18 +8,54 @@ const Username = ({
 	gatsbyId,
 	apiURL,
 	token,
-	setLoading,
-	setError,
+	setSuccess,
 	username,
 	setUsername,
-	loadingData
+	loadingData,
+	setValidationMessage
 }) => {
+	const [initialValue, setInitialValue] = useState(username)
+	const [validationError, setValidationError] = useState(null)
+	const [isSubmitting, setIsSubmitting] = useState(false)
+
 	const setUsernameHandler = e => {
 		setUsername(e.target.value.toLowerCase().replace(/\s+/g, ''))
+		setValidationError(null)
+		setValidationMessage(null)
+	}
+
+	const validateInput = value => {
+		if (value.length < 2) {
+			const errorMessage = 'Minstens 2 karakters'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+
+		const regex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*$/
+
+		if (!regex.test(value)) {
+			const errorMessage =
+				'Alleen letters, cijfers en speciale tekens zijn beperkt tot een punt.'
+			setValidationError(errorMessage)
+			setValidationMessage(errorMessage)
+			return false
+		}
+
+		setValidationError(null)
+		setValidationMessage(null)
+		return true
 	}
 
 	const submitUsername = async e => {
 		e.preventDefault()
+
+		if (!validateInput(username)) {
+			return
+		}
+
+		setIsSubmitting(true)
+		setInitialValue(username)
 
 		const params = {
 			username: username
@@ -30,10 +66,13 @@ const Username = ({
 					Authorization: `Bearer ${token}`
 				}
 			})
-			setError(null)
+
+			setSuccess('Gebruikersnaam succesvol geüpdatet')
+			setTimeout(() => setSuccess(null), 5000)
 		} catch {
-			setError("Updaten van gebruikersnaam lukt niet, probeer het nog 's")
-			setTimeout(() => setError(null), 5000)
+			console.error('Error updating username:', error)
+		} finally {
+			setIsSubmitting(false)
 		}
 	}
 
@@ -46,31 +85,34 @@ const Username = ({
 							Authorization: `Bearer ${token}`
 						}
 					})
-					setUsername(res.data.username || '')
+					setUsername(res.data.username)
+					setInitialValue(res.data.username)
 				}
+
 				getUsername()
 			} catch {
 				console.log('Gaat iets mis met het ophalen van je gebruikersnaam')
-				logout(() => navigate('/login'))
 			}
 		}
 	}, [gatsbyId, token])
 
 	return (
-		<form onSubmit={submitUsername} className={styles.profileField}>
+		<form onSubmit={submitUsername} className={styles.profileField} noValidate>
 			<label htmlFor="username">Gebruikersnaam</label>
 			<input
 				id="username"
 				type="text"
-				maxLength="25"
 				name="username"
-				pattern="[^\s]+"
-				title="Geen spaties"
 				value={username}
 				onChange={setUsernameHandler}
-				disabled={loadingData}
+				disabled={loadingData || isSubmitting}
+				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-			<button type="submit" title="Sla gebruikersnaam op">
+			<button
+				type="submit"
+				title="Sla gebruikersnaam op"
+				disabled={username === initialValue || isSubmitting}
+			>
 				Opslaan
 			</button>
 		</form>

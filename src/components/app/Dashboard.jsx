@@ -31,6 +31,14 @@ import AdsLink from './dashboard/adslink'
 
 import * as styles from '../../styles/modules/dashboard.module.scss'
 
+const SuccessMessage = ({ text }) => {
+	return (
+		<div className={styles.logsuccess}>
+			<span>{text}</span>
+		</div>
+	)
+}
+
 const ErrorMessage = ({ text }) => {
 	return (
 		<div className={styles.logerror}>
@@ -59,9 +67,9 @@ const DashboardPage = () => {
 
 	const [preview, setPreview] = useState(noavatar)
 
-	const [loading, setLoading] = useState(false)
+	const [success, setSuccess] = useState(false)
+	const [error, setError] = useState(null)
 	const [loadingData, setLoadingData] = useState(false)
-	const [error, setError] = useState(false)
 
 	const [linkError, setLinkError] = useState(null)
 
@@ -104,7 +112,6 @@ const DashboardPage = () => {
 				logout(() => navigate('/login'))
 				console.log('unauthorized, logging out ...')
 			}
-			return error
 		}
 	)
 
@@ -227,7 +234,7 @@ const DashboardPage = () => {
 						userId={userId}
 						apiURL={apiURL}
 						token={token}
-						setLoading={setLoading}
+						setSuccess={setSuccess}
 						noavatar={noavatar}
 						preview={preview}
 						setPreview={setPreview}
@@ -241,7 +248,8 @@ const DashboardPage = () => {
 							userId={userId}
 							apiURL={apiURL}
 							token={token}
-							setError={setError}
+							setSuccess={setSuccess}
+							setValidationMessage={setError}
 							profile={profile}
 							setProfile={setProfile}
 							loadingData={loadingData}
@@ -251,7 +259,8 @@ const DashboardPage = () => {
 							gatsbyId={gatsbyId}
 							apiURL={apiURL}
 							token={token}
-							setError={setError}
+							setSuccess={setSuccess}
+							setValidationMessage={setError}
 							username={username}
 							setUsername={setUsername}
 							loadingData={loadingData}
@@ -261,7 +270,8 @@ const DashboardPage = () => {
 							gatsbyId={gatsbyId}
 							apiURL={apiURL}
 							token={token}
-							setError={setError}
+							setSuccess={setSuccess}
+							setValidationMessage={setError}
 							email={email}
 							setEmail={setEmail}
 							loadingData={loadingData}
@@ -299,9 +309,7 @@ const DashboardPage = () => {
 					</div>
 				</div>
 
-				{loading && (
-					<div className={styles.loadingComplete}>Profielfoto Geupload</div>
-				)}
+				{success && <SuccessMessage text={success} />}
 				{error && <ErrorMessage text={error} />}
 
 				<div className={styles.occupationWBio}>
@@ -318,7 +326,8 @@ const DashboardPage = () => {
 						userId={userId}
 						apiURL={apiURL}
 						token={token}
-						setError={setError}
+						setSuccess={setSuccess}
+						setValidationMessage={setError}
 						biography={biography}
 						setBiography={setBiography}
 						loadingData={loadingData}

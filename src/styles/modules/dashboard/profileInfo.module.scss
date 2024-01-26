@@ -32,11 +32,7 @@
 			}
 
 			&:focus {
-				color: $secondaryColor;
-			}
-
-			&:hover {
-				@include smoothTrans;
+				color: $secondaryColor !important;
 			}
 		}
 

@@ -191,25 +191,19 @@
 		}
 	}
 
-	.loading-complete {
+	.logerror {
 		color: white;
-		background-color: #57a55f;
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-		margin: 1em auto 0;
-		padding: 1px 7.5px;
-		border-radius: 2.5px;
+		background: linear-gradient(135deg, rgba(255, 0, 0, 0.75), $warningColor);
+
+		@include logs;
 	}
 
-	.progress {
-		margin: 1rem 0;
-		background-color: red;
+	.logsuccess {
+		color: $whiteColor;
+		// background-color: #57a55f;
+		background: linear-gradient(135deg, rgba(0, 128, 0, 0.75), $successColor);
 
-		&-seek {
-			background-color: green;
-			height: 3px;
-		}
+		@include logs;
 	}
 }
 

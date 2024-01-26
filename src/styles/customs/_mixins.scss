@@ -23,6 +23,17 @@
 	margin: $marginY;
 }
 
+@mixin logs {
+	outline: 1px solid $whiteColor;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	margin: 1em auto 0;
+	padding: 0.2em 1em;
+	border-radius: 2.5px;
+	font-size: 0.825rem;
+}
+
 @mixin button($yAxis: 0.5em) {
 	background: $primaryColor;
 	color: $ashColor;

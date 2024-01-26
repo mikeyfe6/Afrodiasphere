@@ -8,7 +8,7 @@ const Avatar = ({
 	userId,
 	apiURL,
 	token,
-	setLoading,
+	setSuccess,
 	setPreview,
 	preview,
 	noavatar,
@@ -47,14 +47,14 @@ const Avatar = ({
 		setPreview(noavatar)
 
 		try {
-			setLoading(true)
+			setSuccess(true)
 			await axios.delete(`${apiURL}/api/upload/files/${avatarId}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
 			})
 
-			setTimeout(() => setLoading(false), 5000)
+			setTimeout(() => setSuccess(false), 5000)
 		} catch (error) {
 			console.error("Avatar verwijderen lukt niet, probeer het nog 's", error)
 		}
@@ -64,7 +64,7 @@ const Avatar = ({
 		e.preventDefault()
 
 		try {
-			setLoading(true)
+			setSuccess(true)
 			const imgData = new FormData()
 			imgData.append('files', image)
 			imgData.append('ref', 'api::instantie.instantie')
@@ -77,7 +77,7 @@ const Avatar = ({
 				}
 			})
 
-			setTimeout(() => setLoading(false), 5000)
+			setTimeout(() => setSuccess(false), 5000)
 		} catch (error) {
 			console.log('Niet gelukt!', error)
 		}
