@@ -96,7 +96,7 @@ const Biography = ({
 				disabled={loadingData || isSubmitting}
 				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-			<span>{biography.length} / 160</span>
+			<span>{biography && biography.length} / 160</span>
 			<button
 				type="submit"
 				title="Sla biografie op"

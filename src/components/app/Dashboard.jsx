@@ -97,7 +97,7 @@ const DashboardPage = () => {
 		tiktok: ''
 	})
 
-	const [changedSmLinks, setSmChangedLinks] = useState({})
+	const [changedSmLinks, setChangedSmLinks] = useState({})
 
 	const [links, setLinks] = useState([])
 
@@ -151,7 +151,7 @@ const DashboardPage = () => {
 			[name]: value
 		}))
 
-		setSmChangedLinks(prevChangedLinks => ({
+		setChangedSmLinks(prevChangedLinks => ({
 			...prevChangedLinks,
 			[name]: true
 		}))
@@ -180,7 +180,7 @@ const DashboardPage = () => {
 					setTimeout(() => setError(null), 5000)
 				}
 
-				setSmChangedLinks(prevChangedLinks => ({
+				setChangedSmLinks(prevChangedLinks => ({
 					...prevChangedLinks,
 					[name]: false
 				}))
