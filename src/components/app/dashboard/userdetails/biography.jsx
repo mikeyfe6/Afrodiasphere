@@ -90,13 +90,13 @@ const Biography = ({
 				id="biografie"
 				type="text"
 				name="text"
-				placeholder="Voer hier een korte beschrijving in van max 140 tekens.."
-				value={biography}
+				placeholder="Voer hier een korte beschrijving in van max 160 tekens.."
+				value={biography || ''}
 				onChange={setBiografieHandler}
 				disabled={loadingData || isSubmitting}
 				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-			<span>{biography && biography.length} / 160</span>
+			<span>{biography ? biography.length : 0} / 160</span>
 			<button
 				type="submit"
 				title="Sla biografie op"

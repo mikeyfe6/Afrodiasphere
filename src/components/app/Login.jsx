@@ -96,6 +96,7 @@ const LoginPage = () => {
 
 			const str = usernameRegRef.current.value
 			const correctSlug = str
+				.toLowerCase()
 				.normalize('NFD')
 				.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, '-')
 
@@ -155,6 +156,7 @@ const LoginPage = () => {
 								style={{ textTransform: 'lowercase' }}
 								placeholder="gebruikersnaam"
 								title="Kies een gebruikersnaam"
+								autoCapitalize="none"
 							/>
 							<input
 								ref={emailRegRef}
@@ -164,6 +166,7 @@ const LoginPage = () => {
 								style={{ textTransform: 'lowercase' }}
 								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 								title="Voer je e-mailadres in"
+								autoCapitalize="none"
 							/>
 							<input
 								ref={passwordRegRef}
@@ -173,6 +176,7 @@ const LoginPage = () => {
 								placeholder="wachtwoord"
 								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 								title="Moet op z'n minst 1 nummer, 1 hoofdletter, 1 klein letter en 8 karakters lang zijn."
+								autoCapitalize="none"
 							/>
 
 							{error && <ErrorMessage text={error} />}
@@ -192,6 +196,7 @@ const LoginPage = () => {
 								placeholder="e-mailadres / gebruikersnaam"
 								style={{ textTransform: 'lowercase' }}
 								title="Log in met jouw e-mailadres of gebruikersnaam"
+								autoCapitalize="none"
 								required
 							/>
 							<input
@@ -200,6 +205,7 @@ const LoginPage = () => {
 								name="password"
 								placeholder="wachtwoord"
 								title="Voer jouw wachtwoord in"
+								autoCapitalize="none"
 								required
 							/>
 							{error && <ErrorMessage text={error} />}

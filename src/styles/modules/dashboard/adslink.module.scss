@@ -46,6 +46,7 @@
 			text-overflow: ellipsis;
 			max-width: 100%;
 			color: $primaryColor;
+			text-transform: lowercase;
 
 			&:hover {
 				color: $secondaryColor;

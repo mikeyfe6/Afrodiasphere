@@ -92,7 +92,7 @@ const Occupation = ({
 	return (
 		<form className={styles.occupation}>
 			<fieldset>
-				<legend>Soort</legend>
+				<legend>Occupatie:</legend>
 				<input
 					id="bedrijf"
 					type="radio"

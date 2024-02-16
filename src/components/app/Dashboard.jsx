@@ -25,6 +25,7 @@ import Twitter from './dashboard/socials/twitter'
 import Instagram from './dashboard/socials/instagram'
 import Whatsapp from './dashboard/socials/whatsapp'
 import TikTok from './dashboard/socials/tiktok'
+import Linkedin from './dashboard/socials/linkedin'
 import Links from './dashboard/links'
 import Themes from './dashboard/themes'
 import AdsLink from './dashboard/adslink'
@@ -73,21 +74,22 @@ const DashboardPage = () => {
 
 	const [linkError, setLinkError] = useState(null)
 
-	const [profile, setProfile] = useState('...')
-	const [username, setUsername] = useState('...')
-	const [email, setEmail] = useState('...')
+	const [profile, setProfile] = useState('')
+	const [username, setUsername] = useState('')
+	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [slug, setSlug] = useState('')
 	const [deleteAds, setDeleteAds] = useState('')
 
 	const [occupate, setOccupate] = useState('')
-	const [biography, setBiography] = useState('...')
+	const [biography, setBiography] = useState('')
 
-	const [fbLink, setFbLink] = useState('...')
-	const [twLink, setTwLink] = useState('...')
-	const [igLink, setIgLink] = useState('...')
-	const [waLink, setWaLink] = useState('...')
-	const [tkLink, setTkLink] = useState('...')
+	const [fbLink, setFbLink] = useState('')
+	const [twLink, setTwLink] = useState('')
+	const [igLink, setIgLink] = useState('')
+	const [waLink, setWaLink] = useState('')
+	const [tkLink, setTkLink] = useState('')
+	const [liLink, setLiLink] = useState('')
 
 	const [smLinks, setSmLinks] = useState({
 		facebook: '',
@@ -219,6 +221,7 @@ const DashboardPage = () => {
 					igLink={igLink}
 					waLink={waLink}
 					tkLink={tkLink}
+					liLink={liLink}
 					color={color}
 					loadingData={loadingData}
 				/>
@@ -392,6 +395,17 @@ const DashboardPage = () => {
 						setError={setError}
 						tkLink={tkLink}
 						setTkLink={setTkLink}
+						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
+					/>
+
+					<Linkedin
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						setError={setError}
+						liLink={liLink}
+						setLiLink={setLiLink}
 						handleSmLinkChange={handleSmLinkChange}
 						loadingData={loadingData}
 					/>

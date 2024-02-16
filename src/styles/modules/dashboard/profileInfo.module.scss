@@ -27,10 +27,6 @@
 				filter: blur(2px);
 			}
 
-			&::placeholder {
-				color: rgba(255 255 255 / 50%);
-			}
-
 			&:focus {
 				color: $secondaryColor !important;
 			}

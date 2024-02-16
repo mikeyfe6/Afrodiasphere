@@ -17,6 +17,7 @@ const Preview = ({
 	igLink,
 	waLink,
 	tkLink,
+	liLink,
 	color
 }) => {
 	const getThemeClassName = element => {
@@ -122,9 +123,19 @@ const Preview = ({
 						title={`https://www.tiktok.com/@${tkLink}`}
 						rel="noopener noreferrer"
 						target="_blank"
-						id="tkhide"
 					>
 						<i className="fa-brands fa-tiktok" />
+					</a>
+				)}
+
+				{liLink && liLink.length > 1 && (
+					<a
+						href={`https://www.linkedin.com/${liLink}`}
+						title={`https://www.linkedin.com/${liLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<i className="fa-brands fa-linkedin" />
 					</a>
 				)}
 			</div>

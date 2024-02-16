@@ -168,7 +168,6 @@
 			> input {
 				&::placeholder {
 					font-size: 0.75rem;
-					opacity: 0.75;
 				}
 
 				&:focus {
@@ -293,4 +292,21 @@
 	margin: 0 auto;
 
 	border-radius: 2px;
+}
+
+.no-links {
+	color: $ashColor;
+	background-color: $whiteColor;
+	opacity: 0.5;
+	border-radius: 5px;
+	padding: 0.25em 2em;
+	margin: 0 auto;
+	display: block;
+
+	@include boxShadow;
+	@include smoothTrans;
+
+	&:hover {
+		opacity: 1;
+	}
 }

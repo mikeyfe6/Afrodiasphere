@@ -243,133 +243,143 @@ const Links = ({
 				{linkError && <DoThis text={linkError} />}
 			</div>
 
-			<ul className={styles.linkList}>
-				{links.map((link, index) => (
-					<li key={index} className={styles.link}>
-						<div className={styles.linkFields}>
-							<div className={styles.linkTitle}>
-								<div>
-									<span>
-										<p title={link.title}>{link.title}</p>
-									</span>
-									<hr />
-									<input
-										id={`editlink${link.id}`}
-										type="text"
-										value={editLinkTitle[link.id] || ''}
-										onChange={event => handleEditLink(event, link.id)}
-										placeholder="bewerk titel"
-										minLength="5"
-										required
-									/>
+			{links.length > 0 ? (
+				<ul className={styles.linkList}>
+					{links.map((link, index) => (
+						<li key={index} className={styles.link}>
+							<div className={styles.linkFields}>
+								<div className={styles.linkTitle}>
+									<div>
+										<span>
+											<p title={link.title}>{link.title}</p>
+										</span>
+										<hr />
+										<input
+											id={`editlink${link.id}`}
+											type="text"
+											value={editLinkTitle[link.id] || ''}
+											onChange={event => handleEditLink(event, link.id)}
+											placeholder="bewerk titel"
+											minLength="5"
+											required
+										/>
+									</div>
+									<button
+										title="Sla nieuwe titel op"
+										disabled={
+											!editLinkTitle[link.id] ||
+											editLinkTitle[link.id].trim() === ''
+										}
+										onClick={event => {
+											editTheLink({
+												id: link.id,
+												value: editLinkTitle[link.id]
+											})
+											event.preventDefault()
+										}}
+									>
+										{!editLinkTitle[link.id] ||
+										editLinkTitle[link.id].trim() === '' ? (
+											<i className="fa-solid fa-ellipsis" />
+										) : (
+											<i className="fa-solid fa-check" />
+										)}
+									</button>
 								</div>
-								<button
-									title="Sla nieuwe titel op"
-									disabled={
-										!editLinkTitle[link.id] ||
-										editLinkTitle[link.id].trim() === ''
-									}
+								<div className={styles.linkUrl}>
+									<div>
+										<span>
+											<a
+												href={`https://${link.hyperlink}`}
+												title={`https://${link.hyperlink}`}
+												rel="noopener noreferrer"
+												target="_blank"
+											>
+												{link.hyperlink}
+											</a>
+										</span>
+										<hr />
+										<input
+											id={`hyperlink${link.id}`}
+											type="url"
+											value={editLinkUrl[link.id] || ''}
+											onChange={event => handleEditHyperLink(event, link.id)}
+											placeholder="bewerk hyperlink"
+											minLength="5"
+											required
+										/>
+									</div>
+									<button
+										title="Sla nieuwe hyperlink op"
+										disabled={
+											!editLinkUrl[link.id] ||
+											editLinkUrl[link.id].trim() === ''
+										}
+										onClick={event => {
+											editTheHyperLink({
+												id: link.id,
+												value: editLinkUrl[link.id]
+											})
+											event.preventDefault()
+										}}
+									>
+										{!editLinkUrl[link.id] ||
+										editLinkUrl[link.id].trim() === '' ? (
+											<i className="fa-solid fa-ellipsis" />
+										) : (
+											<i className="fa-solid fa-check" />
+										)}
+									</button>
+								</div>
+							</div>
+
+							<div className={styles.linkBtns}>
+								<div
+									className={styles.trashBtn}
+									title="Verwijder deze link"
 									onClick={event => {
-										editTheLink({
-											id: link.id,
-											value: editLinkTitle[link.id]
-										})
+										deleteLink(link)
 										event.preventDefault()
 									}}
 								>
-									{!editLinkTitle[link.id] ||
-									editLinkTitle[link.id].trim() === '' ? (
-										<i className="fa-solid fa-ellipsis" />
-									) : (
-										<i className="fa-solid fa-check" />
-									)}
-								</button>
-							</div>
-							<div className={styles.linkUrl}>
-								<div>
-									<span>
-										<a
-											href={`https://${link.hyperlink}`}
-											title={`https://${link.hyperlink}`}
-											rel="noopener noreferrer"
-											target="_blank"
-										>
-											{link.hyperlink}
-										</a>
-									</span>
-									<hr />
-									<input
-										id={`hyperlink${link.id}`}
-										type="url"
-										value={editLinkUrl[link.id] || ''}
-										onChange={event => handleEditHyperLink(event, link.id)}
-										placeholder="bewerk hyperlink"
-										minLength="5"
-										required
-									/>
+									<i className="fa-solid fa-trash-can fa-lg" />
 								</div>
-								<button
-									title="Sla nieuwe hyperlink op"
-									disabled={
-										!editLinkUrl[link.id] || editLinkUrl[link.id].trim() === ''
-									}
-									onClick={event => {
-										editTheHyperLink({
-											id: link.id,
-											value: editLinkUrl[link.id]
-										})
-										event.preventDefault()
-									}}
-								>
-									{!editLinkUrl[link.id] ||
-									editLinkUrl[link.id].trim() === '' ? (
-										<i className="fa-solid fa-ellipsis" />
-									) : (
-										<i className="fa-solid fa-check" />
-									)}
-								</button>
-							</div>
-						</div>
+								<div className={styles.showBtn}>
+									<input
+										title="Maak link (ont)zichtbaar"
+										type="checkbox"
+										id={`checkbox${link.id}`}
+										checked={link.visible}
+										onChange={e => toggleLink(link, e.target.checked)}
+										hidden
+									/>
 
-						<div className={styles.linkBtns}>
-							<div
-								className={styles.trashBtn}
-								title="Verwijder deze link"
-								onClick={event => {
-									deleteLink(link)
-									event.preventDefault()
-								}}
-							>
-								<i className="fa-solid fa-trash-can fa-lg" />
+									<span onClick={() => toggleLink(link, !link.visible)}>
+										{link.visible ? (
+											<i
+												className="fa-solid fa-eye"
+												title="Maak link ontzichtbaar"
+											/>
+										) : (
+											<i
+												className="fa-solid fa-eye-slash"
+												title="Maak link zichtbaar"
+											/>
+										)}
+									</span>
+								</div>
 							</div>
-							<div className={styles.showBtn}>
-								<input
-									title="Maak link (ont)zichtbaar"
-									type="checkbox"
-									id={`checkbox${link.id}`}
-									checked={link.visible}
-									onChange={e => toggleLink(link, e.target.checked)}
-									hidden
-								/>
-
-								<span onClick={() => toggleLink(link, !link.visible)}>
-									{link.visible ? (
-										<i
-											className="fa-solid fa-eye"
-											title="Maak link ontzichtbaar"
-										/>
-									) : (
-										<i
-											className="fa-solid fa-eye-slash"
-											title="Maak link zichtbaar"
-										/>
-									)}
-								</span>
-							</div>
-						</div>
-					</li>
-				))}
-			</ul>
+						</li>
+					))}
+				</ul>
+			) : (
+				<button
+					className={styles.noLinks}
+					onClick={() => linkTitle.current.focus()}
+				>
+					Creëer je eerste link!
+				</button>
+			)}
 		</>
 	)
 }
