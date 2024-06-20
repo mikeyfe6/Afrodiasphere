@@ -27,5 +27,5 @@ const ResetPwdPage = () => (
 export default ResetPwdPage
 
 export const Head = () => {
-	return <Seo title="Reset wachtwoord" />
+	return <Seo title="Reset wachtwoord" pathname="/wachtwoord-reset/" />
 }

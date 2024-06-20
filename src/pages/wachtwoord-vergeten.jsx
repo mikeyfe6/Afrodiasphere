@@ -30,5 +30,5 @@ const ForgetPwdPage = () => (
 export default ForgetPwdPage
 
 export const Head = () => {
-	return <Seo title="Wachtwoord vergeten" />
+	return <Seo title="Reset wachtwoord" pathname="/wachtwoord-vergeten/" />
 }

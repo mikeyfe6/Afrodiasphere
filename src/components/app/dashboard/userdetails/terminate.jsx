@@ -91,7 +91,7 @@ const Terminate = ({
 				setGatsbyId(delUser.data.data.id)
 				setUserId(delInstantie.data.id)
 
-				logout(() => navigate('/login'))
+				logout(() => navigate('/login/'))
 			} else {
 				setError(
 					"Er gaat iets mis met het verwijderen van jouw account, probeer het nog 's"

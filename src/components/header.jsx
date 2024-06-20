@@ -65,7 +65,7 @@ const Header = () => {
 								<button
 									onClick={e => {
 										e.preventDefault()
-										logout(() => navigate('/login'))
+										logout(() => navigate('/login/'))
 									}}
 									href="#"
 									title="Uitloggen"

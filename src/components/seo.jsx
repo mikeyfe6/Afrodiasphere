@@ -1,53 +1,55 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from 'react'
-
 import { useStaticQuery, graphql } from 'gatsby'
 
-function Seo({ description, title, children }) {
-  const { site } = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-        }
-      }
-    }
-  `)
+function Seo({ description, title, children, pathname }) {
+	const { site } = useStaticQuery(graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+					description
+					author
+					image
+					siteUrl
+				}
+			}
+		}
+	`)
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+	const metaDescription = description || site.siteMetadata.description
+	const defaultTitle = site.siteMetadata?.title
+	const metaImage = site.siteMetadata.siteUrl + site.siteMetadata?.image
+	const siteTitle = defaultTitle ? `${title} · ${defaultTitle}` : title
+	const siteUrl = site.siteMetadata.siteUrl + (pathname || '')
 
-  return (
-    <>
-      <title>{defaultTitle ? `${title} · ${defaultTitle}` : title}</title>
-      <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+	return (
+		<>
+			<title>{siteTitle}</title>
+			<meta name="description" content={metaDescription} />
+			<meta name="image" content={metaImage} />
+			<meta property="og:title" content={siteTitle} />
+			<meta property="og:description" content={metaDescription} />
+			<meta property="og:type" content="website" />
+			<meta property="og:image" content={metaImage} />
+			<meta property="og:site_name" content={site.siteMetadata.title} />
+			<meta property="og:url" content={siteUrl} />
+			<meta name="twitter:card" content="summary" />
+			<meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
+			<meta name="twitter:title" content={siteTitle} />
+			<meta name="twitter:description" content={metaDescription} />
+			<meta name="twitter:image" content={metaImage} />
+			<meta name="twitter:url" content={siteUrl} />
 
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossOrigin="anonymous"
-        referrerPolicy="no-referrer"
-      />
-
-      {children}
-    </>
-  )
+			<link
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+				integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+				crossorigin="anonymous"
+				referrerpolicy="no-referrer"
+			/>
+			{children}
+		</>
+	)
 }
 
 export default Seo

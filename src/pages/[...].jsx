@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router } from '@reach/router'
+import { Router, useLocation } from '@reach/router'
 
 import Seo from '../components/seo'
 
@@ -9,15 +9,35 @@ import Dashboard from '../components/app/Dashboard'
 import Login from '../components/app/Login'
 
 const App = () => (
-  <Layout>
-    <Router>
-      <PrivateRoute component={Dashboard} path="/dashboard" />
-      <Login path="/login" />
-    </Router>
-  </Layout>
+	<Layout>
+		<Router>
+			<PrivateRoute component={Dashboard} path="/dashboard/" />
+			<Login path="/login/" />
+		</Router>
+	</Layout>
 )
 export default App
 
 export const Head = () => {
-  return <Seo title="Login / Registreer" />
+	const location = useLocation()
+
+	let title, pathname
+
+	console.log(location.pathname)
+
+	switch (location.pathname) {
+		case '/dashboard/':
+			title = 'Dashboard'
+			pathname = '/dashboard/'
+			break
+		case '/login/':
+			title = 'Login / Registreer'
+			pathname = '/login/'
+			break
+		default:
+			title = 'Afrodiasphere'
+			pathname = '/'
+	}
+
+	return <Seo title={title} pathname={pathname} />
 }

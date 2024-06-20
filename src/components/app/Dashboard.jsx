@@ -51,7 +51,7 @@ const ErrorMessage = ({ text }) => {
 const DashboardPage = () => {
 	useEffect(() => {
 		if (!isLoggedIn()) {
-			navigate('/login')
+			navigate('/login/')
 		}
 	}, [])
 
