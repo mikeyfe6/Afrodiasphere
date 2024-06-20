@@ -11,7 +11,8 @@ const config: GatsbyConfig = {
 		siteUrl: `https://afrodiasphere.com`,
 		title: `Afrodiasphere`,
 		author: 'Michael Fransman',
-		description: `Een efficiente oplossing voor het delen van contactinformatie`
+		description: `Een efficiente oplossing voor het delen van contactinformatie`,
+		image: '/afrodiasphere-logo.png'
 	},
 	plugins: [
 		{
