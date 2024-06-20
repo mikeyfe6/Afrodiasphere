@@ -1,15 +1,11 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-<!-- &nbsp;&nbsp; -->
-
-<!-- <p align="center">
-  <a href="https://afrodiasphere.netlify.app/" rel="noopener noreferrer"
+<p align="center">
+  <a href="https://afrodiasphere.com/" rel="noopener noreferrer"
               target="_blank">
-    <img alt="Afrodiasphere" src="https://i.postimg.cc/Yq04rydW/Afrodiasphere-screen.png" width="500" />
+    <img alt="Afrodiasphere Logo" src="https://afrodiasphere.com/afrodiasphere-logo.png" width="500" />
   </a>
-</p> -->
-
-<!-- &nbsp;&nbsp; -->
+</p>
 
 <br>
 
@@ -43,8 +39,8 @@ Powered by [Menefex](https://menefex.nl) ✨
 
 ---
 
-<br>
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/cf1dfb50-594c-44db-a0b2-aa9c139b7a97/deploy-status)](https://app.netlify.com/sites/afrodiasphere/deploys) [![wakatime](https://wakatime.com/badge/github/mikeyfe6/Afrodiasphere.svg)](https://wakatime.com/badge/github/mikeyfe6/Afrodiasphere)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cf1dfb50-594c-44db-a0b2-aa9c139b7a97/deploy-status)](https://app.netlify.com/sites/afrodiasphere/deploys) <br><br>
+👨🏾‍💻 <ins>...this project</ins> <br> [![wakatime](https://wakatime.com/badge/user/172a37f5-1ff4-4cf8-9d08-5ccbe681726b/project/919a7169-94fc-4fc3-9af8-6da91ba97c03.svg)](https://wakatime.com/badge/user/172a37f5-1ff4-4cf8-9d08-5ccbe681726b/project/919a7169-94fc-4fc3-9af8-6da91ba97c03) <br>
+👨🏾‍💻 <ins>...all projects</ins> <br> [![wakatime](https://wakatime.com/badge/user/172a37f5-1ff4-4cf8-9d08-5ccbe681726b.svg)](https://wakatime.com/@172a37f5-1ff4-4cf8-9d08-5ccbe681726b)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
