@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://afrodiasphere.com/" rel="noopener noreferrer"
               target="_blank">
-    <img alt="Afrodiasphere Logo" src="https://afrodiasphere.com/afrodiasphere-logo.png" width="500" />
+    <img alt="Afrodiasphere Logo" src="https://afrodiasphere.com/afrodiasphere-logo.png" width="250" />
   </a>
 </p>
 
