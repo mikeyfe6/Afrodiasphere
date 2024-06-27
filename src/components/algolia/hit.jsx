@@ -1,12 +1,12 @@
 import React from 'react'
-
-import { Highlight } from 'react-instantsearch'
-import { getPropertyByPath } from 'instantsearch.js/es/lib/utils'
+import { Highlight } from 'react-instantsearch' // Corrected import
 
 export const Hit = ({ hit }) => {
+	const avatarUrl = hit && hit.avatar ? hit.avatar.url : null
+
 	return (
 		<article>
-			<img src={hit && hit.avatar.url} />
+			{avatarUrl ? <img src={avatarUrl} alt="Avatar" /> : <div>No Avatar</div>}
 			<div className="hit-profiel">
 				<Highlight attribute="profiel" hit={hit} />
 			</div>

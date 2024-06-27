@@ -1,24 +1,43 @@
+// src/components/Search.js
+
 import React from 'react'
-
 import algoliasearch from 'algoliasearch/lite'
-import 'instantsearch.css/themes/satellite.css'
-import { Hits, InstantSearch, SearchBox, Configure } from 'react-instantsearch'
+import {
+	InstantSearch,
+	SearchBox,
+	Hits,
+	useInstantSearch
+} from 'react-instantsearch'
 
+import 'instantsearch.css/themes/satellite.css'
 import { Hit } from './hit'
 import { ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY, ALGOLIA_INDEX_NAME } from './keys'
+import '../../styles/algolia.css'
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY)
 
-import '../../styles/algolia.css'
+const Search = () => (
+	<InstantSearch searchClient={searchClient} indexName={ALGOLIA_INDEX_NAME}>
+		<SearchBox />
+		<EmptyQueryBoundary fallback={null}>
+			<Hits hitComponent={Hit} />
+		</EmptyQueryBoundary>
+	</InstantSearch>
+)
 
-export const Search = () => {
-	return (
-		<InstantSearch searchClient={searchClient} indexName={ALGOLIA_INDEX_NAME}>
-			<Configure hitsPerPage={5} />
-			<div className="ais-InstantSearch">
-				<SearchBox />
-				<Hits hitComponent={Hit} />
-			</div>
-		</InstantSearch>
-	)
+const EmptyQueryBoundary = ({ children, fallback }) => {
+	const { indexUiState } = useInstantSearch()
+
+	if (!indexUiState.query) {
+		return (
+			<>
+				{fallback}
+				<div hidden>{children}</div>
+			</>
+		)
+	}
+
+	return children
 }
+
+export default Search

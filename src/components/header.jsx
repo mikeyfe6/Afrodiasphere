@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { isLoggedIn, logout, isBrowser, getUser } from '../services/auth'
 
-import { Search } from './algolia/search'
+import Search from './algolia/search'
 
 import * as styles from '../styles/modules/header.module.scss'
 
