@@ -10,6 +10,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "algoliasearch": "^4.24.0",
     "axios": "^1.7.2",
     "gatsby": "^5.13.6",
     "gatsby-adapter-netlify": "^1.1.6",
@@ -27,18 +28,20 @@
     "gatsby-source-filesystem": "^5.13.1",
     "gatsby-source-strapi": "^3.3.3",
     "gatsby-transformer-sharp": "^5.13.1",
+    "instantsearch.css": "^8.2.1",
     "react": "^18.3.1",
     "react-digit-input": "^2.1.0",
     "react-dom": "^18.3.1",
+    "react-instantsearch": "^7.11.4",
     "sass": "^1.77.6",
     "swiper": "^11.1.4"
   },
   "devDependencies": {
-    "@types/node": "^20.14.6",
+    "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
     "eslint": "^9.5.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -50,7 +53,7 @@
     "stylelint": "^16.6.1",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "keywords": [
     "gatsby"

@@ -8,6 +8,8 @@ import MobileMenu from './mobileMenu'
 
 import ResponsiveTag from '../components/helpers/responsetag'
 
+import Algolia from './algolia/algolia'
+
 import '../styles/layout.scss'
 
 const Layout = ({ children }) => {
@@ -51,6 +53,8 @@ const Layout = ({ children }) => {
 				<main>{children}</main>
 				<Footer />
 			</div>
+
+			<Algolia />
 
 			{process.env.NODE_ENV === 'development' && <ResponsiveTag />}
 		</>

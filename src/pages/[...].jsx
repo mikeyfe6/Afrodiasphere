@@ -23,8 +23,6 @@ export const Head = () => {
 
 	let title, pathname
 
-	console.log(location.pathname)
-
 	switch (location.pathname) {
 		case '/dashboard/':
 			title = 'Dashboard'
