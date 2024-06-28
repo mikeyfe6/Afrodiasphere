@@ -1,0 +1,91 @@
+@import '../styles/configs/globals';
+
+.ais {
+	&-SearchBox {
+		width: 225px;
+
+		&-form {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+
+		&-input {
+			background: $whiteColor;
+			border: none;
+			padding: 10px 15px;
+			border-radius: 3px;
+			box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+			color: $blackColor;
+
+			&::placeholder {
+				color: $blackColor;
+				opacity: 0.375;
+			}
+
+			&::-webkit-search-cancel-button {
+				filter: invert(64%) sepia(90%) saturate(334%) hue-rotate(0deg)
+					brightness(82%) contrast(96%);
+				cursor: pointer;
+			}
+		}
+
+		&-submit,
+		&-reset {
+			display: none;
+		}
+	}
+
+	// &-InstantSearch {
+	// 	max-width: 960px;
+	// 	width: 100%;
+	// 	display: block;
+	// 	overflow: hidden;
+	// 	margin: 0 auto;
+	// }
+
+	&-Hits {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		right: 0;
+		z-index: 100;
+		border-radius: 0 0 10px 10px;
+		overflow: hidden;
+	}
+
+	&-InstantSearch,
+	&-Hits-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&-Hits-list,
+	&-Hits-item {
+	}
+
+	&-Hits-item {
+		background: linear-gradient(to left, rgba(14 14 14 / 75%), $blackColor)
+			no-repeat 0 0 / cover;
+		padding: 1em;
+
+		article {
+			display: flex;
+			gap: 1em;
+
+			img {
+				width: 100px;
+				height: 100px;
+				object-fit: cover;
+				overflow: hidden;
+
+				border-radius: 5px;
+			}
+		}
+
+		&:not(:last-child) {
+			border-bottom: 1px solid $whiteColor;
+		}
+	}
+}

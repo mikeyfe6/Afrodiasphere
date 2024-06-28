@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import algoliasearch from 'algoliasearch'
 import axios from 'axios'
@@ -22,8 +22,7 @@ const Algolia = () => {
 					...record
 				}))
 
-				const { objectIDs } = await index.saveObjects(objectsWithID)
-				console.log('Objects indexed successfully:', objectIDs)
+				await index.saveObjects(objectsWithID)
 			} catch (error) {
 				console.error('Error during indexing:', error)
 			}

@@ -7,11 +7,13 @@
 	min-height: 70px;
 	color: $whiteColor;
 
-	> div {
+	&-wrapper {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 100%;
+		position: relative;
+		gap: 1.5em;
 
 		@include container(0, 1em);
 
@@ -24,36 +26,43 @@
 			vertical-align: middle;
 		}
 
-		> nav > ul {
-			display: flex;
-			align-items: center;
-			gap: 1.375em;
+		.logged-user {
+			margin-right: auto;
 
-			> li {
-				> a,
-				button {
-					cursor: pointer;
+			> a {
+				background: $primaryColor;
+				color: color.adjust($blackColor, $lightness: 5%);
+				padding: 0.25em 1em;
+				font-weight: 600;
+				border-radius: 5px;
+
+				&:hover {
+					opacity: 0.75;
+					color: $blackColor;
 
 					@include smoothTrans;
-
-					&:hover {
-						color: $thirdColor;
-					}
 				}
+			}
+		}
 
-				&.logged-user {
-					> a {
-						background: $primaryColor;
-						color: color.adjust($blackColor, $lightness: 5%);
-						padding: 0.25em 1em;
-						font-weight: 600;
-						border-radius: 5px;
+		> nav {
+			display: flex;
+			gap: 2em;
+
+			> ul {
+				display: flex;
+				align-items: center;
+				gap: 1.375em;
+
+				> li {
+					> a,
+					button {
+						cursor: pointer;
+
+						@include smoothTrans;
 
 						&:hover {
-							opacity: 0.75;
-							color: $blackColor;
-
-							@include smoothTrans;
+							color: $thirdColor;
 						}
 					}
 				}

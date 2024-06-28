@@ -8,7 +8,7 @@ import MobileMenu from './mobileMenu'
 
 import ResponsiveTag from '../components/helpers/responsetag'
 
-import Algolia from './algolia/algolia'
+import Algolia from './algolia/init'
 
 import '../styles/layout.scss'
 

@@ -17,7 +17,7 @@ const Header = () => {
 
 	return (
 		<header className={styles.navbar}>
-			<div>
+			<div className={styles.navbarWrapper}>
 				{/* <Link to="/" title="Ga naar homepagina">
 					<AfroLogo fill="#cc9932" width="75" />
 				</Link> */}
@@ -26,22 +26,22 @@ const Header = () => {
 					<img src={afroLogo} alt="" />
 				</Link>
 
-				<Search />
+				{isLoggedIn() && isBrowser() && (
+					<div className={styles.loggedUser}>
+						<Link
+							to={`/${AdsUser.user.username}/`}
+							title="Ga naar jouw ADS page"
+							activeStyle={{ color: '#cc9932' }}
+						>
+							{AdsUser.user.username}{' '}
+						</Link>
+					</div>
+				)}
 
 				<nav>
-					<ul>
-						{isLoggedIn() && isBrowser() && (
-							<li className={styles.loggedUser}>
-								<Link
-									to={`/${AdsUser.user.username}/`}
-									title="Ga naar jouw ADS page"
-									activeStyle={{ color: '#cc9932' }}
-								>
-									{AdsUser.user.username}{' '}
-								</Link>
-							</li>
-						)}
+					<Search />
 
+					<ul>
 						<li>
 							<Link
 								to="/"

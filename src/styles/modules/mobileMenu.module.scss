@@ -10,7 +10,7 @@
 		width: 100%;
 		background-color: color.adjust($blackColor, $lightness: 2.5%);
 		transition: bottom 0.5s ease;
-		z-index: 999;
+		z-index: 10;
 
 		> ul {
 			display: flex;
@@ -44,7 +44,7 @@
 			bottom: 0;
 			left: 0;
 			width: 100%;
-			z-index: 1000;
+			z-index: 11;
 
 			.hamburger {
 				border: none;
@@ -54,7 +54,7 @@
 				position: fixed;
 				top: 0;
 				left: 0;
-				z-index: 1001;
+				z-index: 12;
 				background: color.adjust($blackColor, $lightness: 2.5%);
 				border-radius: 0 0 7.5px;
 			}
