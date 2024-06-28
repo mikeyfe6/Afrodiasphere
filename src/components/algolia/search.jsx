@@ -50,6 +50,7 @@ const Search = ({ style }) => {
 			onClick={() => setFocus(true)}
 			role="search"
 			style={style}
+			className='search'
 		>
 			<InstantSearch
 				searchClient={searchClient}

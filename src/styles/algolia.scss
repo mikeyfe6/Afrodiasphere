@@ -3,20 +3,26 @@
 .mobile-search {
 	position: fixed;
 	top: 15px;
-	left: 87.5px;
+	left: 0;
 	z-index: 12;
 	display: flex;
 	align-items: center;
+	width: 100%;
+	padding-left: 80px;
+	padding-right: 10px;
 
 	&.open {
 		> i {
 			border-radius: 5px 0 0 5px;
 		}
 
+		.search {
+			width: 100%;
+		}
+
 		input {
 			border-radius: 0 5px 5px 0;
 			box-shadow: none;
-			width: 100%;
 			height: 44px;
 
 			&:focus {
@@ -24,11 +30,20 @@
 			}
 		}
 
-		.ais-Hits {
-			position: fixed;
-			top: auto;
-			margin-top: 1.5em;
-			border-radius: 0;
+		.ais {
+			&-Hits {
+				position: fixed;
+				top: auto;
+				margin-top: 1.5em;
+				border-radius: 0;
+
+				border-top: 3px solid $subColor;
+				border-bottom: 3px solid $subColor;
+			}
+
+			&-SearchBox {
+				width: 100%;
+			}
 		}
 	}
 
@@ -37,7 +52,8 @@
 		background: #fcfcfc;
 		border-radius: 5px;
 		height: 44px;
-		width: 44px;
+		min-width: 44px;
+		max-width: 44px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
