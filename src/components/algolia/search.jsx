@@ -38,20 +38,25 @@ const useClickOutside = (ref, onClickOutside) => {
 	}, [ref, onClickOutside])
 }
 
-const Search = () => {
+const Search = ({ style }) => {
 	const rootRef = useRef()
 	const [hasFocus, setFocus] = useState(false)
 
 	useClickOutside(rootRef, () => setFocus(false))
 
 	return (
-		<div ref={rootRef} onClick={() => setFocus(true)} role="search">
+		<div
+			ref={rootRef}
+			onClick={() => setFocus(true)}
+			role="search"
+			style={style}
+		>
 			<InstantSearch
 				searchClient={searchClient}
 				indexName={ALGOLIA_INDEX_NAME}
 				stalledSearchDelay={500}
 			>
-				<SearchBox placeholder="Zoek een ADS-profiel" />
+				<SearchBox placeholder="Zoek een ADS-profiel..." />
 				{hasFocus && (
 					<EmptyQueryBoundary fallback={null}>
 						<Hits hitComponent={Hit} />

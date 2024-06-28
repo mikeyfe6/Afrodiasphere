@@ -1,14 +1,17 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import { Link, navigate } from 'gatsby'
 
 import { isLoggedIn, logout, isBrowser, getUser } from '../services/auth'
+
+import Search from './algolia/search'
 
 import * as styles from '../styles/modules/mobileMenu.module.scss'
 
 const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 	const AdsUser = getUser()
 	const initialScrollY = useRef(window.scrollY)
+	const [searchVisible, setSearchVisible] = useState(false)
 
 	const toggleMenu = () => {
 		if (!isMenuOpen) {
@@ -20,6 +23,20 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 			setTimeout(() => {
 				setMenuOpen(false)
 			}, 6000)
+		}
+	}
+
+	const toggleSearchVisibility = () => {
+		setSearchVisible(!searchVisible)
+		if (!searchVisible) {
+			setTimeout(() => {
+				const searchInputs = document.getElementsByClassName(
+					'ais-SearchBox-input'
+				)
+				if (searchInputs.length > 0) {
+					searchInputs[0].focus()
+				}
+			}, 500)
 		}
 	}
 
@@ -43,7 +60,15 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 				<i className="fa-solid fa-bars fa-lg" />
 			</button>
 
-			<div className={styles.username}>
+			<div className={`mobile-search ${searchVisible ? 'open' : ''}`}>
+				<i
+					className="fa-solid fa-search fa-lg"
+					onClick={toggleSearchVisibility}
+				/>
+				<Search style={{ display: searchVisible ? 'block' : 'none' }} />
+			</div>
+
+			<div className={styles.username} id="ads-username">
 				{isLoggedIn() && isBrowser() ? (
 					<Link to={`/${AdsUser.user.username}/`} title="Ga naar jouw ADS page">
 						{AdsUser.user.username}{' '}

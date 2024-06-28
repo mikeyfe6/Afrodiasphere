@@ -1,8 +1,53 @@
 @import '../styles/configs/globals';
 
+.mobile-search {
+	position: fixed;
+	top: 15px;
+	left: 87.5px;
+	z-index: 12;
+	display: flex;
+	align-items: center;
+
+	&.open {
+		> i {
+			border-radius: 5px 0 0 5px;
+		}
+
+		input {
+			border-radius: 0 5px 5px 0;
+			box-shadow: none;
+			width: 100%;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.ais-Hits {
+			position: fixed;
+			top: auto;
+			margin-top: 1.5em;
+			border-radius: 0;
+		}
+	}
+
+	> i {
+		color: $primaryColor;
+		background: #fcfcfc;
+		border-radius: 5px;
+		padding: 0.9375em 0.5em;
+	}
+
+	@include mobile {
+		&.open + #ads-username {
+			opacity: 0.1;
+		}
+	}
+}
+
 .ais {
 	&-SearchBox {
-		width: 225px;
+		width: 200px;
 
 		&-form {
 			display: flex;
@@ -16,12 +61,21 @@
 			border: none;
 			padding: 10px 15px;
 			border-radius: 3px;
-			box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
 			color: $blackColor;
 
+			@include boxShadow;
+
 			&::placeholder {
-				color: $blackColor;
-				opacity: 0.375;
+				font-size: 0.875rem;
+				color: $thirdColor;
+			}
+
+			&:focus {
+				outline: 2px solid $secondaryColor;
+
+				&::placeholder {
+					color: transparent;
+				}
 			}
 
 			&::-webkit-search-cancel-button {
@@ -36,14 +90,6 @@
 			display: none;
 		}
 	}
-
-	// &-InstantSearch {
-	// 	max-width: 960px;
-	// 	width: 100%;
-	// 	display: block;
-	// 	overflow: hidden;
-	// 	margin: 0 auto;
-	// }
 
 	&-Hits {
 		position: absolute;
@@ -61,14 +107,10 @@
 		flex-direction: column;
 	}
 
-	&-Hits-list,
 	&-Hits-item {
-	}
-
-	&-Hits-item {
-		background: linear-gradient(to left, rgba(14 14 14 / 75%), $blackColor)
+		background: linear-gradient(to left, rgba(14 14 14 / 87.5%), $blackColor)
 			no-repeat 0 0 / cover;
-		padding: 1em;
+		padding: 1.25em;
 
 		article {
 			display: flex;
@@ -79,8 +121,39 @@
 				height: 100px;
 				object-fit: cover;
 				overflow: hidden;
-
 				border-radius: 5px;
+			}
+
+			.hit {
+				&-content {
+					flex: 1;
+
+					mark {
+						color: $primaryColor;
+					}
+				}
+
+				&-profiel {
+					margin-bottom: 0.175em;
+				}
+
+				&-occupate {
+					font-size: 0.875rem;
+					color: $secondaryColor;
+					margin-bottom: 0.175em;
+				}
+
+				&-biografie {
+					font-size: 0.875rem;
+					color: #bcbcbc;
+					max-width: 85%;
+
+					@include mobile {
+						max-width: 100%;
+					}
+
+					@include clamp(2);
+				}
 			}
 		}
 

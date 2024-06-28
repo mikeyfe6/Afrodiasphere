@@ -16,6 +16,14 @@
 	margin: $marginY auto;
 }
 
+@mixin clamp($lines: 2) {
+	display: inline;
+	display: -webkit-box;
+	-webkit-line-clamp: $lines;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 @mixin card($marginY: 1em, $paddingX: 1em) {
 	border-radius: 10px;
 	box-shadow: 0 3px 10px rgba(0 0 0 / 33%);
