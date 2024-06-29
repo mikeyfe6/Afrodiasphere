@@ -12,6 +12,7 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 	const AdsUser = getUser()
 	const initialScrollY = useRef(window.scrollY)
 	const [searchVisible, setSearchVisible] = useState(false)
+	const [hasFocus, setFocus] = useState(false)
 
 	const toggleMenu = () => {
 		if (!isMenuOpen) {
@@ -26,18 +27,17 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 		}
 	}
 
-	const toggleSearchVisibility = () => {
+	const toggleSearchVisibility = event => {
 		setSearchVisible(!searchVisible)
-		if (!searchVisible) {
-			setTimeout(() => {
-				const searchInputs = document.getElementsByClassName(
-					'ais-SearchBox-input'
-				)
-				if (searchInputs.length > 0) {
-					searchInputs[0].focus()
-				}
-			}, 500)
-		}
+
+		setTimeout(() => {
+			event.preventDefault()
+			const searchInput = document.querySelector('.ais-SearchBox-input')
+			if (searchInput) {
+				searchInput.focus()
+				setFocus(true)
+			}
+		}, 50)
 	}
 
 	useEffect(() => {
@@ -65,7 +65,11 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 					className="fa-solid fa-search fa-lg"
 					onClick={toggleSearchVisibility}
 				/>
-				<Search style={{ display: searchVisible ? 'block' : 'none' }} />
+				<Search
+					style={{ display: searchVisible ? 'block' : 'none' }}
+					hasFocus={hasFocus}
+					setFocus={setFocus}
+				/>
 			</div>
 
 			<div className={styles.username} id="ads-username">

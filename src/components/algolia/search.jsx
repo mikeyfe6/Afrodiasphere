@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
+
 import algoliasearch from 'algoliasearch/lite'
+
 import {
 	InstantSearch,
 	SearchBox,
@@ -38,9 +40,8 @@ const useClickOutside = (ref, onClickOutside) => {
 	}, [ref, onClickOutside])
 }
 
-const Search = ({ style }) => {
+const Search = ({ style, hasFocus, setFocus }) => {
 	const rootRef = useRef()
-	const [hasFocus, setFocus] = useState(false)
 
 	useClickOutside(rootRef, () => setFocus(false))
 
@@ -50,7 +51,7 @@ const Search = ({ style }) => {
 			onClick={() => setFocus(true)}
 			role="search"
 			style={style}
-			className='search'
+			className="algolia"
 		>
 			<InstantSearch
 				searchClient={searchClient}
@@ -60,7 +61,9 @@ const Search = ({ style }) => {
 				<SearchBox placeholder="Zoek een ADS-profiel..." />
 				{hasFocus && (
 					<EmptyQueryBoundary fallback={null}>
-						<Hits hitComponent={Hit} />
+						<NoResultsBoundary fallback={<NoResults />}>
+							<Hits hitComponent={Hit} />
+						</NoResultsBoundary>
 					</EmptyQueryBoundary>
 				)}
 			</InstantSearch>
@@ -81,6 +84,33 @@ const EmptyQueryBoundary = ({ children, fallback }) => {
 	}
 
 	return children
+}
+
+const NoResultsBoundary = ({ children, fallback }) => {
+	const { results } = useInstantSearch()
+
+	if (!results.__isArtificial && results.nbHits === 0) {
+		return (
+			<>
+				{fallback}
+				<div hidden>{children}</div>
+			</>
+		)
+	}
+
+	return children
+}
+
+const NoResults = () => {
+	const { indexUiState } = useInstantSearch()
+
+	return (
+		<div className="no-results">
+			<p>
+				Geen zoekresultaten voor <q>{indexUiState.query}</q>.
+			</p>
+		</div>
+	)
 }
 
 export default Search

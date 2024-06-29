@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Link, navigate } from 'gatsby'
 import PropTypes from 'prop-types'
@@ -14,6 +14,7 @@ import afroLogo from '../images/afrodiasphere-logo.png'
 
 const Header = () => {
 	const AdsUser = getUser()
+	const [hasFocus, setFocus] = useState(false)
 
 	return (
 		<header className={styles.navbar}>
@@ -39,7 +40,7 @@ const Header = () => {
 				)}
 
 				<nav>
-					<Search />
+					<Search hasFocus={hasFocus} setFocus={setFocus} />
 
 					<ul>
 						<li>

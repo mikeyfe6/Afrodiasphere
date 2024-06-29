@@ -1,5 +1,144 @@
 @import '../styles/configs/globals';
 
+.algolia {
+	.ais {
+		&-SearchBox {
+			width: 250px;
+
+			&-form {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+			}
+
+			&-input {
+				background: $whiteColor;
+				border: none;
+				padding: 10px 15px;
+				border-radius: 3px;
+				color: $blackColor;
+				caret-color: $primaryColor;
+
+				@include boxShadow;
+
+				&::placeholder {
+					font-size: 0.875rem;
+					color: $thirdColor;
+				}
+
+				&:focus {
+					outline: 2px solid $secondaryColor;
+
+					&::placeholder {
+						color: transparent;
+					}
+				}
+
+				&::-webkit-search-cancel-button {
+					filter: invert(64%) sepia(90%) saturate(334%) hue-rotate(0deg)
+						brightness(82%) contrast(96%);
+					cursor: pointer;
+				}
+			}
+
+			&-submit,
+			&-reset {
+				display: none;
+			}
+		}
+
+		&-Hits {
+			position: absolute;
+			top: 100%;
+			width: 100%;
+			right: 0;
+			z-index: 100;
+			border-radius: 0 0 10px 10px;
+			overflow: hidden;
+		}
+
+		&-InstantSearch,
+		&-Hits-list {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-Hits-item {
+			background: linear-gradient(to left, rgba(14 14 14 / 87.5%), $blackColor)
+				no-repeat 0 0 / cover;
+			padding: 1.25em;
+
+			article {
+				display: flex;
+				gap: 1em;
+
+				img {
+					width: 100px;
+					height: 100px;
+					object-fit: cover;
+					overflow: hidden;
+					border-radius: 5px;
+				}
+
+				.hit {
+					&-content {
+						flex: 1;
+
+						mark {
+							color: $primaryColor;
+						}
+					}
+
+					&-profiel {
+						margin-bottom: 0.175em;
+					}
+
+					&-occupate {
+						font-size: 0.875rem;
+						color: $secondaryColor;
+						margin-bottom: 0.175em;
+					}
+
+					&-biografie {
+						font-size: 0.875rem;
+						color: $extraSubColor;
+						max-width: 85%;
+
+						@include mobile {
+							max-width: 100%;
+						}
+
+						@include clamp(2);
+					}
+				}
+			}
+
+			&:not(:last-child) {
+				border-bottom: 1px solid $ashColor;
+			}
+		}
+	}
+
+	.no-results {
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		right: 0;
+		z-index: 100;
+		border-radius: 0 0 10px 10px;
+		overflow: hidden;
+		background: linear-gradient(to left, rgba(14 14 14 / 87.5%), $blackColor)
+			no-repeat 0 0 / cover;
+		padding: 1.25em;
+		text-align: center;
+
+		p q {
+			color: $extraSubColor;
+		}
+	}
+}
+
 .mobile-search {
 	position: fixed;
 	top: 15px;
@@ -11,45 +150,9 @@
 	padding-left: 85px;
 	padding-right: 15px;
 
-	&.open {
-		> i {
-			border-radius: 5px 0 0 5px;
-		}
-
-		.search {
-			width: 100%;
-		}
-
-		input {
-			border-radius: 0 5px 5px 0;
-			box-shadow: none;
-			height: 44px;
-
-			&:focus {
-				outline: none;
-			}
-		}
-
-		.ais {
-			&-Hits {
-				position: fixed;
-				top: auto;
-				margin-top: 1.5em;
-				border-radius: 0;
-
-				border-top: 3px solid $subColor;
-				border-bottom: 3px solid $subColor;
-			}
-
-			&-SearchBox {
-				width: 100%;
-			}
-		}
-	}
-
 	> i {
 		color: $primaryColor;
-		background: #fcfcfc;
+		background: $whiteColor;
 		border-radius: 5px;
 		height: 44px;
 		min-width: 44px;
@@ -59,127 +162,63 @@
 		justify-content: center;
 	}
 
+	&.open {
+		> i {
+			border-radius: 5px 0 0 5px;
+		}
+
+		.algolia {
+			width: 100%;
+
+			.ais {
+				&-Hits {
+					position: fixed;
+					top: auto;
+					margin-top: 1.5em;
+					border-radius: 0;
+
+					border-top: 2px solid $thirdColor;
+					border-bottom: 2px solid $thirdColor;
+				}
+
+				&-SearchBox {
+					width: 100%;
+
+					&-input {
+						border-radius: 0 5px 5px 0;
+						box-shadow: none;
+						height: 44px;
+
+						&:focus {
+							outline: none;
+
+							&::placeholder {
+								color: revert;
+							}
+						}
+					}
+				}
+			}
+
+			.no-results {
+				position: fixed;
+				top: auto;
+				margin-top: 1.5em;
+				border-radius: 0;
+
+				border-top: 2px solid $thirdColor;
+				border-bottom: 2px solid $thirdColor;
+
+				p q {
+					color: $extraSubColor;
+				}
+			}
+		}
+	}
+
 	@include mobile {
 		&.open + #ads-username {
 			opacity: 0.1;
-		}
-	}
-}
-
-.ais {
-	&-SearchBox {
-		width: 200px;
-
-		&-form {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-		}
-
-		&-input {
-			background: $whiteColor;
-			border: none;
-			padding: 10px 15px;
-			border-radius: 3px;
-			color: $blackColor;
-
-			@include boxShadow;
-
-			&::placeholder {
-				font-size: 0.875rem;
-				color: $thirdColor;
-			}
-
-			&:focus {
-				outline: 2px solid $secondaryColor;
-
-				&::placeholder {
-					color: transparent;
-				}
-			}
-
-			&::-webkit-search-cancel-button {
-				filter: invert(64%) sepia(90%) saturate(334%) hue-rotate(0deg)
-					brightness(82%) contrast(96%);
-				cursor: pointer;
-			}
-		}
-
-		&-submit,
-		&-reset {
-			display: none;
-		}
-	}
-
-	&-Hits {
-		position: absolute;
-		top: 100%;
-		width: 100%;
-		right: 0;
-		z-index: 100;
-		border-radius: 0 0 10px 10px;
-		overflow: hidden;
-	}
-
-	&-InstantSearch,
-	&-Hits-list {
-		display: flex;
-		flex-direction: column;
-	}
-
-	&-Hits-item {
-		background: linear-gradient(to left, rgba(14 14 14 / 87.5%), $blackColor)
-			no-repeat 0 0 / cover;
-		padding: 1.25em;
-
-		article {
-			display: flex;
-			gap: 1em;
-
-			img {
-				width: 100px;
-				height: 100px;
-				object-fit: cover;
-				overflow: hidden;
-				border-radius: 5px;
-			}
-
-			.hit {
-				&-content {
-					flex: 1;
-
-					mark {
-						color: $primaryColor;
-					}
-				}
-
-				&-profiel {
-					margin-bottom: 0.175em;
-				}
-
-				&-occupate {
-					font-size: 0.875rem;
-					color: $secondaryColor;
-					margin-bottom: 0.175em;
-				}
-
-				&-biografie {
-					font-size: 0.875rem;
-					color: #bcbcbc;
-					max-width: 85%;
-
-					@include mobile {
-						max-width: 100%;
-					}
-
-					@include clamp(2);
-				}
-			}
-		}
-
-		&:not(:last-child) {
-			border-bottom: 1px solid $whiteColor;
 		}
 	}
 }

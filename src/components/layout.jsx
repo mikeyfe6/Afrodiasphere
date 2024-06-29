@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
 
 	useEffect(() => {
 		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 832)
+			setIsMobile(window.innerWidth <= 882)
 		}
 
 		handleResize()
