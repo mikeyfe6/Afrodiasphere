@@ -1,8 +1,8 @@
 @import '../customs/colors';
 
 // overall mixins ---------------------------- // overall mixins
-@mixin smoothTrans {
-	transition: all 0.2s ease-in-out;
+@mixin smoothTrans($style: all) {
+	transition: $style 0.15s ease-in-out;
 }
 
 @mixin boxShadow {

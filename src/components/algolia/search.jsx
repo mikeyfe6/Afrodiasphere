@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import algoliasearch from 'algoliasearch/lite'
 
@@ -17,11 +17,14 @@ import '../../styles/algolia.scss'
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY)
 
-const useClickOutside = (ref, onClickOutside) => {
+const useClickOutside = (ref, onClickOutside, ignoreRef) => {
 	const events = ['mousedown', 'touchstart']
 
 	useEffect(() => {
-		const isOutside = element => !ref.current || !ref.current.contains(element)
+		const isOutside = element =>
+			(!ref.current || !ref.current.contains(element)) &&
+			(!ignoreRef.current || !ignoreRef.current.contains(element))
+
 		const onClick = event => {
 			if (isOutside(event.target)) {
 				onClickOutside()
@@ -37,13 +40,27 @@ const useClickOutside = (ref, onClickOutside) => {
 				document.removeEventListener(event, onClick)
 			}
 		}
-	}, [ref, onClickOutside])
+	}, [ref, onClickOutside, ignoreRef])
 }
 
-const Search = ({ style, hasFocus, setFocus }) => {
+const Search = ({ style, hasFocus, setFocus, setSearchVisible, ignoreRef }) => {
 	const rootRef = useRef()
 
-	useClickOutside(rootRef, () => setFocus(false))
+	useClickOutside(
+		rootRef,
+		() => {
+			setFocus(false)
+			setSearchVisible(false)
+		},
+		ignoreRef
+	)
+
+	useEffect(() => {
+		const overlay = document.querySelector('.overlay')
+		if (overlay) {
+			overlay.style.display = hasFocus ? 'block' : 'none'
+		}
+	}, [hasFocus])
 
 	return (
 		<div

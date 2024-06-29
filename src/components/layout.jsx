@@ -56,6 +56,8 @@ const Layout = ({ children }) => {
 
 			<Algolia />
 
+			<div className="overlay" />
+
 			{process.env.NODE_ENV === 'development' && <ResponsiveTag />}
 		</>
 	)

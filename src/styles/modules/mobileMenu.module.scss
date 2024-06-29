@@ -46,6 +46,16 @@
 			width: 100%;
 			z-index: 11;
 
+			&-overlay {
+				background: rgba($thirdColor, 0.5);
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 85px;
+				z-index: 0;
+				width: 100%;
+			}
+
 			.hamburger {
 				border: none;
 				font-size: 1.5rem;

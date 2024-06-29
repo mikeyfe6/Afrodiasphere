@@ -13,6 +13,7 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 	const initialScrollY = useRef(window.scrollY)
 	const [searchVisible, setSearchVisible] = useState(false)
 	const [hasFocus, setFocus] = useState(false)
+	const searchIconRef = useRef(null)
 
 	const toggleMenu = () => {
 		if (!isMenuOpen) {
@@ -28,16 +29,20 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 	}
 
 	const toggleSearchVisibility = event => {
-		setSearchVisible(!searchVisible)
+		event.preventDefault()
 
-		setTimeout(() => {
-			event.preventDefault()
-			const searchInput = document.querySelector('.ais-SearchBox-input')
-			if (searchInput) {
+		setSearchVisible(prevState => !prevState)
+		setFocus(prevState => !prevState)
+
+		const searchInput = document.querySelector('.ais-SearchBox-input')
+
+		if (searchInput) {
+			if (!searchVisible) {
 				searchInput.focus()
-				setFocus(true)
+			} else {
+				searchInput.blur()
 			}
-		}, 50)
+		}
 	}
 
 	useEffect(() => {
@@ -63,12 +68,15 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 			<div className={`mobile-search ${searchVisible ? 'open' : ''}`}>
 				<i
 					className="fa-solid fa-search fa-lg"
+					ref={searchIconRef}
 					onClick={toggleSearchVisibility}
 				/>
 				<Search
 					style={{ display: searchVisible ? 'block' : 'none' }}
 					hasFocus={hasFocus}
 					setFocus={setFocus}
+					setSearchVisible={setSearchVisible}
+					ignoreRef={searchIconRef}
 				/>
 			</div>
 
