@@ -191,6 +191,13 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 export default AdsTemplate
 
-export const Head = ({ pageContext: { persoon } }) => {
-	return <Seo title={persoon.username} />
+export const Head = ({ pageContext: { profiel, biografie, slug, avatar } }) => {
+	return (
+		<Seo
+			title={profiel}
+			description={biografie}
+			pathname={'/' + slug + '/'}
+			image={avatar.url}
+		/>
+	)
 }
