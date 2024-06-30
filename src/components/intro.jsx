@@ -10,8 +10,12 @@ const Intro = () => (
 	<section className={styles.intro}>
 		<div>
 			<h1>Afrodiasphere</h1>
+			<h2>Een efficiente oplossing voor het delen van contactinformatie</h2>
 			<p>
-				<small style={{ color: '#ababab' }}>JOIN THE MOVEMENT !</small> Klik{' '}
+				<small style={{ color: '#ababab' }}>
+					Creeer jouw ADS-account & JOIN THE MOVEMENT !
+				</small>{' '}
+				Klik{' '}
 				<Link to="/login/">
 					<button title="Ga naar inloggen / registreren" type="button">
 						hier
