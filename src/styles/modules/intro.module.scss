@@ -36,6 +36,7 @@
 	> img {
 		object-fit: contain;
 		width: 250px;
+		opacity: 0.375;
 
 		@include mobile {
 			position: absolute;
