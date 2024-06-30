@@ -197,7 +197,7 @@ export const Head = ({ pageContext: { profiel, biografie, slug, avatar } }) => {
 			title={profiel}
 			description={biografie}
 			pathname={'/' + slug + '/'}
-			image={avatar.url}
+			image={avatar ? avatar.url : undefined}
 		/>
 	)
 }
