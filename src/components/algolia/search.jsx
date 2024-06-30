@@ -17,7 +17,11 @@ import '../../styles/algolia.scss'
 
 const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY)
 
-const useClickOutside = (ref, onClickOutside, ignoreRef) => {
+const useClickOutside = (
+	ref,
+	onClickOutside,
+	ignoreRef = { current: null }
+) => {
 	const events = ['mousedown', 'touchstart']
 
 	useEffect(() => {
@@ -43,7 +47,13 @@ const useClickOutside = (ref, onClickOutside, ignoreRef) => {
 	}, [ref, onClickOutside, ignoreRef])
 }
 
-const Search = ({ style, hasFocus, setFocus, setSearchVisible, ignoreRef }) => {
+const Search = ({
+	style = {},
+	hasFocus = false,
+	setFocus = () => {},
+	setSearchVisible = () => {},
+	ignoreRef
+}) => {
 	const rootRef = useRef()
 
 	useClickOutside(
@@ -56,7 +66,7 @@ const Search = ({ style, hasFocus, setFocus, setSearchVisible, ignoreRef }) => {
 	)
 
 	useEffect(() => {
-		const overlay = document.querySelector('.overlay')
+		const overlay = document.querySelector('.algolia-overlay')
 		if (overlay) {
 			overlay.style.display = hasFocus ? 'block' : 'none'
 		}

@@ -29,6 +29,7 @@
 
 				&:focus {
 					outline: 2px solid $secondaryColor;
+					z-index: 14;
 
 					&::placeholder {
 						color: transparent;
@@ -53,7 +54,7 @@
 			top: 100%;
 			width: 100%;
 			right: 0;
-			z-index: 100;
+			z-index: 14;
 			border-radius: 0 0 10px 10px;
 			overflow: hidden;
 		}
@@ -125,7 +126,7 @@
 		top: 100%;
 		width: 100%;
 		right: 0;
-		z-index: 100;
+		z-index: 14;
 		border-radius: 0 0 10px 10px;
 		overflow: hidden;
 		background: linear-gradient(to left, rgba(14 14 14 / 87.5%), $blackColor)
@@ -136,6 +137,16 @@
 		p q {
 			color: $extraSubColor;
 		}
+	}
+
+	&-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba($blackColor, 0.5);
+		z-index: 7;
 	}
 }
 
@@ -229,15 +240,4 @@
 			opacity: 0.1;
 		}
 	}
-}
-
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba($blackColor, 0.5);
-	z-index: 1;
-	display: none;
 }
