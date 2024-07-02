@@ -5,6 +5,7 @@ import Seo from '../components/seo'
 
 import Intro from '../components/intro'
 import Slider from '../components/slider'
+// import Maps from '../components/maps'
 
 import 'swiper/scss'
 import 'swiper/scss/effect-fade'
@@ -15,6 +16,7 @@ const IndexPage = () => {
 		<Layout>
 			<Intro />
 			<Slider />
+			{/* <Maps /> */}
 		</Layout>
 	)
 }

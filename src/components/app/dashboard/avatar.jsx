@@ -12,34 +12,19 @@ const Avatar = ({
 	setPreview,
 	preview,
 	noavatar,
-	loadingData
+	loadingData,
+	avatarId,
+	setAvatarId
 }) => {
-	const [avatarId, setAvatarID] = useState(null)
 	const [image, setImage] = useState(null)
 
 	const fileInputRef = useRef()
 
 	useEffect(() => {
-		const getAvatarId = async () => {
-			try {
-				const res = await axios.get(`${apiURL}/api/instanties`, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-
-				if (!res.data.avatar) {
-					setPreview(noavatar)
-				} else {
-					setAvatarID(res.data.avatar.id)
-				}
-			} catch (error) {
-				console.error('Error getting avatar ID:', error)
-			}
+		if (avatarId) {
+			setAvatarId(avatarId)
 		}
-
-		getAvatarId()
-	}, [token])
+	}, [avatarId, setAvatarId])
 
 	const deleteAvatar = async e => {
 		e.preventDefault()
@@ -55,6 +40,7 @@ const Avatar = ({
 			})
 
 			setTimeout(() => setSuccess(false), 5000)
+			setAvatarId(null)
 		} catch (error) {
 			console.error("Avatar verwijderen lukt niet, probeer het nog 's", error)
 		}
@@ -71,13 +57,15 @@ const Avatar = ({
 			imgData.append('refId', userId)
 			imgData.append('field', 'avatar')
 
-			await axios.post(`${apiURL}/api/upload/`, imgData, {
+			const response = await axios.post(`${apiURL}/api/upload/`, imgData, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
 			})
 
-			setTimeout(() => setSuccess(false), 5000)
+			const uploadedAvatarId = response.data[0].id
+			setAvatarId(uploadedAvatarId)
+			setSuccess(false)
 		} catch (error) {
 			console.log('Niet gelukt!', error)
 		}
@@ -91,29 +79,7 @@ const Avatar = ({
 			}
 			reader.readAsDataURL(image)
 		}
-	}, [image])
-
-	useEffect(() => {
-		const getAvatar = async () => {
-			try {
-				const res = await axios.get(`${apiURL}/api/instanties`, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-
-				if (!res.data.avatar) {
-					setPreview(noavatar)
-				} else {
-					setPreview(res.data.avatar.url)
-				}
-			} catch (error) {
-				console.error('Error getting avatar image:', error)
-			}
-		}
-
-		getAvatar()
-	}, [apiURL, token])
+	}, [image, setPreview])
 
 	return (
 		<form onSubmit={handleSubmit} className={styles.avatar}>
@@ -133,14 +99,14 @@ const Avatar = ({
 					}}
 					title="Kies een avatar"
 				>
-					{' '}
-					Avatar
+					{!image ? 'Avatar' : 'Verander'}
 				</button>
 				<button
 					className={styles.resetBtn}
 					type="reset"
 					onClick={deleteAvatar}
 					title="Verwijder jouw avatar"
+					disabled={avatarId === null || (image !== null && avatarId !== null)}
 				>
 					Verwijder
 				</button>

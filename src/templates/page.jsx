@@ -44,9 +44,9 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 			setLinks(sortedLinks)
 			setColor(res.data.data.attributes.bgfree)
-			setUsername(res.data.data.attributes.profiel)
+			setUsername(res.data.data.attributes.profile)
 			setOccupate(res.data.data.attributes.occupate)
-			setBiography(res.data.data.attributes.biografie)
+			setBiography(res.data.data.attributes.biography)
 			setFbLink(res.data.data.attributes.facebooklink)
 			setTwLink(res.data.data.attributes.twitterlink)
 			setIgLink(res.data.data.attributes.instagramlink)
@@ -191,11 +191,11 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 export default AdsTemplate
 
-export const Head = ({ pageContext: { profiel, biografie, slug, avatar } }) => {
+export const Head = ({ pageContext: { profile, biography, slug, avatar } }) => {
 	return (
 		<Seo
-			title={profiel}
-			description={biografie}
+			title={profile}
+			description={biography}
 			pathname={'/' + slug + '/'}
 			image={avatar ? avatar.url : undefined}
 		/>

@@ -18,6 +18,12 @@ const Username = ({
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
+	useEffect(() => {
+		if (!initialValue) {
+			setInitialValue(username)
+		}
+	})
+
 	const setUsernameHandler = e => {
 		setUsername(e.target.value.toLowerCase().replace(/\s+/g, ''))
 		setValidationError(null)
@@ -75,26 +81,6 @@ const Username = ({
 			setIsSubmitting(false)
 		}
 	}
-
-	useEffect(() => {
-		if (gatsbyId) {
-			try {
-				const getUsername = async () => {
-					const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
-						headers: {
-							Authorization: `Bearer ${token}`
-						}
-					})
-					setUsername(res.data.username)
-					setInitialValue(res.data.username)
-				}
-
-				getUsername()
-			} catch {
-				console.log('Gaat iets mis met het ophalen van je gebruikersnaam')
-			}
-		}
-	}, [gatsbyId, token])
 
 	return (
 		<form onSubmit={submitUsername} className={styles.profileField} noValidate>

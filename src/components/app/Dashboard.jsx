@@ -20,6 +20,7 @@ import Password from './dashboard/userdetails/password'
 import Terminate from './dashboard/userdetails/terminate'
 import Occupation from './dashboard/occupation'
 import Biography from './dashboard/userdetails/biography'
+import Address from './dashboard/userdetails/address'
 import Facebook from './dashboard/socials/facebook'
 import Twitter from './dashboard/socials/twitter'
 import Instagram from './dashboard/socials/instagram'
@@ -66,6 +67,7 @@ const DashboardPage = () => {
 	const [userId, setUserId] = useState(null)
 	const [gatsbyId, setGatsbyId] = useState(null)
 
+	const [avatarId, setAvatarId] = useState(null)
 	const [preview, setPreview] = useState(noavatar)
 
 	const [success, setSuccess] = useState(false)
@@ -119,6 +121,7 @@ const DashboardPage = () => {
 
 	const getUserId = useCallback(async () => {
 		setLoadingData(true)
+
 		try {
 			const res = await axios.get(`${apiURL}/api/instanties`, {
 				headers: {
@@ -127,13 +130,32 @@ const DashboardPage = () => {
 			})
 
 			setUserId(res.data.id)
+			setProfile(res.data.profile)
+			setOccupate(res.data.occupate || '')
+			setBiography(res.data.biography)
+			setSlug(res.data.slug)
+			setFbLink(res.data.facebooklink || '')
+			setIgLink(res.data.instagramlink || '')
+			setLiLink(res.data.linkedinlink || '')
+			setTkLink(res.data.tiktoklink || '')
+			setTwLink(res.data.twitterlink || '')
+			setWaLink(res.data.whatsapplink || '')
+			setColor(res.data.bgfree)
+
+			if (!res.data.avatar) {
+				setPreview(noavatar)
+				setAvatarId(null)
+			} else {
+				setAvatarId(res.data.avatar.id)
+				setPreview(res.data.avatar.url)
+			}
 		} catch (error) {
 			console.error('Error fetching user ID:', error)
 			setError('Er gaat iets mis met het ophalen van je gegevens')
 		} finally {
 			setLoadingData(false)
 		}
-	}, [token])
+	}, [apiURL, token])
 
 	useEffect(() => {
 		if (AdsUser.user.id) {
@@ -146,6 +168,44 @@ const DashboardPage = () => {
 	useEffect(() => {
 		getUserId()
 	}, [getUserId])
+
+	useEffect(() => {
+		if (gatsbyId) {
+			try {
+				const getUserData = async () => {
+					const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					})
+					setEmail(res.data.email)
+					setUsername(res.data.username)
+				}
+				getUserData()
+			} catch (error) {
+				console.error('Error fetching email:', error)
+			}
+		}
+	}, [gatsbyId, token])
+
+	const getLinks = useCallback(async () => {
+		try {
+			const res = await axios.get(`${apiURL}/api/connections`, {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			})
+			setLinks(res.data)
+			setLinkError(null)
+		} catch (error) {
+			console.error('Error fetching links:', error)
+			setLinkError('Er ging iets mis bij het ophalen van de links.')
+		}
+	}, [apiURL, token])
+
+	useEffect(() => {
+		getLinks()
+	}, [getLinks])
 
 	const handleSmLinkChange = (name, value) => {
 		setSmLinks(prevLinks => ({
@@ -242,6 +302,8 @@ const DashboardPage = () => {
 						preview={preview}
 						setPreview={setPreview}
 						loadingData={loadingData}
+						avatarId={avatarId}
+						setAvatarId={setAvatarId}
 					/>
 
 					{/* PROFILE INFO ROFILE INFO PROFILE INFO PROFILE INFO <-----------------------------------------------------------> PROFILE INFO PROFILE INFO PROFILE INFO PROFILE INFO */}
@@ -336,6 +398,8 @@ const DashboardPage = () => {
 						loadingData={loadingData}
 					/>
 				</div>
+
+				{/* <Address /> */}
 
 				<hr />
 
@@ -435,6 +499,7 @@ const DashboardPage = () => {
 					setTkLink={setTkLink}
 					linkError={linkError}
 					setLinkError={setLinkError}
+					getLinks={getLinks}
 				/>
 
 				<hr />

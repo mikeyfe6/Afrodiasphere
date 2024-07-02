@@ -17,14 +17,14 @@ const Hit = ({ hit }) => {
 				)}
 
 				<div className="hit-content">
-					<div className="hit-profiel">
-						<Highlight attribute="profiel" hit={hit} />
+					<div className="hit-profile">
+						<Highlight attribute="profile" hit={hit} />
 					</div>
 					<div className="hit-occupate">
 						<Highlight attribute="occupate" hit={hit} />
 					</div>
-					<div className="hit-biografie">
-						<Highlight attribute="biografie" hit={hit} />
+					<div className="hit-biography">
+						<Highlight attribute="biography" hit={hit} />
 					</div>
 				</div>
 			</article>

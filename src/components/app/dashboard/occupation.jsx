@@ -31,15 +31,6 @@ const Occupation = ({
 	}
 
 	useEffect(() => {
-		const getOccupate = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setOccupate(res.data.occupate || '')
-		}
-
 		if (occupate === 'bedrijf') {
 			document
 				.getElementById('currentBedrijf')
@@ -85,9 +76,7 @@ const Occupation = ({
 				.getElementById('currentArtist')
 				.classList.remove(styles.currentOccupate)
 		}
-
-		getOccupate()
-	}, [occupate, token])
+	}, [occupate])
 
 	return (
 		<form className={styles.occupation}>

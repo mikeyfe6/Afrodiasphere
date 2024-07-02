@@ -10,7 +10,7 @@ const Slug = ({
 	userId,
 	apiURL,
 	token,
-	setLoading,
+	// setLoading,
 	setError,
 	slug,
 	setSlug
@@ -48,19 +48,6 @@ const Slug = ({
 			setTimeout(() => setError(null), 5000)
 		}
 	}
-
-	useEffect(() => {
-		const getSlug = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-
-			setSlug(res.data.slug)
-		}
-		getSlug()
-	}, [token])
 
 	return (
 		<form onSubmit={submitSlug} className={styles.profileField} hidden>

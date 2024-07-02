@@ -33,19 +33,6 @@ const Themes = ({
 		)
 	}
 
-	useEffect(() => {
-		const getColor = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setColor(res.data.bgfree)
-		}
-
-		getColor()
-	}, [token])
-
 	return (
 		<ul className={styles.chooseTheme}>
 			<li className={styles.chooseColor}>

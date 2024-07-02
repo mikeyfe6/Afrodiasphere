@@ -1,35 +1,14 @@
-import React, { useEffect } from 'react'
-
-import axios from 'axios'
+import React from 'react'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Whatsapp = ({
-	apiURL,
-	token,
-	waLink,
-	setWaLink,
-	handleSmLinkChange,
-	loadingData
-}) => {
+const Whatsapp = ({ waLink, setWaLink, handleSmLinkChange, loadingData }) => {
 	const setWaHandler = e => {
 		const newWaLink = e.target.value.toLowerCase()
 		setWaLink(newWaLink)
 
 		handleSmLinkChange('whatsapp', newWaLink)
 	}
-
-	useEffect(() => {
-		const getWaLink = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setWaLink(res.data.whatsapplink || '')
-		}
-		getWaLink()
-	}, [token])
 
 	return (
 		<form className={styles.socialField}>

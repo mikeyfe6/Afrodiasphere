@@ -12,7 +12,8 @@ const Links = ({
 	links,
 	setLinks,
 	linkError,
-	setLinkError
+	setLinkError,
+	getLinks
 }) => {
 	const linkTitle = useRef(null)
 	const hyperLink = useRef(null)
@@ -167,19 +168,6 @@ const Links = ({
 		setEditLinkUrl('')
 		getLinks()
 	}
-
-	const getLinks = useCallback(async () => {
-		const res = await axios.get(`${apiURL}/api/connections`, {
-			headers: {
-				Authorization: `Bearer ${token}`
-			}
-		})
-		setLinks(res.data)
-	}, [token])
-
-	useLayoutEffect(() => {
-		getLinks()
-	}, [getLinks])
 
 	return (
 		<>

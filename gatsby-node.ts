@@ -34,7 +34,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
 		// Use Promise.all for parallelizing asynchronous operations
 		await Promise.all(
 			getPageInstanties.map(
-				async ({ slug, persoon, id, profiel, biografie, avatar }) => {
+				async ({ slug, persoon, id, profile, biography, avatar }) => {
 					createPage({
 						path: `/${slug}`,
 						component: path.resolve('./src/templates/page.jsx'),
@@ -42,8 +42,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions }) => {
 							slug,
 							persoon,
 							id,
-							profiel,
-							biografie,
+							profile,
+							biography,
 							avatar
 						}
 					})

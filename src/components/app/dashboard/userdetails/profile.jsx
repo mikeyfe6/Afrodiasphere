@@ -18,6 +18,12 @@ const Profile = ({
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
+	useEffect(() => {
+		if (!initialValue) {
+			setInitialValue(profile)
+		}
+	})
+
 	const setProfileHandler = e => {
 		setProfile(e.target.value)
 		setValidationError(null)
@@ -54,10 +60,9 @@ const Profile = ({
 		}
 
 		setIsSubmitting(true)
-		setInitialValue(profile)
 
 		const params = {
-			profiel: profile
+			profile: profile
 		}
 		try {
 			await axios.put(
@@ -72,31 +77,13 @@ const Profile = ({
 
 			setSuccess('Profielnaam succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
+			setInitialValue(profile)
 		} catch (error) {
 			console.error('Error updating profile:', error)
 		} finally {
 			setIsSubmitting(false)
 		}
 	}
-
-	useEffect(() => {
-		const getProfile = async () => {
-			try {
-				const res = await axios.get(`${apiURL}/api/instanties`, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-
-				setProfile(res.data.profiel)
-				setInitialValue(res.data.profiel)
-			} catch (error) {
-				console.error('Error fetching profile:', error)
-			}
-		}
-
-		getProfile()
-	}, [token])
 
 	return (
 		<form onSubmit={submitProfile} className={styles.profileField} noValidate>

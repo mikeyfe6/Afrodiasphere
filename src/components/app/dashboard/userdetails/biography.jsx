@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
 import axios from 'axios'
-
 import * as styles from '../../../../styles/modules/dashboard/biography.module.scss'
 
 const Biography = ({
@@ -18,7 +16,13 @@ const Biography = ({
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
-	const setBiografieHandler = e => {
+	useEffect(() => {
+		if (!initialValue) {
+			setInitialValue(biography)
+		}
+	})
+
+	const setBiographyHandler = e => {
 		setBiography(e.target.value)
 		setValidationError(null)
 		setValidationMessage(null)
@@ -45,10 +49,9 @@ const Biography = ({
 		}
 
 		setIsSubmitting(true)
-		setInitialValue(biography)
 
 		const params = {
-			biografie: biography
+			biography: biography
 		}
 		try {
 			await axios.put(
@@ -63,6 +66,7 @@ const Biography = ({
 
 			setSuccess('Biografie succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
+			setInitialValue(biography)
 		} catch (error) {
 			console.error('Error updating biography:', error)
 		} finally {
@@ -70,29 +74,16 @@ const Biography = ({
 		}
 	}
 
-	useEffect(() => {
-		const getBiography = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setBiography(res.data.biografie)
-			setInitialValue(res.data.biografie)
-		}
-		getBiography()
-	}, [token])
-
 	return (
 		<form onSubmit={submitBiography} className={styles.biography}>
-			<label htmlFor="biografie">Biografie</label>
+			<label htmlFor="biography">Biografie</label>
 			<textarea
-				id="biografie"
+				id="biography"
 				type="text"
 				name="text"
 				placeholder="Voer hier een korte beschrijving in van max 160 tekens.."
 				value={biography || ''}
-				onChange={setBiografieHandler}
+				onChange={setBiographyHandler}
 				disabled={loadingData || isSubmitting}
 				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>

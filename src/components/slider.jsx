@@ -64,14 +64,14 @@ const Slider = () => {
 							<img
 								src={!ads.avatar?.url ? noavatar : ads.avatar?.url}
 								className={styles.avatar}
-								alt={ads.profiel}
+								alt={ads.profile}
 							/>
-							<div className={styles.profile}>{ads.profiel}</div>
+							<div className={styles.profile}>{ads.profile}</div>
 							<div className={styles.occupate}>{ads.occupate || '..'}</div>
 							<div className={styles.biography}>
 								<p
 									dangerouslySetInnerHTML={{
-										__html: ads.biografie
+										__html: ads.biography
 									}}
 								/>
 							</div>

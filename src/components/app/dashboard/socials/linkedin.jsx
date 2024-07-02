@@ -1,36 +1,14 @@
-import React, { useEffect } from 'react'
-
-import axios from 'axios'
+import React from 'react'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const Linkedin = ({
-	apiURL,
-	token,
-	liLink,
-	setLiLink,
-	handleSmLinkChange,
-	loadingData
-}) => {
+const Linkedin = ({ liLink, setLiLink, handleSmLinkChange, loadingData }) => {
 	const setLiHandler = e => {
 		const newLiLink = e.target.value.toLowerCase()
 		setLiLink(newLiLink)
 
 		handleSmLinkChange('linkedin', newLiLink)
 	}
-
-	useEffect(() => {
-		const getLiLink = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-
-			setLiLink(res.data.linkedinlink || '')
-		}
-		getLiLink()
-	}, [token])
 
 	return (
 		<form className={styles.socialField}>

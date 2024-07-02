@@ -18,6 +18,12 @@ const Email = ({
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
+	useEffect(() => {
+		if (!initialValue) {
+			setInitialValue(email)
+		}
+	})
+
 	const setEmailHandler = e => {
 		setEmail(e.target.value.toLowerCase())
 		setValidationError(null)
@@ -53,7 +59,6 @@ const Email = ({
 		}
 
 		setIsSubmitting(true)
-		setInitialValue(email)
 
 		const params = {
 			email: email
@@ -67,31 +72,13 @@ const Email = ({
 
 			setSuccess('Emailadres succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
+			setInitialValue(email)
 		} catch (error) {
 			console.error('Error updating email:', error)
 		} finally {
 			setIsSubmitting(false)
 		}
 	}
-
-	useEffect(() => {
-		if (gatsbyId) {
-			try {
-				const getEmail = async () => {
-					const res = await axios.get(`${apiURL}/api/users/${gatsbyId}`, {
-						headers: {
-							Authorization: `Bearer ${token}`
-						}
-					})
-					setEmail(res.data.email)
-					setInitialValue(res.data.email)
-				}
-				getEmail()
-			} catch (error) {
-				console.error('Error fetching email:', error)
-			}
-		}
-	}, [gatsbyId, token])
 
 	return (
 		<form onSubmit={submitEmail} className={styles.profileField} noValidate>

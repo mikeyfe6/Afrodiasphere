@@ -22,9 +22,6 @@ const Terminate = ({
 		setDeleteAds(e.target.value.toLowerCase().replace(/\s+/g, ''))
 	}
 
-	// console.log(userId)
-	// console.log(gatsbyId)
-
 	const submitDeleteAds = async e => {
 		e.preventDefault()
 

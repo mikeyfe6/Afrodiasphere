@@ -1,35 +1,14 @@
-import React, { useEffect } from 'react'
-
-import axios from 'axios'
+import React from 'react'
 
 import * as styles from '../../../../styles/modules/dashboard/socials.module.scss'
 
-const TikTok = ({
-	apiURL,
-	token,
-	tkLink,
-	setTkLink,
-	handleSmLinkChange,
-	loadingData
-}) => {
+const TikTok = ({ tkLink, setTkLink, handleSmLinkChange, loadingData }) => {
 	const setTkHandler = e => {
 		const newTkLink = e.target.value.toLowerCase()
 		setTkLink(newTkLink)
 
 		handleSmLinkChange('tiktok', newTkLink)
 	}
-
-	useEffect(() => {
-		const getTkLink = async () => {
-			const res = await axios.get(`${apiURL}/api/instanties`, {
-				headers: {
-					Authorization: `Bearer ${token}`
-				}
-			})
-			setTkLink(res.data.tiktoklink || '')
-		}
-		getTkLink()
-	}, [token])
 
 	return (
 		<form className={styles.socialField}>
