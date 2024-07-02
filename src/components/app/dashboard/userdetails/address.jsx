@@ -6,7 +6,7 @@ const Address = () => {
 	const [location, setLocation] = useState(null)
 	const [error, setError] = useState(null)
 
-	const apiKey = 'AIzaSyAi1kFEcLAsYAb8TL43TAnoJV0PE7gI2FA' // Replace with your actual API key
+	const apiKey = process.env.GATSBY_GOOGLE_GEO_KEY
 
 	const fetchGeocode = async () => {
 		try {
