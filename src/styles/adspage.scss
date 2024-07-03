@@ -86,6 +86,10 @@
 			}
 		}
 
+		&-maps {
+			outline: 3px solid rgba(yellow, 75%);
+		}
+
 		&-icons {
 			@include pageSocials;
 
@@ -133,6 +137,10 @@
 				border: 1px solid #878787;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
 			}
+		}
+
+		&-maps {
+			outline: 3px solid rgba(#878787, 75%);
 		}
 
 		&-icons {
@@ -184,6 +192,10 @@
 			}
 		}
 
+		&-maps {
+			outline: 3px solid rgba(white, 75%);
+		}
+
 		&-icons {
 			@include pageSocials;
 
@@ -231,6 +243,10 @@
 				border: 2px solid white;
 				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
 			}
+		}
+
+		&-maps {
+			outline: 3px solid rgba(white, 75%);
 		}
 
 		&-icons {
@@ -282,6 +298,10 @@
 			}
 		}
 
+		&-maps {
+			outline: 3px solid rgba(brown, 75%);
+		}
+
 		&-icons {
 			@include pageSocials;
 
@@ -331,6 +351,10 @@
 			}
 		}
 
+		&-maps {
+			outline: 3px solid rgba(green, 75%);
+		}
+
 		&-icons {
 			@include pageSocials;
 
@@ -376,6 +400,10 @@
 				color: black;
 				border: 1px solid #e6541b;
 			}
+		}
+
+		&-maps {
+			outline: 3px solid rgba(#e6541b, 75%);
 		}
 
 		&-icons {

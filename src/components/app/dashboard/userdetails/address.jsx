@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import axios from 'axios'
 
@@ -44,11 +44,15 @@ const Address = ({
 		</div>
 	)
 
+	useEffect(() => {
+		setPin(address)
+	}, [address])
+
 	const fetchGeocode = async () => {
 		try {
 			const response = await axios.get(
 				`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
-					inputValue // Use inputValue instead of address.location
+					inputValue
 				)}&key=${apiKey}&language=nl`
 			)
 
@@ -61,9 +65,8 @@ const Address = ({
 				}
 
 				setPin(newLocation)
-				setAddress(newLocation) // Consider if you need to update the address prop here
+				setAddress(newLocation)
 				setIsLocationSearched(true)
-
 				setError(null)
 			} else {
 				setError(`Unable to find location: ${response.data.status}`)
@@ -132,7 +135,7 @@ const Address = ({
 
 			setSuccess('Adres succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
-			setInputValue('') // Reset the input field
+			setInputValue('')
 		} catch (error) {
 			console.error('Error updating address:', error)
 		} finally {
@@ -179,24 +182,28 @@ const Address = ({
 
 			{error && <p>{error}</p>}
 
-			<div className={mapsStyles.maps}>
-				<GoogleMapReact
-					bootstrapURLKeys={{
-						key: process.env.GATSBY_GOOGLE_MAPS_KEY,
-						language: 'nl',
-						region: 'NL'
-					}}
-					defaultCenter={defaultProps.center}
-					defaultZoom={defaultProps.zoom}
-					center={
-						pin
-							? { lat: pin.latitude, lng: pin.longitude }
-							: defaultProps.center
-					}
-				>
-					{pin && <Marker lat={pin.latitude} lng={pin.longitude} />}
-				</GoogleMapReact>
-			</div>
+			{address && (
+				<div className={`${mapsStyles.maps} ${mapsStyles.adsDashboard}`}>
+					<GoogleMapReact
+						bootstrapURLKeys={{
+							key: process.env.GATSBY_GOOGLE_MAPS_KEY,
+							language: 'nl',
+							region: 'NL'
+						}}
+						defaultCenter={defaultProps.center}
+						defaultZoom={defaultProps.zoom}
+						center={
+							pin && pin.latitude && pin.longitude
+								? { lat: pin.latitude, lng: pin.longitude }
+								: defaultProps.center
+						}
+					>
+						{pin && pin.latitude && pin.longitude && (
+							<Marker lat={pin.latitude} lng={pin.longitude} />
+						)}
+					</GoogleMapReact>
+				</div>
+			)}
 		</>
 	)
 }

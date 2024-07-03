@@ -1,7 +1,8 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState, useEffect } from 'react'
 
 import { Link } from 'gatsby'
 import axios from 'axios'
+import GoogleMapReact from 'google-map-react'
 
 import { isLoggedIn, isBrowser, getUser } from '../services/auth'
 
@@ -10,10 +11,18 @@ import Seo from '../components/seo'
 import AdsLayout from '../components/adslayout'
 
 import noavatar from '../images/noavatar.png'
-
 import afroLogo from '../images/afrodiasphere-logo.png'
 
+import * as mapsStyles from '../styles/modules/maps.module.scss'
 import '../styles/adspage.scss'
+
+const defaultProps = {
+	center: {
+		lat: 52.30994007862562,
+		lng: 4.974422834381031
+	},
+	zoom: 15
+}
 
 const apiURL = process.env.GATSBY_BACKEND_URL
 
@@ -24,6 +33,12 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const [occupate, setOccupate] = useState('')
 	const [biography, setBiography] = useState('')
 	const [links, setLinks] = useState([])
+
+	const [address, setAddress] = useState({
+		location: '',
+		latitude: null,
+		longitude: null
+	})
 
 	const [fbLink, setFbLink] = useState('')
 	const [twLink, setTwLink] = useState('')
@@ -52,6 +67,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 			setIgLink(res.data.data.attributes.instagramlink)
 			setWaLink(res.data.data.attributes.whatsapplink)
 			setTkLink(res.data.data.attributes.tiktoklink)
+			setAddress(res.data.data.attributes.address)
 
 			if (!res.data.data.attributes.avatar.data) {
 				return setAvatar(noavatar)
@@ -61,6 +77,14 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 		}
 		getLinks()
 	}, [id, slug, persoon.username])
+
+	const Marker = ({ lat, lng }) => {
+		return (
+			<div data-lat={lat} data-lng={lng} className={mapsStyles.marker}>
+				<img src={avatar} alt={'title'} />
+			</div>
+		)
+	}
 
 	return (
 		<AdsLayout>
@@ -104,6 +128,36 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 						</li>
 					))}
 				</ul>
+
+				<div
+					className={`theme-${color}-maps ${mapsStyles.maps} ${mapsStyles.adsPage}`}
+				>
+					<GoogleMapReact
+						bootstrapURLKeys={{
+							key: process.env.GATSBY_GOOGLE_MAPS_KEY,
+							language: 'nl',
+							region: 'NL'
+						}}
+						defaultCenter={defaultProps.center}
+						defaultZoom={defaultProps.zoom}
+						center={
+							address.latitude !== null && address.longitude !== null
+								? { lat: address.latitude, lng: address.longitude }
+								: defaultProps.center
+						}
+					>
+						{address.latitude !== null && address.longitude !== null && (
+							<Marker lat={address.latitude} lng={address.longitude} />
+						)}
+					</GoogleMapReact>
+					{address && (
+						<div className={mapsStyles.infoWindow}>
+							<p>Name: {address.location}</p>
+							<p>Latitude: {address.latitude}</p>
+							<p>Longitude: {address.longitude}</p>
+						</div>
+					)}
+				</div>
 
 				<div className={`theme-${color}-icons`}>
 					{fbLink && fbLink.length > 1 && (
