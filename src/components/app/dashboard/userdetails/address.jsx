@@ -145,29 +145,36 @@ const Address = ({
 
 	return (
 		<>
-			<form onSubmit={handleSearch} className={profileInfoStyles.profileField}>
-				<label htmlFor="address">Adres</label>
-				<input
-					type="text"
-					onChange={handleInputChange}
-					placeholder="Bijv. Kelbergen 300, 1104LJ"
-					id="address"
-					name="address"
-					value={inputValue}
-					disabled={loadingData || isSubmitting}
-					style={{ color: validationError ? '#CA231E' : 'inherit' }}
-				/>
-				<button type="submit" disabled={!inputValue}>
-					Zoeken
-				</button>
-				<button
-					type="button"
-					onClick={submitAddress}
-					disabled={!isLocationSearched || !inputValue}
-				>
-					Opslaan
-				</button>
-				<button type="reset">Reset</button>
+			<form
+				onSubmit={handleSearch}
+				className={`${profileInfoStyles.profileField} ${profileInfoStyles.address}`}
+			>
+				<div>
+					<label htmlFor="address">Adres</label>
+					<input
+						type="text"
+						onChange={handleInputChange}
+						placeholder="Bijv. Kelbergen 300, 1104LJ"
+						id="address"
+						name="address"
+						value={inputValue}
+						disabled={loadingData || isSubmitting}
+						style={{ color: validationError ? '#CA231E' : 'inherit' }}
+					/>
+				</div>
+				<div>
+					<button type="submit" disabled={!inputValue}>
+						Zoeken
+					</button>
+					<button
+						type="button"
+						onClick={submitAddress}
+						disabled={!isLocationSearched || !inputValue}
+					>
+						Opslaan
+					</button>
+					<button type="reset">Reset</button>
+				</div>
 			</form>
 
 			<div className={addressStyles.address}>

@@ -5,7 +5,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: 1em;
+		gap: 1.5em;
 
 		label {
 			color: $primaryColor;
@@ -28,6 +28,45 @@
 
 			&:focus {
 				color: $secondaryColor !important;
+			}
+		}
+
+		&.address {
+			@include laptop {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			@include phablet {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			label {
+				min-width: 75px;
+			}
+
+			> div:first-child {
+				flex-grow: 1;
+				width: 100%;
+			}
+
+			> div {
+				display: flex;
+				margin-left: auto;
+				gap: 0.5em;
+
+				> button {
+					&:nth-child(2) {
+						background-color: $secondaryColor;
+						color: $whiteColor;
+					}
+
+					&:last-child {
+						background-color: $warningColor;
+						color: $whiteColor;
+					}
+				}
 			}
 		}
 

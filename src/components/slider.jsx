@@ -51,6 +51,9 @@ const Slider = () => {
 					},
 					768: {
 						slidesPerView: 4
+					},
+					992: {
+						slidesPerView: 5
 					}
 				}}
 			>

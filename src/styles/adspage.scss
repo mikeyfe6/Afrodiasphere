@@ -86,6 +86,14 @@
 			}
 		}
 
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: yellow;
+			}
+		}
+
 		&-maps {
 			outline: 3px solid rgba(yellow, 75%);
 		}
@@ -136,6 +144,14 @@
 				color: #878787;
 				border: 1px solid #878787;
 				box-shadow: 1px 3px 5px rgba(167, 167, 167, 0.767);
+			}
+		}
+
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: #878787;
 			}
 		}
 
@@ -192,6 +208,14 @@
 			}
 		}
 
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: #a8a8a8;
+			}
+		}
+
 		&-maps {
 			outline: 3px solid rgba(white, 75%);
 		}
@@ -242,6 +266,14 @@
 				color: white;
 				border: 2px solid white;
 				box-shadow: 1px 3px 5px rgba(49, 49, 49, 0.767);
+			}
+		}
+
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: white;
 			}
 		}
 
@@ -298,6 +330,14 @@
 			}
 		}
 
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: brown;
+			}
+		}
+
 		&-maps {
 			outline: 3px solid rgba(brown, 75%);
 		}
@@ -351,6 +391,14 @@
 			}
 		}
 
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: green;
+			}
+		}
+
 		&-maps {
 			outline: 3px solid rgba(green, 75%);
 		}
@@ -399,6 +447,14 @@
 				background: white;
 				color: black;
 				border: 1px solid #e6541b;
+			}
+		}
+
+		&-location {
+			@include pageLocation;
+
+			> i {
+				color: #e6541b;
 			}
 		}
 

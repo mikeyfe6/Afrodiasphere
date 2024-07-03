@@ -130,6 +130,13 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				</ul>
 
 				{address && (
+					<p className={`theme-${color}-location`}>
+						<i className="fa-solid fa-map-location-dot fa-xl" />
+						{address.location}
+					</p>
+				)}
+
+				{address && (
 					<div
 						className={`theme-${color}-maps ${mapsStyles.maps} ${mapsStyles.adsPage}`}
 					>
@@ -151,13 +158,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 								<Marker lat={address.latitude} lng={address.longitude} />
 							)}
 						</GoogleMapReact>
-						{address && (
-							<div className={mapsStyles.infoWindow}>
-								<p>Name: {address.location}</p>
-								<p>Latitude: {address.latitude}</p>
-								<p>Longitude: {address.longitude}</p>
-							</div>
-						)}
 					</div>
 				)}
 
