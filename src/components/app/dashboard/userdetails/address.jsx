@@ -51,7 +51,7 @@ const Address = ({
 					inputValue // Use inputValue instead of address.location
 				)}&key=${apiKey}&language=nl`
 			)
-			console.log('API Response:', response.data)
+
 			if (response.data.status === 'OK') {
 				const { formatted_address, geometry } = response.data.results[0]
 				const newLocation = {
@@ -64,7 +64,6 @@ const Address = ({
 				setAddress(newLocation) // Consider if you need to update the address prop here
 				setIsLocationSearched(true)
 
-				console.log('Location:', newLocation)
 				setError(null)
 			} else {
 				setError(`Unable to find location: ${response.data.status}`)
@@ -120,8 +119,6 @@ const Address = ({
 			}
 		}
 
-		console.log('Address:', params)
-
 		try {
 			await axios.put(
 				`${apiURL}/api/instanties/${userId}`,
@@ -142,8 +139,6 @@ const Address = ({
 			setIsSubmitting(false)
 		}
 	}
-
-	console.log('location:', pin)
 
 	return (
 		<>
