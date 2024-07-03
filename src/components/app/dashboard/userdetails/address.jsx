@@ -182,28 +182,26 @@ const Address = ({
 
 			{error && <p>{error}</p>}
 
-			{address && (
-				<div className={`${mapsStyles.maps} ${mapsStyles.adsDashboard}`}>
-					<GoogleMapReact
-						bootstrapURLKeys={{
-							key: process.env.GATSBY_GOOGLE_MAPS_KEY,
-							language: 'nl',
-							region: 'NL'
-						}}
-						defaultCenter={defaultProps.center}
-						defaultZoom={defaultProps.zoom}
-						center={
-							pin && pin.latitude && pin.longitude
-								? { lat: pin.latitude, lng: pin.longitude }
-								: defaultProps.center
-						}
-					>
-						{pin && pin.latitude && pin.longitude && (
-							<Marker lat={pin.latitude} lng={pin.longitude} />
-						)}
-					</GoogleMapReact>
-				</div>
-			)}
+			<div className={`${mapsStyles.maps} ${mapsStyles.adsDashboard}`}>
+				<GoogleMapReact
+					bootstrapURLKeys={{
+						key: process.env.GATSBY_GOOGLE_MAPS_KEY,
+						language: 'nl',
+						region: 'NL'
+					}}
+					defaultCenter={defaultProps.center}
+					defaultZoom={defaultProps.zoom}
+					center={
+						pin && pin.latitude && pin.longitude
+							? { lat: pin.latitude, lng: pin.longitude }
+							: defaultProps.center
+					}
+				>
+					{pin && pin.latitude && pin.longitude && (
+						<Marker lat={pin.latitude} lng={pin.longitude} />
+					)}
+				</GoogleMapReact>
+			</div>
 		</>
 	)
 }

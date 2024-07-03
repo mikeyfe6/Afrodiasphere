@@ -129,35 +129,37 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 					))}
 				</ul>
 
-				<div
-					className={`theme-${color}-maps ${mapsStyles.maps} ${mapsStyles.adsPage}`}
-				>
-					<GoogleMapReact
-						bootstrapURLKeys={{
-							key: process.env.GATSBY_GOOGLE_MAPS_KEY,
-							language: 'nl',
-							region: 'NL'
-						}}
-						defaultCenter={defaultProps.center}
-						defaultZoom={defaultProps.zoom}
-						center={
-							address.latitude !== null && address.longitude !== null
-								? { lat: address.latitude, lng: address.longitude }
-								: defaultProps.center
-						}
+				{address && (
+					<div
+						className={`theme-${color}-maps ${mapsStyles.maps} ${mapsStyles.adsPage}`}
 					>
-						{address.latitude !== null && address.longitude !== null && (
-							<Marker lat={address.latitude} lng={address.longitude} />
+						<GoogleMapReact
+							bootstrapURLKeys={{
+								key: process.env.GATSBY_GOOGLE_MAPS_KEY,
+								language: 'nl',
+								region: 'NL'
+							}}
+							defaultCenter={defaultProps.center}
+							defaultZoom={defaultProps.zoom}
+							center={
+								address.latitude !== null && address.longitude !== null
+									? { lat: address.latitude, lng: address.longitude }
+									: defaultProps.center
+							}
+						>
+							{address.latitude !== null && address.longitude !== null && (
+								<Marker lat={address.latitude} lng={address.longitude} />
+							)}
+						</GoogleMapReact>
+						{address && (
+							<div className={mapsStyles.infoWindow}>
+								<p>Name: {address.location}</p>
+								<p>Latitude: {address.latitude}</p>
+								<p>Longitude: {address.longitude}</p>
+							</div>
 						)}
-					</GoogleMapReact>
-					{address && (
-						<div className={mapsStyles.infoWindow}>
-							<p>Name: {address.location}</p>
-							<p>Latitude: {address.latitude}</p>
-							<p>Longitude: {address.longitude}</p>
-						</div>
-					)}
-				</div>
+					</div>
+				)}
 
 				<div className={`theme-${color}-icons`}>
 					{fbLink && fbLink.length > 1 && (
