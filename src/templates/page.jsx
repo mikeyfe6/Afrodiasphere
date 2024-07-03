@@ -132,7 +132,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				{address && (
 					<p className={`theme-${color}-location`}>
 						<i className="fa-solid fa-map-location-dot fa-xl" />
-						{address.location}
+						<span>{address.location}</span>
 					</p>
 				)}
 

@@ -110,13 +110,14 @@
 		@include container(2em, 0, 1150px);
 
 		&-wrapper {
-			padding: 1.25em;
+			padding: 1.5em 1.25em;
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);
 			display: flex;
 			justify-content: space-between;
 			gap: 0 1em;
 
 			@include borderRadius;
+			@include boxShadow;
 
 			@include mobile {
 				@include borderRadius(0);
@@ -143,6 +144,10 @@
 						color: $secondaryColor;
 						font-size: 1.5em;
 						margin-right: 0.5em;
+					}
+
+					> span {
+						font-size: 0.9rem;
 					}
 				}
 

@@ -101,7 +101,7 @@ const Maps = () => {
 
 							<span>
 								<i className="fa-solid fa-map-location-dot fa-lg" />
-								{selectedPin.location}
+								<span>{selectedPin.location}</span>
 							</span>
 
 							{selectedPin.biography && <p>{selectedPin.biography}</p>}
