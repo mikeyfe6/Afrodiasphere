@@ -109,6 +109,10 @@
 	&-info {
 		@include container(2em, 0, 1150px);
 
+		@include mobile {
+			@include container(1em, 0, 1150px);
+		}
+
 		&-wrapper {
 			padding: 1.5em 1.25em;
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);

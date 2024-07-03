@@ -134,6 +134,8 @@ const MobileMenu = ({ isMenuOpen, setMenuOpen }) => {
 					</li>
 				</ul>
 			</div>
+
+			<div className={styles.mobileMenuOverlay} />
 		</header>
 	)
 }

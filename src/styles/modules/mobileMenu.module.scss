@@ -91,6 +91,16 @@
 			}
 		}
 
+		&-overlay {
+			background: linear-gradient(to bottom, rgba($thirdColor, 1), transparent);
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 85px;
+			z-index: 0;
+			width: 100%;
+		}
+
 		&.open {
 			bottom: 0;
 		}
