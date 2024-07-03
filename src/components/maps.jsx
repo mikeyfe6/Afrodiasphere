@@ -59,6 +59,10 @@ const Maps = () => {
 		setSelectedPin(pin)
 	}
 
+	const closeinfo = () => {
+		setSelectedPin(null)
+	}
+
 	return (
 		<div className={mapsStyles.mapsContainer}>
 			<div className={`${mapsStyles.maps} ${mapsStyles.adsHome}`}>
@@ -101,9 +105,14 @@ const Maps = () => {
 							</span>
 
 							{selectedPin.biography && <p>{selectedPin.biography}</p>}
-							{selectedPin.slug && (
-								<Link to={'/' + selectedPin.slug + '/'}>Naar ADS-page</Link>
-							)}
+
+							<div>
+								<button onClick={() => closeinfo()}>Sluit Info</button>
+
+								{selectedPin.slug && (
+									<Link to={'/' + selectedPin.slug + '/'}>Naar ADS-pagina</Link>
+								)}
+							</div>
 						</div>
 						<div>
 							{selectedPin.imageUrl && (

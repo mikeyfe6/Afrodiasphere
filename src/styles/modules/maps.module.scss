@@ -60,10 +60,13 @@
 	&.ads-home {
 		opacity: 0.75;
 		height: 250px;
-		border: 3px solid rgba($blackColor, 100%);
+		border: 3px solid rgba($thirdColor, 100%);
 
 		@include mobile {
 			@include borderRadius(0);
+
+			border-right: none;
+			border-left: none;
 		}
 
 		&::before,
@@ -147,13 +150,25 @@
 					color: color.adjust($whiteColor, $lightness: -25%);
 				}
 
-				> a {
-					@include button;
+				> div {
+					display: flex;
+					gap: 1em;
+					margin-top: 2em;
 
 					@include mobile {
-						display: block;
-						margin-top: 2em;
 						margin-left: auto;
+					}
+
+					> a {
+						@include button;
+
+						@include mobile {
+							display: block;
+						}
+					}
+
+					> button {
+						@include button($type: 2);
 					}
 				}
 			}
@@ -174,8 +189,8 @@
 
 					@include mobile {
 						display: block;
-						max-width: 200px;
-						max-height: 200px;
+						width: 150px;
+						height: 150px;
 						margin-bottom: 2em;
 					}
 				}

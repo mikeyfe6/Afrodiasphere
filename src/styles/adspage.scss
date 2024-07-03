@@ -87,11 +87,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: yellow;
 
-			> i {
-				color: yellow;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -148,11 +146,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: #878787;
 
-			> i {
-				color: #878787;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -209,11 +205,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: #a8a8a8;
 
-			> i {
-				color: #a8a8a8;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -270,11 +264,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: white;
 
-			> i {
-				color: white;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -331,11 +323,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: brown;
 
-			> i {
-				color: brown;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -392,11 +382,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: green;
 
-			> i {
-				color: green;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -451,11 +439,9 @@
 		}
 
 		&-location {
-			@include pageLocation;
+			color: #e6541b;
 
-			> i {
-				color: #e6541b;
-			}
+			@include pageLocation;
 		}
 
 		&-maps {

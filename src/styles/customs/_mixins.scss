@@ -46,18 +46,25 @@
 	font-size: 0.825rem;
 }
 
-@mixin button($yAxis: 0.5em) {
-	background: $primaryColor;
-	color: $ashColor;
+@mixin button($yAxis: 0.5em, $type: 1) {
 	padding: $yAxis 1.25em;
 	font-size: 1rem;
 	font-weight: 500;
 	border-radius: 5px;
 	transition: all 0.2s ease-out;
 	width: fit-content;
+	height: fit-content;
 
 	&:not(:disabled):hover {
 		transform: scale(0.97);
+	}
+
+	@if $type == 1 {
+		background: $primaryColor;
+		color: $ashColor;
+	} @else if $type == 2 {
+		background-color: $warningColor;
+		color: $whiteColor;
 	}
 }
 
