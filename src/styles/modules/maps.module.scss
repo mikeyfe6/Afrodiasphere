@@ -60,7 +60,7 @@
 	&.ads-home {
 		opacity: 0.75;
 		height: 250px;
-		border: 3px solid rgba($thirdColor, 100%);
+		border: 3px solid rgba($thirdColor, 25%);
 
 		@include mobile {
 			@include borderRadius(0);
