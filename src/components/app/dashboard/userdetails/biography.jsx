@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+
 import axios from 'axios'
+
 import * as styles from '../../../../styles/modules/dashboard/biography.module.scss'
 
 const Biography = ({
@@ -80,7 +82,7 @@ const Biography = ({
 			<textarea
 				id="biography"
 				type="text"
-				name="text"
+				name="biography"
 				placeholder="Voer hier een korte beschrijving in van max 160 tekens.."
 				value={biography || ''}
 				onChange={setBiographyHandler}

@@ -9,6 +9,10 @@
 	box-shadow: 1px 3px 5px rgba(0 0 0 / 20%);
 }
 
+@mixin borderRadius($radius: 3px) {
+	border-radius: $radius;
+}
+
 @mixin container($marginY: 0, $paddingX: 2em) {
 	width: 100%;
 	max-width: 1200px;

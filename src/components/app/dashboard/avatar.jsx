@@ -113,6 +113,7 @@ const Avatar = ({
 				<input
 					type="file"
 					accept="image/*"
+					name="avatar"
 					ref={fileInputRef}
 					onChange={event => {
 						const file = event.target.files[0]

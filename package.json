@@ -29,11 +29,11 @@
     "gatsby-source-strapi": "^3.3.3",
     "gatsby-transformer-sharp": "^5.13.1",
     "google-map-react": "^2.2.1",
-    "instantsearch.css": "^8.2.1",
+    "instantsearch.css": "^8.3.0",
     "react": "^18.3.1",
     "react-digit-input": "^2.1.0",
     "react-dom": "^18.3.1",
-    "react-instantsearch": "^7.11.4",
+    "react-instantsearch": "^7.12.0",
     "sass": "^1.77.6",
     "swiper": "^11.1.4"
   },
@@ -41,8 +41,8 @@
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.14.1",
-    "@typescript-eslint/parser": "^7.14.1",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^9.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -54,7 +54,7 @@
     "stylelint": "^16.6.1",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.1.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "keywords": [
     "gatsby"
@@ -62,7 +62,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby clean && gatsby build",
-    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop -H 0.0.0.0 --open",
+    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby clean && yarn cache clean && gatsby develop -H 0.0.0.0 --open",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

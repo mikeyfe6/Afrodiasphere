@@ -91,7 +91,7 @@ const Profile = ({
 			<input
 				id="profile"
 				type="text"
-				name="text"
+				name="profile"
 				value={profile}
 				onChange={setProfileHandler}
 				disabled={loadingData || isSubmitting}

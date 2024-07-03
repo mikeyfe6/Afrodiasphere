@@ -151,7 +151,7 @@ const LoginPage = () => {
 							<input
 								ref={usernameRegRef}
 								type="text"
-								name="usernameReg"
+								name="username"
 								pattern="[^\s]+"
 								style={{ textTransform: 'lowercase' }}
 								placeholder="gebruikersnaam"
@@ -161,7 +161,7 @@ const LoginPage = () => {
 							<input
 								ref={emailRegRef}
 								type="email"
-								name="emailReg"
+								name="email"
 								placeholder="e-mailadres"
 								style={{ textTransform: 'lowercase' }}
 								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -171,7 +171,7 @@ const LoginPage = () => {
 							<input
 								ref={passwordRegRef}
 								type="password"
-								name="passwordreg"
+								name="password"
 								autoComplete="new-password"
 								placeholder="wachtwoord"
 								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

@@ -86,6 +86,7 @@ const Occupation = ({
 					id="bedrijf"
 					type="radio"
 					value="bedrijf"
+					name="occupate"
 					checked={occupate === 'bedrijf'}
 					onChange={onOccupateChange}
 				/>
@@ -97,6 +98,7 @@ const Occupation = ({
 					id="zelfstandig"
 					type="radio"
 					value="zelfstandig"
+					name="occupate"
 					checked={occupate === 'zelfstandig'}
 					onChange={onOccupateChange}
 				/>
@@ -112,6 +114,7 @@ const Occupation = ({
 					id="hobbyist"
 					type="radio"
 					value="hobbyist"
+					name="occupate"
 					checked={occupate === 'hobbyist'}
 					onChange={onOccupateChange}
 				/>
@@ -127,6 +130,7 @@ const Occupation = ({
 					id="stichting"
 					type="radio"
 					value="stichting"
+					name="occupate"
 					checked={occupate === 'stichting'}
 					onChange={onOccupateChange}
 				/>
@@ -142,6 +146,7 @@ const Occupation = ({
 					id="artist"
 					type="radio"
 					value="artist"
+					name="occupate"
 					checked={occupate === 'artist'}
 					onChange={onOccupateChange}
 				/>

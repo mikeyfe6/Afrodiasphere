@@ -10,7 +10,7 @@
 		label {
 			color: $primaryColor;
 			font-size: 0.75rem;
-			min-width: 100px;
+			min-width: 125px;
 			cursor: default;
 		}
 
@@ -19,7 +19,6 @@
 			background: transparent;
 			outline: none;
 			border: none;
-			border-radius: 1px;
 
 			@include smoothTrans;
 

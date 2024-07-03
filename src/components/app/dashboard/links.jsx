@@ -182,6 +182,7 @@ const Links = ({
 						<input
 							id="newtitle"
 							type="text"
+							name="title"
 							placeholder="voer een titel in"
 							ref={linkTitle}
 							minLength="5"
@@ -198,6 +199,7 @@ const Links = ({
 						<input
 							id="newhyperlink"
 							type="url"
+							name="hyperlink"
 							placeholder="voorbeeld.nl"
 							ref={hyperLink}
 							style={{ textTransform: 'lowercase' }}

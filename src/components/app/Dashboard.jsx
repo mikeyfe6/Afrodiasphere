@@ -85,6 +85,11 @@ const DashboardPage = () => {
 
 	const [occupate, setOccupate] = useState('')
 	const [biography, setBiography] = useState('')
+	const [address, setAddress] = useState({
+		location: '',
+		latitude: '',
+		longitude: ''
+	})
 
 	const [fbLink, setFbLink] = useState('')
 	const [twLink, setTwLink] = useState('')
@@ -141,6 +146,14 @@ const DashboardPage = () => {
 			setTwLink(res.data.twitterlink || '')
 			setWaLink(res.data.whatsapplink || '')
 			setColor(res.data.bgfree)
+
+			if (res.data.address) {
+				setAddress({
+					location: res.data.address.location || '',
+					latitude: res.data.address.latitude || 0,
+					longitude: res.data.address.longitude || 0
+				})
+			}
 
 			if (!res.data.avatar) {
 				setPreview(noavatar)
@@ -399,7 +412,21 @@ const DashboardPage = () => {
 					/>
 				</div>
 
-				{/* <Address /> */}
+				<hr />
+
+				<h2>Gebruiker Info</h2>
+
+				<Address
+					userId={userId}
+					apiURL={apiURL}
+					token={token}
+					preview={preview}
+					address={address}
+					setSuccess={setSuccess}
+					setAddress={setAddress}
+					setValidationMessage={setError}
+					loadingData={loadingData}
+				/>
 
 				<hr />
 
