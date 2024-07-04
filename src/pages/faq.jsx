@@ -93,7 +93,10 @@ const FaqPage = () => (
 		<section className={faqStyles.faq}>
 			<div>
 				<h1>Hoe werkt Afrodiasphere..</h1>
-				<p>Hieronder vind je alle veelgestelde vragen en antwoorden.</p>
+				<p>
+					Hieronder vind je alle veelgestelde vragen en desbetreffende
+					antwoorden.
+				</p>
 				<Faqs faqs={faqs} />
 			</div>
 			<img src={mamaAfrica} alt="" />
