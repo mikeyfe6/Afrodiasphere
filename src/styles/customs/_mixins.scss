@@ -28,11 +28,11 @@
 	overflow: hidden;
 }
 
-@mixin card($marginY: 1em, $paddingX: 1em) {
+@mixin card($margin: 1em, $padding: 1em) {
 	border-radius: 10px;
 	box-shadow: 0 3px 10px rgba(0 0 0 / 33%);
-	padding: $paddingX;
-	margin: $marginY;
+	padding: $padding;
+	margin: $margin;
 }
 
 @mixin logs {
@@ -71,9 +71,9 @@
 @mixin dashButton(
 	$bgColor: $whiteColor,
 	$txtColor: $ashColor,
-	$yAxis: 0.375em
+	$yAxis: 0.375em,
+	$type: 1
 ) {
-	min-width: 120px;
 	background-color: $bgColor;
 	color: $txtColor;
 	padding: $yAxis 1em;
@@ -90,9 +90,15 @@
 		cursor: default;
 	}
 
-	@include mobile {
-		min-width: 100px;
-		font-size: 0.875rem;
+	@if $type == 1 {
+		min-width: 120px;
+
+		@include mobile {
+			min-width: 100px;
+			font-size: 0.875rem;
+		}
+	} @else if $type == 2 {
+		min-height: 44px;
 	}
 }
 

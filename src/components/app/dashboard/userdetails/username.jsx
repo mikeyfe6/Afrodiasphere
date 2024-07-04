@@ -99,7 +99,7 @@ const Username = ({
 				title="Sla gebruikersnaam op"
 				disabled={username === initialValue || isSubmitting}
 			>
-				Opslaan
+				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
 		</form>
 	)

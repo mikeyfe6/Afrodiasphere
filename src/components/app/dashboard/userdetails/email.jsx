@@ -99,7 +99,7 @@ const Email = ({
 				title="Sla e-mailadres op"
 				disabled={email === initialValue || isSubmitting}
 			>
-				Opslaan
+				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
 		</form>
 	)

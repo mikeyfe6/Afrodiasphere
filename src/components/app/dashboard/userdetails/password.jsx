@@ -59,7 +59,7 @@ const Password = ({
 				className={styles.updateBtn}
 				disabled={setLoading || password === ''}
 			>
-				Update
+				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
 		</form>
 	)

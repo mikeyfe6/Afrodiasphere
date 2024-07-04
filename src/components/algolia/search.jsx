@@ -85,7 +85,7 @@ const Search = ({
 				indexName={ALGOLIA_INDEX_NAME}
 				stalledSearchDelay={500}
 			>
-				<SearchBox placeholder="Zoek een ADS-profiel..." showLoadingIndicator />
+				<SearchBox placeholder="Zoek een ADS-profiel..." />
 				{hasFocus && (
 					<EmptyQueryBoundary fallback={null}>
 						<NoResultsBoundary fallback={<NoResults />}>

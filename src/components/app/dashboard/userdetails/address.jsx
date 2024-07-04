@@ -35,6 +35,7 @@ const Address = ({
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isLocationSearched, setIsLocationSearched] = useState(false)
 	const [inputValue, setInputValue] = useState('')
+	const [deleteLocation, setDeleteLocation] = useState(false)
 
 	const apiKey = process.env.GATSBY_GOOGLE_GEO_KEY
 
@@ -69,13 +70,13 @@ const Address = ({
 				setIsLocationSearched(true)
 				setError(null)
 			} else {
-				setError(`Unable to find location: ${response.data.status}`)
+				setError(`Geen locatie gevonden: ${response.data.status}`)
 				setPin(null)
 				setIsLocationSearched(false)
 			}
 		} catch (error) {
 			setError(
-				`An error occurred while fetching the location: ${error.message}`
+				`Er is een fout opgetreden bij het ophalen van de locatie: ${error.message}`
 			)
 			setPin(null)
 			setIsLocationSearched(false)
@@ -93,8 +94,8 @@ const Address = ({
 	}
 
 	const validateInput = value => {
-		if (value.length > 160) {
-			const errorMessage = 'Maximaal 160 karakters'
+		if (value.length > 100) {
+			const errorMessage = 'Maximaal 100 karakters'
 			setValidationError(errorMessage)
 			setValidationMessage(errorMessage)
 			return false
@@ -136,11 +137,19 @@ const Address = ({
 			setSuccess('Adres succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
 			setInputValue('')
+			setIsLocationSearched(false)
 		} catch (error) {
 			console.error('Error updating address:', error)
 		} finally {
 			setIsSubmitting(false)
 		}
+	}
+
+	const deleteAdress = () => {
+		setAddress({ location: '', latitude: 0, longitude: 0 })
+		setInputValue('')
+		setIsLocationSearched(true)
+		setDeleteLocation(true)
 	}
 
 	return (
@@ -163,31 +172,41 @@ const Address = ({
 					/>
 				</div>
 				<div>
-					<button type="submit" disabled={!inputValue}>
-						Zoeken
+					<button type="submit" disabled={!inputValue} title="Zoek adres">
+						<i className="fa-solid fa-location-crosshairs fa-lg" />
 					</button>
 					<button
 						type="button"
 						onClick={submitAddress}
-						disabled={!isLocationSearched || !inputValue}
+						title="Sla locatie op"
+						disabled={(!isLocationSearched || !inputValue) && !deleteLocation}
 					>
-						Opslaan
+						<i className="fa-solid fa-floppy-disk fa-lg" />
 					</button>
-					<button type="reset">Reset</button>
+					<button
+						type="reset"
+						onClick={() => deleteAdress()}
+						title="Wis locatie"
+						disabled={
+							(!inputValue && isLocationSearched) || address.location === ''
+						}
+					>
+						<i className="fa-solid fa-arrows-rotate fa-lg"></i>
+					</button>
 				</div>
 			</form>
 
 			<div className={addressStyles.address}>
-				<h3>Locatie Details:</h3>
 				<input
 					value={
 						pin && pin.location ? pin.location : address ? address.location : ''
 					}
+					placeholder="Geen adres gevonden"
 					readOnly
 				/>
-			</div>
 
-			{error && <p>{error}</p>}
+				{error && <p>{error}</p>}
+			</div>
 
 			<div className={`${mapsStyles.maps} ${mapsStyles.adsDashboard}`}>
 				<GoogleMapReact

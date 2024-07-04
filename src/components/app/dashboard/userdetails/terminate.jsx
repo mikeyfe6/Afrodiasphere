@@ -122,7 +122,7 @@ const Terminate = ({
 				className={styles.terminateBtn}
 				disabled={setLoading || deleteAds === ''}
 			>
-				Wis Profiel
+				<i className="fa-solid fa-trash-can fa-lg" />
 			</button>
 		</form>
 	)

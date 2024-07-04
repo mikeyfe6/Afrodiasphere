@@ -1,18 +1,20 @@
 @import '../../configs/globals';
 
 .address {
-	h3 {
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-			sans-serif;
-		color: $primaryColor;
-		line-height: 1em;
-		font-size: 1.25rem;
-		margin: 1.5em 0 0.5em;
-	}
-
 	input {
 		padding: 1em;
 		background: linear-gradient(135deg, #1a1a1a, $blackColor);
+		font-size: 0.9rem;
 		min-height: 50px;
+
+		margin: 1.5em 0 0.5em;
+
+		@include borderRadius;
+	}
+
+	p {
+		margin: 0.5em 0;
+		font-size: 0.9rem;
+		color: $errorColor;
 	}
 }

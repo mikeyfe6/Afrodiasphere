@@ -83,7 +83,7 @@
 		flex-direction: row;
 		align-items: center;
 
-		@include card(0, 0.5em);
+		@include card(0, 1em 1.25em);
 	}
 
 	@include tablet {
@@ -129,7 +129,7 @@
 	@include card(0, 2em);
 
 	@include mobile {
-		@include card(0, 0.75em);
+		@include card(0, 1.25em);
 	}
 
 	.dash-btn {

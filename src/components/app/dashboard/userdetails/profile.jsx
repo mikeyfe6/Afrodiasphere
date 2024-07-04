@@ -102,7 +102,7 @@ const Profile = ({
 				title="Sla profielnaam op"
 				disabled={profile === initialValue || isSubmitting}
 			>
-				Opslaan
+				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
 		</form>
 	)

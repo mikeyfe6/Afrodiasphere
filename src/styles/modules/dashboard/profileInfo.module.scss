@@ -5,12 +5,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: 1.5em;
+		gap: 1em;
 
 		label {
 			color: $primaryColor;
 			font-size: 0.75rem;
-			min-width: 125px;
+			min-width: 110px;
 			cursor: default;
 		}
 
@@ -19,6 +19,7 @@
 			background: transparent;
 			outline: none;
 			border: none;
+			text-align: right;
 
 			@include smoothTrans;
 
@@ -32,12 +33,9 @@
 		}
 
 		&.address {
-			@include laptop {
-				flex-direction: column;
-				align-items: flex-start;
-			}
+			gap: 1.5em;
 
-			@include phablet {
+			@include mobile {
 				flex-direction: column;
 				align-items: flex-start;
 			}
@@ -71,7 +69,7 @@
 		}
 
 		button {
-			@include dashButton;
+			@include dashButton($type: 2);
 
 			&.terminate-btn {
 				background-color: $warningColor;
