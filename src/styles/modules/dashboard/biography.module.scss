@@ -17,6 +17,7 @@
 	label {
 		align-self: flex-start;
 		font-size: 0.75rem;
+		cursor: pointer;
 
 		&::after {
 			content: ':';

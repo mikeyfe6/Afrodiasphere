@@ -11,7 +11,7 @@
 			color: $primaryColor;
 			font-size: 0.75rem;
 			min-width: 110px;
-			cursor: default;
+			cursor: pointer;
 
 			&::after {
 				content: ':';

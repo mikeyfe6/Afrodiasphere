@@ -53,8 +53,12 @@
 		align-items: center;
 		flex: 1;
 
-		> label > h4 > span {
-			color: $primaryColor;
+		> label {
+			cursor: pointer;
+
+			> h4 > span {
+				color: $primaryColor;
+			}
 		}
 
 		> input {
@@ -158,10 +162,6 @@
 					display: block;
 					font-size: 0.875rem;
 					font-weight: 500;
-				}
-
-				> p {
-					cursor: default;
 				}
 			}
 
