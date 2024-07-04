@@ -8,12 +8,16 @@
 	margin-top: 5em;
 	position: relative;
 
-	@include container(1em, 2em);
+	@include container(2em, 2em);
 
 	> div {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5em;
+
+		h1 {
+			color: $primaryColor;
+		}
 
 		> p {
 			color: $whiteColor;

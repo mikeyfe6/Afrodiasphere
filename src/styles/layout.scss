@@ -21,7 +21,6 @@ body {
 
 h1 {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	line-height: 1em;
 	font-size: 4rem;
 
 	@include mobile {
@@ -31,7 +30,6 @@ h1 {
 
 h3 {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	line-height: 1em;
 	font-size: 1.75rem;
 }
 
@@ -60,14 +58,6 @@ select {
 
 		@include smoothTrans;
 	}
-}
-
-a {
-	text-decoration: none;
-}
-
-ul {
-	list-style-type: none;
 }
 
 u {

@@ -23,7 +23,8 @@
 		padding: 1.5em 1.5em 2em;
 	}
 
-	a:nth-of-type(1) {
+	a:nth-of-type(1),
+	a:nth-of-type(2) {
 		color: #8c8c8c;
 
 		@include smoothTrans;
@@ -33,7 +34,7 @@
 		}
 	}
 
-	a:nth-of-type(2) {
+	a:nth-of-type(3) {
 		filter: grayscale(100%);
 		padding-left: 2.5px;
 		color: $whiteColor;

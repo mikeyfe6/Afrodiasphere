@@ -89,6 +89,12 @@
 		&-location {
 			color: yellow;
 
+			> a {
+				&:hover {
+					text-decoration-color: white !important;
+				}
+			}
+
 			@include pageLocation;
 		}
 
@@ -147,6 +153,12 @@
 
 		&-location {
 			color: #878787;
+
+			> a {
+				&:hover {
+					text-decoration-color: white !important;
+				}
+			}
 
 			@include pageLocation;
 		}
@@ -207,11 +219,13 @@
 		&-location {
 			color: #a8a8a8;
 
-			@include pageLocation;
-
 			> a {
-				text-decoration-color: white;
+				&:hover {
+					text-decoration-color: white !important;
+				}
 			}
+
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -269,6 +283,12 @@
 
 		&-location {
 			color: white;
+
+			> a {
+				&:hover {
+					text-decoration-color: #878787 !important;
+				}
+			}
 
 			@include pageLocation;
 		}
@@ -329,13 +349,13 @@
 		&-location {
 			color: brown;
 
-			@include pageLocation;
-
 			> a {
 				&:hover {
-					text-decoration-color: white;
+					text-decoration-color: white !important;
 				}
 			}
+
+			@include pageLocation;
 		}
 
 		&-maps {
@@ -394,6 +414,12 @@
 		&-location {
 			color: green;
 
+			> a {
+				&:hover {
+					text-decoration-color: white !important;
+				}
+			}
+
 			@include pageLocation;
 		}
 
@@ -450,6 +476,12 @@
 
 		&-location {
 			color: #e6541b;
+
+			> a {
+				&:hover {
+					text-decoration-color: white !important;
+				}
+			}
 
 			@include pageLocation;
 		}

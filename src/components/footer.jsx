@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { Link } from 'gatsby'
+
 import * as styles from '../styles/modules/footer.module.scss'
 
 import menefexLogo from '../images/menefex-icon.png'
@@ -10,6 +12,10 @@ const Footer = () => (
 		<a href="mailto:feedback@menefex.nl" title="Stuur feedback naar Menefex">
 			Feedback
 		</a>{' '}
+		・
+		<Link to="/faq/" title="Veelgestelde vragen">
+			FAQ
+		</Link>{' '}
 		・Powered by{' '}
 		<a href="https://menefex.nl" rel="noopener noreferrer" target="_blank">
 			{''}
