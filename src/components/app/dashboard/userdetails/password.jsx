@@ -40,7 +40,7 @@ const Password = ({
 
 	return (
 		<form onSubmit={submitPassword} className={styles.profileField}>
-			<label htmlFor="password"> Wachtwoord </label>
+			<label htmlFor="password">Wachtwoord</label>
 			<input
 				onChange={setPasswordHandler}
 				value={password}

@@ -12,6 +12,13 @@
 			font-size: 0.75rem;
 			margin-bottom: 1em;
 			cursor: default;
+
+			&::after {
+				content: ':';
+				color: $whiteColor;
+				font-weight: bolder;
+				margin-left: 0.125em;
+			}
 		}
 	}
 

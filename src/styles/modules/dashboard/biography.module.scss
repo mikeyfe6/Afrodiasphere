@@ -17,6 +17,13 @@
 	label {
 		align-self: flex-start;
 		font-size: 0.75rem;
+
+		&::after {
+			content: ':';
+			color: $whiteColor;
+			font-weight: bolder;
+			margin-left: 0.125em;
+		}
 	}
 
 	button {
