@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import { useLocation } from '@reach/router'
 import { Link } from 'gatsby'
 import axios from 'axios'
 

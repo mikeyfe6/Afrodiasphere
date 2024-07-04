@@ -43,7 +43,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		pointer-events: pointer;
+		cursor: pointer;
 
 		img {
 			min-width: 50px;
@@ -53,6 +53,7 @@
 			border-radius: 50%;
 			overflow: hidden;
 			object-fit: cover;
+			background: linear-gradient(135deg, rgba(0 0 0 / 75%), $blackColor);
 			outline: solid $whiteColor 3px;
 		}
 	}
@@ -76,7 +77,6 @@
 			top: 0;
 			width: 25%;
 			height: 100%;
-			pointer-events: none;
 			z-index: 1;
 		}
 

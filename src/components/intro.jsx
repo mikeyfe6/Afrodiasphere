@@ -12,8 +12,8 @@ const Intro = () => (
 			<h1>Afrodiasphere</h1>
 			<h2>Een efficiente oplossing voor het delen van contactinformatie</h2>
 			<p>
-				<small style={{ color: '#ababab' }}>
-					Creeer jouw ADS-account & JOIN THE MOVEMENT !
+				<small>
+					Creeer jouw ADS-account & JOIN THE MOVEMENT <span>!</span>
 				</small>{' '}
 				Klik{' '}
 				<Link to="/login/">
@@ -21,8 +21,7 @@ const Intro = () => (
 						hier
 					</button>
 				</Link>{' '}
-				om in te loggen <span style={{ color: '#cc9932' }}>/</span>{' '}
-				registreren..
+				om in te loggen <span>/</span> registreren..
 			</p>
 		</div>
 		<img src={mamaAfrica} alt="" />
