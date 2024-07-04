@@ -100,7 +100,13 @@ const Maps = () => {
 
 							<span>
 								<i className="fa-solid fa-map-location-dot fa-lg" />
-								<span>{selectedPin.location}</span>
+								<a
+									href={`https://www.google.com/maps?q=${selectedPin.latitude},${selectedPin.longitude}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{selectedPin.location}
+								</a>
 							</span>
 
 							{selectedPin.biography && <p>{selectedPin.biography}</p>}

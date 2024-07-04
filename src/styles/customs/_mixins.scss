@@ -227,8 +227,13 @@
 		margin-right: 0.5em;
 	}
 
-	> span {
+	> a {
 		font-size: 0.9rem;
+
+		&:hover {
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
 	}
 }
 

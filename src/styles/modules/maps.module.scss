@@ -136,6 +136,8 @@
 				gap: 1em;
 
 				> h3 {
+					color: $primaryColor;
+
 					span {
 						color: $secondaryColor;
 						font-size: initial;
@@ -149,8 +151,14 @@
 						margin-right: 0.5em;
 					}
 
-					> span {
+					> a {
 						font-size: 0.9rem;
+
+						&:hover {
+							text-decoration: underline;
+							text-underline-offset: 3px;
+							text-decoration-color: $secondaryColor;
+						}
 					}
 				}
 

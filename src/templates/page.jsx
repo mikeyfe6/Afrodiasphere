@@ -132,7 +132,13 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				{address && (
 					<p className={`theme-${color}-location`}>
 						<i className="fa-solid fa-map-location-dot fa-xl" />
-						<span>{address.location}</span>
+						<a
+							href={`https://www.google.com/maps?q=${address.latitude},${address.longitude}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{address.location}
+						</a>
 					</p>
 				)}
 

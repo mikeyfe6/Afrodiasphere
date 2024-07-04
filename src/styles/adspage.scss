@@ -208,6 +208,10 @@
 			color: #a8a8a8;
 
 			@include pageLocation;
+
+			> a {
+				text-decoration-color: white;
+			}
 		}
 
 		&-maps {
@@ -326,6 +330,12 @@
 			color: brown;
 
 			@include pageLocation;
+
+			> a {
+				&:hover {
+					text-decoration-color: white;
+				}
+			}
 		}
 
 		&-maps {
