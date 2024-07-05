@@ -52,8 +52,12 @@
 .theme {
 	&-avatar-contact {
 		margin: 0 auto 2em;
-		max-width: 900px;
+		max-width: 300px;
 		position: relative;
+
+		@include mobile {
+			max-width: 237.5px;
+		}
 
 		.theme {
 			&-telephone,
@@ -70,11 +74,11 @@
 			}
 
 			&-telephone {
-				left: 287.5px;
+				left: 0;
 			}
 
 			&-email {
-				right: 287.5px;
+				right: 0;
 			}
 		}
 
