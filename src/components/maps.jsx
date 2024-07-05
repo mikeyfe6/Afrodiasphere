@@ -182,7 +182,7 @@ const Maps = () => {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											{selectedPin.telephone}
+											{formatTelephone(selectedPin.telephone)}
 										</a>
 									</div>
 								)}
