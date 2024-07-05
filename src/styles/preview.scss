@@ -20,6 +20,20 @@
 		}
 	}
 
+	&-mail {
+		position: absolute;
+		top: 17%;
+		left: 16%;
+		z-index: 1;
+	}
+
+	&-telephone {
+		position: absolute;
+		top: 17%;
+		right: 16%;
+		z-index: 1;
+	}
+
 	&-avatar {
 		position: absolute;
 		top: 9%;

@@ -296,6 +296,8 @@ const DashboardPage = () => {
 					profile={profile}
 					occupate={occupate}
 					biography={biography}
+					telephone={telephone}
+					mail={mail}
 					links={links}
 					fbLink={fbLink}
 					twLink={twLink}

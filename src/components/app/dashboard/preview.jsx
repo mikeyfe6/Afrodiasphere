@@ -11,6 +11,8 @@ const Preview = ({
 	profile,
 	occupate,
 	biography,
+	telephone,
+	mail,
 	links,
 	fbLink,
 	twLink,
@@ -43,7 +45,29 @@ const Preview = ({
 
 	return (
 		<div id="iphone-frame">
+			{mail && mail.length > 1 && (
+				<a
+					href={`mailto:${mail}`}
+					rel="noopener noreferrer"
+					target="_blank"
+					id="iphone-mail"
+				>
+					<i className="fa-solid fa-envelope fa-lg" />
+				</a>
+			)}
+
 			<img src={preview} alt="" id="iphone-avatar" />
+
+			{telephone && telephone.length > 1 && (
+				<a
+					href={`tel:${telephone}`}
+					rel="noopener noreferrer"
+					target="_blank"
+					id="iphone-telephone"
+				>
+					<i className="fa-solid fa-phone fa-lg" />
+				</a>
+			)}
 
 			<p id="iphone-username" className={getThemeClassName('Username')}>
 				{profile}

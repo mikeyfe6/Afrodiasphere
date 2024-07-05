@@ -165,9 +165,40 @@
 				> p {
 					color: color.adjust($whiteColor, $lightness: -25%);
 					max-width: 70ch;
+					margin: 0.5em 0;
 				}
 
-				> div {
+				> .info-contact {
+					display: flex;
+					gap: 1.5em;
+
+					@include mobile {
+						display: none;
+					}
+
+					> div {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						gap: 0.625em;
+
+						> i {
+							color: $secondaryColor;
+						}
+
+						> a {
+							font-size: 0.95rem;
+
+							&:hover {
+								text-decoration: underline;
+								text-underline-offset: 3px;
+								text-decoration-color: $secondaryColor;
+							}
+						}
+					}
+				}
+
+				> .info-buttons {
 					display: flex;
 					gap: 1em;
 					margin-top: 2em;
@@ -192,11 +223,37 @@
 
 			> div:last-child {
 				display: flex;
-				align-items: center;
 				justify-content: center;
+				gap: 2.5em;
+
+				@include tablet {
+					align-items: flex-start;
+				}
 
 				@include mobile {
 					justify-content: flex-start;
+					align-items: center;
+					margin-bottom: 2em;
+				}
+
+				.info-contact-mobile {
+					display: none;
+
+					> div {
+						display: flex;
+						align-items: center;
+						gap: 1em;
+
+						> i {
+							color: $secondaryColor;
+						}
+					}
+
+					@include mobile {
+						display: flex;
+						flex-direction: column;
+						gap: 1em;
+					}
 				}
 
 				img {
@@ -206,6 +263,7 @@
 					object-fit: cover;
 					overflow: hidden;
 					border-radius: 5px;
+					margin-top: 0.5em;
 
 					@include phablet {
 						max-width: 150px;
@@ -216,7 +274,7 @@
 						display: block;
 						width: 125px;
 						height: 125px;
-						margin-bottom: 2em;
+						margin-top: 0;
 					}
 				}
 			}

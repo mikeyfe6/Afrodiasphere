@@ -112,19 +112,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 			<div className={`theme-${color}`}>
 				<div className={`theme-avatar-contact`}>
-					{telephone && (
-						<a
-							href={`tel:${telephone}`}
-							rel="noopener noreferrer"
-							target="_blank"
-							className={`theme-telephone`}
-						>
-							<i className="fa-solid fa-phone fa-xl" />
-						</a>
-					)}
-
-					<img src={avatar} alt={username} />
-
 					{mail && (
 						<a
 							href={`mailto:${mail}`}
@@ -133,6 +120,19 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 							className={`theme-email`}
 						>
 							<i className="fa-solid fa-envelope fa-xl" />
+						</a>
+					)}
+
+					<img src={avatar} alt={username} />
+
+					{telephone && (
+						<a
+							href={`tel:${telephone}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							className={`theme-telephone`}
+						>
+							<i className="fa-solid fa-phone fa-xl" />
 						</a>
 					)}
 				</div>

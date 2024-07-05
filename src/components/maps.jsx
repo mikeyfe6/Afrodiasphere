@@ -44,7 +44,9 @@ const Maps = () => {
 					profile: item.profile,
 					slug: item.slug,
 					biography: item.biography,
-					occupate: item.occupate
+					occupate: item.occupate,
+					telephone: item.telephone,
+					mail: item.email
 				}))
 				setPins(data)
 			} catch (error) {
@@ -111,7 +113,34 @@ const Maps = () => {
 
 							{selectedPin.biography && <p>{selectedPin.biography}</p>}
 
-							<div>
+							<div className={mapsStyles.infoContact}>
+								{selectedPin.mail && (
+									<div>
+										<i className="fa-solid fa-envelope fa-lg" />
+										<a
+											href={`mailto:${selectedPin.mail}`}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{selectedPin.mail}
+										</a>
+									</div>
+								)}
+								{selectedPin.telephone && (
+									<div>
+										<i className="fa-solid fa-phone fa-lg" />
+										<a
+											href={`tel:${selectedPin.telephone}`}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{selectedPin.telephone}
+										</a>
+									</div>
+								)}
+							</div>
+
+							<div className={mapsStyles.infoButtons}>
 								<button onClick={() => closeinfo()}>Sluit Info</button>
 
 								{selectedPin.slug && (
@@ -123,6 +152,33 @@ const Maps = () => {
 							{selectedPin.imageUrl && (
 								<img src={selectedPin.imageUrl} alt={selectedPin.profile} />
 							)}
+
+							<div className={mapsStyles.infoContactMobile}>
+								{selectedPin.mail && (
+									<div>
+										<i className="fa-solid fa-envelope fa-lg" />
+										<a
+											href={`mailto:${selectedPin.mail}`}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{selectedPin.mail}
+										</a>
+									</div>
+								)}
+								{selectedPin.telephone && (
+									<div>
+										<i className="fa-solid fa-phone fa-lg" />
+										<a
+											href={`tel:${selectedPin.telephone}`}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{selectedPin.telephone}
+										</a>
+									</div>
+								)}
+							</div>
 						</div>
 					</div>
 				</div>
