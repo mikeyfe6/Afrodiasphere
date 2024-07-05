@@ -64,6 +64,10 @@ const Maps = () => {
 		setSelectedPin(null)
 	}
 
+	function formatTelephone(telephone) {
+		return telephone.match(/.{1,3}/g).join(' ')
+	}
+
 	return (
 		<div className={mapsStyles.mapsContainer}>
 			<div className={`${mapsStyles.maps} ${mapsStyles.adsHome}`}>
@@ -100,45 +104,49 @@ const Maps = () => {
 								</h3>
 							)}
 
-							<span>
-								<i className="fa-solid fa-map-location-dot fa-lg" />
-								<a
-									href={`https://www.google.com/maps?q=${selectedPin.latitude},${selectedPin.longitude}`}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{selectedPin.location}
-								</a>
-							</span>
+							{selectedPin.location && (
+								<span>
+									<i className="fa-solid fa-map-location-dot fa-lg" />
+									<a
+										href={`https://www.google.com/maps?q=${selectedPin.latitude},${selectedPin.longitude}`}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{selectedPin.location}
+									</a>
+								</span>
+							)}
 
 							{selectedPin.biography && <p>{selectedPin.biography}</p>}
 
-							<div className={mapsStyles.infoContact}>
-								{selectedPin.mail && (
-									<div>
-										<i className="fa-solid fa-envelope fa-lg" />
-										<a
-											href={`mailto:${selectedPin.mail}`}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											{selectedPin.mail}
-										</a>
-									</div>
-								)}
-								{selectedPin.telephone && (
-									<div>
-										<i className="fa-solid fa-phone fa-lg" />
-										<a
-											href={`tel:${selectedPin.telephone}`}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											{selectedPin.telephone}
-										</a>
-									</div>
-								)}
-							</div>
+							{(selectedPin.telephone || selectedPin.mail) && (
+								<div className={mapsStyles.infoContact}>
+									{selectedPin.mail && (
+										<div>
+											<i className="fa-solid fa-envelope fa-lg" />
+											<a
+												href={`mailto:${selectedPin.mail}`}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{selectedPin.mail}
+											</a>
+										</div>
+									)}
+									{selectedPin.telephone && (
+										<div>
+											<i className="fa-solid fa-phone fa-lg" />
+											<a
+												href={`tel:${selectedPin.telephone}`}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{formatTelephone(selectedPin.telephone)}
+											</a>
+										</div>
+									)}
+								</div>
+							)}
 
 							<div className={mapsStyles.infoButtons}>
 								<button onClick={() => closeinfo()}>Sluit Info</button>
