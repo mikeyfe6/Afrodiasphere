@@ -118,7 +118,7 @@
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);
 			display: flex;
 			justify-content: space-between;
-			gap: 0 1em;
+			gap: 0 2em;
 
 			@include borderRadius;
 			@include boxShadow;
