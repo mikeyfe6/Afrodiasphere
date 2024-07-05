@@ -80,8 +80,9 @@ const Slider = () => {
 							</div>
 							<div className={styles.url}>
 								<Link to={`/${ads.slug}`} title={`${baseURL}/${ads.slug}`}>
-									..<span>/</span>
-									{`${ads.slug}`}
+									<span>・</span>
+									<span>/</span>
+									<span>{`${ads.slug}`}</span>
 								</Link>
 							</div>
 						</div>

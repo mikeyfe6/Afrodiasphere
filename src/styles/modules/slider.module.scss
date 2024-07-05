@@ -78,29 +78,36 @@
 			> .url {
 				font-size: 0.875rem;
 				text-transform: lowercase;
-
-				justify-self: flex-end;
-
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow: ellipsis;
 				max-width: 100%;
-
-				border-radius: 5px;
-
 				border: 1px solid $transColor;
 
 				> a {
 					display: block;
-					color: $primaryColor;
+
 					background: rgba($ashColor, 0.5);
 					padding: 0.5em 1em;
+					border-radius: 5px;
+					color: $whiteColor;
+
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 
 					@include smoothTrans;
 
 					span {
-						color: $whiteColor;
-						margin: 0 0.25em;
+						&:nth-child(1) {
+							color: $secondaryColor;
+						}
+
+						&:nth-child(2) {
+							color: $whiteColor;
+						}
+
+						&:nth-child(3) {
+							color: $primaryColor;
+							margin: 0 0 0 0.25em;
+						}
 					}
 
 					&:hover {
