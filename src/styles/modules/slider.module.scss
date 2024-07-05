@@ -86,15 +86,17 @@
 				text-overflow: ellipsis;
 				max-width: 100%;
 
-				background: rgba($ashColor, 0.5);
 				border-radius: 5px;
 
 				border: 1px solid $transColor;
 
-				padding: 0.5em 1em;
-
 				> a {
+					display: block;
 					color: $primaryColor;
+					background: rgba($ashColor, 0.5);
+					padding: 0.5em 1em;
+
+					@include smoothTrans;
 
 					span {
 						color: $whiteColor;
@@ -102,7 +104,7 @@
 					}
 
 					&:hover {
-						opacity: 0.75;
+						background: rgba($ashColor, 0.75);
 					}
 				}
 			}
