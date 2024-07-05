@@ -50,6 +50,49 @@
 }
 
 .theme {
+	&-avatar-contact {
+		margin: 0 auto 2em;
+		max-width: 900px;
+		position: relative;
+
+		.theme {
+			&-telephone,
+			&-email {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+
+				> i {
+					&:hover {
+						opacity: 0.75;
+					}
+				}
+			}
+
+			&-telephone {
+				left: 287.5px;
+			}
+
+			&-email {
+				right: 287.5px;
+			}
+		}
+
+		> img {
+			width: 175px;
+			height: 175px;
+			border-radius: 50%;
+			border: 3px solid $whiteColor;
+			object-fit: cover;
+			overflow: hidden;
+
+			@include mobile {
+				width: 125px;
+				height: 125px;
+			}
+		}
+	}
+
 	// ---------------------------------------------------------------------------------------- // YELLOW YELLOW YELLOW
 	&-geel {
 		background: linear-gradient(to bottom, yellow, black);
@@ -107,10 +150,6 @@
 
 			> a {
 				color: yellow;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -172,10 +211,6 @@
 
 			> a {
 				color: grey;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -237,10 +272,6 @@
 
 			> a {
 				color: pink;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -302,10 +333,6 @@
 
 			> a {
 				color: white;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -367,10 +394,6 @@
 
 			> a {
 				color: brown;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -432,10 +455,6 @@
 
 			> a {
 				color: green;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}
@@ -495,10 +514,6 @@
 
 			> a {
 				color: #e6541b;
-
-				&:hover {
-					opacity: 0.75;
-				}
 			}
 		}
 	}

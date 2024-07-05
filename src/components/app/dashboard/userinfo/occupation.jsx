@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/occupation.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/occupation.module.scss'
 
 const Occupation = ({
 	userId,

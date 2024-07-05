@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/avatar.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/avatar.module.scss'
 
 const Avatar = ({
 	userId,

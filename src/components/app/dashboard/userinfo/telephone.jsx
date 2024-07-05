@@ -4,43 +4,43 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/profileInfo.module.scss'
 
-const Email = ({
-	gatsbyId,
+const Telephone = ({
+	userId,
 	apiURL,
 	token,
 	setSuccess,
-	email,
-	setEmail,
+	telephone,
+	setTelephone,
 	loadingData,
 	setValidationMessage
 }) => {
-	const [initialValue, setInitialValue] = useState(email)
+	const [initialValue, setInitialValue] = useState(telephone)
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	useEffect(() => {
 		if (!initialValue) {
-			setInitialValue(email)
+			setInitialValue(telephone)
 		}
 	})
 
-	const setEmailHandler = e => {
-		setEmail(e.target.value.toLowerCase())
+	const setTelephoneHandler = e => {
+		setTelephone(e.target.value)
 		setValidationError(null)
 		setValidationMessage(null)
 	}
 
 	const validateInput = value => {
-		if (value.length < 2) {
-			const errorMessage = 'Minstens 2 karakters'
+		if (value.length < 9) {
+			const errorMessage = 'Minstens 9 karakters'
 			setValidationError(errorMessage)
 			setValidationMessage(errorMessage)
 			return false
 		}
-		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+		const regex = /^(\+31|0)(\s|-)?(6\s?\d{8}|[1-9]\d\s?\d{6,7})$/
 
 		if (!regex.test(value)) {
-			const errorMessage = 'Voer een geldig e-mailadres in.'
+			const errorMessage = 'Vul een valide telefoonnummer in.'
 			setValidationError(errorMessage)
 			setValidationMessage(errorMessage)
 			return false
@@ -51,53 +51,56 @@ const Email = ({
 		return true
 	}
 
-	const submitEmail = async e => {
+	const submitTelephone = async e => {
 		e.preventDefault()
 
-		if (!validateInput(email)) {
+		if (!validateInput(telephone)) {
 			return
 		}
 
 		setIsSubmitting(true)
 
 		const params = {
-			email: email
+			telephone: telephone
 		}
 		try {
-			await axios.put(`${apiURL}/api/users/${gatsbyId}`, params, {
-				headers: {
-					Authorization: `Bearer ${token}`
+			await axios.put(
+				`${apiURL}/api/instanties/${userId}`,
+				{ data: params },
+				{
+					headers: {
+						Authorization: `Bearer ${token}`
+					}
 				}
-			})
+			)
 
-			setSuccess('E-mailadres succesvol geüpdatet')
+			setSuccess('Telefoonnummer succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
-			setInitialValue(email)
+			setInitialValue(telephone)
 		} catch (error) {
-			console.error('Error updating email:', error)
+			console.error('Error updating telephone:', error)
 		} finally {
 			setIsSubmitting(false)
 		}
 	}
 
 	return (
-		<form onSubmit={submitEmail} className={styles.profileField} noValidate>
-			<label htmlFor="email">E-mailadres</label>
+		<form onSubmit={submitTelephone} className={styles.profileField} noValidate>
+			<label htmlFor="telephone">Telefoonnummer</label>
 			<input
-				id="email"
-				type="email"
-				name="email"
-				placeholder="voorbeeld@email.nl"
-				value={email}
-				onChange={setEmailHandler}
+				id="telephone"
+				type="text"
+				name="telephone"
+				placeholder="bijv. +31628213134"
+				value={telephone}
+				onChange={setTelephoneHandler}
 				disabled={loadingData || isSubmitting}
 				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-
 			<button
 				type="submit"
-				title="Sla e-mailadres op"
-				disabled={email === initialValue || isSubmitting}
+				title="Sla telefoonnummer op"
+				disabled={telephone === initialValue || isSubmitting}
 			>
 				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
@@ -105,4 +108,4 @@ const Email = ({
 	)
 }
 
-export default Email
+export default Telephone

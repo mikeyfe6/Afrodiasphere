@@ -181,6 +181,25 @@
 		}
 	}
 
+	.contact-info {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1.5em;
+		margin-bottom: 2em;
+
+		@include laptop {
+			grid-template-columns: 1fr;
+		}
+
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include phablet {
+			grid-template-columns: 1fr;
+		}
+	}
+
 	.socials {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

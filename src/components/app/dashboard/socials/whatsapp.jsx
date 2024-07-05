@@ -25,7 +25,7 @@ const Whatsapp = ({ waLink, setWaLink, handleSmLinkChange, loadingData }) => {
 					name="walink"
 					type="text"
 					maxLength="15"
-					placeholder="bijv.: 31612345678"
+					placeholder="bijv. 31612345678"
 					value={waLink}
 					onChange={setWaHandler}
 					disabled={loadingData}

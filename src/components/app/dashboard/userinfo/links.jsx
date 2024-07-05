@@ -2,7 +2,7 @@ import React, { useState, useLayoutEffect, useCallback, useRef } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../styles/modules/dashboard/links.module.scss'
+import * as styles from '../../../../styles/modules/dashboard/links.module.scss'
 
 const Links = ({
 	apiURL,

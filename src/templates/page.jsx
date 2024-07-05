@@ -34,6 +34,8 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const [biography, setBiography] = useState('')
 	const [links, setLinks] = useState([])
 
+	const [telephone, setTelephone] = useState('')
+	const [mail, setMail] = useState('')
 	const [address, setAddress] = useState({
 		location: '',
 		latitude: null,
@@ -62,6 +64,8 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 			setUsername(res.data.data.attributes.profile)
 			setOccupate(res.data.data.attributes.occupate)
 			setBiography(res.data.data.attributes.biography)
+			setTelephone(res.data.data.attributes.telephone)
+			setMail(res.data.data.attributes.email)
 			setFbLink(res.data.data.attributes.facebooklink)
 			setTwLink(res.data.data.attributes.twitterlink)
 			setIgLink(res.data.data.attributes.instagramlink)
@@ -81,7 +85,7 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const Marker = ({ lat, lng }) => {
 		return (
 			<div data-lat={lat} data-lng={lng} className={mapsStyles.marker}>
-				<img src={avatar} alt={'title'} />
+				<img src={avatar} alt={username} />
 			</div>
 		)
 	}
@@ -107,7 +111,31 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
       /> */}
 
 			<div className={`theme-${color}`}>
-				<img src={avatar} alt="avatar" />
+				<div className={`theme-avatar-contact`}>
+					{telephone && (
+						<a
+							href={`tel:${telephone}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							className={`theme-telephone`}
+						>
+							<i className="fa-solid fa-phone fa-xl" />
+						</a>
+					)}
+
+					<img src={avatar} alt={username} />
+
+					{mail && (
+						<a
+							href={`mailto:${mail}`}
+							rel="noopener noreferrer"
+							target="_blank"
+							className={`theme-email`}
+						>
+							<i className="fa-solid fa-envelope fa-xl" />
+						</a>
+					)}
+				</div>
 
 				<h1 className={`theme-${color}-username`}>{username}</h1>
 

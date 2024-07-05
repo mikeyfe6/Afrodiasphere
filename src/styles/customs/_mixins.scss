@@ -148,21 +148,6 @@
 	position: relative;
 	text-align: center;
 	padding: 5em 0 15em;
-
-	> img {
-		width: 175px;
-		height: 175px;
-		border-radius: 50%;
-		border: 3px solid $whiteColor;
-		object-fit: cover;
-		overflow: hidden;
-		margin-bottom: 2em;
-
-		@include mobile {
-			width: 125px;
-			height: 125px;
-		}
-	}
 }
 
 @mixin pageUsername {
@@ -246,11 +231,17 @@
 	justify-content: center;
 	gap: 1.5em;
 
-	> a > i {
-		font-size: 1.75em;
+	> a {
+		&:hover {
+			opacity: 0.75;
+		}
 
-		@include mobile {
-			font-size: 1.5em;
+		> i {
+			font-size: 1.75em;
+
+			@include mobile {
+				font-size: 1.5em;
+			}
 		}
 	}
 }

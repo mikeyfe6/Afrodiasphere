@@ -163,7 +163,7 @@ const Address = ({
 					<input
 						type="text"
 						onChange={handleInputChange}
-						placeholder="Bijv. Kelbergen 300, 1104LJ"
+						placeholder="bijv. Kelbergen 300, 1104LJ"
 						id="address"
 						name="address"
 						value={inputValue}

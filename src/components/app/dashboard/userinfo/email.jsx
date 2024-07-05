@@ -4,28 +4,28 @@ import axios from 'axios'
 
 import * as styles from '../../../../styles/modules/dashboard/profileInfo.module.scss'
 
-const Email = ({
-	gatsbyId,
+const Mail = ({
+	userId,
 	apiURL,
 	token,
 	setSuccess,
-	email,
-	setEmail,
+	mail,
+	setMail,
 	loadingData,
 	setValidationMessage
 }) => {
-	const [initialValue, setInitialValue] = useState(email)
+	const [initialValue, setInitialValue] = useState(mail)
 	const [validationError, setValidationError] = useState(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	useEffect(() => {
 		if (!initialValue) {
-			setInitialValue(email)
+			setInitialValue(mail)
 		}
 	})
 
-	const setEmailHandler = e => {
-		setEmail(e.target.value.toLowerCase())
+	const setMailHandler = e => {
+		setMail(e.target.value.toLowerCase())
 		setValidationError(null)
 		setValidationMessage(null)
 	}
@@ -51,53 +51,56 @@ const Email = ({
 		return true
 	}
 
-	const submitEmail = async e => {
+	const submitMail = async e => {
 		e.preventDefault()
 
-		if (!validateInput(email)) {
+		if (!validateInput(mail)) {
 			return
 		}
 
 		setIsSubmitting(true)
 
 		const params = {
-			email: email
+			email: mail
 		}
 		try {
-			await axios.put(`${apiURL}/api/users/${gatsbyId}`, params, {
-				headers: {
-					Authorization: `Bearer ${token}`
+			await axios.put(
+				`${apiURL}/api/instanties/${userId}`,
+				{ data: params },
+				{
+					headers: {
+						Authorization: `Bearer ${token}`
+					}
 				}
-			})
+			)
 
 			setSuccess('E-mailadres succesvol geüpdatet')
 			setTimeout(() => setSuccess(null), 5000)
-			setInitialValue(email)
+			setInitialValue(mail)
 		} catch (error) {
-			console.error('Error updating email:', error)
+			console.error('Error updating telephone:', error)
 		} finally {
 			setIsSubmitting(false)
 		}
 	}
 
 	return (
-		<form onSubmit={submitEmail} className={styles.profileField} noValidate>
-			<label htmlFor="email">E-mailadres</label>
+		<form onSubmit={submitMail} className={styles.profileField} noValidate>
+			<label htmlFor="mail">E-mailadres</label>
 			<input
-				id="email"
+				id="mail"
 				type="email"
-				name="email"
+				name="telephone"
 				placeholder="voorbeeld@email.nl"
-				value={email}
-				onChange={setEmailHandler}
+				value={mail}
+				onChange={setMailHandler}
 				disabled={loadingData || isSubmitting}
 				style={{ color: validationError ? '#CA231E' : 'inherit' }}
 			/>
-
 			<button
 				type="submit"
 				title="Sla e-mailadres op"
-				disabled={email === initialValue || isSubmitting}
+				disabled={mail === initialValue || isSubmitting}
 			>
 				<i className="fa-solid fa-floppy-disk fa-lg" />
 			</button>
@@ -105,4 +108,4 @@ const Email = ({
 	)
 }
 
-export default Email
+export default Mail

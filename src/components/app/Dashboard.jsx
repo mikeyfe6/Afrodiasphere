@@ -11,23 +11,25 @@ import noavatar from '../../images/noavatar.png'
 
 import Sidebar from './dashboard/sidebar'
 import Preview from './dashboard/preview'
-import Avatar from './dashboard/avatar'
-import Profile from './dashboard/userdetails/profile'
+import Avatar from './dashboard/userinfo/avatar'
+import Profile from './dashboard/userinfo/profile'
 import Username from './dashboard/userdetails/username'
 import Email from './dashboard/userdetails/email'
 import Slug from './dashboard/userdetails/slug'
 import Password from './dashboard/userdetails/password'
 import Terminate from './dashboard/userdetails/terminate'
-import Occupation from './dashboard/occupation'
-import Biography from './dashboard/userdetails/biography'
-import Address from './dashboard/userdetails/address'
+import Occupation from './dashboard/userinfo/occupation'
+import Biography from './dashboard/userinfo/biography'
+import Telephone from './dashboard/userinfo/telephone'
+import Mail from './dashboard/userinfo/email'
+import Address from './dashboard/userinfo/address'
 import Facebook from './dashboard/socials/facebook'
 import Twitter from './dashboard/socials/twitter'
 import Instagram from './dashboard/socials/instagram'
 import Whatsapp from './dashboard/socials/whatsapp'
 import TikTok from './dashboard/socials/tiktok'
 import Linkedin from './dashboard/socials/linkedin'
-import Links from './dashboard/links'
+import Links from './dashboard/userinfo/links'
 import Themes from './dashboard/themes'
 import AdsLink from './dashboard/adslink'
 
@@ -85,6 +87,9 @@ const DashboardPage = () => {
 
 	const [occupate, setOccupate] = useState('')
 	const [biography, setBiography] = useState('')
+
+	const [telephone, setTelephone] = useState('')
+	const [mail, setMail] = useState('')
 	const [address, setAddress] = useState({
 		location: '',
 		latitude: '',
@@ -136,9 +141,12 @@ const DashboardPage = () => {
 
 			setUserId(res.data.id)
 			setProfile(res.data.profile)
+			setSlug(res.data.slug)
 			setOccupate(res.data.occupate || '')
 			setBiography(res.data.biography)
-			setSlug(res.data.slug)
+			setProfile(res.data.profile)
+			setTelephone(res.data.telephone)
+			setMail(res.data.email)
 			setFbLink(res.data.facebooklink || '')
 			setIgLink(res.data.instagramlink || '')
 			setLiLink(res.data.linkedinlink || '')
@@ -414,7 +422,31 @@ const DashboardPage = () => {
 
 				<hr />
 
-				<h2>Gebruiker Info</h2>
+				<h2>Contact Info</h2>
+
+				<div className={styles.contactInfo}>
+					<Telephone
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						telephone={telephone}
+						setTelephone={setTelephone}
+						setSuccess={setSuccess}
+						setValidationMessage={setError}
+						loadingData={loadingData}
+					/>
+
+					<Mail
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						mail={mail}
+						setMail={setMail}
+						setSuccess={setSuccess}
+						setValidationMessage={setError}
+						loadingData={loadingData}
+					/>
+				</div>
 
 				<Address
 					userId={userId}
@@ -422,8 +454,8 @@ const DashboardPage = () => {
 					token={token}
 					preview={preview}
 					address={address}
-					setSuccess={setSuccess}
 					setAddress={setAddress}
+					setSuccess={setSuccess}
 					setValidationMessage={setError}
 					loadingData={loadingData}
 				/>
