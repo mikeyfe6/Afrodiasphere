@@ -86,10 +86,20 @@
 				text-overflow: ellipsis;
 				max-width: 100%;
 
-				text-decoration-color: darkgreen;
+				background: $ashColor;
+				border-radius: 5px;
+
+				border: 1px solid $transColor;
+
+				padding: 0.5em 1em;
 
 				> a {
-					color: #cc9932;
+					color: $primaryColor;
+
+					span {
+						color: $whiteColor;
+						margin: 0 0.25em;
+					}
 
 					&:hover {
 						opacity: 0.75;
