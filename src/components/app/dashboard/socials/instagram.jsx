@@ -14,10 +14,7 @@ const Instagram = ({ igLink, setIgLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="iglink">
-					<i
-						className="fa-brands fa-instagram fa-xl"
-						style={{ color: '#F81F58' }}
-					/>
+					<i className="fa-brands fa-instagram" style={{ color: '#F81F58' }} />
 					instagram.com/
 				</label>
 

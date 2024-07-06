@@ -188,6 +188,14 @@
 				opacity: 0.75;
 			}
 		}
+
+		& > * {
+			display: none;
+		}
+
+		& > :nth-child(-n + 7) {
+			display: block;
+		}
 	}
 
 	&-bg {

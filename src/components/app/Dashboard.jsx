@@ -29,6 +29,10 @@ import Instagram from './dashboard/socials/instagram'
 import Whatsapp from './dashboard/socials/whatsapp'
 import TikTok from './dashboard/socials/tiktok'
 import Linkedin from './dashboard/socials/linkedin'
+import Pinterest from './dashboard/socials/pinterest'
+import Snapchat from './dashboard/socials/snapchat'
+import Youtube from './dashboard/socials/youtube'
+import Patreon from './dashboard/socials/patreon'
 import Links from './dashboard/userinfo/links'
 import Themes from './dashboard/themes'
 import AdsLink from './dashboard/adslink'
@@ -102,13 +106,22 @@ const DashboardPage = () => {
 	const [waLink, setWaLink] = useState('')
 	const [tkLink, setTkLink] = useState('')
 	const [liLink, setLiLink] = useState('')
+	const [piLink, setPiLink] = useState('')
+	const [snLink, setSnLink] = useState('')
+	const [ytLink, setYtLink] = useState('')
+	const [paLink, setPaLink] = useState('')
 
 	const [smLinks, setSmLinks] = useState({
 		facebook: '',
 		twitter: '',
 		instagram: '',
 		whatsapp: '',
-		tiktok: ''
+		tiktok: '',
+		linkedin: '',
+		pinterest: '',
+		snapchat: '',
+		youtube: '',
+		patreon: ''
 	})
 
 	const [changedSmLinks, setChangedSmLinks] = useState({})
@@ -153,6 +166,10 @@ const DashboardPage = () => {
 			setTkLink(res.data.tiktoklink || '')
 			setTwLink(res.data.twitterlink || '')
 			setWaLink(res.data.whatsapplink || '')
+			setPiLink(res.data.pinterestlink || '')
+			setSnLink(res.data.snapchatlink || '')
+			setYtLink(res.data.youtubelink || '')
+			setPaLink(res.data.patreonlink || '')
 			setColor(res.data.bgfree)
 
 			if (res.data.address) {
@@ -241,6 +258,8 @@ const DashboardPage = () => {
 	}
 
 	const handleSaveSocials = async () => {
+		let allUpdatesSuccessful = true
+
 		for (const [name, hasChanged] of Object.entries(changedSmLinks)) {
 			if (hasChanged) {
 				const params = {
@@ -261,6 +280,7 @@ const DashboardPage = () => {
 				} catch {
 					setError(`Something went wrong updating your ${name} link`)
 					setTimeout(() => setError(null), 5000)
+					allUpdatesSuccessful = false
 				}
 
 				setChangedSmLinks(prevChangedLinks => ({
@@ -268,6 +288,21 @@ const DashboardPage = () => {
 					[name]: false
 				}))
 			}
+		}
+
+		if (allUpdatesSuccessful) {
+			setSmLinks({
+				facebook: '',
+				twitter: '',
+				instagram: '',
+				whatsapp: '',
+				tiktok: '',
+				linkedin: '',
+				pinterest: '',
+				snapchat: '',
+				youtube: '',
+				patreon: ''
+			})
 		}
 	}
 
@@ -305,6 +340,10 @@ const DashboardPage = () => {
 					waLink={waLink}
 					tkLink={tkLink}
 					liLink={liLink}
+					piLink={piLink}
+					snLink={snLink}
+					ytLink={ytLink}
+					paLink={paLink}
 					color={color}
 					loadingData={loadingData}
 				/>
@@ -531,6 +570,50 @@ const DashboardPage = () => {
 						setError={setError}
 						liLink={liLink}
 						setLiLink={setLiLink}
+						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
+					/>
+
+					<Pinterest
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						setError={setError}
+						piLink={piLink}
+						setPiLink={setPiLink}
+						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
+					/>
+
+					<Snapchat
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						setError={setError}
+						snLink={snLink}
+						setSnLink={setSnLink}
+						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
+					/>
+
+					<Youtube
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						setError={setError}
+						ytLink={ytLink}
+						setYtLink={setYtLink}
+						handleSmLinkChange={handleSmLinkChange}
+						loadingData={loadingData}
+					/>
+
+					<Patreon
+						userId={userId}
+						apiURL={apiURL}
+						token={token}
+						setError={setError}
+						paLink={paLink}
+						setPaLink={setPaLink}
 						handleSmLinkChange={handleSmLinkChange}
 						loadingData={loadingData}
 					/>

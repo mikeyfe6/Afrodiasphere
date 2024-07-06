@@ -13,10 +13,11 @@ const AdsLink = ({ slug, baseURL }) => {
 
 			<div className={styles.adsSlug}>
 				{slug ? (
-					<Link
-						to={`/${slug}/`}
-						title={`${baseURL}/${slug}/`}
-					>{`✨../${slug}`}</Link>
+					<Link to={`/${slug}/`} title={`${baseURL}/${slug}/`}>
+						<span>・</span>
+						<span>/</span>
+						<span>{slug}</span>
+					</Link>
 				) : (
 					<p>Link wordt gemaakt...</p>
 				)}

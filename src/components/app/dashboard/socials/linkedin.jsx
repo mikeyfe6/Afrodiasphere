@@ -14,10 +14,7 @@ const Linkedin = ({ liLink, setLiLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="lilink">
-					<i
-						className="fa-brands fa-linkedin fa-xl"
-						style={{ color: '#0366C3' }}
-					/>
+					<i className="fa-brands fa-linkedin" style={{ color: '#0366C3' }} />
 					linkedin.com/
 				</label>
 				<input

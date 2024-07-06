@@ -20,6 +20,10 @@ const Preview = ({
 	waLink,
 	tkLink,
 	liLink,
+	piLink,
+	snLink,
+	ytLink,
+	paLink,
 	color
 }) => {
 	const getThemeClassName = element => {
@@ -110,8 +114,8 @@ const Preview = ({
 
 				{twLink && twLink.length > 1 && (
 					<a
-						href={`https://twitter.com/${twLink}`}
-						title={`https://twitter.com/${twLink}`}
+						href={`https://x.com/${twLink}`}
+						title={`https://x.com/${twLink}`}
 						rel="noopener noreferrer"
 						target="_blank"
 					>
@@ -154,12 +158,56 @@ const Preview = ({
 
 				{liLink && liLink.length > 1 && (
 					<a
-						href={`https://www.linkedin.com/${liLink}`}
-						title={`https://www.linkedin.com/${liLink}`}
+						href={`https://linkedin.com/${liLink}`}
+						title={`https://linkedin.com/${liLink}`}
 						rel="noopener noreferrer"
 						target="_blank"
 					>
 						<i className="fa-brands fa-linkedin" />
+					</a>
+				)}
+
+				{piLink && piLink.length > 1 && (
+					<a
+						href={`https://pinterest.com/${piLink}`}
+						title={`https://pinterest.com/${piLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<i className="fa-brands fa-pinterest" />
+					</a>
+				)}
+
+				{snLink && snLink.length > 1 && (
+					<a
+						href={`https://www.snapchat.com/${snLink}`}
+						title={`https://www.snapchat.com/${snLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<i className="fa-brands fa-snapchat" />
+					</a>
+				)}
+
+				{ytLink && ytLink.length > 1 && (
+					<a
+						href={`https://www.youtube.com/${ytLink}`}
+						title={`https://www.youtube.com/${ytLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<i className="fa-brands fa-youtube" />
+					</a>
+				)}
+
+				{paLink && paLink.length > 1 && (
+					<a
+						href={`https://www.patreon.com/${paLink}`}
+						title={`https://www.patreon.com/${paLink}`}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<i className="fa-brands fa-patreon" />
 					</a>
 				)}
 			</div>

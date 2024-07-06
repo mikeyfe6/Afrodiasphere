@@ -14,10 +14,7 @@ const TikTok = ({ tkLink, setTkLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="tklink">
-					<i
-						className="fa-brands fa-tiktok fa-xl"
-						style={{ color: '#4BE1EB' }}
-					/>
+					<i className="fa-brands fa-tiktok" style={{ color: '#4BE1EB' }} />
 					tiktok.com/
 				</label>
 				<input

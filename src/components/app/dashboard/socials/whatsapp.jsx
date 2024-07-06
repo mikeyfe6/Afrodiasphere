@@ -14,10 +14,7 @@ const Whatsapp = ({ waLink, setWaLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="walink">
-					<i
-						className="fa-brands fa-whatsapp fa-xl"
-						style={{ color: '#3FD252' }}
-					/>
+					<i className="fa-brands fa-whatsapp" style={{ color: '#3FD252' }} />
 					<span>wa.me/</span>
 				</label>
 				<input

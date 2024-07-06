@@ -14,11 +14,8 @@ const Twitter = ({ twLink, setTwLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="twlink">
-					<i
-						className="fa-brands fa-x-twitter fa-xl"
-						style={{ color: '#000' }}
-					/>
-					twitter.com/
+					<i className="fa-brands fa-x-twitter" style={{ color: '#000' }} />
+					x.com/
 				</label>
 				<input
 					id="twlink"

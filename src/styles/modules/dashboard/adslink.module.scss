@@ -48,8 +48,22 @@
 			color: $primaryColor;
 			text-transform: lowercase;
 
+			span {
+				&:nth-child(1) {
+					color: $secondaryColor;
+				}
+
+				&:nth-child(2) {
+					color: $whiteColor;
+				}
+
+				&:nth-child(3) {
+					margin: 0 0 0 0.25em;
+				}
+			}
+
 			&:hover {
-				color: $secondaryColor;
+				opacity: 0.75;
 			}
 		}
 	}

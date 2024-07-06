@@ -14,10 +14,7 @@ const Facebook = ({ fbLink, setFbLink, handleSmLinkChange, loadingData }) => {
 		<form className={styles.socialField}>
 			<div>
 				<label htmlFor="fblink">
-					<i
-						className="fa-brands fa-facebook-f fa-xl"
-						style={{ color: '#4867AA' }}
-					/>
+					<i className="fa-brands fa-facebook-f" style={{ color: '#4867AA' }} />
 					facebook.com/
 				</label>
 				<input

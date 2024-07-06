@@ -26,6 +26,10 @@
 				min-width: 145px;
 				cursor: pointer;
 
+				> i {
+					font-size: 1.5em;
+				}
+
 				@include boxShadow;
 			}
 

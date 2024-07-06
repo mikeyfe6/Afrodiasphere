@@ -47,6 +47,11 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 	const [igLink, setIgLink] = useState('')
 	const [waLink, setWaLink] = useState('')
 	const [tkLink, setTkLink] = useState('')
+	const [liLink, setLiLink] = useState('')
+	const [piLink, setPiLink] = useState('')
+	const [snLink, setSnLink] = useState('')
+	const [ytLink, setYtLink] = useState('')
+	const [paLink, setPaLink] = useState('')
 
 	const AdsUser = getUser()
 
@@ -71,6 +76,11 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 			setIgLink(res.data.data.attributes.instagramlink)
 			setWaLink(res.data.data.attributes.whatsapplink)
 			setTkLink(res.data.data.attributes.tiktoklink)
+			setLiLink(res.data.data.attributes.linkedinlink)
+			setPiLink(res.data.data.attributes.pinterestlink)
+			setSnLink(res.data.data.attributes.snapchatlink)
+			setYtLink(res.data.data.attributes.youtubelink)
+			setPaLink(res.data.data.attributes.patreonlink)
 			setAddress(res.data.data.attributes.address)
 
 			if (!res.data.data.attributes.avatar.data) {
@@ -201,7 +211,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 							href={`https://www.facebook.com/${fbLink}`}
 							rel="noopener noreferrer"
 							target="_blank"
-							id="fb"
 						>
 							<i className="fa-brands fa-facebook-f" />
 						</a>
@@ -209,10 +218,9 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 					{twLink && twLink.length > 1 && (
 						<a
-							href={`https://twitter.com/${twLink}`}
+							href={`https://x.com/${twLink}`}
 							rel="noopener noreferrer"
 							target="_blank"
-							id="twhidesm"
 						>
 							<i className="fa-brands fa-x-twitter" />
 						</a>
@@ -223,7 +231,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 							href={`https://www.instagram.com/${igLink}`}
 							rel="noopener noreferrer"
 							target="_blank"
-							id="ighidesm"
 						>
 							<i className="fa-brands fa-instagram" />
 						</a>
@@ -234,7 +241,6 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 							href={`https://wa.me/${waLink}`}
 							rel="noopener noreferrer"
 							target="_blank"
-							id="wahidesm"
 						>
 							<i className="fa-brands fa-whatsapp" />
 						</a>
@@ -245,20 +251,61 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 							href={`https://www.tiktok.com/@${tkLink}`}
 							rel="noopener noreferrer"
 							target="_blank"
-							id="tkhidesm"
 						>
 							<i className="fa-brands fa-tiktok" />
 						</a>
 					)}
 
-					{/* <a
-						href={`https://www.tiktok.com/@${tkLink}`}
-						rel="noopener noreferrer"
-						target="_blank"
-						id="tkhidesm"
-					>
-						<i className="fa-brands fa-linkedin fa-xl" />
-					</a> */}
+					{liLink && liLink.length > 1 && (
+						<a
+							href={`https://linkedin.com/${liLink}`}
+							title={`https://linkedin.com/${liLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<i className="fa-brands fa-linkedin" />
+						</a>
+					)}
+
+					{piLink && piLink.length > 1 && (
+						<a
+							href={`https://pinterest.com/${piLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<i className="fa-brands fa-pinterest" />
+						</a>
+					)}
+
+					{snLink && snLink.length > 1 && (
+						<a
+							href={`https://www.snapchat.com/${snLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<i className="fa-brands fa-snapchat" />
+						</a>
+					)}
+
+					{ytLink && ytLink.length > 1 && (
+						<a
+							href={`https://www.youtube.com/${ytLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<i className="fa-brands fa-youtube" />
+						</a>
+					)}
+
+					{paLink && paLink.length > 1 && (
+						<a
+							href={`https://www.patreon.com/${paLink}`}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<i className="fa-brands fa-patreon" />
+						</a>
+					)}
 				</div>
 				<Link to="/" className={`theme-footer`}>
 					<img src={afroLogo} alt="" />
