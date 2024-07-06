@@ -20,18 +20,27 @@
 		}
 	}
 
-	&-mail {
-		position: absolute;
-		top: 17%;
-		left: 16%;
-		z-index: 1;
-	}
-
+	&-mail,
 	&-telephone {
 		position: absolute;
 		top: 17%;
-		right: 16%;
 		z-index: 1;
+
+		@include mobile {
+			top: 14%;
+
+			> i {
+				font-size: 1.125em;
+			}
+		}
+	}
+
+	&-mail {
+		left: 16%;
+	}
+
+	&-telephone {
+		right: 16%;
 	}
 
 	&-avatar {
