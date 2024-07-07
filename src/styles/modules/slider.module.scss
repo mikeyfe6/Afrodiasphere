@@ -13,7 +13,7 @@
 	&-slide {
 		> div {
 			background: linear-gradient(135deg, rgba(0 0 0 / 50%), $blackColor);
-			border: 2px solid $whiteColor;
+			border: 2px solid rgba($whiteColor, 0.825);
 			border-radius: 12.5px;
 			padding: 1.25em;
 			text-align: center;
@@ -49,14 +49,22 @@
 				text-overflow: ellipsis;
 				max-width: 100%;
 
-				margin-bottom: 0.25em;
+				margin-bottom: 0.5em;
 			}
 
 			> .occupate {
 				font-size: 0.75rem;
-				color: #2eb4e9;
-
+				color: rgba($whiteColor, 0.875);
+				background: rgba($secondaryColor, 0.625);
+				border: 1px solid $secondaryColor;
+				border-radius: 5px;
+				padding: 2.5px 7.5px;
 				margin-bottom: 1.75em;
+				max-width: 125px;
+
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 
 			> .biography {

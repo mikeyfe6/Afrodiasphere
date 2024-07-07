@@ -54,6 +54,21 @@ const config: GatsbyConfig = {
 				}
 			}
 		},
+		{
+			resolve: 'gatsby-plugin-robots-txt',
+			options: {
+				policy: [
+					{
+						userAgent: '*',
+						disallow: ['/[...]/']
+					},
+					{
+						userAgent: '*',
+						allow: '/'
+					}
+				]
+			}
+		},
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-catch-links`,
 		`gatsby-plugin-sass`,
