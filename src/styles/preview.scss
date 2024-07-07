@@ -89,19 +89,19 @@
 	&-occupate {
 		position: absolute;
 		top: 37.5%;
-		left: 38%;
+		left: 50%;
+		transform: translateX(-50%);
 		margin: 0 auto;
 		text-align: center;
-		width: 75px;
+		width: fit-content;
 		border-radius: 7.5px;
-		font-size: 0.625rem;
-		padding: 2.5px;
+		font-size: 0.6rem;
+		padding: 2.5px 7.5px;
+		white-space: nowrap;
 		z-index: 1;
 
 		@include mobile {
 			top: 34%;
-			left: 33%;
-			max-width: 25ch;
 		}
 	}
 
@@ -174,7 +174,7 @@
 		gap: 0.75em;
 		top: 90%;
 		left: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(-50%);
 		z-index: 1;
 
 		&:nth-child(n) {

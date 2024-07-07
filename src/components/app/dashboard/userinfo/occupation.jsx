@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import axios from 'axios'
 
-import * as styles from '../../../../styles/modules/dashboard/occupation.module.scss'
+import * as occupationStyles from '../../../../styles/modules/dashboard/occupation.module.scss'
 
 const Occupation = ({
 	userId,
@@ -13,6 +13,8 @@ const Occupation = ({
 	occupate,
 	setOccupate
 }) => {
+	const [expandedSection, setExpandedSection] = useState(null)
+
 	const onOccupateChange = async e => {
 		setOccupate(e.target.value)
 
@@ -31,128 +33,132 @@ const Occupation = ({
 	}
 
 	useEffect(() => {
-		if (occupate === 'bedrijf') {
-			document
-				.getElementById('currentBedrijf')
-				.classList.add(styles.currentOccupate)
-		} else {
-			document
-				.getElementById('currentBedrijf')
-				.classList.remove(styles.currentOccupate)
+		const occupationCategories = {
+			bedrijf: 'Werkgevers en Organisaties',
+			stichting: 'Werkgevers en Organisaties',
+			'non-profit organisatie': 'Werkgevers en Organisaties',
+			'zelfstandig ondernemer': 'Zelfstandigen en Freelancers',
+			freelancer: 'Zelfstandigen en Freelancers',
+			artiest: 'Creatieve en Kunstzinnige Beroepen',
+			musicus: 'Creatieve en Kunstzinnige Beroepen',
+			schrijver: 'Creatieve en Kunstzinnige Beroepen',
+			'beeldend kunstenaar': 'Creatieve en Kunstzinnige Beroepen',
+			docent: 'Onderwijs en Onderzoek',
+			onderzoeker: 'Onderwijs en Onderzoek',
+			student: 'Onderwijs en Onderzoek',
+			stagiair: 'Onderwijs en Onderzoek',
+			technicus: 'Technische en Vakgerichte Beroepen',
+			ingenieur: 'Technische en Vakgerichte Beroepen',
+			'medisch professional': 'Gezondheidszorg en Welzijn',
+			verzorger: 'Gezondheidszorg en Welzijn',
+			'administratief medewerker': 'Administratie en Kantoorwerk',
+			'kantoor medewerker': 'Administratie en Kantoorwerk',
+			hobbyist: 'Overige Beroepen',
+			vrijwilliger: 'Overige Beroepen',
+			gepensioneerde: 'Overige Beroepen',
+			werkzoekende: 'Overige Beroepen',
+			overig: 'Overige Beroepen',
+			geen: 'Overige Beroepen'
 		}
-		if (occupate === 'zelfstandig') {
-			document
-				.getElementById('currentZelfstandig')
-				.classList.add(styles.currentOccupate)
-		} else {
-			document
-				.getElementById('currentZelfstandig')
-				.classList.remove(styles.currentOccupate)
-		}
-		if (occupate === 'hobbyist') {
-			document
-				.getElementById('currentHobbyist')
-				.classList.add(styles.currentOccupate)
-		} else {
-			document
-				.getElementById('currentHobbyist')
-				.classList.remove(styles.currentOccupate)
-		}
-		if (occupate === 'stichting') {
-			document
-				.getElementById('currentStichting')
-				.classList.add(styles.currentOccupate)
-		} else {
-			document
-				.getElementById('currentStichting')
-				.classList.remove(styles.currentOccupate)
-		}
-		if (occupate === 'artist') {
-			document
-				.getElementById('currentArtist')
-				.classList.add(styles.currentOccupate)
-		} else {
-			document
-				.getElementById('currentArtist')
-				.classList.remove(styles.currentOccupate)
+
+		const currentCategory = occupationCategories[occupate]
+		if (currentCategory) {
+			setExpandedSection(currentCategory)
 		}
 	}, [occupate])
 
+	const toggleSection = section => {
+		setExpandedSection(prevSection =>
+			prevSection === section ? null : section
+		)
+	}
+
 	return (
-		<form className={styles.occupation}>
+		<form className={occupationStyles.occupation}>
 			<fieldset>
 				<legend>Occupatie</legend>
-				<input
-					id="bedrijf"
-					type="radio"
-					value="bedrijf"
-					name="occupate"
-					checked={occupate === 'bedrijf'}
-					onChange={onOccupateChange}
-				/>
-				<label htmlFor="bedrijf" id="currentBedrijf" title="Ik ben een bedrijf">
-					Bedrijf
-				</label>
 
-				<input
-					id="zelfstandig"
-					type="radio"
-					value="zelfstandig"
-					name="occupate"
-					checked={occupate === 'zelfstandig'}
-					onChange={onOccupateChange}
-				/>
-				<label
-					htmlFor="zelfstandig"
-					id="currentZelfstandig"
-					title="Ik ben zzp-er / eenmanszaak"
-				>
-					Zelfstandig
-				</label>
-
-				<input
-					id="hobbyist"
-					type="radio"
-					value="hobbyist"
-					name="occupate"
-					checked={occupate === 'hobbyist'}
-					onChange={onOccupateChange}
-				/>
-				<label
-					htmlFor="hobbyist"
-					id="currentHobbyist"
-					title="Ik ben een hobbyist"
-				>
-					Hobbyist
-				</label>
-
-				<input
-					id="stichting"
-					type="radio"
-					value="stichting"
-					name="occupate"
-					checked={occupate === 'stichting'}
-					onChange={onOccupateChange}
-				/>
-				<label
-					htmlFor="stichting"
-					id="currentStichting"
-					title="Ik ben een stichting"
-				>
-					Stichting
-				</label>
-
-				<input
-					id="artist"
-					type="radio"
-					value="artist"
-					name="occupate"
-					checked={occupate === 'artist'}
-					onChange={onOccupateChange}
-				/>
-				<label htmlFor="artist" id="currentArtist" title="Ik ben een artiest">
-					Artist
-				</label>
+				<div>
+					{[
+						{
+							category: 'Werkgevers en Organisaties',
+							occupations: ['bedrijf', 'stichting', 'non-profit organisatie']
+						},
+						{
+							category: 'Zelfstandigen en Freelancers',
+							occupations: ['zelfstandig ondernemer', 'freelancer']
+						},
+						{
+							category: 'Creatieve en Kunstzinnige Beroepen',
+							occupations: [
+								'artiest',
+								'musicus',
+								'schrijver',
+								'beeldend kunstenaar'
+							]
+						},
+						{
+							category: 'Onderwijs en Onderzoek',
+							occupations: ['docent', 'onderzoeker', 'student', 'stagiair']
+						},
+						{
+							category: 'Technische en Vakgerichte Beroepen',
+							occupations: ['technicus', 'ingenieur']
+						},
+						{
+							category: 'Gezondheidszorg en Welzijn',
+							occupations: ['medisch professional', 'verzorger']
+						},
+						{
+							category: 'Administratie en Kantoorwerk',
+							occupations: ['administratief medewerker', 'kantoor medewerker']
+						},
+						{
+							category: 'Overige Beroepen',
+							occupations: [
+								'hobbyist',
+								'vrijwilliger',
+								'gepensioneerde',
+								'werkzoekende',
+								'overig',
+								'geen'
+							]
+						}
+					].map(({ category, occupations }) => (
+						<div key={category} className={occupationStyles.collapsible}>
+							<button
+								type="button"
+								onClick={() => toggleSection(category)}
+								className={`${occupationStyles.category} ${expandedSection === category ? occupationStyles.active : ''}`}
+							>
+								{category}
+							</button>
+							{expandedSection === category && (
+								<div className={occupationStyles.choice}>
+									{occupations.map(occupation => (
+										<div key={occupation}>
+											<input
+												id={occupation.replace(/\s+/g, '')}
+												type="radio"
+												value={occupation}
+												name="occupate"
+												checked={occupate === occupation}
+												onChange={onOccupateChange}
+											/>
+											<label
+												htmlFor={occupation.replace(/\s+/g, '')}
+												title={`Ik ben ${occupation}`}
+											>
+												{occupation.charAt(0).toUpperCase() +
+													occupation.slice(1)}
+											</label>
+										</div>
+									))}
+								</div>
+							)}
+						</div>
+					))}
+				</div>
 			</fieldset>
 		</form>
 	)

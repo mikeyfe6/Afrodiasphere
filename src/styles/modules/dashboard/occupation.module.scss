@@ -1,13 +1,10 @@
 @import '../../configs/globals';
 
 .occupation {
-	fieldset {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		flex-wrap: wrap;
+	min-width: 300px;
 
-		legend {
+	fieldset {
+		> legend {
 			color: $primaryColor;
 			font-size: 0.75rem;
 			margin-bottom: 1em;
@@ -20,30 +17,72 @@
 				margin-left: 0.025em;
 			}
 		}
-	}
 
-	input {
-		display: none;
-	}
+		> div {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
 
-	label {
-		background: linear-gradient(135deg, #1a1a1a, $blackColor);
-		text-align: center;
-		min-width: 100px;
-		padding: 0.75em 1em;
-		border: 1px $primaryColor solid;
-		border-radius: 2.5px;
-		cursor: pointer;
+			> .collapsible {
+				border-radius: 2.5px;
+				font-size: 0.875rem;
 
-		@include boxShadow;
+				> button.category {
+					&.active {
+						color: $whiteColor;
 
-		&:hover {
-			border-color: $secondaryColor;
+						&::after {
+							transform: rotate(-180deg);
+							border-top: 0.375em solid $secondaryColor;
+						}
+					}
+
+					&::after {
+						content: '';
+						display: inline-block;
+						width: 0;
+						height: 0;
+						border-left: 0.375em solid transparent;
+						border-right: 0.375em solid transparent;
+						border-top: 0.375em solid $primaryColor;
+						margin-left: 0.75em;
+						transition: transform 0.3s;
+						vertical-align: 3px;
+					}
+				}
+
+				> .choice {
+					display: flex;
+					margin: 1.5em 0 1.25em;
+					gap: 1.75em 0.625em;
+					flex-wrap: wrap;
+
+					input {
+						display: none;
+
+						&:checked + label {
+							background: rgba($primaryColor, 0.625);
+							color: rgba($whiteColor, 0.825);
+						}
+					}
+
+					label {
+						background: linear-gradient(135deg, #1a1a1a, $blackColor);
+						text-align: center;
+						min-width: 100px;
+						padding: 0.75em 1em;
+						border: 1px $primaryColor solid;
+						border-radius: 2.5px;
+						cursor: pointer;
+
+						@include boxShadow;
+
+						&:hover {
+							border-color: $secondaryColor;
+						}
+					}
+				}
+			}
 		}
 	}
-}
-
-.current-occupate {
-	border: 1px $whiteColor solid !important;
-	color: $whiteColor !important;
 }

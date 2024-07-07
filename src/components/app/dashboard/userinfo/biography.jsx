@@ -31,8 +31,8 @@ const Biography = ({
 	}
 
 	const validateInput = value => {
-		if (value.length > 160) {
-			const errorMessage = 'Maximaal 160 karakters'
+		if (value.length > 240) {
+			const errorMessage = 'Maximaal 240 karakters'
 			setValidationError(errorMessage)
 			setValidationMessage(errorMessage)
 			return false
@@ -83,13 +83,19 @@ const Biography = ({
 				id="biography"
 				type="text"
 				name="biography"
-				placeholder="Voer hier een korte beschrijving in van max 160 tekens.."
+				placeholder="Voer hier een korte beschrijving in van max 240 tekens.."
 				value={biography || ''}
 				onChange={setBiographyHandler}
 				disabled={loadingData || isSubmitting}
-				style={{ color: validationError ? '#CA231E' : 'inherit' }}
+				style={{ borderColor: validationError ? '#CA231E' : '#cc9932' }}
 			/>
-			<span>{biography ? biography.length : 0} / 160</span>
+			<div>
+				<span style={{ color: biography.length > 240 ? '#CA231E' : '#cc9932' }}>
+					{' '}
+					{biography ? biography.length : 0}
+				</span>
+				<span> / 240</span>
+			</div>
 			<button
 				type="submit"
 				title="Sla biografie op"

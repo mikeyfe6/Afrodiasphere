@@ -168,12 +168,24 @@
 		display: flex;
 		justify-content: space-between;
 		margin: 2.5em 0;
+		gap: 2.5em;
 
-		@include mobile {
+		@include laptop {
 			flex-direction: column;
 		}
 
-		gap: 2em;
+		@include tablet {
+			flex-direction: row;
+		}
+
+		@include phablet {
+			flex-direction: column;
+		}
+
+		@include mobile {
+			margin: 2em 0;
+			gap: 2em;
+		}
 
 		label {
 			color: $primaryColor;
