@@ -39,13 +39,13 @@
 		padding-left: 2.5px;
 		color: $whiteColor;
 
+		@include smoothTrans;
+
 		img {
 			vertical-align: middle;
 			margin-left: 2.5px;
 			width: 25px;
 		}
-
-		@include smoothTrans;
 
 		&:hover {
 			filter: grayscale(0%);

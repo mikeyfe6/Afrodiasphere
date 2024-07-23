@@ -13,6 +13,8 @@
 
 	background: linear-gradient(135deg, rgba(0 0 0 / 67.5%), $thirdColor);
 
+	@include card(1em, 1em);
+
 	@include desktop {
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-areas:
@@ -40,6 +42,10 @@
 			'Slug';
 	}
 
+	@include mobile {
+		@include card(0.375em, 0.5em);
+	}
+
 	> section {
 		> h2 {
 			color: $ashColor;
@@ -62,12 +68,6 @@
 			margin: 2em auto 0.5em;
 		}
 	}
-
-	@include card(1em, 1em);
-
-	@include mobile {
-		@include card(0.375em, 0.5em);
-	}
 }
 
 // SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR  <--------------------------------------------------------------------------------> SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR SIDEBAR
@@ -78,6 +78,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	@include card(0, 1em);
 
 	@include desktop {
 		flex-direction: row;
@@ -95,8 +97,6 @@
 		flex-direction: row;
 		align-items: center;
 	}
-
-	@include card(0, 1em);
 
 	button {
 		align-self: flex-end;

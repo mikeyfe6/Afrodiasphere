@@ -1,4 +1,6 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
+
+import { useLocation } from '@reach/router'
 
 import { Link } from 'gatsby'
 import axios from 'axios'
@@ -55,6 +57,9 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 
 	const AdsUser = getUser()
 
+	const location = useLocation()
+	const baseURL = location.origin
+
 	useLayoutEffect(() => {
 		const getLinks = async () => {
 			const res = await axios.get(`${apiURL}/api/instanties/${id}/?populate=*`)
@@ -98,6 +103,27 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 				<img src={avatar} alt={username} />
 			</div>
 		)
+	}
+
+	const isShareSupported = () => {
+		return navigator.share !== undefined
+	}
+
+	const handleShare = async () => {
+		console.log(username, biography, slug)
+		if (navigator.share) {
+			try {
+				await navigator.share({
+					title: username,
+					text: biography,
+					url: baseURL + slug
+				})
+			} catch (error) {
+				console.error('Error sharing:', error)
+			}
+		} else {
+			console.error('Web Share API not supported in this browser.')
+		}
 	}
 
 	return (
@@ -313,6 +339,12 @@ const AdsTemplate = ({ pageContext: { persoon, slug, id } }) => {
 			</div>
 			{isLoggedIn() && isBrowser() && (
 				<div className="ads-user">
+					{isShareSupported() ?? (
+						<button onClick={handleShare}>
+							<i className="fa-solid fa-share-nodes fa-xl" />
+						</button>
+					)}
+
 					<Link to={`/dashboard/`} title="Ga naar jouw dashboard">
 						Dashboard
 					</Link>

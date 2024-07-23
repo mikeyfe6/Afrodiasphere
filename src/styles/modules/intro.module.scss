@@ -6,6 +6,16 @@
 	justify-content: space-between;
 	position: relative;
 
+	@include container(1em, 2em);
+
+	@include mobile {
+		flex-direction: column;
+		align-items: start;
+		position: static;
+
+		@include container(2em, 2em);
+	}
+
 	h1 {
 		color: $primaryColor;
 	}
@@ -48,18 +58,9 @@
 		}
 	}
 
-	@include container(1em, 2em);
-
-	@include mobile {
-		flex-direction: column;
-		align-items: start;
-		position: static;
-
-		@include container(2em, 2em);
-	}
-
 	button {
 		margin: 0 0.25em;
+
 		@include button(0.125em);
 	}
 

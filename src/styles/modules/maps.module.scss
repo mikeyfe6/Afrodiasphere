@@ -62,12 +62,13 @@
 		opacity: 0.75;
 		height: 250px;
 		border: 2px solid rgba($primaryColor, 82.5%);
+		border-radius: 5px;
 
 		@include mobile {
-			@include borderRadius(0);
-
 			border-right: none;
 			border-left: none;
+
+			@include borderRadius(0);
 		}
 
 		&::before,
@@ -93,8 +94,6 @@
 			right: 0;
 			background: linear-gradient(to left, $thirdColor, rgba(255, 255, 255, 0));
 		}
-
-		border-radius: 5px;
 
 		&:hover {
 			opacity: 1;

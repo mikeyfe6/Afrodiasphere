@@ -27,9 +27,9 @@
 	}
 
 	button {
-		@include dashButton;
-
 		align-self: flex-end;
+
+		@include dashButton;
 	}
 
 	textarea {

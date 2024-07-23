@@ -55,16 +55,16 @@
 	width: fit-content;
 	height: fit-content;
 
-	&:not(:disabled):hover {
-		transform: scale(0.97);
-	}
-
 	@if $type == 1 {
 		background: $primaryColor;
 		color: $ashColor;
 	} @else if $type == 2 {
 		background-color: $warningColor;
 		color: $whiteColor;
+	}
+
+	&:not(:disabled):hover {
+		transform: scale(0.97);
 	}
 }
 
@@ -81,15 +81,6 @@
 	border-radius: 3px;
 	white-space: nowrap;
 
-	&:not(:disabled):hover {
-		transform: scale(0.97);
-	}
-
-	&:disabled {
-		opacity: 0.5;
-		cursor: default;
-	}
-
 	@if $type == 1 {
 		min-width: 120px;
 
@@ -99,6 +90,15 @@
 		}
 	} @else if $type == 2 {
 		min-height: 44px;
+	}
+
+	&:not(:disabled):hover {
+		transform: scale(0.97);
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: default;
 	}
 }
 

@@ -106,11 +106,11 @@
 						color: $extraSubColor;
 						max-width: 85%;
 
+						@include clamp(2);
+
 						@include mobile {
 							max-width: 100%;
 						}
-
-						@include clamp(2);
 					}
 				}
 			}

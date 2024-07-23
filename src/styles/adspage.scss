@@ -4,46 +4,71 @@
 
 // ---------------------------------------------------------------------------------------- // USERNAME
 
-.ads-user {
-	position: absolute;
-	top: 15px;
-	right: 25%;
+.ads {
+	&-user {
+		position: absolute;
+		top: 15px;
+		right: 25%;
 
-	transform: translateX(75%);
+		transform: translateX(75%);
 
-	@include phablet {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		padding: 0 1em;
-		right: initial;
-		transform: none;
-	}
+		@include phablet {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			padding: 0 1em;
+			right: initial;
+			transform: none;
+		}
 
-	> a {
-		&:nth-of-type(1) {
-			margin-right: 1em;
+		> button {
+			margin-right: 1.5em;
+
+			@include smoothTrans;
+
+			@include phablet {
+				order: 2;
+				margin-left: auto;
+			}
 
 			&:hover {
 				opacity: 0.75;
-
-				@include smoothTrans;
 			}
 		}
 
-		&:nth-of-type(2) {
-			background: $primaryColor;
-			color: color.adjust($blackColor, $lightness: 5%);
-			padding: 0.25em 1em;
-			font-weight: 600;
-			border-radius: 5px;
-
-			&:hover {
-				opacity: 0.75;
-				color: $blackColor;
+		> a {
+			&:nth-of-type(1) {
+				margin-right: 2em;
 
 				@include smoothTrans;
+
+				@include phablet {
+					order: 1;
+				}
+
+				&:hover {
+					opacity: 0.75;
+				}
+			}
+
+			&:nth-of-type(2) {
+				background: $primaryColor;
+				color: color.adjust($blackColor, $lightness: 5%);
+				padding: 0.25em 1em;
+				font-weight: 600;
+				border-radius: 5px;
+
+				@include smoothTrans;
+
+				@include phablet {
+					order: 3;
+				}
+
+				&:hover {
+					opacity: 0.75;
+					color: $blackColor;
+				}
 			}
 		}
 	}
@@ -136,13 +161,13 @@
 		&-location {
 			color: yellow;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -197,13 +222,13 @@
 		&-location {
 			color: #878787;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -258,13 +283,13 @@
 		&-location {
 			color: #a8a8a8;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -319,13 +344,13 @@
 		&-location {
 			color: white;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: #878787 !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -380,13 +405,13 @@
 		&-location {
 			color: brown;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -441,13 +466,13 @@
 		&-location {
 			color: green;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {
@@ -466,6 +491,7 @@
 	// ---------------------------------------------------------------------------------------- // ADS THEME ADS THEME
 	&-afrotheme {
 		background: linear-gradient(to bottom, #e6541b, black);
+
 		@include pageTheme;
 
 		&-username {
@@ -500,13 +526,13 @@
 		&-location {
 			color: #e6541b;
 
+			@include pageLocation;
+
 			> a {
 				&:hover {
 					text-decoration-color: white !important;
 				}
 			}
-
-			@include pageLocation;
 		}
 
 		&-maps {

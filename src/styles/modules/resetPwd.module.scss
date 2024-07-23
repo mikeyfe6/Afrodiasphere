@@ -66,9 +66,10 @@
 		}
 
 		button {
-			@include button;
 			display: block;
 			margin: 0.75em 0 0.75em auto;
+
+			@include button;
 		}
 
 		.logerror {
