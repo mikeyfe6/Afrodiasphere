@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import algoliasearch from 'algoliasearch'
 import axios from 'axios'
+import { algoliasearch } from 'algoliasearch'
 
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } from './keys'
 
@@ -11,7 +11,6 @@ const Algolia = () => {
 	useEffect(() => {
 		const indexData = async () => {
 			const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
-			const index = client.initIndex(ALGOLIA_INDEX_NAME)
 
 			try {
 				const response = await axios.get(`${apiURL}/api/instanties?populate=*`)
@@ -22,7 +21,10 @@ const Algolia = () => {
 					...record
 				}))
 
-				await index.saveObjects(objectsWithID)
+				await client.saveObjects({
+					indexName: ALGOLIA_INDEX_NAME,
+					objects: objectsWithID
+				})
 			} catch (error) {
 				console.error('Error during indexing:', error)
 			}

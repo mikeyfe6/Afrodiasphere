@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-import algoliasearch from 'algoliasearch/lite'
+import { liteClient as algoliasearch } from 'algoliasearch/lite'
 
 import {
 	InstantSearch,
