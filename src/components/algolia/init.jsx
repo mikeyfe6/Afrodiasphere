@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 
 import axios from 'axios'
-
-import { liteClient as algoliasearch } from 'algoliasearch/lite'
+import { algoliasearch } from 'algoliasearch'
 
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME } from './keys'
 
@@ -11,10 +10,6 @@ const apiURL = process.env.GATSBY_BACKEND_URL
 const Algolia = () => {
 	useEffect(() => {
 		const indexData = async () => {
-			if (process.env.NODE_ENV !== 'production') {
-				return
-			}
-
 			const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
 
 			try {
