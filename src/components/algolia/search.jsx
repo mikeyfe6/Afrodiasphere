@@ -84,6 +84,7 @@ const Search = ({
 				searchClient={searchClient}
 				indexName={ALGOLIA_INDEX_NAME}
 				stalledSearchDelay={500}
+				insights={true}
 			>
 				<SearchBox placeholder="Zoek een ADS-profiel..." />
 				{hasFocus && (
