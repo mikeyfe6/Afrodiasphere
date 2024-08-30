@@ -15,6 +15,14 @@
 	@include boxShadow;
 	@include smoothTrans;
 
+	&-container {
+		padding: 0 2em;
+
+		@include mobile {
+			padding: 0;
+		}
+	}
+
 	&-container & {
 		@include container(1em, 0, 1150px);
 	}
