@@ -32,6 +32,7 @@ const Password = ({
 				}
 			})
 			setError(null)
+			setPassword('')
 		} catch {
 			setError('Gaat er iets mis met het updaten van je wachtwoord')
 			setTimeout(() => setError(null), 5000)
